@@ -1,0 +1,169 @@
+[
+{
+	"uri": "//localhost:57856/3-accessibilitytoinstances/3.1-public-instance/",
+	"title": "Connect to Public Instance",
+	"tags": [],
+	"description": "",
+	"content": "\nGo to EC2 service management console. Click on Public Linux Instance. Click Actions. Click Security. Click Modify IAM role. At the Modify IAM role page. Click to select SSM-Role. Click Save. You will need to wait about 10 minutes before performing the next step. This time our EC2 instance will automatically register with the Session Manager.\nGo to the AWS Systems Manager service management console Drag the left menu slider down. Click Session Manager. Click Start Session. Then select Public Linux Instance and click Start session to access the instance. Terminal will appear on the browser. Testing with the command sudo tcpdump -nn port 22 and sudo tcpdump we will see no SSH traffic but only HTTPS traffic. Above, we have created a connection to the public instance without opening SSH port 22, for better security, avoiding any attack to the SSH port.\nOne disadvantage of the above method is that we have to open the Security Group outbound at port 443 to the internet. Since it\u0026rsquo;s a public instance, it probably won\u0026rsquo;t be a problem, but if you want extra security, you can block port 443 to the internet and still use the Session Manager. We will go through this in the private instance section below.\nYou can click terminate to end the currently connected session before proceeding to the next step.\n"
+},
+{
+	"uri": "//localhost:57856/3-accessibilitytoinstances/3.2-private-instance/3.2.2-createvpcendpoint/3.2.2.1-endpointssm/",
+	"title": "Create Endpoint ssm",
+	"tags": [],
+	"description": "",
+	"content": "Create VPC Endpoint SSM Go to VPC service management console Click Endpoints. Click Create endpoint. At the Create endpoint page. In the Name tag field, enter SSM. In the Service Category section, select AWS Services. In the Service Name section, In the Service category section, select: AWS services In the Service Name section enter: SSM then select Service Name: com.amazonaws.ap-southeast-1.ssm. In the Service Name column, click com.amazonaws.ap-southeast-1.ssm. In the VPC section, select Lab VPC. Select the first AZ, then select the Lab Private Subnet subnet. Scroll down. In the Security Group section, select the Security group SG VPC Endpoint that we created earlier. In the Policy section, select Full access. Scroll down. Click Create endpoint. We have created the VPC Interface Endpoint for SSM. "
+},
+{
+	"uri": "//localhost:57856/3-accessibilitytoinstances/3.2-private-instance/3.2.1-enablevpcdns/",
+	"title": "Enable DNS hostnames",
+	"tags": [],
+	"description": "",
+	"content": "Enable DNS hostnames on VPC. To create VPC Endpoint we will need to enable DNS hostnames feature on VPC. Go to VPC service management console\nClick Your VPCs.\nSelect Lab VPC.\nClick Actions.\nClick Edit DNS hostnames.\nClick Endpoint, then click Create Endpoint.\nAt the Edit DNS hostnames page. Click to select Enable. Click Save changes. "
+},
+{
+	"uri": "//localhost:57856/4-s3log/4.1-updateiamrole/",
+	"title": "Update IAM Role",
+	"tags": [],
+	"description": "",
+	"content": "For our EC2 instances to be able to send session logs to the S3 bucket, we will need to update the IAM Role assigned to the EC2 instance by adding a policy that allows access to S3.\nUpdate IAM Role Go to IAM service management console Click Roles. In the search box, enter SSM. Click on the SSM-Role role. Click Attach policies. In the Search box enter S3. Click the policy AmazonS3FullAccess. Click Attach policy. In the production environment, we will grant stricter permissions to the specified S3 bucket. In the framework of this lab, we use the policy AmazonS3FullAccess for convenience.\nNext, we will proceed to create an S3 bucket to store session logs.\n"
+},
+{
+	"uri": "//localhost:57856/1-worklog/worklog_week1.1/",
+	"title": "Worklog Week 1.1 - AWS Budgets templates",
+	"tags": [],
+	"description": "",
+	"content": "\rWeek 1.1AWS Budgets - Cost management with templatesLab 07 - AWS Budgets overview\nThis material explains how AWS Budgets helps manage cloud spending. Learners can set spending limits, receive email alerts when actual or forecasted costs exceed thresholds, and start from built-in templates to create a monthly budget quickly.\r1. Session goals Understand the role of AWS Budgets in cloud cost control. Identify the four main budget types: Cost, Usage, Reserved Instances, and Savings Plans. Learn why templates are useful for fast monthly budget setup. 2. What was covered Reviewed the flow for creating budgets from templates. Examined email alert behavior when thresholds are exceeded. Noted how AWS forecasts spending to support financial planning. 3. Outcomes Able to choose a suitable template for a monthly budget. Able to distinguish actual cost from forecasted cost. Able to describe the purpose of AWS Budgets in day-to-day cloud operations. Note: This is the most beginner-friendly path because it prioritizes quick setup and immediate visibility into spending.\n"
+},
+{
+	"uri": "//localhost:57856/",
+	"title": "Student Information",
+	"tags": [],
+	"description": "",
+	"content": "INTERNSHIP REPORT Student Information: Full name: Lê Đức Thịnh Phone number: 0345114805 Email: leducthinh203@gmail.com University: Ho Chi Minh City University of Technology (HUTECH) Major: Information Technology Class: 22DTHE4 Internship Company: Amazon Web Services Vietnam Company Limited Internship Position: Cloud Engineer - First Cloud AI Journey Internship Period: From April 17, 2026 to July 10, 2026 Student Portrait\nContent Introduction Preparation Connect to EC2 instance Manage session logs Port Forwarding Clean up resources "
+},
+{
+	"uri": "//localhost:57856/1-worklog/",
+	"title": "Worklog",
+	"tags": [],
+	"description": "",
+	"content": "Student Information: Lê Đức Thịnh Major: Software engineer Team: First Cloud Journey\nWorklog by Week Use the week pages below to open each lab write-up. Every page includes a featured image and the matching narrative from the Lab 07 material.\nWeek 1.1 - AWS Budgets: templates, spending limits, and email alerts Week 1.2 - Custom budget setup across AWS services Week 1.3 - Usage Budget: track service usage instead of money Week 1: Introduction to AWS and Foundational Services Objective: Gain a comprehensive overview of the AWS Console and manage IAM user/group access. Tasks completed: Configured AWS CLI in the local development environment. Set up the project structure for the internship report using Hugo. Studied Identity and Access Management (IAM) permissions and policy structures. Week 2: System Administration with AWS Systems Manager (SSM) Objective: Optimize secure instance access. Tasks completed: Implemented Session Manager as a secure alternative to traditional SSH (securing port 22). Configured IAM Roles for EC2 to grant necessary permissions to the SSM Agent. Established centralized log management using Amazon CloudWatch. Week 3: Networking and Security (Planned) Objective: Build virtual network infrastructure. Tasks completed: Provisioned Virtual Private Cloud (VPC) and configured subnets (Public/Private). Set up Internet Gateways and NAT Gateways to facilitate internal traffic. Week 4: Storage Management (Planned) Objective: Manage object storage using Amazon S3. Tasks completed: Created and configured S3 Buckets and implemented Access Control Lists (ACLs). Established security policies to protect sensitive data stored on S3. Note: This worklog will be continuously updated to reflect the ongoing progress of the internship project.\n"
+},
+{
+	"uri": "//localhost:57856/3-accessibilitytoinstances/3.2-private-instance/",
+	"title": "Connect to Private instance",
+	"tags": [],
+	"description": "",
+	"content": "For Windows instance located in private subnet, there is no public IP, no internet gateway so it cannot go out internet.\nWith this type of instance, the traditional way is to use Bastion host technique which is expensive and laborious, but here we will use Session Manager with this type.\nBasically, the private instance still has to open the TCP 443 port to System Manager, but we don\u0026rsquo;t want to allow connection go out to the internet, but only in its VPC, to enhance our security posture.\nTo do that, we have to include the System Manager endpoint in the VPC, that is, using the VPC interface endpoint:\nVPC interface endpoint is attached to the subnet, so this method can be done not only with private subnet but also with public subnet, meaning that with public subnet, you can completely prohibit TCP 443 go out to the internet.\nContent: Enable DNS hostnames Create VPC Endpoint Connect Private Instance "
+},
+{
+	"uri": "//localhost:57856/3-accessibilitytoinstances/3.2-private-instance/3.2.2-createvpcendpoint/3.2.2.2-endpointssmmessages/",
+	"title": "Create Endpoint ssmmessages",
+	"tags": [],
+	"description": "",
+	"content": "Create VPC Endpoint SSMMESSAGES Go to VPC service management console Click Endpoints. Click Create endpoint. At the Create endpoint page. In the Name tag field, enter SSMMESSAGES. In the Service Category section, select AWS Services. In the Service Name section, In the Service category select: AWS services In the Service Name field enter: ssmmessages then select Service Name: com.amazonaws.ap-southeast-1.ssmmessages. In the Service Name column, click com.amazonaws.ap-southeast-1.ssmmessages. In the VPC section, select Lab VPC. Select the first AZ, then select the Lab Private Subnet subnet. Scroll down. In the Security Group section, select the Security group SG VPC Endpoint that we created earlier. In the Policy section, select Full access Scroll down. Click Create endpoint. We have created the VPC Interface Endpoint SSMMESSAGES. "
+},
+{
+	"uri": "//localhost:57856/4-s3log/4.2-creates3bucket/",
+	"title": "Create S3 Bucket",
+	"tags": [],
+	"description": "",
+	"content": "In this step, we will create an S3 bucket to store session logs sent from EC2 instances.\nCreate S3 Bucket Access S3 service management console Click Create bucket. At the Create bucket page. In the Bucket name field, enter the bucket name lab-yourname-bucket-0001 In the Region section, select Region you are doing the current lab. The name of the S3 bucket must not be the same as all other S3 buckets in the system. You can substitute your name and enter a random number when generating the S3 bucket name.\nScroll down and click Create bucket. When we created the S3 bucket we did Block all public access so our EC2 instances won\u0026rsquo;t be able to connect to S3 via the internet. In the next step, we will configure the S3 Gateway Endpoint feature to allow EC2 instances to connect to the S3 bucket via the VPC\u0026rsquo;s internal network.\n"
+},
+{
+	"uri": "//localhost:57856/3-accessibilitytoinstances/3.2-private-instance/3.2.2-createvpcendpoint/",
+	"title": "Create VPC Endpoint",
+	"tags": [],
+	"description": "",
+	"content": "Create VPC Endpoint SSM We will create 3 interface endpoints required by the Session Manager:\nInterface endpoints: com.amazonaws.region.ssm com.amazonaws.region.ec2messages com.amazonaws.region.ssmmessages You can refer to more here\nContent: Create Endpoint ssm Create Endpoint ssmmessages Create Endpoint ec2messages "
+},
+{
+	"uri": "//localhost:57856/1-worklog/worklog_week1.2/",
+	"title": "Worklog Week 1.2 - Custom budget setup",
+	"tags": [],
+	"description": "",
+	"content": "\rWeek 1.2AWS Budgets - Custom budget setupLab 07 - Budgeting by spending plan\nThis section describes how to configure a custom budget on AWS to control spending on a quarterly or project-specific basis. The user can scope it to all services, define email alerts, and optionally attach budget actions for additional governance.\r1. Session goals Set a budget for a concrete amount. Apply the budget across multiple AWS services. Understand how automated alerts help monitor spend in real time. 2. What was covered Created a custom budget on a quarterly cycle. Configured email notifications at chosen percentage thresholds. Reviewed the option to attach governance actions to an existing budget. 3. Important notes New accounts may need at least 24 hours before budget data is fully available. Combining video guidance with hands-on documentation reduces configuration mistakes. Note: A correctly configured budget makes cost tracking much clearer and easier to manage in real projects.\n"
+},
+{
+	"uri": "//localhost:57856/2-proposal/",
+	"title": "Project Proposal",
+	"tags": [],
+	"description": "",
+	"content": "PROJECT PROPOSAL: IoT Weather Platform for Lab Research A Serverless AWS Solution for Real-Time Weather Monitoring\n1. Executive Summary The project aims to build an IoT platform for ITea Lab (Ho Chi Minh City) to optimize weather data collection and analysis. The system supports 5 existing stations and is scalable up to 15 stations, utilizing edge devices (Raspberry Pi/ESP32) connected via MQTT. By leveraging AWS Serverless infrastructure, the platform ensures real-time monitoring and predictive analytics with optimized operational costs.\n2. Problem Statement Current Challenges: Manual data collection process, lack of centralization, management difficulties as the number of stations grows, and high costs associated with third-party platforms. Solution: Develop a centralized system using AWS IoT Core, AWS Glue ETL, and Amplify to fully automate the data pipeline from measurement stations to the analytics dashboard. ROI: Reduces manual workload, improves data reliability, and provides a stable Data Lake for AI research. The estimated payback period is 6–12 months. 3. Solution Architecture The system adopts a Serverless architecture to ensure scalability and cost-efficiency.\nKey AWS Services: Data Ingestion: AWS IoT Core (MQTT). Compute \u0026amp; Logic: AWS Lambda, AWS Glue (ETL Jobs). Storage: Amazon S3 (Data Lake + Analytics Bucket). User Interface: AWS Amplify (Next.js), Amazon Cognito. Data Flow: Edge Device (Raspberry Pi) → AWS IoT Core → S3 Data Lake → AWS Glue → S3 Analytics → Web Dashboard. 4. Technical Implementation Implementation Phases: Month 0 (Planning): Legacy station assessment \u0026amp; architecture design. Month 1 (Feasibility): Cost estimation using AWS Pricing Calculator. Month 2 (Optimization): Architecture optimization (Lambda \u0026amp; Next.js). Month 3 (Deployment): Development (CDK/SDK), testing, and go-live. Requirements: Raspberry Pi running Docker (edge filtering), utilizing AWS CDK for Infrastructure as Code (IaC). 5. Budget \u0026amp; Cost Estimation Hardware Cost: ~265 USD (one-time investment). AWS Operational Cost (Estimated): ~0.7 USD/month (~8.40 USD/year). Main components: MQTT messages, S3 Storage, AWS Glue, API Gateway. 6. Risk Assessment \u0026amp; Mitigation Risk Severity Mitigation Strategy Network outage Medium Local storage on Raspberry Pi (Docker). Sensor failure High Periodic maintenance, spare parts. Budget overrun Low Set Budget Alerts in AWS Billing Dashboard. 7. Expected Outcomes Technical: Build an automated system to replace manual processes, scalable up to 15 stations. Research: Establish a stable Data Lake for AI model training and internal research projects for at least 1 year. "
+},
+{
+	"uri": "//localhost:57856/3-accessibilitytoinstances/",
+	"title": "Connect to EC2 servers",
+	"tags": [],
+	"description": "",
+	"content": "In this step, we will connect to our EC2 servers, located in both the public and private subnets.\nContent 3.1. Connect to EC2 Public Server 3.2. Cconnect to EC2 Private Server\n"
+},
+{
+	"uri": "//localhost:57856/3-accessibilitytoinstances/3.2-private-instance/3.2.3-connectec2/",
+	"title": "Connect to instance",
+	"tags": [],
+	"description": "",
+	"content": "Assign IAM role and restart EC2 instance. Go to EC2 service management console Click Private Windows Instance. Click Actions. Click Security. Click Modify IAM Role. At the Modify IAM Role page. In the IAM role section, select SSM-Role. Click Save. Click Private Windows Instance. Click Instance state. Click Reboot instance to restart, then click Reboot to confirm. Please wait 5 minutes before doing the next step.\nConnect to the private EC2 instance. Go to System Manager - Session Manager service management console Click Start session. Click Private Windows Instance. Click Start session. Type ipconfig command to check the IP address information of Private Windows Instance as shown below. "
+},
+{
+	"uri": "//localhost:57856/3-accessibilitytoinstances/3.2-private-instance/3.2.2-createvpcendpoint/3.2.2.3-endpointec2messages/",
+	"title": "Create Endpoint ec2messages",
+	"tags": [],
+	"description": "",
+	"content": "Create VPC Endpoint EC2MESSAGES Go to VPC service management console Click Endpoints. Click Create endpoint. At the Create endpoint page. In the Name tag field, enter SSMMESSAGES. In the Service Category section, select AWS Services. In the Service Name section, In the Service category select: AWS services In the field Service Name enter: ec2 then select Service Name: com.amazonaws.ap-southeast-1.ec2messages. In the Service Name column, click com.amazonaws.ap-southeast-1.ec2messages. In the VPC section, select Lab VPC. Select the first AZ, then select the Lab Private Subnet subnet. Scroll down. In the Security Group section, select the Security group SG VPC Endpoint that we created earlier. In the Policy section, select Full access Scroll down. Click Create endpoint. We have created the VPC Interface Endpoint EC2MESSAGES.\nMake sure the 3 required endpoints have been created as shown below.\n"
+},
+{
+	"uri": "//localhost:57856/4-s3log/4.3-creategwes3/",
+	"title": "Create S3 Gateway endpoint",
+	"tags": [],
+	"description": "",
+	"content": " Go to VPC service management console Click Endpoints. Click Create endpoint. At the Create endpoint page. In the Name tag field, enter S3GW. In the Service Category section, click AWS services. In the search box enter S3, then select com.amazonaws.[region].s3 In the Services section, select com.amazonaws.[region].s3 with the Type of Gateway. In the VPC section, select Lab VPC. In the Route tables section, select both route tables. Scroll down, click Create endpoint. The next step is to configure Session Manager to store session logs to the S3 bucket we created.\n"
+},
+{
+	"uri": "//localhost:57856/1-worklog/worklog_week1.3/",
+	"title": "Worklog Week 1.3",
+	"tags": [],
+	"description": "",
+	"content": ""
+},
+{
+	"uri": "//localhost:57856/4-s3log/",
+	"title": "Manage session logs",
+	"tags": [],
+	"description": "",
+	"content": "With Session Manager, we can view the history of connections to instances through Session history. However, we have not seen the details of the commands used in a session.\nIn this section, we will proceed to create an S3 bucket and configure the session logs feature to see the details of the commands used in the session.\nContent: Update IAM Role Create S3 Bucket Create S3 Gateway endpoint Configure Session logs "
+},
+{
+	"uri": "//localhost:57856/4-s3log/4.4-configsessionlogs/",
+	"title": "Monitor session logs",
+	"tags": [],
+	"description": "",
+	"content": "Monitor session logs Access System Manager - Session Manager service management console Click the Preferences tab. Click Edit. Scroll down, at S3 logging, click Enable. Uncheck Allow only encrypted S3 buckets. Click Choose a bucket name from the list. Select the S3 bucket you created. Scroll down, click Save to save the configuration.\nAccess System Manager - Session Manager service management console\nClick Start session. Click Private Windows Instance. Click Start session. Type the command ipconfig. Type the command hostname. Click Terminate to exit the session, click Terminate again to confirm. Check Session logs in S3 Go to S3 service management console Click on the name of the S3 bucket we created for the lab. Click on the object name sessions log On the objects detail page, click Open. Object logs will be opened in a new tab in the browser. You can view the stored commands in session logs. "
+},
+{
+	"uri": "//localhost:57856/5-portfwd/",
+	"title": "Port Forwarding",
+	"tags": [],
+	"description": "",
+	"content": "\rPort Forwarding is a useful way to redirect network traffic from one IP address - Port to another IP address - Port. With Port Forwarding we can access an EC2 instance located in the private subnet from our workstation.\nWe will configure Port Forwarding for the RDP connection between our machine and Private Windows Instance located in the private subnet we created for this exercise.\nCreate IAM user with permission to connect SSM Go to IAM service management console Click Users , then click Add users. At the Add user page. In the User name field, enter Portfwd. Click on Access key - Programmatic access. Click Next: Permissions. Click Attach existing policies directly.\nIn the search box, enter ssm. Click on AmazonSSMFullAccess. Click Next: Tags, click Next: Reviews. Click Create user. Save Access key ID and Secret access key information to perform AWS CLI configuration.\nInstall and Configure AWS CLI and Session Manager Plugin To perform this hands-on, make sure your workstation has AWS CLI and Session Manager Plugin installed -manager-working-with-install-plugin.html)\nMore hands-on tutorials on installing and configuring the AWS CLI can be found here.\nWith Windows, when extracting the Session Manager Plugin installation folder, run the install.bat file with Administrator permission to perform the installation.\nImplement Portforwarding Run the command below in Command Prompt on your machine to configure Port Forwarding. aws ssm start-session --target (your ID windows instance) --document-name AWS-StartPortForwardingSession --parameters portNumber=\u0026#34;3389\u0026#34;,localPortNumber=\u0026#34;9999\u0026#34; --region (your region) Windows Private Instance Instance ID information can be found when you view the EC2 Windows Private Instance server details.\nExample command: C:\\Windows\\system32\u0026gt;aws ssm start-session --target i-06343d7377486760c --document-name AWS-StartPortForwardingSession --parameters portNumber=\u0026#34;3389\u0026#34;,localPortNumber=\u0026#34;9999\u0026#34; --region ap-southeast-1 If your command gives an error like below: SessionManagerPlugin is not found. Please refer to SessionManager Documentation here: http://docs.aws.amazon.com/console/systems-manager/session-manager-plugin-not-found\nProve that you have not successfully installed the Session Manager Plugin. You may need to relaunch Command Prompt after installing Session Manager Plugin.\nConnect to the Private Windows Instance you created using the Remote Desktop tool on your workstation. In the Computer section: enter localhost:9999. Return to the administration interface of the System Manager - Session Manager service. Click tab Session history. We will see session logs with Document name AWS-StartPortForwardingSession. Congratulations on completing the lab on how to use Session Manager to connect and store session logs in S3 bucket. Remember to perform resource cleanup to avoid unintended costs.\n"
+},
+{
+	"uri": "//localhost:57856/6-cleanup/",
+	"title": "Clean up resources",
+	"tags": [],
+	"description": "",
+	"content": "We will take the following steps to delete the resources we created in this exercise.\nDelete EC2 instance Go to EC2 service management console\nClick Instances. Select both Public Linux Instance and Private Windows Instance instances. Click Instance state. Click Terminate instance, then click Terminate to confirm. Go to IAM service management console\nClick Roles. In the search box, enter SSM. Click to select SSM-Role. Click Delete, then enter the role name SSM-Role and click Delete to delete the role. Click Users. Click on user Portfwd. Click Delete, then enter the user name Portfwd and click Delete to delete the user. Delete S3 bucket Access System Manager - Session Manager service management console.\nClick the Preferences tab. Click Edit. Scroll down. In the section S3 logging. Uncheck Enable to disable logging. Scroll down. Click Save. Go to S3 service management console\nClick on the S3 bucket we created for this lab. (Example: lab-fcj-bucket-0001 ) Click Empty. Enter permanently delete, then click Empty to proceed to delete the object in the bucket. Click Exit. After deleting all objects in the bucket, click Delete\nEnter the name of the S3 bucket, then click Delete bucket to proceed with deleting the S3 bucket. Delete VPC Endpoints Go to VPC service management console Click Endpoints. Select the 4 endpoints we created for the lab including SSM, SSMMESSAGES, EC2MESSAGES, S3GW. Click Actions. Click Delete VPC endpoints. In the confirm box, enter delete.\nClick Delete to proceed with deleting endpoints. Click the refresh icon, check that all endpoints have been deleted before proceeding to the next step.\nDelete VPC Go to VPC service management console\nClick Your VPCs. Click on Lab VPC. Click Actions. Click Delete VPC. In the confirm box, enter delete to confirm, click Delete to delete Lab VPC and related resources.\n"
+},
+{
+	"uri": "//localhost:57856/categories/",
+	"title": "Categories",
+	"tags": [],
+	"description": "",
+	"content": ""
+},
+{
+	"uri": "//localhost:57856/tags/",
+	"title": "Tags",
+	"tags": [],
+	"description": "",
+	"content": ""
+}]

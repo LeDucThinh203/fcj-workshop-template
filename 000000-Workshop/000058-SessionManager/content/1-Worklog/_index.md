@@ -12,6 +12,14 @@ pre : " <b> 1. </b> "
 
 ---
 
+## Worklog by Week
+
+Use the week pages below to open each lab write-up. Every page includes a featured image and the matching narrative from the Lab 07 material.
+
+- [Week 1.1 - AWS Budgets: templates, spending limits, and email alerts](./Worklog_week1.1/)
+- [Week 1.2 - Custom budget setup across AWS services](./Worklog_week1.2/)
+- [Week 1.3 - Usage Budget: track service usage instead of money](./Worklog_week1.3/)
+
 ### Week 1: Introduction to AWS and Foundational Services
 * **Objective:** Gain a comprehensive overview of the AWS Console and manage IAM user/group access.
 * **Tasks completed:**

@@ -1,0 +1,48 @@
+{{- $title := .Get "title" -}}
+{{- $badge := .Get "badge" -}}
+{{- $period := .Get "period" -}}
+{{- $image := .Get "image" -}}
+{{- $imageAlt := .Get "imageAlt" | default $title -}}
+{{- $summary := .Get "summary" -}}
+
+{{- /* Build image resources: prefer explicit image param(s), fallback to all page images */ -}}
+{{- $images := slice -}}
+{{- if $image }}
+  {{- $names := split $image "," -}}
+  {{- range $names -}}
+    {{- $n := trim . " " -}}
+    {{- $r := $.Page.Resources.GetMatch $n -}}
+    {{- if $r -}}
+      {{- $images = $images | append $r -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
+{{- if eq (len $images) 0 -}}
+  {{- $images = $.Page.Resources.ByType "image" -}}
+{{- end -}}
+
+<section class="worklog-session">
+  <div class="worklog-session__header">
+    {{- with $badge }}<span class="worklog-session__badge">{{ . }}</span>{{- end }}
+    {{- if $title }}<h2>{{ $title }}</h2>{{- end }}
+    {{- with $period }}<p class="worklog-session__period">{{ . }}</p>{{- end }}
+  </div>
+
+  {{- with $summary }}
+  <div class="worklog-session__summary">{{ . | markdownify }}</div>
+  {{- end }}
+
+  <figure class="worklog-session__figure">
+    {{- if gt (len $images) 0 }}
+      <div class="worklog-gallery">
+        {{- range $images }}
+          <img src="{{ .RelPermalink }}" alt="{{ $imageAlt }}" />
+        {{- end }}
+      </div>
+    {{- end }}
+  </figure>
+
+  <div class="worklog-session__content">
+    <div class="worklog-session__body">{{ .Inner | markdownify }}</div>
+  </div>
+</section>

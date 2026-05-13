@@ -1,0 +1,176 @@
+[
+{
+	"uri": "//localhost:57856/vi/4-s3log/4.1-updateiamrole/",
+	"title": "Cập nhật IAM Role",
+	"tags": [],
+	"description": "",
+	"content": "Để các EC2 instance của chúng ta có thể gửi session log tới S3 bucket , chúng ta sẽ cần cập nhật IAM Role đã gán vào EC2 instance bằng cách thêm vào policy cho phép quyền truy cập vào S3.\nCập nhật IAM Role Truy cập vào giao diện quản trị dịch vụ IAM Click Roles. Tại ô tìm kiếm , điền SSM. Click vào role SSM-Role. Click Attach policies. Tại ô Search điền S3. Click chọn policy AmazonS3FullAccess. Click Attach policy. Trong thực tế chúng ta sẽ cấp quyền chặt chẽ hơn tới S3 bucket chỉ định. Trong khuôn khổ bài lab này chúng ta sử dụng policy AmazonS3FullAccess cho tiện dụng.\nTiếp theo chúng ta sẽ tiến hành tạo S3 bucket để lưu trữ session logs.\n"
+},
+{
+	"uri": "//localhost:57856/vi/3-accessibilitytoinstances/3.1-public-instance/",
+	"title": "Kết nối đến máy chủ Public",
+	"tags": [],
+	"description": "",
+	"content": "\nTruy cập vào giao diện quản trị của dịch vụ EC2. Click chọn Public Linux Instance. Click Actions. Click Security. Click Modify IAM role. Tại trang Modify IAM role. Click chọn SSM-Role. Click Save. Bạn sẽ cần chờ khoảng 10 phút trước khi thực hiện bước tiếp theo. Thời gian này EC2 instance của chúng ta sẽ tự động đăng ký với Session Manager.\nTruy cập vào giao diện quản trị của dịch vụ AWS Systems Manager Kéo thanh trượt menu bên trái xuống dưới. Click Session Manager. Click Start Session. Sau đó chọn Public Linux Instance và click Start session để truy cập vào instance. Terminal sẽ xuất hiện trên trình duyệt. Kiểm tra với câu lệnh sudo tcpdump -nn port 22 và sudo tcpdump chúng ta sẽ thấy không có traffic của SSH mà chỉ có traffic HTTPS. Ở trên, chúng ta đã tạo kết nối vào public instance mà không cần mở cổng SSH 22, giúp cho việc bảo mật tốt hơn, tránh mọi sự tấn công tới cổng SSH.\nMột nhược điểm của cách làm trên là ta phải mở Security Group outbound ở cổng 443 ra ngoài internet. Vì là public instance nên có thể sẽ không vấn đề gì nhưng nếu bạn muốn bảo mật hơn nữa, bạn có thể khoá cổng 443 ra ngoài internet mà vẫn sử dụng được Session Manager. Chúng ta sẽ đi qua cách làm này ở phần private instance dưới đây.\nBạn có thể terminate để kết thúc session đang kết nối trước khi qua bước tiếp theo.\n"
+},
+{
+	"uri": "//localhost:57856/vi/3-accessibilitytoinstances/3.2-private-instance/3.2.1-enablevpcdns/",
+	"title": "Kích hoạt DNS hostnames",
+	"tags": [],
+	"description": "",
+	"content": "Kích hoạt tính năng DNS hostnames trên VPC. Để tạo được VPC Endpoint chúng ta sẽ cần bật tính năng DNS hostnames trên VPC. Truy cập đến giao diện quản trị của dịch vụ VPC\nClick Your VPCs.\nChọn Lab VPC.\nClick Actions.\nClick Edit DNS hostnames.\nClick Endpoint, sau đó click Create Endpoint.\nTại trang Edit DNS hostnames. Click chọn Enable. Click Save changes. "
+},
+{
+	"uri": "//localhost:57856/vi/3-accessibilitytoinstances/3.2-private-instance/3.2.2-createvpcendpoint/3.2.2.1-endpointssm/",
+	"title": "Tạo Endpoint ssm",
+	"tags": [],
+	"description": "",
+	"content": "Tạo VPC Endpoint SSM Truy cập đến giao diện quản trị của dịch vụ VPC Click Endpoints. Click Create endpoint. Tại trang Create endpoint. Tại mục Name tag điền SSM. Tại mục Service Category chọn AWS Services. Tại mục Service Name, Tại mục Service category chọn: AWS services Tại mục Service Name nhập: SSM sau đó chọn Service Name: com.amazonaws.ap-southeast-1.ssm. Tại cột Service Name, click chọn com.amazonaws.ap-southeast-1.ssm. Tại mục VPC, chọn Lab VPC. Chọn AZ đầu tiên, sau đó chọn subnet Lab Private Subnet. Kéo chuột xuống dưới. Tại mục Security Group, chọn Security group SG VPC Endpoint mà chúng ta đã tạo trước đó. Tại mục Policy, chọn Full access Kéo chuột xuống dưới cùng. Click Create endpoint. Chúng ta đã tạo xong VPC Interface Endpoint cho SSM. "
+},
+{
+	"uri": "//localhost:57856/vi/1-worklog/worklog_week1.1/",
+	"title": "Worklog tuần 1.1 - AWS Budgets templates",
+	"tags": [],
+	"description": "",
+	"content": "\rWeek 1.1AWS Budgets - Quản lý chi phí bằng templateLab 07 - Giới thiệu AWS Budgets\nTài liệu này hướng dẫn cách sử dụng AWS Budgets để quản lý chi phí hiệu quả. Người học có thể đặt hạn mức chi tiêu, nhận cảnh báo qua email khi chi phí thực tế hoặc dự báo vượt ngưỡng, và chọn nhanh các mẫu dựng sẵn để tạo ngân sách hằng tháng.\r1. Mục tiêu buổi làm việc Hiểu vai trò của AWS Budgets trong kiểm soát chi phí đám mây. Nhận biết bốn nhóm ngân sách chính: Cost, Usage, Reserved Instances và Savings Plans. Nắm cách dùng templates để khởi tạo ngân sách nhanh, tránh phát sinh hóa đơn ngoài ý muốn. 2. Nội dung đã thực hiện Xem quy trình tạo ngân sách từ mẫu có sẵn. Phân tích cơ chế cảnh báo qua email khi chi phí vượt ngưỡng. Ghi nhận cách hệ thống dự báo chi phí để hỗ trợ quyết định tài chính. 3. Kết quả đạt được Biết cách chọn template phù hợp cho ngân sách hằng tháng. Hiểu được sự khác nhau giữa chi phí thực tế và chi phí dự báo. Có thể mô tả mục tiêu của AWS Budgets trong vận hành hệ thống cloud. Ghi chú: Nội dung phù hợp cho người mới bắt đầu vì ưu tiên tính đơn giản, dễ triển khai và dễ theo dõi chi phí ngay từ đầu.\n"
+},
+{
+	"uri": "//localhost:57856/vi/1-worklog/",
+	"title": "Nhật ký công việc",
+	"tags": [],
+	"description": "",
+	"content": "Thông tin sinh viên: Phạm Quốc Nhân\nChuyên ngành: Mạng máy tính\nTeam: First Cloud Journey\nWorklog theo từng tuần Danh sách bên dưới dẫn tới các page worklog riêng. Mỗi tuần đều có ảnh minh họa và nội dung mô tả đúng theo bộ tài liệu Lab 07 mà bạn gửi.\nWeek 1.1 - AWS Budgets: template, hạn mức và cảnh báo email Week 1.2 - Tạo ngân sách tùy chỉnh cho toàn bộ dịch vụ AWS Week 1.3 - Usage Budget: kiểm soát mức sử dụng theo dịch vụ Tuần 1: Làm quen với AWS và các dịch vụ cơ bản Nội dung: Tìm hiểu tổng quan về AWS Console, quản lý tài khoản IAM. Công việc đã làm: Cấu hình AWS CLI trên môi trường cục bộ. Thiết lập cấu trúc dự án báo cáo bằng Hugo. Tìm hiểu về quyền hạn (Permissions) và chính sách (Policies) trong IAM. Tuần 2: Quản trị hệ thống với AWS Systems Manager (SSM) Nội dung: Tối ưu hóa việc truy cập Instance an toàn. Công việc đã làm: Triển khai Session Manager thay thế cho SSH truyền thống (bảo mật port 22). Cấu hình IAM Role cho EC2 để cấp quyền cho SSM Agent. Thiết lập quản lý log tập trung với CloudWatch. Tuần 3: Networking và Security (Dự kiến) Nội dung: Xây dựng hạ tầng mạng ảo. Công việc đã làm: Thiết lập VPC, cấu hình Subnets (Public/Private). Cấu hình Internet Gateway và NAT Gateway cho traffic nội bộ. Tuần 4: Storage Management (Dự kiến) Nội dung: Quản lý lưu trữ đối tượng với S3. Công việc đã làm: Khởi tạo S3 Buckets, cấu hình Access Control Lists (ACLs). Thiết lập chính sách bảo mật cho dữ liệu nhạy cảm trên S3. Ghi chú: Nhật ký này sẽ được cập nhật liên tục theo tiến độ thực tập thực tế của dự án.\n"
+},
+{
+	"uri": "//localhost:57856/vi/",
+	"title": "Thông tin sinh viên",
+	"tags": [],
+	"description": "",
+	"content": "BÁO CÁO THỰC TẬP Thông tin sinh viên: Họ và tên: Phạm Quốc Nhân Số điện thoại: 0866807526 Email: phamquocnhan113@gmail.com Trường: Đại học Công nghệ Thành phố Hồ Chí Minh (HUTECH) Ngành: Công nghệ thông tin Lớp: 22DTHD1 Công ty thực tập: Công ty TNHH Amazon Web Services Vietnam Vị trí thực tập: Cloud Engineer - First Cloud AI Journey Thời gian thực tập: Từ ngày 17/04/2026 đến ngày 10/07/2026 Ảnh sinh viên\nNội dung Giới thiệu Các bước chuẩn bị Kết nối đến máy chủ EC2 Quản lý nhật ký phiên làm việc (session logs) Chuyển tiếp cổng (Port Forwarding) Dọn dẹp tài nguyên "
+},
+{
+	"uri": "//localhost:57856/vi/1-worklog/worklog-t1/t1/",
+	"title": "Tuần 1: Nền tảng AWS &amp; Thiết lập môi trường",
+	"tags": [],
+	"description": "",
+	"content": "NHẬT KÝ CÔNG VIỆC - TUẦN 1 Thời gian: 20/04/2026 - 26/04/2026\nChuyên ngành: Mạng máy tính\nNhóm: First Cloud Journey\n1. Mục tiêu tuần Kết nối và làm quen với các thành viên trong nhóm First Cloud Journey. Hiểu rõ các dịch vụ AWS cơ bản, cách sử dụng AWS Management Console và AWS CLI. 2. Công việc \u0026amp; Lịch trình Thứ Công việc Ngày bắt đầu Ngày hoàn thành Nguồn tài liệu Thứ 2 Làm quen nhóm \u0026amp; Đọc nội quy thực tập 20/04/2026 20/04/2026 Nội bộ Thứ 3 Tìm hiểu AWS (Compute, Storage, Networking, Database) 21/04/2026 21/04/2026 AWS Study Group Thứ 4 Tạo AWS Free Tier, cấu hình Console \u0026amp; CLI 22/04/2026 22/04/2026 AWS Study Group Thứ 5 EC2 cơ bản (Instance types, AMI, EBS, SSH, Elastic IP) 23/04/2026 23/04/2026 AWS Study Group Thứ 6 Thực hành: Tạo EC2, kết nối SSH, gắn EBS volume 24/04/2026 24/04/2026 AWS Study Group T7-CN Nâng cao: Security Group, triển khai Web Server (Apache/Nginx), thử nghiệm S3 25/04/2026 26/04/2026 AWS Study Group 3. Kết quả đạt được Nền tảng AWS: Nắm vững các nhóm dịch vụ cốt lõi bao gồm Compute (EC2), Storage (S3, EBS), Networking (VPC) và Database (RDS, DynamoDB). Thiết lập môi trường: Đăng ký và bảo mật thành công tài khoản AWS Free Tier. AWS Management Console: Thành thạo việc tìm kiếm, điều hướng và quản lý tài nguyên thông qua giao diện web. AWS CLI: Hoàn tất cấu hình môi trường (Access Key, Secret Key, Region mặc định) và thực hiện thành thạo các lệnh quản lý tài nguyên (trạng thái EC2, Key Pairs, liệt kê Region). Quản trị EC2: Khởi tạo thành công các instance Amazon Linux, cấu hình Security Group và thiết lập kết nối SSH sử dụng Key Pair. Web Hosting: Triển khai và kiểm thử thành công Web Server (Apache/Nginx) có thể truy cập qua Public IP. Quản lý lưu trữ: Thực hiện thành công việc gắn EBS volume vào EC2, tạo S3 bucket và upload file lên hệ thống. Ghi chú: Đã rèn luyện được khả năng linh hoạt kết hợp giữa AWS Management Console và AWS CLI để quản lý tài nguyên hiệu quả.\n"
+},
+{
+	"uri": "//localhost:57856/vi/3-accessibilitytoinstances/3.2-private-instance/3.2.2-createvpcendpoint/3.2.2.2-endpointssmmessages/",
+	"title": "Tạo Endpoint ssmmessages",
+	"tags": [],
+	"description": "",
+	"content": "Tạo VPC Endpoint SSMMESSAGES Truy cập đến giao diện quản trị của dịch vụ VPC Click Endpoints. Click Create endpoint. Tại trang Create endpoint. Tại mục Name tag điền SSMMESSAGES. Tại mục Service Category chọn AWS Services. Tại mục Service Name, Tại mục Service category chọn: AWS services Tại mục Service Name nhập: ssmmessages sau đó chọn Service Name: com.amazonaws.ap-southeast-1.ssmmessages. Tại cột Service Name, click chọn com.amazonaws.ap-southeast-1.ssmmessages. Tại mục VPC, chọn Lab VPC. Chọn AZ đầu tiên, sau đó chọn subnet Lab Private Subnet. Kéo chuột xuống dưới. Tại mục Security Group, chọn Security group SG VPC Endpoint mà chúng ta đã tạo trước đó. Tại mục Policy, chọn Full access Kéo chuột xuống dưới cùng. Click Create endpoint. Chúng ta đã tạo xong VPC Interface Endpoint SSMMESSAGES. "
+},
+{
+	"uri": "//localhost:57856/vi/3-accessibilitytoinstances/3.2-private-instance/",
+	"title": "Tạo kết nối đến máy chủ EC2 Private",
+	"tags": [],
+	"description": "",
+	"content": "Đối với Windows instance nằm trong private subnet, không có public IP, không có internet gateway nên không thể đi ra ngoài internet.\nVới loại instance này, cách làm truyền thống là ta sẽ sử dụng kỹ thuật Bastion host tốn nhiều chi phí và công sức, nhưng ở đây chúng ta sẽ sử dụng Session Manager với loại này.\nCơ bản là private instance vẫn phải mở cổng TCP 443 tới System Manager, nhưng không cho kết nối đó đi ra ngoài internet mà chỉ cho đi trong chính VPC của mình, nên đảm bảo được vấn đề bảo mật.\nĐể làm được điều đó, ta phải đưa endpoint của System Manager vào trong VPC, nghĩa là sử dụng VPC interface endpoint:\nVPC interface endpoint được gắn với subnet nên cách làm này không những với private subnet mà còn có thể làm với public subnet, nghĩa là với public subnet, bạn hoàn toàn có thể không cho TCP 443 đi ra ngoài internet.\nNội dung: Kích hoạt DNS hostnames Tạo VPC Endpoint Kết nối Private Instance "
+},
+{
+	"uri": "//localhost:57856/vi/4-s3log/4.2-creates3bucket/",
+	"title": "Tạo S3 Bucket",
+	"tags": [],
+	"description": "",
+	"content": "Trong bước này, chúng ta sẽ tạo 1 S3 bucket để lưu trữ các session logs được gửi từ các EC2 instance.\nTạo S3 Bucket Truy cập giao diện quản trị dịch vụ S3 Click Create bucket. Tại trang Create bucket. Tại mục Bucket name điền tên bucket lab-yourname-bucket-0001 Tại mục Region chọn Region bạn đang làm lab hiện tại. Tên S3 bucket phải đảm bảo không trùng với toàn bộ S3 bucket khác trong hệ thống. Bạn có thể thay thế tên mình và điền số ngẫu nhiên khi tạo tên S3 bucket.\nKéo chuột xuống phía dưới và click Create bucket. Khi tạo S3 bucket chúng ta đã thực hiện Block all public access nên các EC2 instance của chúng ta sẽ không thể kết nối tới S3 thông qua mạng internet. Trong bước tiếp theo chúng ta sẽ cấu hình tính năng S3 Gateway Endpoint để cho phép các EC2 instance có thể kết nối tới S3 bucket thông qua mạng nội bộ của VPC.\n"
+},
+{
+	"uri": "//localhost:57856/vi/3-accessibilitytoinstances/3.2-private-instance/3.2.2-createvpcendpoint/",
+	"title": "Tạo VPC Endpoint",
+	"tags": [],
+	"description": "",
+	"content": "Tạo VPC Endpoint SSM Chúng ta sẽ tạo 3 interface endpoint yêu cầu bởi Session Manager: Interface endpoint: com.amazonaws.region.ssm com.amazonaws.region.ec2messages com.amazonaws.region.ssmmessages Bạn có thể tham khảo thêm tại đây\nNội dung: Tạo Endpoint ssm Tạo Endpoint ssmmessages Tạo Endpoint ec2messages "
+},
+{
+	"uri": "//localhost:57856/vi/1-worklog/worklog_week1.2/",
+	"title": "Worklog tuần 1.2 - Ngân sách tùy chỉnh",
+	"tags": [],
+	"description": "",
+	"content": "\rWeek 1.2AWS Budgets - Tạo ngân sách tùy chỉnhLab 07 - Thiết lập budget theo kế hoạch chi tiêu\nĐoạn tài liệu này mô tả quy trình thiết lập một ngân sách tùy chỉnh trên AWS để kiểm soát chi phí theo quý hoặc theo kế hoạch riêng. Người dùng có thể chọn phạm vi áp dụng cho toàn bộ dịch vụ, định nghĩa ngưỡng cảnh báo email và thêm hành động quản trị nếu cần.\r1. Mục tiêu buổi làm việc Thiết lập ngân sách theo một số tiền cụ thể. Áp dụng ngân sách cho nhiều dịch vụ AWS cùng lúc. Hiểu cách dùng cảnh báo tự động để theo dõi mức chi tiêu thực tế. 2. Nội dung đã thực hiện Tạo budget tùy chỉnh theo chu kỳ quý. Cấu hình thông báo email khi chi phí chạm các mốc phần trăm đã định. Xem xét khả năng thêm action quản trị vào ngân sách đã tạo. 3. Lưu ý quan trọng Tài khoản mới có thể cần ít nhất 24 giờ để dữ liệu budget được cập nhật đầy đủ. Nên kết hợp video hướng dẫn với tài liệu thực hành để tránh sai sót khi cấu hình các thông số. Ghi chú: Khi ngân sách được cấu hình đúng, việc theo dõi chi phí sẽ rõ ràng hơn và dễ kiểm soát hơn trong các dự án thực tế.\n"
+},
+{
+	"uri": "//localhost:57856/vi/2-proposal/",
+	"title": "Đề Xuất Dự Án",
+	"tags": [],
+	"description": "",
+	"content": "ĐỀ XUẤT DỰ ÁN: Nền tảng Thời tiết IoT cho Nghiên cứu Phòng Lab Giải pháp AWS Serverless cho giám sát thời tiết thời gian thực\n1. Tóm tắt điều hành Dự án nhằm xây dựng nền tảng IoT cho ITea Lab (TP.HCM) để tối ưu hóa việc thu thập và phân tích dữ liệu thời tiết. Hệ thống hỗ trợ 5 trạm hiện tại và có khả năng mở rộng lên 15 trạm, sử dụng thiết bị biên (Raspberry Pi/ESP32) kết nối qua MQTT. Bằng cách tận dụng hạ tầng AWS Serverless, nền tảng đảm bảo khả năng giám sát thời gian thực và phân tích dự báo với chi phí vận hành tối ưu.\n2. Tuyên bố vấn đề Thách thức hiện tại: Quy trình thu thập dữ liệu thủ công, thiếu tính tập trung, khó quản lý khi số lượng trạm tăng lên và chi phí sử dụng các nền tảng bên thứ ba quá cao. Giải pháp: Xây dựng hệ thống tập trung sử dụng AWS IoT Core, AWS Glue ETL và Amplify để tự động hóa hoàn toàn luồng dữ liệu từ các trạm đo đến bảng điều khiển phân tích. Hiệu quả (ROI): Giảm thiểu thao tác thủ công, cải thiện độ tin cậy của dữ liệu và cung cấp nguồn Data Lake ổn định cho nghiên cứu AI. Thời gian hoàn vốn dự kiến từ 6–12 tháng. 3. Kiến trúc giải pháp Hệ thống áp dụng kiến trúc Serverless để đảm bảo khả năng mở rộng và tối ưu chi phí.\nCác dịch vụ AWS chủ chốt: Tiếp nhận dữ liệu: AWS IoT Core (MQTT). Tính toán \u0026amp; Xử lý: AWS Lambda, AWS Glue (ETL Jobs). Lưu trữ: Amazon S3 (Data Lake + Analytics Bucket). Giao diện người dùng: AWS Amplify (Next.js), Amazon Cognito. Luồng dữ liệu: Thiết bị biên (Raspberry Pi) → AWS IoT Core → S3 Data Lake → AWS Glue → S3 Analytics → Giao diện Web. 4. Triển khai kỹ thuật Các giai đoạn triển khai: Tháng 0 (Lập kế hoạch): Đánh giá trạm cũ \u0026amp; thiết kế kiến trúc. Tháng 1 (Tính khả thi): Ước tính chi phí bằng AWS Pricing Calculator. Tháng 2 (Tối ưu hóa): Tối ưu hóa kiến trúc (Lambda \u0026amp; Next.js). Tháng 3 (Triển khai): Phát triển (CDK/SDK), kiểm thử và vận hành chính thức. Yêu cầu: Raspberry Pi chạy Docker (lọc dữ liệu biên), sử dụng AWS CDK để quản lý hạ tầng dưới dạng mã (IaC). 5. Ước tính ngân sách Chi phí phần cứng: ~265 USD (đầu tư một lần). Chi phí vận hành AWS (Ước tính): ~0,7 USD/tháng (~8,40 USD/năm). Các hạng mục chính: MQTT messages, S3 Storage, AWS Glue, API Gateway. 6. Đánh giá rủi ro \u0026amp; Chiến lược giảm thiểu Rủi ro Mức độ Chiến lược giảm thiểu Mất kết nối mạng Trung bình Lưu trữ cục bộ trên Raspberry Pi (Docker). Hỏng cảm biến Cao Kiểm tra định kỳ, dự phòng linh kiện thay thế. Vượt ngân sách Thấp Thiết lập Budget Alerts trong AWS Billing Dashboard. 7. Kết quả kỳ vọng Kỹ thuật: Xây dựng hệ thống tự động hóa thay thế các quy trình thủ công, có khả năng mở rộng lên 15 trạm. Nghiên cứu: Thiết lập nguồn Data Lake ổn định để huấn luyện các mô hình AI và phục vụ các dự án nghiên cứu nội bộ trong ít nhất 1 năm. "
+},
+{
+	"uri": "//localhost:57856/vi/3-accessibilitytoinstances/3.2-private-instance/3.2.3-connectec2/",
+	"title": "Kết nối EC2 Private",
+	"tags": [],
+	"description": "",
+	"content": "Gán IAM role và restart EC2 instance. Truy cập giao diện quản trị dịch vụ EC2 Click chọn Private Windows Instance. Click Actions. Click Security. Click Modify IAM Role. Tại trang Modify IAM Role. Tại mục IAM role, chọn SSM-Role. Click Save. Click chọn Private Windows Instance. Click Instance state. Click Reboot instance để thực hiện restart, sau đó click Reboot để xác nhận. Bạn hãy đợi 5 phút trước khi làm bước tiếp theo nhé.\nKết nối tới máy chủ private EC2 instance. Truy cập vào giao diện quản trị dịch vụ System Manager - Session Manager Click Start session. Click chọn Private Windows Instance. Click Start session. Gõ lệnh ipconfig để kiểm tra thông tin địa chỉ IP của Private Windows Instance như dưới đây. "
+},
+{
+	"uri": "//localhost:57856/vi/3-accessibilitytoinstances/3.2-private-instance/3.2.2-createvpcendpoint/3.2.2.3-endpointec2messages/",
+	"title": "Tạo Endpoint ec2messages",
+	"tags": [],
+	"description": "",
+	"content": "Tạo VPC Endpoint EC2MESSAGES Truy cập đến giao diện quản trị của dịch vụ VPC Click Endpoints. Click Create endpoint. Tại trang Create endpoint. Tại mục Name tag điền SSMMESSAGES. Tại mục Service Category chọn AWS Services. Tại mục Service Name, Tại mục Service category chọn: AWS services Tại mục Service Name nhập: ec2 sau đó chọn Service Name: com.amazonaws.ap-southeast-1.ec2messages. Tại cột Service Name, click chọn com.amazonaws.ap-southeast-1.ec2messages. Tại mục VPC, chọn Lab VPC. Chọn AZ đầu tiên, sau đó chọn subnet Lab Private Subnet. Kéo chuột xuống dưới. Tại mục Security Group, chọn Security group SG VPC Endpoint mà chúng ta đã tạo trước đó. Tại mục Policy, chọn Full access Kéo chuột xuống dưới cùng. Click Create endpoint. Chúng ta đã tạo xong VPC Interface Endpoint EC2MESSAGES.\nĐảm bảo 3 endpoint cần thiết đã được tạo như hình dưới.\n"
+},
+{
+	"uri": "//localhost:57856/vi/3-accessibilitytoinstances/",
+	"title": "Tạo kết nối đến máy chủ EC2",
+	"tags": [],
+	"description": "",
+	"content": "Trong bước này, chúng ta sẽ thực hiện tạo kết nối đến các máy chủ EC2 của chúng ta, nằm trong cả public và private subnet.\nNội dung 3.1. Tạo Kết nối đến máy chủ EC2 Public 3.2. Tạo Kết nối đến máy chủ EC2 Private\n"
+},
+{
+	"uri": "//localhost:57856/vi/4-s3log/4.3-creategwes3/",
+	"title": "Tạo S3 Gateway endpoint",
+	"tags": [],
+	"description": "",
+	"content": " Truy cập vào giao diện quản trị dịch vụ VPC Click Endpoints. Click Create endpoint. Tại trang Create endpoint. Tại mục Name tag điền S3GW. Tại mục Service Category click chọn AWS services. Tại ô tìm kiếm điền S3, sau đó chọn com.amazonaws.[region].s3 Tại mục Services chọn com.amazonaws.[region].s3 có Type là Gateway. Tại mục VPC , chọn Lab VPC. Tại mục Route tables, chọn cả 2 route table. Kéo chuột xuống dưới cùng, click Create endpoint. Bước tiếp theo chúng ta sẽ tiến hành cấu hình Session Manager để có thể lưu trữ các session logs tới S3 bucket chúng ta đã tạo.\n"
+},
+{
+	"uri": "//localhost:57856/vi/1-worklog/worklog_week1.3/",
+	"title": "Worklog tuần 1.3",
+	"tags": [],
+	"description": "",
+	"content": ""
+},
+{
+	"uri": "//localhost:57856/vi/4-s3log/",
+	"title": "Quản lý session logs",
+	"tags": [],
+	"description": "",
+	"content": "Với Session Manager chúng ta có thể xem được lịch sử các kết nối tới các instance thông qua Session history. Tuy nhiên chúng ta chưa xem được chi tiết các câu lệnh được sử dụng.\nTrong phần này chúng ta sẽ tiến hành tạo S3 bucket và thực hiện cấu hình lưu trữ các session logs để xem được chi tiết các câu lệnh được sử dụng trong session.\nNội dung: Cập nhật IAM Role Tạo S3 Bucket Tạo S3 Gateway endpoint Cấu hình Session logs "
+},
+{
+	"uri": "//localhost:57856/vi/4-s3log/4.4-configsessionlogs/",
+	"title": "Theo dõi session logs",
+	"tags": [],
+	"description": "",
+	"content": "Theo dõi session logs Truy cập giao diện quản trị dịch vụ System Manager - Session Manager Click tab Preferences. Click Edit. Kéo chuột xuống phía dưới, tại mục S3 logging, click chọn Enable. Bỏ chọn Allow only encrypted S3 buckets. Click chọn Choose a bucket name from the list. Chọn S3 bucket bạn đã tạo. Kéo chuột xuống phía dưới, click Save để lưu cấu hình.\nTruy cập giao diện quản trị dịch vụ System Manager - Session Manager\nClick Start session. Click chọn Private Windows Instance. Click Start session. Gõ lệnh ipconfig. Gõ lệnh hostname. Click Terminate để thoát session, click Terminate 1 lần nữa để xác nhận. Kiểm tra Session logs trong S3 Truy cập vào giao diện quản trị dịch vụ S3 Click vào tên S3 bucket chúng ta đã tạo cho bài lab. Click vào tên file sessions log Tại trang chi tiết objects , click Open. File logs sẽ được mở ở 1 tab mới trên trình duyệt.Bạn có thể xem các câu lệnh đã được lưu trữ lại trong session logs. "
+},
+{
+	"uri": "//localhost:57856/vi/5-portfwd/",
+	"title": "Port Forwarding",
+	"tags": [],
+	"description": "",
+	"content": "\rPort Forwarding là mốt cách thức hữu ích để chuyển hướng lưu lượng mạng từ 1 địa chỉ IP - Port này sang 1 địa chỉ IP - Port khác. Với Port Forwarding chúng ta có thể truy cập một EC2 instance nằm trong private subnet từ máy trạm của chúng ta.\nChúng ta sẽ cấu hình Port Forwarding cho kết nối RDP giữa máy của mình với Private Windows Instance nằm trong private subnet mà chúng ta đã tạo cho bài thực hành này.\nTạo IAM User có quyền kết nối SSM Truy cập vào giao diện quản trị dịch vụ IAM Click Users , sau đó click Add users. Tại trang Add user. Tại mục User name, điền Portfwd. Click chọn Access key - Programmatic access. Click Next: Permissions. Click Attach existing policies directly. Tại ô tìm kiếm , điền ssm. Click chọn AmazonSSMFullAccess. Click Next: Tags, click Next: Reviews. Click Create user. Lưu lại thông tin Access key ID và Secret access key để thực hiện cấu hình AWS CLI. Cài đặt và cấu hình AWS CLI và Session Manager Plugin Để thực hiện phần thực hành này, đảm bảo máy trạm của bạn đã cài AWS CLI và Session Manager Plugin\nBạn có thể tham khảo thêm bài thực hành về cài đặt và cấu hình AWS CLI tại đây.\nVới Windows thì khi giải nén thư mục cài đặt Session Manager Plugin bạn hãy chạy file install.bat với quyền Administrator để thực hiện cài đặt.\nThực hiện Portforwarding Chạy command dưới đây trong Command Prompt trên máy của bạn để cấu hình Port Forwarding. aws ssm start-session --target (your ID windows instance) --document-name AWS-StartPortForwardingSession --parameters portNumber=\u0026#34;3389\u0026#34;,localPortNumber=\u0026#34;9999\u0026#34; --region (your region) Thông tin Instance ID của Windows Private Instance có thể tìm được khi bạn xem chi tiết máy chủ EC2 Windows Private Instance.\nCâu lệnh ví dụ C:\\Windows\\system32\u0026gt;aws ssm start-session --target i-06343d7377486760c --document-name AWS-StartPortForwardingSession --parameters portNumber=\u0026#34;3389\u0026#34;,localPortNumber=\u0026#34;9999\u0026#34; --region ap-southeast-1 Nếu câu lệnh của bạn báo lỗi như dưới đây : SessionManagerPlugin is not found. Please refer to SessionManager Documentation here: http://docs.aws.amazon.com/console/systems-manager/session-manager-plugin-not-found\nChứng tỏ bạn chưa cài Session Manager Plugin thành công. Bạn có thể cần khởi chạy lại Command Prompt sau khi cài Session Manager Plugin.\nKết nối tới Private Windows Instance bạn đã tạo bằng công cụ Remote Desktop trên máy trạm của bạn. Tại mục Computer: điền localhost:9999. Quay trở lại giao diện quản trị của dịch vụ System Manager - Session Manager. Click tab Session history. Chúng ta sẽ thấy các session logs với tên Document là AWS-StartPortForwardingSession. Chúc mừng bạn đã hoàn tất bài thực hành hướng dẫn cách sử dụng Session Manager để kết nối cũng như lưu trữ các session logs trong S3 bucket. Hãy nhớ thực hiện bước dọn dẹp tài nguyên để tránh sinh chi phí ngoài ý muốn nhé.\n"
+},
+{
+	"uri": "//localhost:57856/vi/6-cleanup/",
+	"title": "Dọn dẹp tài nguyên  ",
+	"tags": [],
+	"description": "",
+	"content": "Chúng ta sẽ tiến hành các bước sau để xóa các tài nguyên chúng ta đã tạo trong bài thực hành này.\nXóa EC2 instance Truy cập giao diện quản trị dịch vụ EC2 Click Instances. Click chọn cả 2 instance Public Linux Instance và Private Windows Instance. Click Instance state. Click Terminate instance, sau đó click Terminate để xác nhận. Truy cập giao diện quản trị dịch vụ IAM Click Roles. Tại ô tìm kiếm , điền SSM. Click chọn SSM-Role. Click Delete, sau đó điền tên role SSM-Role và click Delete để xóa role. Click Users. Click chọn user Portfwd. Click Delete, sau đó điền tên user Portfwd và click Delete để xóa user. Xóa S3 bucket Truy cập giao diện quản trị dịch vụ System Manager - Session Manager. Click tab Preferences. Click Edit. Kéo chuột xuống dưới. Tại mục S3 logging. Bỏ chọn Enable để tắt tính năng logging. Kéo chuột xuống dưới. Click Save. Truy cập giao diện quản trị dịch vụ S3 Click chọn S3 bucket chúng ta đã tạo cho bài thực hành. ( Ví dụ : lab-fcj-bucket-0001 ) Click Empty. Điền permanently delete, sau đó click Empty để tiến hành xóa object trong bucket. Click Exit. Sau khi xóa hết object trong bucket, click Delete Điền tên S3 bucket, sau đó click Delete bucket để tiến hành xóa S3 bucket. Xóa các VPC Endpoint Truy cập vào giao diện quản trị dịch vụ VPC Click Endpoints. Chọn 4 endpoints chúng ta đã tạo cho bài thực hành bao gồm SSM, SSMMESSAGES, EC2MESSAGES, S3GW. Click Actions. Click Delete VPC endpoints. Tại ô confirm , điền delete. Click Delete để tiến hành xóa các endpoints. Click biểu tượng refresh, kiểm tra tất cả các endpoints đã bị xóa trước khi làm bước tiếp theo. Xóa VPC Truy cập vào giao diện quản trị dịch vụ VPC Click Your VPCs. Click chọn Lab VPC. Click Actions. Click Delete VPC. Tại ô confirm, điền delete để xác nhận, click Delete để thực hiện xóa Lab VPC và các tài nguyên liên quan. "
+},
+{
+	"uri": "//localhost:57856/vi/categories/",
+	"title": "Categories",
+	"tags": [],
+	"description": "",
+	"content": ""
+},
+{
+	"uri": "//localhost:57856/vi/tags/",
+	"title": "Tags",
+	"tags": [],
+	"description": "",
+	"content": ""
+}]

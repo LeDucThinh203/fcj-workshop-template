@@ -1,6 +1,6 @@
 ---
 title : "Create VPC Endpoint"
-date : "`r Sys.Date()`"
+date: 2026-05-13
 weight : 2
 chapter : false
 pre : " <b> 3.2.2 </b> "

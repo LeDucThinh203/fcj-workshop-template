@@ -12,6 +12,14 @@ pre : " <b> 1. </b> "
 
 ---
 
+## Worklog theo từng tuần
+
+Danh sách bên dưới dẫn tới các page worklog riêng. Mỗi tuần đều có ảnh minh họa và nội dung mô tả đúng theo bộ tài liệu Lab 07 mà bạn gửi.
+
+- [Week 1.1 - AWS Budgets: template, hạn mức và cảnh báo email](./Worklog_week1.1/)
+- [Week 1.2 - Tạo ngân sách tùy chỉnh cho toàn bộ dịch vụ AWS](./Worklog_week1.2/)
+- [Week 1.3 - Usage Budget: kiểm soát mức sử dụng theo dịch vụ](./Worklog_week1.3/)
+
 ### Tuần 1: Làm quen với AWS và các dịch vụ cơ bản
 * **Nội dung:** Tìm hiểu tổng quan về AWS Console, quản lý tài khoản IAM.
 * **Công việc đã làm:**

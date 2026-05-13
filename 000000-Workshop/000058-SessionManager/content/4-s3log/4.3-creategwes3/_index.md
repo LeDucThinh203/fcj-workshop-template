@@ -1,6 +1,6 @@
 ---
 title : "Create S3 Gateway endpoint"
-date : "`r Sys.Date()`"
+date: 2026-05-13
 weight : 3
 chapter : false
 pre : " <b> 4.3 </b> "

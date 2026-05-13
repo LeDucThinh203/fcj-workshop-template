@@ -1,6 +1,6 @@
 ---
 title : "Kết nối EC2 Private"
-date :  "`r Sys.Date()`" 
+date: 2026-05-13
 weight : 3 
 chapter : false
 pre : " <b> 3.2.3 </b> "
