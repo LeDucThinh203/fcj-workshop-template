@@ -2,11 +2,11 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Đề Xuất Dự Án on AWS System Manager</title>
-    <link>//localhost:57856/vi/2-proposal/</link>
+    <link>//localhost:49674/vi/2-proposal/</link>
     <description>Recent content in Đề Xuất Dự Án on AWS System Manager</description>
     <generator>Hugo</generator>
     <language>vi</language>
     <lastBuildDate></lastBuildDate>
-    <atom:link href="//localhost:57856/vi/2-proposal/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="//localhost:49674/vi/2-proposal/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>

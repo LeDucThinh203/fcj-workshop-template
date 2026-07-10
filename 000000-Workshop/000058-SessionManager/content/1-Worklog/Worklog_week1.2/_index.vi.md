@@ -1,26 +1,28 @@
 ---
-title: "Worklog tuần 1.2 - Ngân sách tùy chỉnh"
+title: "Nhật ký Tuần 2"
 date: 2026-05-13
 weight: 2
 chapter: false
 pre: " <b> 1.2 </b> "
 ---
 
-{{< worklog-session badge="Week 1.2" title="AWS Budgets - Tạo ngân sách tùy chỉnh" period="Lab 07 - Thiết lập budget theo kế hoạch chi tiêu" image="Module 01-Lab07-02.png,Module 01-Lab07-03.png,attendance_history_2.png" imageAlt="Custom AWS budget setup" summary="Đoạn tài liệu này mô tả quy trình thiết lập một ngân sách tùy chỉnh trên AWS để kiểm soát chi phí theo quý hoặc theo kế hoạch riêng. Người dùng có thể chọn phạm vi áp dụng cho toàn bộ dịch vụ, định nghĩa ngưỡng cảnh báo email và thêm hành động quản trị nếu cần." >}}
+## Mục tiêu Tuần 2:
+- Hiểu mạng cơ bản trong AWS (VPC)
+- Thành thạo cách cấu hình các thành phần mạng và bảo mật trong VPC
+- Thực hành xây dựng một VPC hoàn chỉnh
 
-### 1. Mục tiêu buổi làm việc
-- Thiết lập ngân sách theo một số tiền cụ thể.
-- Áp dụng ngân sách cho nhiều dịch vụ AWS cùng lúc.
-- Hiểu cách dùng cảnh báo tự động để theo dõi mức chi tiêu thực tế.
+## Công việc cần thực hiện trong tuần này:
 
-### 2. Nội dung đã thực hiện
-- Tạo budget tùy chỉnh theo chu kỳ quý.
-- Cấu hình thông báo email khi chi phí chạm các mốc phần trăm đã định.
-- Xem xét khả năng thêm action quản trị vào ngân sách đã tạo.
+| Thứ | Công việc | Ngày bắt đầu | Ngày hoàn thành | Tài liệu tham khảo |
+| :--- | :--- | :--- | :--- | :--- |
+| 2 | - Học cơ bản VPC:<br>  + Tổng quan VPC<br>  + CIDR Block<br>  + Phân biệt Subnet Công cộng / Riêng | 27/04/2026 | 27/04/2026 | [VPC Basics](https://docs.aws.amazon.com/vpc/latest/userguide/what-is-amazon-vpc.html) |
+| 3 | - Học về Subnet & Route Tables:<br>  + Cách chia Subnet<br>  + Cấu hình Route Tables | 28/04/2026 | 28/04/2026 | [Subnets & Route Tables](https://docs.aws.amazon.com/vpc/latest/userguide/how-it-works.html) |
+| 4 | - Học về Internet Gateway & NAT Gateway:<br>  + Internet Gateway cho Subnet Công cộng<br>  + NAT Gateway cho Subnet Riêng | 29/04/2026 | 29/04/2026 | [NAT Gateways](https://docs.aws.amazon.com/vpc/latest/userguide/vpc-nat-gateway.html) |
+| 5 | - Học về bảo mật trong VPC:<br>  + Security Groups<br>  + Network ACLs<br>  + Quy tắc Inbound / Outbound | 30/04/2026 | 30/04/2026 | [VPC Security Groups](https://docs.aws.amazon.com/vpc/latest/userguide/vpc-security-groups.html) |
+| 6 | - **Thực hành:**<br>  + Tạo VPC<br>  + Tạo Subnet Công cộng & Riêng<br>  + Cấu hình Route Tables | 01/05/2026 | 01/05/2026 | [FCJ Lab - Create VPC](https://cloudjourney.awsstudygroup.com/2-prerequisites/2.1-createvpc/) |
+| 7 - Chủ nhật | - **Thực hành nâng cao:**<br>  + Gắn Internet Gateway<br>  + Tạo NAT Gateway<br>  + Triển khai EC2 trong Subnet Riêng/Công cộng<br>  + Xác minh kết nối internet | 02/05/2026 | 03/05/2026 | [FCJ Lab - Public/Private](https://cloudjourney.awsstudygroup.com/2-prerequisites/2.2-publicprivateinstance/) |
 
-### 3. Lưu ý quan trọng
-- Tài khoản mới có thể cần ít nhất 24 giờ để dữ liệu budget được cập nhật đầy đủ.
-- Nên kết hợp video hướng dẫn với tài liệu thực hành để tránh sai sót khi cấu hình các thông số.
-
-> **Ghi chú:** Khi ngân sách được cấu hình đúng, việc theo dõi chi phí sẽ rõ ràng hơn và dễ kiểm soát hơn trong các dự án thực tế.
-{{< /worklog-session >}}
+## Thành tựu Tuần 2:
+### Lý thuyết:
+- Có thể hiểu kiến trúc của Amazon VPC và cách quản lý dải địa chỉ IP qua CIDR
+- Biết cách tạo và cấu hình route tables

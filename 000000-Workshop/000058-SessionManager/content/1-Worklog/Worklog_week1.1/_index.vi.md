@@ -1,27 +1,21 @@
 ---
-title: "Worklog tuần 1.1 - AWS Budgets templates"
-date: 2026-05-13
+title: "Nhật ký Tuần 1"
+date: 2026-04-27
 weight: 1
 chapter: false
 pre: " <b> 1.1 </b> "
 ---
 
-{{< worklog-session badge="Week 1.1" title="AWS Budgets - Quản lý chi phí bằng template" period="Lab 07 - Giới thiệu AWS Budgets" image="Module 01-Lab07-01.png,Module1_lab01_03.png,attendance_history_1.png" imageAlt="AWS Budgets templates and notifications" summary="Tài liệu này hướng dẫn cách sử dụng AWS Budgets để quản lý chi phí hiệu quả. Người học có thể đặt hạn mức chi tiêu, nhận cảnh báo qua email khi chi phí thực tế hoặc dự báo vượt ngưỡng, và chọn nhanh các mẫu dựng sẵn để tạo ngân sách hằng tháng." >}}
+- Kết nối và làm quen với các thành viên của First Cloud Journey.
+- Hiểu các dịch vụ AWS cơ bản, cách sử dụng console và CLI.
 
-### 1. Mục tiêu buổi làm việc
-- Hiểu vai trò của AWS Budgets trong kiểm soát chi phí đám mây.
-- Nhận biết bốn nhóm ngân sách chính: Cost, Usage, Reserved Instances và Savings Plans.
-- Nắm cách dùng templates để khởi tạo ngân sách nhanh, tránh phát sinh hóa đơn ngoài ý muốn.
+## Công việc cần thực hiện trong tuần này:
 
-### 2. Nội dung đã thực hiện
-- Xem quy trình tạo ngân sách từ mẫu có sẵn.
-- Phân tích cơ chế cảnh báo qua email khi chi phí vượt ngưỡng.
-- Ghi nhận cách hệ thống dự báo chi phí để hỗ trợ quyết định tài chính.
-
-### 3. Kết quả đạt được
-- Biết cách chọn template phù hợp cho ngân sách hằng tháng.
-- Hiểu được sự khác nhau giữa chi phí thực tế và chi phí dự báo.
-- Có thể mô tả mục tiêu của AWS Budgets trong vận hành hệ thống cloud.
-
-> **Ghi chú:** Nội dung phù hợp cho người mới bắt đầu vì ưu tiên tính đơn giản, dễ triển khai và dễ theo dõi chi phí ngay từ đầu.
-{{< /worklog-session >}}
+| Thứ | Công việc | Ngày bắt đầu | Ngày hoàn thành | Tài liệu tham khảo |
+| :--- | :--- | :--- | :--- | :--- |
+| 2 | - Làm quen với các thành viên FCJ<br>- Đọc và ghi nhớ các quy định, quy tắc tại đơn vị thực tập | 20/04/2026 | 20/04/2026 |  |
+| 3 | - Tìm hiểu về AWS và các loại dịch vụ của nó<br>  + Compute<br>  + Storage<br>  + Networking<br>  + Database<br>  + ... | 21/04/2026 | 21/04/2026 | https://cloudjourney.awsstudygroup.com/ |
+| 4 | - Tạo tài khoản AWS Free Tier<br>- Tìm hiểu về AWS Console và AWS CLI<br>- **Thực hành:**<br>  + Tạo tài khoản AWS<br>  + Cài đặt và cấu hình AWS CLI<br>  + Học cách sử dụng AWS CLI | 22/04/2026 | 22/04/2026 | https://cloudjourney.awsstudygroup.com/ |
+| 5 | - Tìm hiểu cơ bản về EC2:<br>  + Loại instance<br>  + AMI<br>  + EBS<br>  + ...<br>- Khám phá các phương pháp kết nối từ xa tới EC2 qua SSH<br>- Tìm hiểu về Elastic IP | 23/04/2026 | 23/04/2026 | https://cloudjourney.awsstudygroup.com/ |
+| 6 | - **Thực hành:**<br>  + Tạo EC2 instance<br>  + Kết nối qua SSH<br>  + Gắn EBS volume | 24/04/2026 | 24/04/2026 | https://cloudjourney.awsstudygroup.com/ |
+| 7 - Chủ nhật | - **Thực hành nâng cao:**<br>  + Tạo lại EC2 instance và cấu hình Security Group<br>  + Kết nối qua SSH và cài đặt Web Server (Apache/Nginx)<br>  + Triển khai website đơn giản và truy cập qua Public IP<br>  + Tìm hiểu và thử nghiệm với AWS S3 (tạo bucket, upload file) | 25/04/2026 | 26/04/2026 | https://cloudjourney.awsstudygroup.com/ |

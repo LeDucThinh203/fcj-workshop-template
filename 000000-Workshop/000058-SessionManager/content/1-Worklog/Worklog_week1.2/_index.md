@@ -1,26 +1,28 @@
 ---
-title: "Worklog Week 1.2 - Custom budget setup"
+title: "Week 2 Worklog"
 date: 2026-05-13
 weight: 2
 chapter: false
 pre: " <b> 1.2 </b> "
 ---
 
-{{< worklog-session badge="Week 1.2" title="AWS Budgets - Custom budget setup" period="Lab 07 - Budgeting by spending plan" image="Module 01-Lab07-02.png,Module 01-Lab07-03.png,attendance_history_2.png" imageAlt="Custom AWS budget setup" summary="This section describes how to configure a custom budget on AWS to control spending on a quarterly or project-specific basis. The user can scope it to all services, define email alerts, and optionally attach budget actions for additional governance." >}}
+## Week 2 Objectives:
+- Understand basic networking in AWS (VPC)
+- Master how to configure network components and security within a VPC
+- Practice building a complete VPC
 
-### 1. Session goals
-- Set a budget for a concrete amount.
-- Apply the budget across multiple AWS services.
-- Understand how automated alerts help monitor spend in real time.
+## Tasks to be carried out this week:
 
-### 2. What was covered
-- Created a custom budget on a quarterly cycle.
-- Configured email notifications at chosen percentage thresholds.
-- Reviewed the option to attach governance actions to an existing budget.
+| Day | Task | Start Date | Completion Date | Reference Material |
+| :--- | :--- | :--- | :--- | :--- |
+| 2 | - Learn VPC basics:<br>  + VPC Overview<br>  + CIDR Block<br>  + Distinguish Public / Private Subnets | 27/04/2026 | 27/04/2026 | [VPC Basics](https://docs.aws.amazon.com/vpc/latest/userguide/what-is-amazon-vpc.html) |
+| 3 | - Learn about subnets & Route Tables:<br>  + How to divide subnets<br>  + Configure Route Tables | 28/04/2026 | 28/04/2026 | [Subnets & Route Tables](https://docs.aws.amazon.com/vpc/latest/userguide/how-it-works.html) |
+| 4 | - Learn about Internet Gateway & NAT Gateway:<br>  + Internet Gateway for Public Subnets<br>  + NAT Gateway for Private Subnets | 29/04/2026 | 29/04/2026 | [NAT Gateways](https://docs.aws.amazon.com/vpc/latest/userguide/vpc-nat-gateway.html) |
+| 5 | - Learn about security in VPC:<br>  + Security Groups<br>  + Network ACLs<br>  + Inbound / Outbound rules | 30/04/2026 | 30/04/2026 | [VPC Security Groups](https://docs.aws.amazon.com/vpc/latest/userguide/vpc-security-groups.html) |
+| 6 | - **Practice:**<br>  + Create VPC<br>  + Create Public & Private Subnets<br>  + Configure Route Tables | 01/05/2026 | 01/05/2026 | [FCJ Lab - Create VPC](https://cloudjourney.awsstudygroup.com/2-prerequisites/2.1-createvpc/) |
+| 7 - Sun | - **Advanced practice:**<br>  + Attach Internet Gateway<br>  + Create NAT Gateway<br>  + Deploy EC2 in Private/Public Subnets<br>  + Verify internet connectivity | 02/05/2026 | 03/05/2026 | [FCJ Lab - Public/Private](https://cloudjourney.awsstudygroup.com/2-prerequisites/2.2-publicprivateinstance/) |
 
-### 3. Important notes
-- New accounts may need at least 24 hours before budget data is fully available.
-- Combining video guidance with hands-on documentation reduces configuration mistakes.
-
-> **Note:** A correctly configured budget makes cost tracking much clearer and easier to manage in real projects.
-{{< /worklog-session >}}
+## Week 2 Achievements:
+### Theory:
+- Can understand the architecture of Amazon VPC and how to manage IP address ranges via CIDR
+- Know how to create and configure route tables
