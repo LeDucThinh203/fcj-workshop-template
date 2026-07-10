@@ -39,31 +39,10 @@
       </section>
     {{end}}
 
-    {{ if or (gt (len .Site.Languages) 1) $showvisitedlinks }}
+    {{ if $showvisitedlinks }}
     <section id="prefooter">
       <hr/>
       <ul>
-      {{ if and (gt (len .Site.Languages) 1) (not .Site.Params.DisableLanguageSwitchingButton)}}
-        <li class="language-buttons">
-          <div class="language-switcher">
-            {{ $siteLanguages := .Site.Languages}}
-            {{ $pageLang := .Page.Lang}}
-            {{ range .Page.AllTranslations }}
-              {{ $translation := .}}
-              {{ range $siteLanguages }}
-                {{ if eq $translation.Lang .Lang }}
-                  {{ if eq $pageLang .Lang}}
-                    <a href="{{ $translation.Permalink }}" class="lang-btn active">{{ upper .Lang }}</a>
-                  {{ else }}
-                    <a href="{{ $translation.Permalink }}" class="lang-btn">{{ upper .Lang }}</a>
-                  {{ end }}
-                {{ end }}
-              {{ end }}
-            {{ end }}
-          </div>
-        </li>
-      {{end}}
-      
       {{ if $showvisitedlinks}}
         <li><a class="padding" href="#" data-clear-history-toggle=""><i class="fas fa-history fa-fw"></i> {{T "Clear-History"}}</a></li>
       {{ end }}

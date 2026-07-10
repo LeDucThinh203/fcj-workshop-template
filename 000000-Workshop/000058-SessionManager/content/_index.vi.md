@@ -9,9 +9,9 @@ chapter: false
 
 ### Thông tin sinh viên:
 
-* **Họ và tên:** Phạm Quốc Nhân
-* **Số điện thoại:** 0866807526
-* **Email:** [phamquocnhan113@gmail.com](mailto:phamquocnhan113@gmail.com)
+* **Họ và tên:** Lê Đức Thịnh
+* **Số điện thoại:** 0345114805
+* **Email:** [leducthinh203@gmail.com](mailto:leducthinh203@gmail.com)
 * **Trường:** Đại học Công nghệ Thành phố Hồ Chí Minh (HUTECH)
 * **Ngành:** Công nghệ thông tin
 * **Lớp:** 22DTHD1

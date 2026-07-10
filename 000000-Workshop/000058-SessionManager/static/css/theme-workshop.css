@@ -102,6 +102,7 @@ a:hover {
     background: var(--MENU-HEADER-BG-color);
     color: var(--MENU-SEARCH-BOX-color);
     border-color: var(--MENU-HEADER-BORDER-color);
+    overflow: visible !important;
 }
 #sidebar .searchbox {
 	border-color: var(--MENU-SEARCH-BOX-color);
@@ -455,5 +456,203 @@ div.notices.info p {
 
 #body-inner table a:hover {
     text-decoration: underline;
+}
+
+/* Top bar controls (language & theme) */
+#top-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    overflow: visible !important;
+}
+
+#breadcrumbs {
+    flex-grow: 1;
+    min-width: 0; /* Allow text truncation if needed */
+}
+
+#top-github-link {
+    flex-shrink: 0;
+}
+
+.top-bar-controls {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-shrink: 0;
+}
+
+.top-bar-controls .language-switcher {
+    display: flex;
+    gap: 8px;
+    padding: 0;
+}
+
+.top-bar-controls .lang-btn {
+    display: inline-block;
+    padding: 6px 16px;
+    border-radius: 8px;
+    background-color: #f1f3f4;
+    color: #333;
+    font-weight: 600;
+    font-size: 14px;
+    text-decoration: none !important;
+    transition: all 0.2s ease;
+    border: 2px solid transparent;
+}
+
+.top-bar-controls .lang-btn:hover {
+    background-color: #e8eaed;
+    color: #333 !important;
+    border-color: #dadce0;
+}
+
+.top-bar-controls .lang-btn.active {
+    background: linear-gradient(135deg, #fd9827 0%, #f57c00 100%);
+    color: #fff !important;
+    border-color: #fd9827;
+    box-shadow: 0 4px 12px rgba(253, 152, 39, 0.3);
+}
+
+.theme-toggle-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    background-color: #f1f3f4;
+    color: #333;
+    border: 2px solid transparent;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    padding: 0;
+}
+
+.theme-toggle-btn:hover {
+    background-color: #e8eaed;
+    color: #333;
+    border-color: #dadce0;
+}
+
+.theme-toggle-btn i {
+    font-size: 18px;
+}
+
+/* Dark theme variables */
+body.dark-theme {
+    --MAIN-TEXT-color: #e0e0e0 !important;
+    --MAIN-TITLES-TEXT-color: #a0b0c8 !important;
+    --MAIN-LINK-color: #6aa3f0 !important;
+    --MAIN-LINK-HOVER-color: #8bb9f7 !important;
+    --MAIN-ANCHOR-color: #6aa3f0 !important;
+    background-color: #121212 !important;
+}
+
+body.dark-theme #body {
+    background-color: #121212 !important;
+}
+
+body.dark-theme #top-bar {
+    background-color: #1e1e1e !important;
+    border-bottom-color: #333 !important;
+}
+
+body.dark-theme #top-bar .top-bar-controls .lang-btn {
+    background-color: #2d2d2d !important;
+    color: #e0e0e0 !important;
+    border-color: #3d3d3d !important;
+}
+
+body.dark-theme #top-bar .top-bar-controls .lang-btn:hover {
+    background-color: #3d3d3d !important;
+}
+
+body.dark-theme #top-bar .top-bar-controls .theme-toggle-btn {
+    background-color: #2d2d2d !important;
+    color: #e0e0e0 !important;
+    border-color: #3d3d3d !important;
+}
+
+body.dark-theme #top-bar .top-bar-controls .theme-toggle-btn:hover {
+    background-color: #3d3d3d !important;
+}
+
+body.dark-theme #body-inner {
+    background-color: #1e1e1e !important;
+    color: var(--MAIN-TEXT-color) !important;
+}
+
+body.dark-theme #body-inner h1,
+body.dark-theme #body-inner h2,
+body.dark-theme #body-inner h3,
+body.dark-theme #body-inner h4,
+body.dark-theme #body-inner h5 {
+    color: var(--MAIN-TITLES-TEXT-color) !important;
+}
+
+body.dark-theme #body-inner a {
+    color: var(--MAIN-LINK-color) !important;
+}
+
+body.dark-theme #body-inner a:hover {
+    color: var(--MAIN-LINK-HOVER-color) !important;
+}
+
+body.dark-theme .worklog-session {
+    background: linear-gradient(180deg, #2a2a2a 0%, #252525 100%) !important;
+    border-color: rgba(106, 163, 240, 0.15) !important;
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.3) !important;
+}
+
+body.dark-theme .worklog-session__header h2 {
+    color: #e8f0ff !important;
+}
+
+body.dark-theme .worklog-session__period {
+    color: #90a0b8 !important;
+}
+
+body.dark-theme .worklog-session__body h3,
+body.dark-theme .worklog-session__body h4 {
+    color: #a8c0e0 !important;
+}
+
+body.dark-theme .worklog-session__body blockquote {
+    background: #1a2636 !important;
+    border-color: #6aa3f0 !important;
+    color: #b0c0d8 !important;
+}
+
+body.dark-theme #body-inner table {
+    box-shadow: 0 2px 8px rgba(0,0,0,0.3) !important;
+}
+
+body.dark-theme #body-inner table th {
+    background-color: #2a2a2a !important;
+    color: #c0c0c0 !important;
+    border-color: #3a3a3a !important;
+}
+
+body.dark-theme #body-inner table td {
+    border-color: #3a3a3a !important;
+    background-color: transparent !important;
+}
+
+body.dark-theme #body-inner table tr:nth-child(even) {
+    background-color: #252525 !important;
+}
+
+body.dark-theme #body-inner table tr:hover {
+    background-color: #2a2a2a !important;
+}
+
+body.dark-theme pre {
+    background-color: #0a0a0a !important;
+}
+
+body.dark-theme div.notices.info p {
+    background: #3a2a1a !important;
 }
 
