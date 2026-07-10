@@ -25,7 +25,7 @@ Hệ thống được chia thành 3 phần chính:
 
 *Hệ thống áp dụng kiến trúc Serverless 100%, tự động mở rộng theo lưu lượng thực tế:*
 
-![Sơ đồ kiến trúc tổng thể](overview-diagram.png)
+![Sơ đồ kiến trúc tổng thể](/images/2-Proposal/2-proposal-architecture.png)
 
 ---
 
@@ -34,12 +34,12 @@ Hệ thống được chia thành 3 phần chính:
 ##### 1. Khu vực cổng ra/vào (ESP32 Camera)
 Sử dụng vi điều khiển ESP32-CAM kết hợp cảm biến tiệm cận/nút bấm để kích hoạt chụp ảnh và điều khiển servo làm cổng chắn (barrier).
 
-![Sơ đồ đấu dây cổng](gate-wiring-diagram.png)
+![Sơ đồ đấu dây cổng](/images/2-Proposal/1.sơ%20đồ%20đấu%20dây%20cổng.png)
 
 ##### 2. Khu vực đỗ xe (ESP32 Cảm biến)
 Sử dụng vi điều khiển ESP32 kết hợp cảm biến siêu âm HC-SR04 để đo khoảng cách và xác định xe có đang đỗ tại vị trí đó hay không.
 
-![Sơ đồ đấu dây bãi xe](parking-area-diagram.png)
+![Sơ đồ đấu dây bãi xe](/images/2-Proposal/2.sơ%20đồ%20dây%20bãi%20xe.png)
 
 ---
 

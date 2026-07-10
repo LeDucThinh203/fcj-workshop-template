@@ -1,4 +1,6 @@
 baseURL = "https://leducthinh203.github.io/fcj-workshop-template/"
+relativeURLs = true
+canonifyURLs = true
 languageCode = "en-us"
 title = "AWS System Manager"
 

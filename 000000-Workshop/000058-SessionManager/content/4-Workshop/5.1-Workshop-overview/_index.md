@@ -25,7 +25,7 @@ The system is divided into 3 main components:
 
 *The system adopts a 100% Serverless architecture, scaling automatically based on actual traffic:*
 
-![Overall Architecture Diagram](overview-diagram.png)
+![Overall Architecture Diagram](/images/2-Proposal/2-proposal-architecture.png)
 
 ---
 
@@ -34,12 +34,12 @@ The system is divided into 3 main components:
 ##### 1. Gate Area (ESP32 Camera)
 Utilizes an ESP32-CAM microcontroller combined with a proximity sensor/button to trigger image capture and control a servo motor acting as the barrier gate.
 
-![Gate Wiring Diagram](gate-wiring-diagram.png)
+![Gate Wiring Diagram](/images/2-Proposal/1.Smart%20Parking%20Gate%20Wiring%20-%20English.png)
 
 ##### 2. Parking Area (ESP32 Sensors)
 Utilizes an ESP32 microcontroller combined with an HC-SR04 ultrasonic sensor to measure distance and determine if a vehicle is parked in the slot.
 
-![Parking Area Wiring Diagram](parking-area-diagram.png)
+![Parking Area Wiring Diagram](/images/2-Proposal/2.Parking%20Area%20Wiring%20-%20English.png)
 
 ---
 
