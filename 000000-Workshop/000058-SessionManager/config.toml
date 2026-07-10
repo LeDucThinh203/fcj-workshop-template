@@ -1,11 +1,12 @@
-# Change the default theme to be use when building the site with Hugo
+baseURL = "https://leducthinh203.github.io/fcj-workshop-template/"
+languageCode = "en-us"
+title = "AWS System Manager"
+
 theme = "hugo-theme-learn"
 
-# For search functionality
 [outputs]
-home = [ "HTML", "RSS", "JSON"]
+home = ["HTML", "RSS", "JSON"]
 
-# Allow raw HTML in markdown
 [markup]
   [markup.goldmark]
     [markup.goldmark.renderer]
@@ -14,17 +15,16 @@ home = [ "HTML", "RSS", "JSON"]
 ignoreLogs = ['warning-goldmark-raw-html']
 
 [params]
-  # Change default color scheme with a variant one. Can be "red", "blue", "green".
   themeVariant = "workshop"
-  # Git hub repo link
   editURL = ""
   description = ""
   author = "journeyoftheaverageguy@gmail.com"
   showVisitedLinks = true
   disableBreadcrumb = false
   disableNextPrev = false
-  
+
 [Languages]
+
 [Languages.en]
 title = "AWS System Manager"
 weight = 1
@@ -46,4 +46,3 @@ name = "<i class='fab fa-facebook'></i> AWS Study Group"
 identifier = "AWS Study Group FB"
 url = "https://www.facebook.com/groups/awsstudygroupfcj/"
 weight = 20
-
