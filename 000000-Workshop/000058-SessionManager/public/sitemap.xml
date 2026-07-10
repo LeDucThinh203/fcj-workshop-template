@@ -2,16 +2,16 @@
 <sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <sitemap>
-    <loc>//localhost:49674/en/sitemap.xml</loc>
+    <loc>http://localhost:1313/fcj-workshop-template/en/sitemap.xml</loc>
     
-      <lastmod>2026-05-13T00:00:00+00:00</lastmod>
+      <lastmod>2026-07-06T00:00:00+00:00</lastmod>
     
   </sitemap>
   
   <sitemap>
-    <loc>//localhost:49674/vi/sitemap.xml</loc>
+    <loc>http://localhost:1313/fcj-workshop-template/vi/sitemap.xml</loc>
     
-      <lastmod>2026-05-13T00:00:00+00:00</lastmod>
+      <lastmod>2026-07-06T00:00:00+00:00</lastmod>
     
   </sitemap>
   
