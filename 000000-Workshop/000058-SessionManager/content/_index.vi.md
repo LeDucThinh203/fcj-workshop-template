@@ -25,6 +25,6 @@ chapter: false
 1. [Giới thiệu](1-introduce/)
 2. [Các bước chuẩn bị](2-prerequiste/)
 3. [Kết nối đến máy chủ EC2](3-accessibilitytoinstances/)
-4. [Quản lý nhật ký phiên làm việc (session logs)](4-s3log/)
+4. [Workshop](4-Workshop/)
 5. [Chuyển tiếp cổng (Port Forwarding)](5-Portfwd/)
 6. [Dọn dẹp tài nguyên](6-cleanup/)
