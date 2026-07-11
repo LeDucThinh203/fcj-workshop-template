@@ -12,21 +12,21 @@
     <title>Worklog Tuần 10 :: AWS System Manager</title>
 
     
-    <link href='../../../css/nucleus.css?1783779025' rel="stylesheet">
-    <link href='../../../css/fontawesome-all.min.css?1783779025' rel="stylesheet">
-    <link href='../../../css/hybrid.css?1783779025' rel="stylesheet">
-    <link href='../../../css/featherlight.min.css?1783779025' rel="stylesheet">
-    <link href='../../../css/perfect-scrollbar.min.css?1783779025' rel="stylesheet">
-    <link href='../../../css/auto-complete.css?1783779025' rel="stylesheet">
-    <link href='../../../css/atom-one-dark-reasonable.css?1783779025' rel="stylesheet">
-    <link href='../../../css/theme.css?1783779025' rel="stylesheet">
-    <link href='../../../css/hugo-theme.css?1783779025' rel="stylesheet">
+    <link href='../../../css/nucleus.css?1783794563' rel="stylesheet">
+    <link href='../../../css/fontawesome-all.min.css?1783794563' rel="stylesheet">
+    <link href='../../../css/hybrid.css?1783794563' rel="stylesheet">
+    <link href='../../../css/featherlight.min.css?1783794563' rel="stylesheet">
+    <link href='../../../css/perfect-scrollbar.min.css?1783794563' rel="stylesheet">
+    <link href='../../../css/auto-complete.css?1783794563' rel="stylesheet">
+    <link href='../../../css/atom-one-dark-reasonable.css?1783794563' rel="stylesheet">
+    <link href='../../../css/theme.css?1783794563' rel="stylesheet">
+    <link href='../../../css/hugo-theme.css?1783794563' rel="stylesheet">
     
-    <link href='../../../css/theme-workshop.css?1783779025' rel="stylesheet">
+    <link href='../../../css/theme-workshop.css?1783794563' rel="stylesheet">
     
     
 
-    <script src='../../../js/jquery-3.3.1.min.js?1783779025'></script>
+    <script src='../../../js/jquery-3.3.1.min.js?1783794563'></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -57,14 +57,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="../../../js/lunr.min.js?1783779025"></script>
-<script type="text/javascript" src="../../../js/auto-complete.js?1783779025"></script>
+<script type="text/javascript" src="../../../js/lunr.min.js?1783794563"></script>
+<script type="text/javascript" src="../../../js/auto-complete.js?1783794563"></script>
 <script type="text/javascript">
     
         var baseurl = "http:\/\/localhost:1313\/fcj-workshop-template\/\/vi";
     
 </script>
-<script type="text/javascript" src="../../../js/search.js?1783779025"></script>
+<script type="text/javascript" src="../../../js/search.js?1783794563"></script>
 
     
   </div>
@@ -1465,7 +1465,11 @@
   <ul>
     <li><a href="#mục-tiêu-tuần-10">Mục tiêu Tuần 10:</a></li>
     <li><a href="#công-việc-thực-hiện-trong-tuần-này">Công việc thực hiện trong tuần này:</a></li>
-    <li><a href="#thành-tựu-tuần-10">Thành tựu Tuần 10:</a></li>
+    <li><a href="#thành-tựu-tuần-10">Thành tựu Tuần 10:</a>
+      <ul>
+        <li><a href="#hình-ảnh-minh-chứng">Hình ảnh minh chứng:</a></li>
+      </ul>
+    </li>
   </ul>
 </nav>
     </div>
@@ -1561,6 +1565,44 @@
 <li><strong>Tích hợp ChatOps</strong>: Đã tích hợp cảnh báo AWS Lambda với thông báo trên kênh Slack bằng Incoming Webhooks để báo cáo trạng thái hoạt động theo thời gian thực.</li>
 <li><strong>Hoạt động theo lịch trình</strong>: Đã cấu hình Amazon EventBridge Scheduler (các trình kích hoạt cron) để tự động gọi các hàm Lambda vào các thời điểm cụ thể.</li>
 </ul>
+<h3 id="hình-ảnh-minh-chứng">Hình ảnh minh chứng:</h3>
+<ol>
+<li>
+<p><strong>Khởi tạo ngăn xếp CloudFormation cho VPC Peering (Create_Stack)</strong>
+<img src="../../../images/1-Worklog/Worklog_week1.10/Create_Stack.png" alt="Khởi tạo Stack">
+<em>Mô tả chi tiết: Hình ảnh này ghi lại quá trình khởi tạo và triển khai thành công ngăn xếp (stack) AWS CloudFormation nhằm tự động hóa việc xây dựng môi trường mạng cơ sở cho bài thực hành VPC Peering. Việc sử dụng Cơ sở hạ tầng dưới dạng mã (IaC) giúp đảm bảo toàn bộ VPC, subnet, bảng định tuyến và máy chủ được tạo ra một cách đồng nhất và chính xác. Stack này tạo ra nền tảng mạng ban đầu gồm &lsquo;My VPC&rsquo; và &lsquo;HG VPC&rsquo;, giúp tiết kiệm thời gian thiết lập thủ công và giảm thiểu sai sót.</em></p>
+</li>
+<li>
+<p><strong>Cấu hình Security Group cho My VPC (Create_MY VPC SG)</strong>
+<img src="../../../images/1-Worklog/Worklog_week1.10/Create_MY%20VPC%20SG.png" alt="Cấu hình Security Group My VPC">
+<em>Mô tả chi tiết: Cung cấp góc nhìn chi tiết về các quy tắc Security Group được áp dụng cho &lsquo;My VPC&rsquo;. Security Group đóng vai trò là tường lửa ảo có trạng thái (stateful) bảo vệ ở cấp độ instance. Trong thiết lập này, các quy tắc inbound được tinh chỉnh cẩn thận để chỉ cho phép lưu lượng SSH (cổng 22) và ICMP (ping) từ các địa chỉ IP đáng tin cậy hoặc cụ thể là từ dải CIDR của VPC được kết nối (peered VPC). Điều này thể hiện nguyên tắc đặc quyền tối thiểu, đảm bảo an toàn tối đa cho máy chủ.</em></p>
+</li>
+<li>
+<p><strong>Cấu hình Security Group cho HG VPC (Create_HG VPC SG)</strong>
+<img src="../../../images/1-Worklog/Worklog_week1.10/Create_HG%20VPC%20SG.png" alt="Cấu hình Security Group HG VPC">
+<em>Mô tả chi tiết: Thể hiện cấu hình Security Group tương ứng cho các máy chủ đặt tại &lsquo;HG VPC&rsquo; (mạng được kết nối). Tương tự như &lsquo;My VPC&rsquo;, tường lửa này được thiết lập để tiếp nhận lưu lượng truy cập đi vào một cách nghiêm ngặt, chỉ cho phép xuất phát từ dải mạng của &lsquo;My VPC&rsquo;. Việc cấu hình các quy tắc đối xứng giữa hai VPC tạo ra một kênh giao tiếp hai chiều an toàn, là điều kiện tiên quyết để thực hiện các bài kiểm tra kết nối mạng (như lệnh ping) sau khi thiết lập peering.</em></p>
+</li>
+<li>
+<p><strong>Triển khai máy chủ EC2 (Create EC2)</strong>
+<img src="../../../images/1-Worklog/Worklog_week1.10/Create%20EC2.png" alt="Khởi tạo máy chủ EC2">
+<em>Mô tả chi tiết: Minh họa trạng thái hoạt động ổn định của các máy chủ ảo EC2 đã được khởi tạo thành công trên các VPC khác nhau (một máy chủ thuộc &lsquo;My VPC&rsquo; và một thuộc &lsquo;HG VPC&rsquo;). Những máy chủ này đóng vai trò là các điểm đầu cuối (endpoint) để tiến hành kiểm thử kết nối mạng. Việc xác nhận máy chủ đang chạy và được cấp phát đúng địa chỉ IP private trong subnet là bước chuẩn bị quan trọng nhất trước khi kiểm tra tính hợp lệ của đường truyền.</em></p>
+</li>
+<li>
+<p><strong>Thiết lập kết nối VPC Peering (MyVPC peering to HG VPC)</strong>
+<img src="../../../images/1-Worklog/Worklog_week1.10/MyVPC%20peering%20to%20HG%20VPC.png" alt="Kết nối VPC Peering">
+<em>Mô tả chi tiết: Làm nổi bật mục tiêu cốt lõi của bài lab — kết nối VPC Peering đang trong trạng thái hoạt động (Active) liên kết &lsquo;My VPC&rsquo; với &lsquo;HG VPC&rsquo;. VPC Peering cho phép định tuyến lưu lượng giữa hai mạng thông qua địa chỉ IP private IPv4 hoặc IPv6. Hình ảnh xác nhận yêu cầu kết nối đã được chấp thuận, qua đó hợp nhất ảo hai phân đoạn mạng tách biệt thành một không gian mạng riêng tư liên tục mà không cần dữ liệu phải đi qua môi trường internet công cộng.</em></p>
+</li>
+<li>
+<p><strong>Cập nhật bảng định tuyến cho Peering (route_table)</strong>
+<img src="../../../images/1-Worklog/Worklog_week1.10/route_table.png" alt="Cập nhật Route Table">
+<em>Mô tả chi tiết: Hiển thị những sửa đổi mang tính quyết định trên các bảng định tuyến (Route Tables) của VPC. Để máy chủ ở hai VPC có thể giao tiếp với nhau, bảng định tuyến của các subnet liên quan bắt buộc phải được cập nhật. Ảnh chụp màn hình cho thấy việc thêm một route cụ thể, trong đó đích đến (Destination) là dải CIDR của VPC đối diện, và mục tiêu (Target) là ID của kết nối VPC Peering (bắt đầu bằng pcx-&hellip;). Nếu thiếu bước này, gói tin sẽ bị rớt.</em></p>
+</li>
+<li>
+<p><strong>Kiểm chứng Network Access Control List - NACL (ALI)</strong>
+<img src="../../../images/1-Worklog/Worklog_week1.10/ALI.png" alt="Cấu hình NACL">
+<em>Mô tả chi tiết: Trình bày quá trình cấu hình và kiểm thử Network ACLs (NACLs). Khác với Security Group, NACL là tường lửa không trạng thái (stateless) hoạt động ở cấp độ subnet, yêu cầu phải định nghĩa rõ ràng cả quy tắc inbound và outbound. Hình ảnh minh chứng việc thay đổi một quy tắc NACL để chặn hoặc cho phép lưu lượng cụ thể (như ICMP hay SSH) sẽ ngay lập tức tác động đến toàn bộ subnet, cung cấp một lớp phòng thủ an ninh mạng bao quát và mạnh mẽ hơn.</em></p>
+</li>
+</ol>
 
 
 
@@ -2317,19 +2359,19 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="../../../js/clipboard.min.js?1783779025"></script>
-    <script src="../../../js/perfect-scrollbar.min.js?1783779025"></script>
-    <script src="../../../js/perfect-scrollbar.jquery.min.js?1783779025"></script>
-    <script src="../../../js/jquery.sticky.js?1783779025"></script>
-    <script src="../../../js/featherlight.min.js?1783779025"></script>
-    <script src="../../../js/highlight.pack.js?1783779025"></script>
+    <script src="../../../js/clipboard.min.js?1783794563"></script>
+    <script src="../../../js/perfect-scrollbar.min.js?1783794563"></script>
+    <script src="../../../js/perfect-scrollbar.jquery.min.js?1783794563"></script>
+    <script src="../../../js/jquery.sticky.js?1783794563"></script>
+    <script src="../../../js/featherlight.min.js?1783794563"></script>
+    <script src="../../../js/highlight.pack.js?1783794563"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="../../../js/modernizr.custom-3.6.0.js?1783779025"></script>
-    <script src="../../../js/learn.js?1783779025"></script>
-    <script src="../../../js/hugo-learn.js?1783779025"></script>
+    <script src="../../../js/modernizr.custom-3.6.0.js?1783794563"></script>
+    <script src="../../../js/learn.js?1783794563"></script>
+    <script src="../../../js/hugo-learn.js?1783794563"></script>
 
-    <link href="../../../mermaid/mermaid.css?1783779025" rel="stylesheet" />
-    <script src="../../../mermaid/mermaid.js?1783779025"></script>
+    <link href="../../../mermaid/mermaid.css?1783794563" rel="stylesheet" />
+    <script src="../../../mermaid/mermaid.js?1783794563"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

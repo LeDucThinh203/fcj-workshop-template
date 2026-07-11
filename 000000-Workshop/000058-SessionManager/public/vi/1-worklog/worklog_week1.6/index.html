@@ -12,21 +12,21 @@
     <title>Worklog Tuần 6 :: AWS System Manager</title>
 
     
-    <link href='../../../css/nucleus.css?1783779191' rel="stylesheet">
-    <link href='../../../css/fontawesome-all.min.css?1783779191' rel="stylesheet">
-    <link href='../../../css/hybrid.css?1783779191' rel="stylesheet">
-    <link href='../../../css/featherlight.min.css?1783779191' rel="stylesheet">
-    <link href='../../../css/perfect-scrollbar.min.css?1783779191' rel="stylesheet">
-    <link href='../../../css/auto-complete.css?1783779191' rel="stylesheet">
-    <link href='../../../css/atom-one-dark-reasonable.css?1783779191' rel="stylesheet">
-    <link href='../../../css/theme.css?1783779191' rel="stylesheet">
-    <link href='../../../css/hugo-theme.css?1783779191' rel="stylesheet">
+    <link href='../../../css/nucleus.css?1783794543' rel="stylesheet">
+    <link href='../../../css/fontawesome-all.min.css?1783794543' rel="stylesheet">
+    <link href='../../../css/hybrid.css?1783794543' rel="stylesheet">
+    <link href='../../../css/featherlight.min.css?1783794543' rel="stylesheet">
+    <link href='../../../css/perfect-scrollbar.min.css?1783794543' rel="stylesheet">
+    <link href='../../../css/auto-complete.css?1783794543' rel="stylesheet">
+    <link href='../../../css/atom-one-dark-reasonable.css?1783794543' rel="stylesheet">
+    <link href='../../../css/theme.css?1783794543' rel="stylesheet">
+    <link href='../../../css/hugo-theme.css?1783794543' rel="stylesheet">
     
-    <link href='../../../css/theme-workshop.css?1783779191' rel="stylesheet">
+    <link href='../../../css/theme-workshop.css?1783794543' rel="stylesheet">
     
     
 
-    <script src='../../../js/jquery-3.3.1.min.js?1783779191'></script>
+    <script src='../../../js/jquery-3.3.1.min.js?1783794543'></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -57,14 +57,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="../../../js/lunr.min.js?1783779191"></script>
-<script type="text/javascript" src="../../../js/auto-complete.js?1783779191"></script>
+<script type="text/javascript" src="../../../js/lunr.min.js?1783794543"></script>
+<script type="text/javascript" src="../../../js/auto-complete.js?1783794543"></script>
 <script type="text/javascript">
     
         var baseurl = "http:\/\/localhost:1313\/fcj-workshop-template\/\/vi";
     
 </script>
-<script type="text/javascript" src="../../../js/search.js?1783779191"></script>
+<script type="text/javascript" src="../../../js/search.js?1783794543"></script>
 
     
   </div>
@@ -1598,6 +1598,21 @@
 <img src="../../../images/1-Worklog/Worklog_week1.6/Test_result.png" alt="Kết quả kiểm tra">
 <em>Mô tả chi tiết: Cung cấp kết quả kiểm thử (test result) xác nhận hệ thống Hybrid DNS hoạt động chính xác. Các lệnh kiểm tra như <code>nslookup</code> hoặc <code>dig</code> cho thấy mạng tại chỗ có thể phân giải thành công tên miền nội bộ của AWS (thông qua Inbound Endpoint) và ngược lại, máy chủ trên AWS cũng truy vấn được tên miền doanh nghiệp (qua Outbound Endpoint). Điều này chứng minh các Resolver Rules và kết nối mạng hai chiều đã được cấu hình chuẩn xác.</em></p>
 </li>
+<li>
+<p><strong>Dọn dẹp tài nguyên - Bước 1</strong>
+<img src="../../../images/1-Worklog/Worklog_week1.6/clean1.png" alt="Dọn dẹp tài nguyên 1">
+<em>Mô tả chi tiết: Hình ảnh ghi nhận quá trình bắt đầu dọn dẹp tài nguyên để tránh phát sinh chi phí AWS không cần thiết. Bước này tập trung vào việc xóa bỏ các Route 53 Resolver Endpoints (Inbound và Outbound) cùng các Rules liên quan đã được tạo phục vụ cho mô hình Hybrid DNS.</em></p>
+</li>
+<li>
+<p><strong>Dọn dẹp tài nguyên - Bước 2</strong>
+<img src="../../../images/1-Worklog/Worklog_week1.6/clean2.png" alt="Dọn dẹp tài nguyên 2">
+<em>Mô tả chi tiết: Minh họa bước dọn dẹp tiếp theo, tiến hành xóa hệ thống AWS Directory Service (giả lập Microsoft AD). Việc loại bỏ dịch vụ thư mục này đảm bảo các máy chủ và tài nguyên hạ tầng nội bộ mô phỏng được thu hồi hoàn toàn.</em></p>
+</li>
+<li>
+<p><strong>Dọn dẹp tài nguyên - Bước cuối</strong>
+<img src="../../../images/1-Worklog/Worklog_week1.6/clean3.png" alt="Dọn dẹp tài nguyên 3">
+<em>Mô tả chi tiết: Chụp lại kết quả hoàn tất quá trình dọn dẹp, xác nhận CloudFormation stack và toàn bộ các tài nguyên đi kèm (như EC2 instances, Network Interfaces, Security Groups) đã được xóa thành công, trả môi trường AWS về trạng thái ban đầu một cách sạch sẽ.</em></p>
+</li>
 </ol>
 
 
@@ -2355,19 +2370,19 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="../../../js/clipboard.min.js?1783779191"></script>
-    <script src="../../../js/perfect-scrollbar.min.js?1783779191"></script>
-    <script src="../../../js/perfect-scrollbar.jquery.min.js?1783779191"></script>
-    <script src="../../../js/jquery.sticky.js?1783779191"></script>
-    <script src="../../../js/featherlight.min.js?1783779191"></script>
-    <script src="../../../js/highlight.pack.js?1783779191"></script>
+    <script src="../../../js/clipboard.min.js?1783794543"></script>
+    <script src="../../../js/perfect-scrollbar.min.js?1783794543"></script>
+    <script src="../../../js/perfect-scrollbar.jquery.min.js?1783794543"></script>
+    <script src="../../../js/jquery.sticky.js?1783794543"></script>
+    <script src="../../../js/featherlight.min.js?1783794543"></script>
+    <script src="../../../js/highlight.pack.js?1783794543"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="../../../js/modernizr.custom-3.6.0.js?1783779191"></script>
-    <script src="../../../js/learn.js?1783779191"></script>
-    <script src="../../../js/hugo-learn.js?1783779191"></script>
+    <script src="../../../js/modernizr.custom-3.6.0.js?1783794543"></script>
+    <script src="../../../js/learn.js?1783794543"></script>
+    <script src="../../../js/hugo-learn.js?1783794543"></script>
 
-    <link href="../../../mermaid/mermaid.css?1783779191" rel="stylesheet" />
-    <script src="../../../mermaid/mermaid.js?1783779191"></script>
+    <link href="../../../mermaid/mermaid.css?1783794543" rel="stylesheet" />
+    <script src="../../../mermaid/mermaid.js?1783794543"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

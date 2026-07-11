@@ -54,3 +54,15 @@ pre: " <b> 1.6 </b> "
    ![DNS Resolution Test Result](/images/1-Worklog/Worklog_week1.6/Test_result.png)
    *Description: Presents the final test results verifying the hybrid DNS setup. It shows successful `nslookup` or `dig` queries originating from the local environment resolving AWS internal domain names (via the Inbound Endpoint) and queries from the AWS environment successfully resolving corporate AD domains (via the Outbound Endpoint). This confirms the correct functioning of the Route 53 Resolver rules and bidirectional network connectivity.*
 
+6. **Resource Cleanup - Step 1**
+   ![Resource Cleanup 1](/images/1-Worklog/Worklog_week1.6/clean1.png)
+   *Description: Shows the initial phase of tearing down the lab environment to avoid unnecessary AWS charges. This involves deleting the Route 53 Resolver endpoints and associated rules that were created for the hybrid DNS integration.*
+
+7. **Resource Cleanup - Step 2**
+   ![Resource Cleanup 2](/images/1-Worklog/Worklog_week1.6/clean2.png)
+   *Description: Captures the subsequent cleanup step, focusing on the removal of the AWS Directory Service (Microsoft AD). Tearing down the directory service ensures that the simulated on-premises infrastructure is properly decommissioned.*
+
+8. **Resource Cleanup - Final Step**
+   ![Resource Cleanup 3](/images/1-Worklog/Worklog_week1.6/clean3.png)
+   *Description: Displays the final verification of the cleanup process, confirming that the CloudFormation stack and all remaining associated resources (such as EC2 instances, ENIs, and security groups) have been successfully deleted, restoring the AWS account to its original state.*
+

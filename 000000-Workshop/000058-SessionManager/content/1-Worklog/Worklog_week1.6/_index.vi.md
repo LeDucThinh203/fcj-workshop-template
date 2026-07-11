@@ -54,3 +54,15 @@ pre: " <b> 1.6 </b> "
    ![Kết quả kiểm tra](/images/1-Worklog/Worklog_week1.6/Test_result.png)
    *Mô tả chi tiết: Cung cấp kết quả kiểm thử (test result) xác nhận hệ thống Hybrid DNS hoạt động chính xác. Các lệnh kiểm tra như `nslookup` hoặc `dig` cho thấy mạng tại chỗ có thể phân giải thành công tên miền nội bộ của AWS (thông qua Inbound Endpoint) và ngược lại, máy chủ trên AWS cũng truy vấn được tên miền doanh nghiệp (qua Outbound Endpoint). Điều này chứng minh các Resolver Rules và kết nối mạng hai chiều đã được cấu hình chuẩn xác.*
 
+6. **Dọn dẹp tài nguyên - Bước 1**
+   ![Dọn dẹp tài nguyên 1](/images/1-Worklog/Worklog_week1.6/clean1.png)
+   *Mô tả chi tiết: Hình ảnh ghi nhận quá trình bắt đầu dọn dẹp tài nguyên để tránh phát sinh chi phí AWS không cần thiết. Bước này tập trung vào việc xóa bỏ các Route 53 Resolver Endpoints (Inbound và Outbound) cùng các Rules liên quan đã được tạo phục vụ cho mô hình Hybrid DNS.*
+
+7. **Dọn dẹp tài nguyên - Bước 2**
+   ![Dọn dẹp tài nguyên 2](/images/1-Worklog/Worklog_week1.6/clean2.png)
+   *Mô tả chi tiết: Minh họa bước dọn dẹp tiếp theo, tiến hành xóa hệ thống AWS Directory Service (giả lập Microsoft AD). Việc loại bỏ dịch vụ thư mục này đảm bảo các máy chủ và tài nguyên hạ tầng nội bộ mô phỏng được thu hồi hoàn toàn.*
+
+8. **Dọn dẹp tài nguyên - Bước cuối**
+   ![Dọn dẹp tài nguyên 3](/images/1-Worklog/Worklog_week1.6/clean3.png)
+   *Mô tả chi tiết: Chụp lại kết quả hoàn tất quá trình dọn dẹp, xác nhận CloudFormation stack và toàn bộ các tài nguyên đi kèm (như EC2 instances, Network Interfaces, Security Groups) đã được xóa thành công, trả môi trường AWS về trạng thái ban đầu một cách sạch sẽ.*
+
