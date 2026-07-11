@@ -56,3 +56,18 @@ Tạo VPC (CloudStack lab):
   - Target Group
   - S3 Bucket
   - CloudFront Distribution
+
+### Hình ảnh minh chứng:
+
+1. **Khởi tạo và cấu hình NAT Gateway (Nat_Gateway)**
+   ![Khởi tạo NAT Gateway](/images/1-Worklog/Worklog_week1.5/Nat_Gateway.png)
+   *Mô tả chi tiết: Hình ảnh ghi nhận bước tạo và cấu hình thành công dịch vụ NAT Gateway trên giao diện điều khiển AWS Console. NAT Gateway được đặt tại Public Subnet và được liên kết với một Elastic IP (EIP) tĩnh, đóng vai trò làm cầu nối dịch địa chỉ mạng để cho phép các máy chủ EC2 nằm trong Private Subnet có thể chủ động kết nối ra Internet để tải các bản cập nhật phần mềm hoặc thư viện cần thiết, trong khi chặn toàn bộ lưu lượng truy cập trái phép từ Internet đi vào Private Subnet.*
+
+2. **Cấu hình bảng định tuyến Route Table cho NAT (NAT)**
+   ![Cấu hình Route Table cho NAT](/images/1-Worklog/Worklog_week1.5/NAT.png)
+   *Mô tả chi tiết: Hình ảnh hiển thị cấu hình bảng định tuyến (Route Table) của Private Subnets được cập nhật thêm một route mới chỉ định lưu lượng đi ra Internet (dải `0.0.0.0/0`) chuyển tiếp đến NAT Gateway đã tạo ở bước trước. Cấu hình định tuyến này đảm bảo luồng lưu lượng của mạng nội bộ được vận hành chính xác và an toàn.*
+
+3. **Kiểm tra kết nối và truy cập thông qua VPC Endpoint (Connect_endpoint)**
+   ![Kiểm tra kết nối qua VPC Endpoint](/images/1-Worklog/Worklog_week1.5/Connect_endpoint.png)
+   *Mô tả chi tiết: Hình ảnh minh chứng việc thiết lập thành công dịch vụ VPC Endpoints (bao gồm các endpoint cho dịch vụ SSM, EC2 Messages, và SSM Messages) để cho phép kết nối, quản lý máy chủ EC2 trong phân khu mạng Private Subnet từ xa thông qua dịch vụ AWS Systems Manager (SSM) Session Manager. Điều này giúp quản trị viên có thể truy cập terminal của máy chủ một cách an toàn mà hoàn toàn không cần mở cổng 22 SSH hay gán Public IP, tăng cường tối đa mức độ an ninh cho hệ thống.*
+

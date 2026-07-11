@@ -34,3 +34,18 @@ pre: " <b> 1.4 </b> "
 - Successfully connected a Web application on EC2 to the RDS database via Endpoint.
 - Successfully performed data backup and restoration using Snapshots.
 - Efficiently managed resources and performed cleanup to avoid unnecessary costs.
+
+### Evidences:
+
+1. **SSH Key Pair Permissions Configuration (ec2_connection_key)**
+   ![SSH Key Pair Permissions](/images/1-Worklog/Worklog_week1.4/ec2_connection_key.png)
+   *Description: Demonstrates setting the appropriate permissions on the private key file (`.pem`) using the `chmod 400` command in the CLI. Restricting read/write permissions is a security requirement for SSH connections to prevent private keys from being exposed or utilized by other local users before establishing a connection.*
+
+2. **Successful SSH Connection to Linux EC2 Public Instance (ec2_connection)**
+   ![Successful SSH Connection](/images/1-Worklog/Worklog_week1.4/ec2_connection.png)
+   *Description: Captures the CLI output of a successful SSH login session from the local client to the EC2 Public Instance using the configured Key Pair. The successful Amazon Linux terminal greeting confirms that the Internet Gateway routing and the Security Group's inbound rule for port 22 are operational.*
+
+3. **Internal Routing and Connection to EC2 Private Instance (ec2_connection_Private)**
+   ![Internal Connection to Private Instance](/images/1-Worklog/Worklog_week1.4/ec2_connection_Private.png)
+   *Description: Practical evidence of successfully establishing an internal connection to the EC2 Private Subnet Instance from the EC2 Public Instance acting as a Bastion Host. Since the Private Instance has no public IP, this jump-host method ensures secure network containment and management.*
+

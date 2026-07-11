@@ -12,21 +12,21 @@
     <title>Worklog Tuần 3 :: AWS System Manager</title>
 
     
-    <link href='../../../css/nucleus.css?1783705259' rel="stylesheet">
-    <link href='../../../css/fontawesome-all.min.css?1783705259' rel="stylesheet">
-    <link href='../../../css/hybrid.css?1783705259' rel="stylesheet">
-    <link href='../../../css/featherlight.min.css?1783705259' rel="stylesheet">
-    <link href='../../../css/perfect-scrollbar.min.css?1783705259' rel="stylesheet">
-    <link href='../../../css/auto-complete.css?1783705259' rel="stylesheet">
-    <link href='../../../css/atom-one-dark-reasonable.css?1783705259' rel="stylesheet">
-    <link href='../../../css/theme.css?1783705259' rel="stylesheet">
-    <link href='../../../css/hugo-theme.css?1783705259' rel="stylesheet">
+    <link href='../../../css/nucleus.css?1783779025' rel="stylesheet">
+    <link href='../../../css/fontawesome-all.min.css?1783779025' rel="stylesheet">
+    <link href='../../../css/hybrid.css?1783779025' rel="stylesheet">
+    <link href='../../../css/featherlight.min.css?1783779025' rel="stylesheet">
+    <link href='../../../css/perfect-scrollbar.min.css?1783779025' rel="stylesheet">
+    <link href='../../../css/auto-complete.css?1783779025' rel="stylesheet">
+    <link href='../../../css/atom-one-dark-reasonable.css?1783779025' rel="stylesheet">
+    <link href='../../../css/theme.css?1783779025' rel="stylesheet">
+    <link href='../../../css/hugo-theme.css?1783779025' rel="stylesheet">
     
-    <link href='../../../css/theme-workshop.css?1783705259' rel="stylesheet">
+    <link href='../../../css/theme-workshop.css?1783779025' rel="stylesheet">
     
     
 
-    <script src='../../../js/jquery-3.3.1.min.js?1783705259'></script>
+    <script src='../../../js/jquery-3.3.1.min.js?1783779025'></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -57,14 +57,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="../../../js/lunr.min.js?1783705259"></script>
-<script type="text/javascript" src="../../../js/auto-complete.js?1783705259"></script>
+<script type="text/javascript" src="../../../js/lunr.min.js?1783779025"></script>
+<script type="text/javascript" src="../../../js/auto-complete.js?1783779025"></script>
 <script type="text/javascript">
     
         var baseurl = "http:\/\/localhost:1313\/fcj-workshop-template\/\/vi";
     
 </script>
-<script type="text/javascript" src="../../../js/search.js?1783705259"></script>
+<script type="text/javascript" src="../../../js/search.js?1783779025"></script>
 
     
   </div>
@@ -1465,6 +1465,13 @@
   <ul>
     <li><a href="#mục-tiêu-tuần-3">Mục tiêu Tuần 3:</a></li>
     <li><a href="#công-việc-thực-hiện-trong-tuần-này">Công việc thực hiện trong tuần này:</a></li>
+    <li><a href="#thành-tựu-tuần-3">Thành tựu Tuần 3:</a>
+      <ul>
+        <li><a href="#lý-thuyết">Lý thuyết:</a></li>
+        <li><a href="#thực-hành">Thực hành:</a></li>
+        <li><a href="#hình-ảnh-minh-chứng">Hình ảnh minh chứng:</a></li>
+      </ul>
+    </li>
   </ul>
 </nav>
     </div>
@@ -1552,6 +1559,32 @@
       </tr>
   </tbody>
 </table>
+<h2 id="thành-tựu-tuần-3">Thành tựu Tuần 3:</h2>
+<h3 id="lý-thuyết">Lý thuyết:</h3>
+<ul>
+<li>Nắm vững kiến trúc và cơ chế hoạt động của dịch vụ Amazon EC2 (Elastic Compute Cloud).</li>
+<li>Hiểu rõ các thành phần cốt lõi: Instance Types (tối ưu hóa tài nguyên), Amazon Machine Image (AMI - đóng gói hệ điều hành), Key Pair (bảo mật khóa công khai/khóa bí mật) và EBS Volume/Snapshot (lưu trữ và sao lưu dữ liệu).</li>
+<li>Tìm hiểu về phân quyền IAM Role cho EC2 để cấp quyền truy cập tài nguyên AWS khác một cách an toàn mà không cần lưu trữ Access Key trên máy chủ.</li>
+</ul>
+<h3 id="thực-hành">Thực hành:</h3>
+<ul>
+<li>Thiết lập hoàn chỉnh môi trường mạng bảo mật và khởi tạo thành công 2 EC2 Instances (1 Linux Instance nằm trong Public Subnet và 1 Linux Instance nằm trong Private Subnet).</li>
+<li>Cấu hình Security Group mở cổng thích hợp (cổng 22 cho SSH, cổng 80/443 cho Web Server) đảm bảo kiểm soát chặt chẽ lưu lượng inbound/outbound.</li>
+<li>Thực hành kết nối thành công tới các máy chủ và chạy thử nghiệm các dịch vụ cơ bản.</li>
+</ul>
+<h3 id="hình-ảnh-minh-chứng">Hình ảnh minh chứng:</h3>
+<ol>
+<li>
+<p><strong>Khởi tạo và kiểm tra kết nối EC2 Instance trong Public Subnet (EC2_Public)</strong>
+<img src="../../../images/1-Worklog/Worklog_week1.3/EC2_Public.png" alt="EC2 Public Instance">
+<em>Mô tả chi tiết: Hình ảnh minh chứng quá trình khởi tạo thành công EC2 Instance trong phân khu mạng Public Subnet. Hệ thống máy chủ được gán Public IP và liên kết với Security Group cho phép truy cập từ xa. Kết quả hiển thị trạng thái instance đang chạy (Running) cùng các thông số cấu hình mạng cần thiết, sẵn sàng cho việc kết nối trực tiếp qua giao thức SSH.</em></p>
+</li>
+<li>
+<p><strong>Khởi tạo và cấu hình bảo mật cho EC2 Instance trong Private Subnet (EC2_Private)</strong>
+<img src="../../../images/1-Worklog/Worklog_week1.3/EC2_Private.png" alt="EC2 Private Instance">
+<em>Mô tả chi tiết: Hình ảnh ghi nhận cấu hình của EC2 Instance được triển khai hoàn toàn trong Private Subnet (phân khu mạng nội bộ bảo mật cao). Máy chủ này không được cấp phát Public IP nhằm cô lập hoàn toàn khỏi môi trường Internet công cộng, đảm bảo an toàn tuyệt đối cho cơ sở dữ liệu hoặc các ứng dụng backend bên trong. Mọi kết nối đến instance này đều phải đi qua máy chủ trung chuyển (Bastion Host / NAT Gateway) hoặc thông qua VPC Endpoints.</em></p>
+</li>
+</ol>
 
 
 
@@ -2308,19 +2341,19 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="../../../js/clipboard.min.js?1783705259"></script>
-    <script src="../../../js/perfect-scrollbar.min.js?1783705259"></script>
-    <script src="../../../js/perfect-scrollbar.jquery.min.js?1783705259"></script>
-    <script src="../../../js/jquery.sticky.js?1783705259"></script>
-    <script src="../../../js/featherlight.min.js?1783705259"></script>
-    <script src="../../../js/highlight.pack.js?1783705259"></script>
+    <script src="../../../js/clipboard.min.js?1783779025"></script>
+    <script src="../../../js/perfect-scrollbar.min.js?1783779025"></script>
+    <script src="../../../js/perfect-scrollbar.jquery.min.js?1783779025"></script>
+    <script src="../../../js/jquery.sticky.js?1783779025"></script>
+    <script src="../../../js/featherlight.min.js?1783779025"></script>
+    <script src="../../../js/highlight.pack.js?1783779025"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="../../../js/modernizr.custom-3.6.0.js?1783705259"></script>
-    <script src="../../../js/learn.js?1783705259"></script>
-    <script src="../../../js/hugo-learn.js?1783705259"></script>
+    <script src="../../../js/modernizr.custom-3.6.0.js?1783779025"></script>
+    <script src="../../../js/learn.js?1783779025"></script>
+    <script src="../../../js/hugo-learn.js?1783779025"></script>
 
-    <link href="../../../mermaid/mermaid.css?1783705259" rel="stylesheet" />
-    <script src="../../../mermaid/mermaid.js?1783705259"></script>
+    <link href="../../../mermaid/mermaid.css?1783779025" rel="stylesheet" />
+    <script src="../../../mermaid/mermaid.js?1783779025"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

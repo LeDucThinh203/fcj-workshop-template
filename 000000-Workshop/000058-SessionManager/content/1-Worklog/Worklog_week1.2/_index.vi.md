@@ -26,3 +26,26 @@ pre: " <b> 1.2 </b> "
 ### Lý thuyết:
 - Có thể hiểu kiến trúc của Amazon VPC và cách quản lý dải địa chỉ IP qua CIDR
 - Biết cách tạo và cấu hình route tables
+
+### Thực hành:
+- Đã thực hiện cấu hình VPC hoàn chỉnh bao gồm các Subnet công cộng và riêng tư.
+- Thiết lập thành công Internet Gateway và NAT Gateway để định tuyến lưu lượng mạng.
+- Triển khai EC2 Instance và cấu hình bảo mật thông qua Security Groups/Network ACLs.
+
+### Hình ảnh minh chứng:
+
+1. **Lịch sử chuyên cần (Attendance History - Tuần 2)**
+   ![Lịch sử chuyên cần](/images/1-Worklog/Worklog_week1.2/attendance_history_2.png)
+   *Mô tả chi tiết: Hình ảnh ghi nhận lịch sử chấm công và tham gia đầy đủ các buổi học tập, thảo luận nhóm trong Tuần 2. Đây là bằng chứng xác thực cho việc tuân thủ giờ giấc làm việc, tinh thần tự giác và hoàn thành đầy đủ thời lượng đào tạo theo yêu cầu của chương trình First Cloud Journey.*
+
+2. **Cấu hình sơ đồ mạng Lab07 - Bước 1: Khởi tạo VPC & Thiết lập thông số cơ bản**
+   ![Cấu hình Lab07 - Bước 1](/images/1-Worklog/Worklog_week1.2/Module%2001-Lab07-01.png)
+   *Mô tả chi tiết: Minh chứng cho bước đầu tiên trong chuỗi thực hành Lab07 - tạo dựng môi trường mạng ảo Amazon VPC (Virtual Private Cloud). Hình ảnh hiển thị quá trình định nghĩa dải IPv4 CIDR Block chính cho hệ thống mạng nội bộ, kích hoạt các tính năng phân giải tên miền quan trọng như DNS Resolution và DNS Hostnames, tạo nền tảng vững chắc để xây dựng các phân khu mạng con (Subnets) ở các bước tiếp theo.*
+
+3. **Cấu hình sơ đồ mạng Lab07 - Bước 2: Tạo Subnets & Thiết lập Route Tables**
+   ![Cấu hình Lab07 - Bước 2](/images/1-Worklog/Worklog_week1.2/Module%2001-Lab07-02.png)
+   *Mô tả chi tiết: Minh chứng quá trình phân chia dải mạng lớn thành các Subnets độc lập bao gồm Public Subnets (mạng công cộng) và Private Subnets (mạng riêng tư) trên các Availability Zones (Vùng khả dụng) khác nhau để đảm bảo tính sẵn sàng cao. Đồng thời, cấu hình bảng định tuyến (Route Tables), liên kết chính xác từng subnet với bảng định tuyến tương ứng nhằm kiểm soát và phân luồng dữ liệu truy cập một cách bảo mật.*
+
+4. **Cấu hình sơ đồ mạng Lab07 - Bước 3: Thiết lập Gateways & Kiểm tra kết nối Internet**
+   ![Cấu hình Lab07 - Bước 3](/images/1-Worklog/Worklog_week1.2/Module%2001-Lab07-03.png)
+   *Mô tả chi tiết: Hình ảnh ghi nhận bước hoàn thiện sơ đồ mạng bằng cách cấu hình Internet Gateway (IGW) cho phép lưu lượng truy cập từ ngoài Internet vào Public Subnet, và thiết lập NAT Gateway để hỗ trợ các máy chủ EC2 ở Private Subnet tải cập nhật và kết nối Internet một chiều một cách an toàn. Đây là bước xác minh quan trọng chứng minh toàn bộ hệ thống định tuyến hoạt động ổn định và đúng thiết kế kiến trúc.*

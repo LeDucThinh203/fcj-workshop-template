@@ -12,21 +12,21 @@
     <title>Worklog Tuần 5 :: AWS System Manager</title>
 
     
-    <link href='../../../css/nucleus.css?1783705259' rel="stylesheet">
-    <link href='../../../css/fontawesome-all.min.css?1783705259' rel="stylesheet">
-    <link href='../../../css/hybrid.css?1783705259' rel="stylesheet">
-    <link href='../../../css/featherlight.min.css?1783705259' rel="stylesheet">
-    <link href='../../../css/perfect-scrollbar.min.css?1783705259' rel="stylesheet">
-    <link href='../../../css/auto-complete.css?1783705259' rel="stylesheet">
-    <link href='../../../css/atom-one-dark-reasonable.css?1783705259' rel="stylesheet">
-    <link href='../../../css/theme.css?1783705259' rel="stylesheet">
-    <link href='../../../css/hugo-theme.css?1783705259' rel="stylesheet">
+    <link href='../../../css/nucleus.css?1783779025' rel="stylesheet">
+    <link href='../../../css/fontawesome-all.min.css?1783779025' rel="stylesheet">
+    <link href='../../../css/hybrid.css?1783779025' rel="stylesheet">
+    <link href='../../../css/featherlight.min.css?1783779025' rel="stylesheet">
+    <link href='../../../css/perfect-scrollbar.min.css?1783779025' rel="stylesheet">
+    <link href='../../../css/auto-complete.css?1783779025' rel="stylesheet">
+    <link href='../../../css/atom-one-dark-reasonable.css?1783779025' rel="stylesheet">
+    <link href='../../../css/theme.css?1783779025' rel="stylesheet">
+    <link href='../../../css/hugo-theme.css?1783779025' rel="stylesheet">
     
-    <link href='../../../css/theme-workshop.css?1783705259' rel="stylesheet">
+    <link href='../../../css/theme-workshop.css?1783779025' rel="stylesheet">
     
     
 
-    <script src='../../../js/jquery-3.3.1.min.js?1783705259'></script>
+    <script src='../../../js/jquery-3.3.1.min.js?1783779025'></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -57,14 +57,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="../../../js/lunr.min.js?1783705259"></script>
-<script type="text/javascript" src="../../../js/auto-complete.js?1783705259"></script>
+<script type="text/javascript" src="../../../js/lunr.min.js?1783779025"></script>
+<script type="text/javascript" src="../../../js/auto-complete.js?1783779025"></script>
 <script type="text/javascript">
     
         var baseurl = "http:\/\/localhost:1313\/fcj-workshop-template\/\/vi";
     
 </script>
-<script type="text/javascript" src="../../../js/search.js?1783705259"></script>
+<script type="text/javascript" src="../../../js/search.js?1783779025"></script>
 
     
   </div>
@@ -1467,6 +1467,7 @@
     <li><a href="#công-việc-thực-hiện-trong-tuần-này">Công việc thực hiện trong tuần này:</a>
       <ul>
         <li><a href="#thành-tựu-tuần-5">Thành tựu Tuần 5:</a></li>
+        <li><a href="#hình-ảnh-minh-chứng">Hình ảnh minh chứng:</a></li>
       </ul>
     </li>
   </ul>
@@ -1588,6 +1589,24 @@
 </ul>
 </li>
 </ul>
+<h3 id="hình-ảnh-minh-chứng">Hình ảnh minh chứng:</h3>
+<ol>
+<li>
+<p><strong>Khởi tạo và cấu hình NAT Gateway (Nat_Gateway)</strong>
+<img src="../../../images/1-Worklog/Worklog_week1.5/Nat_Gateway.png" alt="Khởi tạo NAT Gateway">
+<em>Mô tả chi tiết: Hình ảnh ghi nhận bước tạo và cấu hình thành công dịch vụ NAT Gateway trên giao diện điều khiển AWS Console. NAT Gateway được đặt tại Public Subnet và được liên kết với một Elastic IP (EIP) tĩnh, đóng vai trò làm cầu nối dịch địa chỉ mạng để cho phép các máy chủ EC2 nằm trong Private Subnet có thể chủ động kết nối ra Internet để tải các bản cập nhật phần mềm hoặc thư viện cần thiết, trong khi chặn toàn bộ lưu lượng truy cập trái phép từ Internet đi vào Private Subnet.</em></p>
+</li>
+<li>
+<p><strong>Cấu hình bảng định tuyến Route Table cho NAT (NAT)</strong>
+<img src="../../../images/1-Worklog/Worklog_week1.5/NAT.png" alt="Cấu hình Route Table cho NAT">
+<em>Mô tả chi tiết: Hình ảnh hiển thị cấu hình bảng định tuyến (Route Table) của Private Subnets được cập nhật thêm một route mới chỉ định lưu lượng đi ra Internet (dải <code>0.0.0.0/0</code>) chuyển tiếp đến NAT Gateway đã tạo ở bước trước. Cấu hình định tuyến này đảm bảo luồng lưu lượng của mạng nội bộ được vận hành chính xác và an toàn.</em></p>
+</li>
+<li>
+<p><strong>Kiểm tra kết nối và truy cập thông qua VPC Endpoint (Connect_endpoint)</strong>
+<img src="../../../images/1-Worklog/Worklog_week1.5/Connect_endpoint.png" alt="Kiểm tra kết nối qua VPC Endpoint">
+<em>Mô tả chi tiết: Hình ảnh minh chứng việc thiết lập thành công dịch vụ VPC Endpoints (bao gồm các endpoint cho dịch vụ SSM, EC2 Messages, và SSM Messages) để cho phép kết nối, quản lý máy chủ EC2 trong phân khu mạng Private Subnet từ xa thông qua dịch vụ AWS Systems Manager (SSM) Session Manager. Điều này giúp quản trị viên có thể truy cập terminal của máy chủ một cách an toàn mà hoàn toàn không cần mở cổng 22 SSH hay gán Public IP, tăng cường tối đa mức độ an ninh cho hệ thống.</em></p>
+</li>
+</ol>
 
 
 
@@ -2344,19 +2363,19 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="../../../js/clipboard.min.js?1783705259"></script>
-    <script src="../../../js/perfect-scrollbar.min.js?1783705259"></script>
-    <script src="../../../js/perfect-scrollbar.jquery.min.js?1783705259"></script>
-    <script src="../../../js/jquery.sticky.js?1783705259"></script>
-    <script src="../../../js/featherlight.min.js?1783705259"></script>
-    <script src="../../../js/highlight.pack.js?1783705259"></script>
+    <script src="../../../js/clipboard.min.js?1783779025"></script>
+    <script src="../../../js/perfect-scrollbar.min.js?1783779025"></script>
+    <script src="../../../js/perfect-scrollbar.jquery.min.js?1783779025"></script>
+    <script src="../../../js/jquery.sticky.js?1783779025"></script>
+    <script src="../../../js/featherlight.min.js?1783779025"></script>
+    <script src="../../../js/highlight.pack.js?1783779025"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="../../../js/modernizr.custom-3.6.0.js?1783705259"></script>
-    <script src="../../../js/learn.js?1783705259"></script>
-    <script src="../../../js/hugo-learn.js?1783705259"></script>
+    <script src="../../../js/modernizr.custom-3.6.0.js?1783779025"></script>
+    <script src="../../../js/learn.js?1783779025"></script>
+    <script src="../../../js/hugo-learn.js?1783779025"></script>
 
-    <link href="../../../mermaid/mermaid.css?1783705259" rel="stylesheet" />
-    <script src="../../../mermaid/mermaid.js?1783705259"></script>
+    <link href="../../../mermaid/mermaid.css?1783779025" rel="stylesheet" />
+    <script src="../../../mermaid/mermaid.js?1783779025"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

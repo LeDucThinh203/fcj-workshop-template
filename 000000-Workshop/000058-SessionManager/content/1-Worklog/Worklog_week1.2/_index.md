@@ -26,3 +26,29 @@ pre: " <b> 1.2 </b> "
 ### Theory:
 - Can understand the architecture of Amazon VPC and how to manage IP address ranges via CIDR
 - Know how to create and configure route tables
+
+### Practice:
+- Completed the configuration of a complete VPC including public and private subnets.
+- Successfully set up Internet Gateway and NAT Gateway to route network traffic.
+- Deployed EC2 Instances and configured security using Security Groups/Network ACLs.
+
+### Evidences:
+
+1. **Attendance History - Week 2**
+   ![Attendance History](/images/1-Worklog/Worklog_week1.2/attendance_history_2.png)
+   *Description: Screenshot confirming the attendance log and full participation in all learning, mentoring, and team sync sessions during Week 2. This serves as verification of schedule compliance, self-discipline, and completing the required training hours under the First Cloud Journey program.*
+
+2. **Lab07 Network Configuration - Step 1: VPC Initialization & DNS Setup**
+   ![Lab07 Configuration - Step 1](/images/1-Worklog/Worklog_week1.2/Module%2001-Lab07-01.png)
+   *Description: Hands-on evidence of the initial step in the Lab07 exercise - setting up the Virtual Private Cloud (VPC) environment. This image details the configuration of the primary IPv4 CIDR Block and enabling crucial attributes such as DNS Resolution and DNS Hostnames, laying a solid foundation for subnet deployment.*
+
+3. **Lab07 Network Configuration - Step 2: Subnet Partitioning & Route Tables**
+   ![Lab07 Configuration - Step 2](/images/1-Worklog/Worklog_week1.2/Module%2001-Lab07-02.png)
+   *Description: Architectural configuration demonstrating the subdivision of the CIDR block into isolated Public and Private Subnets across multiple Availability Zones for high availability. It also displays the customization of Route Tables and subnet associations to ensure proper and secure routing control.*
+
+4. **Lab07 Network Configuration - Step 3: Gateway Attachment & Connectivity Verification**
+   ![Lab07 Configuration - Step 3](/images/1-Worklog/Worklog_week1.2/Module%2001-Lab07-03.png)
+   *Description: Verification screenshot of the final network design phase. This shows the setup of an Internet Gateway (IGW) to handle external traffic for Public Subnets, and a NAT Gateway to securely connect instances in Private Subnets to the Internet for updates. All routing controls are successfully verified and tested.*
+
+
+

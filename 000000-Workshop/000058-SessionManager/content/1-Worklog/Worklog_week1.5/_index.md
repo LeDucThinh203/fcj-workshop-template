@@ -56,3 +56,18 @@ Create VPC (CloudStack lab):
   - Target Group
   - S3 Bucket
   - CloudFront Distribution
+
+### Evidences:
+
+1. **NAT Gateway Initialization and Configuration (Nat_Gateway)**
+   ![NAT Gateway Initialization](/images/1-Worklog/Worklog_week1.5/Nat_Gateway.png)
+   *Description: Screenshot confirming the successful creation and configuration of the NAT Gateway service within the AWS Console. Deployed inside the Public Subnet and associated with a static Elastic IP (EIP), it acts as a network address translator. This allows instances in the Private Subnet to initiate outbound connections to the Internet (for software updates or packages) while blocking any incoming unauthorized traffic from the public internet.*
+
+2. **Route Table Configuration for NAT (NAT)**
+   ![Route Table for NAT](/images/1-Worklog/Worklog_week1.5/NAT.png)
+   *Description: Shows the Route Table configuration associated with the Private Subnets. A new route directing default internet-bound traffic (`0.0.0.0/0`) to the newly created NAT Gateway has been added. This routing policy secures outbound flows while maintaining complete server isolation.*
+
+3. **Connectivity Verification via VPC Endpoints (Connect_endpoint)**
+   ![Connectivity via VPC Endpoints](/images/1-Worklog/Worklog_week1.5/Connect_endpoint.png)
+   *Description: Verification of successfully establishing VPC Endpoints (specifically for SSM, EC2 Messages, and SSM Messages services). This configuration enables secure, agent-based remote command-line access to EC2 instances in the Private Subnet via AWS Systems Manager (SSM) Session Manager. It eliminates the need to open port 22 SSH or assign Public IPs, greatly improving the overall security posture.*
+

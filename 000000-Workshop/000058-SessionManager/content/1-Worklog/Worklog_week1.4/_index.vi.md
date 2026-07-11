@@ -34,3 +34,18 @@ pre: " <b> 1.4 </b> "
 - Kết nối thành công ứng dụng Web trên EC2 với RDS database qua Endpoint.
 - Thực hiện thành công sao lưu và khôi phục dữ liệu bằng Snapshots.
 - Quản lý tài nguyên hiệu quả và dọn dẹp để tránh chi phí không cần thiết.
+
+### Hình ảnh minh chứng:
+
+1. **Cấu hình SSH Key Pair bảo mật kết nối (ec2_connection_key)**
+   ![Cấu hình SSH Key Pair](/images/1-Worklog/Worklog_week1.4/ec2_connection_key.png)
+   *Mô tả chi tiết: Hình ảnh thể hiện việc phân quyền truy cập cho tệp khóa bảo mật Private Key (`.pem`) bằng lệnh `chmod 400` trên môi trường dòng lệnh Linux. Việc hạn chế quyền đọc/ghi cho tệp khóa là yêu cầu bảo mật bắt buộc của giao thức SSH để đảm bảo khóa không bị lộ hoặc bị sử dụng bởi người dùng khác trên cùng hệ thống trước khi bắt đầu phiên kết nối.*
+
+2. **Kết nối SSH thành công vào Linux EC2 Public Instance (ec2_connection)**
+   ![Kết nối SSH thành công](/images/1-Worklog/Worklog_week1.4/ec2_connection.png)
+   *Mô tả chi tiết: Ghi lại kết quả thực tế khi kết nối thành công từ máy khách cục bộ vào máy chủ EC2 Public Instance thông qua CLI sử dụng giao thức SSH và Key Pair đã cấu hình. Giao diện dòng lệnh hiển thị shell đăng nhập thành công của Amazon Linux, xác nhận cấu hình định tuyến Internet Gateway và Security Group inbound port 22 hoạt động hoàn hảo.*
+
+3. **Định tuyến và kết nối nội bộ vào EC2 Private Instance (ec2_connection_Private)**
+   ![Kết nối nội bộ EC2 Private](/images/1-Worklog/Worklog_week1.4/ec2_connection_Private.png)
+   *Mô tả chi tiết: Minh chứng thực hành kết nối nội bộ thành công vào EC2 Instance trong Private Subnet từ máy chủ EC2 Public (đóng vai trò là Bastion Host). Do Private Instance không thể truy cập trực tiếp từ Internet, việc cấu hình định tuyến bắc cầu này đảm bảo kiểm soát truy cập nghiêm ngặt và quản trị an toàn các máy chủ trong dải mạng nội bộ.*
+

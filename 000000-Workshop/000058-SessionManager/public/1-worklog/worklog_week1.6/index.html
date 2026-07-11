@@ -12,21 +12,21 @@
     <title>Week 6 Worklog :: AWS System Manager</title>
 
     
-    <link href='../../css/nucleus.css?1783705256' rel="stylesheet">
-    <link href='../../css/fontawesome-all.min.css?1783705256' rel="stylesheet">
-    <link href='../../css/hybrid.css?1783705256' rel="stylesheet">
-    <link href='../../css/featherlight.min.css?1783705256' rel="stylesheet">
-    <link href='../../css/perfect-scrollbar.min.css?1783705256' rel="stylesheet">
-    <link href='../../css/auto-complete.css?1783705256' rel="stylesheet">
-    <link href='../../css/atom-one-dark-reasonable.css?1783705256' rel="stylesheet">
-    <link href='../../css/theme.css?1783705256' rel="stylesheet">
-    <link href='../../css/hugo-theme.css?1783705256' rel="stylesheet">
+    <link href='../../css/nucleus.css?1783779191' rel="stylesheet">
+    <link href='../../css/fontawesome-all.min.css?1783779191' rel="stylesheet">
+    <link href='../../css/hybrid.css?1783779191' rel="stylesheet">
+    <link href='../../css/featherlight.min.css?1783779191' rel="stylesheet">
+    <link href='../../css/perfect-scrollbar.min.css?1783779191' rel="stylesheet">
+    <link href='../../css/auto-complete.css?1783779191' rel="stylesheet">
+    <link href='../../css/atom-one-dark-reasonable.css?1783779191' rel="stylesheet">
+    <link href='../../css/theme.css?1783779191' rel="stylesheet">
+    <link href='../../css/hugo-theme.css?1783779191' rel="stylesheet">
     
-    <link href='../../css/theme-workshop.css?1783705256' rel="stylesheet">
+    <link href='../../css/theme-workshop.css?1783779191' rel="stylesheet">
     
     
 
-    <script src='../../js/jquery-3.3.1.min.js?1783705256'></script>
+    <script src='../../js/jquery-3.3.1.min.js?1783779191'></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -57,14 +57,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="../../js/lunr.min.js?1783705256"></script>
-<script type="text/javascript" src="../../js/auto-complete.js?1783705256"></script>
+<script type="text/javascript" src="../../js/lunr.min.js?1783779191"></script>
+<script type="text/javascript" src="../../js/auto-complete.js?1783779191"></script>
 <script type="text/javascript">
     
         var baseurl = "http:\/\/localhost:1313\/fcj-workshop-template\/";
     
 </script>
-<script type="text/javascript" src="../../js/search.js?1783705256"></script>
+<script type="text/javascript" src="../../js/search.js?1783779191"></script>
 
     
   </div>
@@ -1444,6 +1444,13 @@
   <ul>
     <li><a href="#week-6-objectives">Week 6 Objectives:</a></li>
     <li><a href="#tasks-to-be-carried-out-this-week">Tasks to be carried out this week:</a></li>
+    <li><a href="#week-6-achievements">Week 6 Achievements:</a>
+      <ul>
+        <li><a href="#theory">Theory:</a></li>
+        <li><a href="#practice">Practice:</a></li>
+        <li><a href="#evidences">Evidences:</a></li>
+      </ul>
+    </li>
   </ul>
 </nav>
     </div>
@@ -1530,6 +1537,47 @@
       </tr>
   </tbody>
 </table>
+<h2 id="week-6-achievements">Week 6 Achievements:</h2>
+<h3 id="theory">Theory:</h3>
+<ul>
+<li>Mastered Hybrid DNS architecture connecting On-premises systems (simulated via Microsoft AD on EC2) and AWS VPCs using Route 53 Resolver (Inbound/Outbound Endpoints).</li>
+<li>Understood the core operations of Amazon CloudWatch (Metrics, Logs, Alarms, Dashboards) to monitor infrastructure performance.</li>
+<li>Explored AWS Support Plans and how to handle technical or billing support cases in the AWS Console.</li>
+</ul>
+<h3 id="practice">Practice:</h3>
+<ul>
+<li>Successfully deployed a Hybrid DNS architecture using AWS CloudFormation.</li>
+<li>Configured precise Security Group rules to safely allow DNS traffic (port 53 TCP/UDP) between On-premises and AWS networks.</li>
+<li>Set up Inbound/Outbound Resolver Endpoints and custom Route 53 Resolver Rules to achieve cross-environment domain resolution.</li>
+</ul>
+<h3 id="evidences">Evidences:</h3>
+<ol>
+<li>
+<p><strong>Hybrid DNS Architecture and Resolver Setup (HyDrid_DNS)</strong>
+<img src="../../images/1-Worklog/Worklog_week1.6/HyDrid_DNS.png" alt="Hybrid DNS Architecture">
+<em>Description: Captures the architectural layout and settings for the cross-environment resolution via Route 53 Resolvers. It details the configuration of Inbound Endpoints (accepting DNS queries from the local on-premises network onto AWS) and Outbound Endpoints with forwarding rules (routing queries for corporate internal domains back to the local AD server). This setup ensures seamless, low-latency name resolution between cloud and local networks.</em></p>
+</li>
+<li>
+<p><strong>DNS Infrastructure Security Group Configuration (security group configuration)</strong>
+<img src="../../images/1-Worklog/Worklog_week1.6/security%20group%20configuration.png" alt="Security Group Configuration">
+<em>Description: Shows the security group configurations protecting the Route 53 Resolver endpoints and Active Directory servers. The inbound/outbound rules are strictly restricted to only allow DNS queries via port 53 (both TCP and UDP protocols) originating from specified local and VPC IP CIDR blocks. This setup prevents unauthorized access and minimizes the attack surface on the DNS infrastructure.</em></p>
+</li>
+<li>
+<p><strong>Microsoft Active Directory Deployment (Directory Service)</strong>
+<img src="../../images/1-Worklog/Worklog_week1.6/Directory_Service.png" alt="Directory Service Deployment">
+<em>Description: Displays the successful deployment of Microsoft Active Directory using AWS Directory Service. This AD setup simulates the on-premises corporate directory, acting as the primary DNS server for the corporate domain. It plays a crucial role in validating the hybrid DNS integration, as all outbound DNS queries for the internal domain from the AWS environment will be forwarded to this directory service.</em></p>
+</li>
+<li>
+<p><strong>Route 53 Inbound Endpoint Configuration (Inbound Endpoint)</strong>
+<img src="../../images/1-Worklog/Worklog_week1.6/Inbound_endpoint.png" alt="Inbound Endpoint Configuration">
+<em>Description: Illustrates the creation and configuration of a Route 53 Inbound Endpoint. This endpoint provisions specific ENIs (Elastic Network Interfaces) within the AWS VPC, assigning them IP addresses that listen for DNS queries originating from the on-premises network. This setup is the gateway that allows external resources to seamlessly resolve AWS-hosted domains.</em></p>
+</li>
+<li>
+<p><strong>Cross-Environment DNS Resolution Validation (Test Result)</strong>
+<img src="../../images/1-Worklog/Worklog_week1.6/Test_result.png" alt="DNS Resolution Test Result">
+<em>Description: Presents the final test results verifying the hybrid DNS setup. It shows successful <code>nslookup</code> or <code>dig</code> queries originating from the local environment resolving AWS internal domain names (via the Inbound Endpoint) and queries from the AWS environment successfully resolving corporate AD domains (via the Outbound Endpoint). This confirms the correct functioning of the Route 53 Resolver rules and bidirectional network connectivity.</em></p>
+</li>
+</ol>
 
 
 
@@ -2270,19 +2318,19 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="../../js/clipboard.min.js?1783705256"></script>
-    <script src="../../js/perfect-scrollbar.min.js?1783705256"></script>
-    <script src="../../js/perfect-scrollbar.jquery.min.js?1783705256"></script>
-    <script src="../../js/jquery.sticky.js?1783705256"></script>
-    <script src="../../js/featherlight.min.js?1783705256"></script>
-    <script src="../../js/highlight.pack.js?1783705256"></script>
+    <script src="../../js/clipboard.min.js?1783779191"></script>
+    <script src="../../js/perfect-scrollbar.min.js?1783779191"></script>
+    <script src="../../js/perfect-scrollbar.jquery.min.js?1783779191"></script>
+    <script src="../../js/jquery.sticky.js?1783779191"></script>
+    <script src="../../js/featherlight.min.js?1783779191"></script>
+    <script src="../../js/highlight.pack.js?1783779191"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="../../js/modernizr.custom-3.6.0.js?1783705256"></script>
-    <script src="../../js/learn.js?1783705256"></script>
-    <script src="../../js/hugo-learn.js?1783705256"></script>
+    <script src="../../js/modernizr.custom-3.6.0.js?1783779191"></script>
+    <script src="../../js/learn.js?1783779191"></script>
+    <script src="../../js/hugo-learn.js?1783779191"></script>
 
-    <link href="../../mermaid/mermaid.css?1783705256" rel="stylesheet" />
-    <script src="../../mermaid/mermaid.js?1783705256"></script>
+    <link href="../../mermaid/mermaid.css?1783779191" rel="stylesheet" />
+    <script src="../../mermaid/mermaid.js?1783779191"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

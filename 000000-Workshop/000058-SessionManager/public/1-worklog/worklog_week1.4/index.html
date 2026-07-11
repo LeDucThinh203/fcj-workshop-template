@@ -12,21 +12,21 @@
     <title>Week 4 Worklog :: AWS System Manager</title>
 
     
-    <link href='../../css/nucleus.css?1783705255' rel="stylesheet">
-    <link href='../../css/fontawesome-all.min.css?1783705255' rel="stylesheet">
-    <link href='../../css/hybrid.css?1783705255' rel="stylesheet">
-    <link href='../../css/featherlight.min.css?1783705255' rel="stylesheet">
-    <link href='../../css/perfect-scrollbar.min.css?1783705255' rel="stylesheet">
-    <link href='../../css/auto-complete.css?1783705255' rel="stylesheet">
-    <link href='../../css/atom-one-dark-reasonable.css?1783705255' rel="stylesheet">
-    <link href='../../css/theme.css?1783705255' rel="stylesheet">
-    <link href='../../css/hugo-theme.css?1783705255' rel="stylesheet">
+    <link href='../../css/nucleus.css?1783779024' rel="stylesheet">
+    <link href='../../css/fontawesome-all.min.css?1783779024' rel="stylesheet">
+    <link href='../../css/hybrid.css?1783779024' rel="stylesheet">
+    <link href='../../css/featherlight.min.css?1783779024' rel="stylesheet">
+    <link href='../../css/perfect-scrollbar.min.css?1783779024' rel="stylesheet">
+    <link href='../../css/auto-complete.css?1783779024' rel="stylesheet">
+    <link href='../../css/atom-one-dark-reasonable.css?1783779024' rel="stylesheet">
+    <link href='../../css/theme.css?1783779024' rel="stylesheet">
+    <link href='../../css/hugo-theme.css?1783779024' rel="stylesheet">
     
-    <link href='../../css/theme-workshop.css?1783705255' rel="stylesheet">
+    <link href='../../css/theme-workshop.css?1783779024' rel="stylesheet">
     
     
 
-    <script src='../../js/jquery-3.3.1.min.js?1783705255'></script>
+    <script src='../../js/jquery-3.3.1.min.js?1783779024'></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -57,14 +57,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="../../js/lunr.min.js?1783705255"></script>
-<script type="text/javascript" src="../../js/auto-complete.js?1783705255"></script>
+<script type="text/javascript" src="../../js/lunr.min.js?1783779024"></script>
+<script type="text/javascript" src="../../js/auto-complete.js?1783779024"></script>
 <script type="text/javascript">
     
         var baseurl = "http:\/\/localhost:1313\/fcj-workshop-template\/";
     
 </script>
-<script type="text/javascript" src="../../js/search.js?1783705255"></script>
+<script type="text/javascript" src="../../js/search.js?1783779024"></script>
 
     
   </div>
@@ -1446,6 +1446,7 @@
     <li><a href="#tasks-to-be-implemented-this-week">Tasks to be implemented this week:</a>
       <ul>
         <li><a href="#week-4-results">Week 4 Results:</a></li>
+        <li><a href="#evidences">Evidences:</a></li>
       </ul>
     </li>
   </ul>
@@ -1551,6 +1552,24 @@
 <li>Successfully performed data backup and restoration using Snapshots.</li>
 <li>Efficiently managed resources and performed cleanup to avoid unnecessary costs.</li>
 </ul>
+<h3 id="evidences">Evidences:</h3>
+<ol>
+<li>
+<p><strong>SSH Key Pair Permissions Configuration (ec2_connection_key)</strong>
+<img src="../../images/1-Worklog/Worklog_week1.4/ec2_connection_key.png" alt="SSH Key Pair Permissions">
+<em>Description: Demonstrates setting the appropriate permissions on the private key file (<code>.pem</code>) using the <code>chmod 400</code> command in the CLI. Restricting read/write permissions is a security requirement for SSH connections to prevent private keys from being exposed or utilized by other local users before establishing a connection.</em></p>
+</li>
+<li>
+<p><strong>Successful SSH Connection to Linux EC2 Public Instance (ec2_connection)</strong>
+<img src="../../images/1-Worklog/Worklog_week1.4/ec2_connection.png" alt="Successful SSH Connection">
+<em>Description: Captures the CLI output of a successful SSH login session from the local client to the EC2 Public Instance using the configured Key Pair. The successful Amazon Linux terminal greeting confirms that the Internet Gateway routing and the Security Group&rsquo;s inbound rule for port 22 are operational.</em></p>
+</li>
+<li>
+<p><strong>Internal Routing and Connection to EC2 Private Instance (ec2_connection_Private)</strong>
+<img src="../../images/1-Worklog/Worklog_week1.4/ec2_connection_Private.png" alt="Internal Connection to Private Instance">
+<em>Description: Practical evidence of successfully establishing an internal connection to the EC2 Private Subnet Instance from the EC2 Public Instance acting as a Bastion Host. Since the Private Instance has no public IP, this jump-host method ensures secure network containment and management.</em></p>
+</li>
+</ol>
 
 
 
@@ -2291,19 +2310,19 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="../../js/clipboard.min.js?1783705256"></script>
-    <script src="../../js/perfect-scrollbar.min.js?1783705256"></script>
-    <script src="../../js/perfect-scrollbar.jquery.min.js?1783705256"></script>
-    <script src="../../js/jquery.sticky.js?1783705256"></script>
-    <script src="../../js/featherlight.min.js?1783705256"></script>
-    <script src="../../js/highlight.pack.js?1783705256"></script>
+    <script src="../../js/clipboard.min.js?1783779024"></script>
+    <script src="../../js/perfect-scrollbar.min.js?1783779024"></script>
+    <script src="../../js/perfect-scrollbar.jquery.min.js?1783779024"></script>
+    <script src="../../js/jquery.sticky.js?1783779024"></script>
+    <script src="../../js/featherlight.min.js?1783779024"></script>
+    <script src="../../js/highlight.pack.js?1783779024"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="../../js/modernizr.custom-3.6.0.js?1783705256"></script>
-    <script src="../../js/learn.js?1783705256"></script>
-    <script src="../../js/hugo-learn.js?1783705256"></script>
+    <script src="../../js/modernizr.custom-3.6.0.js?1783779024"></script>
+    <script src="../../js/learn.js?1783779024"></script>
+    <script src="../../js/hugo-learn.js?1783779024"></script>
 
-    <link href="../../mermaid/mermaid.css?1783705256" rel="stylesheet" />
-    <script src="../../mermaid/mermaid.js?1783705256"></script>
+    <link href="../../mermaid/mermaid.css?1783779024" rel="stylesheet" />
+    <script src="../../mermaid/mermaid.js?1783779024"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

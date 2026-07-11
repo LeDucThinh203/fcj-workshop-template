@@ -12,21 +12,21 @@
     <title>Worklog Tuần 4 :: AWS System Manager</title>
 
     
-    <link href='../../../css/nucleus.css?1783705259' rel="stylesheet">
-    <link href='../../../css/fontawesome-all.min.css?1783705259' rel="stylesheet">
-    <link href='../../../css/hybrid.css?1783705259' rel="stylesheet">
-    <link href='../../../css/featherlight.min.css?1783705259' rel="stylesheet">
-    <link href='../../../css/perfect-scrollbar.min.css?1783705259' rel="stylesheet">
-    <link href='../../../css/auto-complete.css?1783705259' rel="stylesheet">
-    <link href='../../../css/atom-one-dark-reasonable.css?1783705259' rel="stylesheet">
-    <link href='../../../css/theme.css?1783705259' rel="stylesheet">
-    <link href='../../../css/hugo-theme.css?1783705259' rel="stylesheet">
+    <link href='../../../css/nucleus.css?1783779025' rel="stylesheet">
+    <link href='../../../css/fontawesome-all.min.css?1783779025' rel="stylesheet">
+    <link href='../../../css/hybrid.css?1783779025' rel="stylesheet">
+    <link href='../../../css/featherlight.min.css?1783779025' rel="stylesheet">
+    <link href='../../../css/perfect-scrollbar.min.css?1783779025' rel="stylesheet">
+    <link href='../../../css/auto-complete.css?1783779025' rel="stylesheet">
+    <link href='../../../css/atom-one-dark-reasonable.css?1783779025' rel="stylesheet">
+    <link href='../../../css/theme.css?1783779025' rel="stylesheet">
+    <link href='../../../css/hugo-theme.css?1783779025' rel="stylesheet">
     
-    <link href='../../../css/theme-workshop.css?1783705259' rel="stylesheet">
+    <link href='../../../css/theme-workshop.css?1783779025' rel="stylesheet">
     
     
 
-    <script src='../../../js/jquery-3.3.1.min.js?1783705259'></script>
+    <script src='../../../js/jquery-3.3.1.min.js?1783779025'></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -57,14 +57,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="../../../js/lunr.min.js?1783705259"></script>
-<script type="text/javascript" src="../../../js/auto-complete.js?1783705259"></script>
+<script type="text/javascript" src="../../../js/lunr.min.js?1783779025"></script>
+<script type="text/javascript" src="../../../js/auto-complete.js?1783779025"></script>
 <script type="text/javascript">
     
         var baseurl = "http:\/\/localhost:1313\/fcj-workshop-template\/\/vi";
     
 </script>
-<script type="text/javascript" src="../../../js/search.js?1783705259"></script>
+<script type="text/javascript" src="../../../js/search.js?1783779025"></script>
 
     
   </div>
@@ -1467,6 +1467,7 @@
     <li><a href="#công-việc-thực-hiện-trong-tuần-này">Công việc thực hiện trong tuần này:</a>
       <ul>
         <li><a href="#kết-quả-tuần-4">Kết quả Tuần 4:</a></li>
+        <li><a href="#hình-ảnh-minh-chứng">Hình ảnh minh chứng:</a></li>
       </ul>
     </li>
   </ul>
@@ -1572,6 +1573,24 @@
 <li>Thực hiện thành công sao lưu và khôi phục dữ liệu bằng Snapshots.</li>
 <li>Quản lý tài nguyên hiệu quả và dọn dẹp để tránh chi phí không cần thiết.</li>
 </ul>
+<h3 id="hình-ảnh-minh-chứng">Hình ảnh minh chứng:</h3>
+<ol>
+<li>
+<p><strong>Cấu hình SSH Key Pair bảo mật kết nối (ec2_connection_key)</strong>
+<img src="../../../images/1-Worklog/Worklog_week1.4/ec2_connection_key.png" alt="Cấu hình SSH Key Pair">
+<em>Mô tả chi tiết: Hình ảnh thể hiện việc phân quyền truy cập cho tệp khóa bảo mật Private Key (<code>.pem</code>) bằng lệnh <code>chmod 400</code> trên môi trường dòng lệnh Linux. Việc hạn chế quyền đọc/ghi cho tệp khóa là yêu cầu bảo mật bắt buộc của giao thức SSH để đảm bảo khóa không bị lộ hoặc bị sử dụng bởi người dùng khác trên cùng hệ thống trước khi bắt đầu phiên kết nối.</em></p>
+</li>
+<li>
+<p><strong>Kết nối SSH thành công vào Linux EC2 Public Instance (ec2_connection)</strong>
+<img src="../../../images/1-Worklog/Worklog_week1.4/ec2_connection.png" alt="Kết nối SSH thành công">
+<em>Mô tả chi tiết: Ghi lại kết quả thực tế khi kết nối thành công từ máy khách cục bộ vào máy chủ EC2 Public Instance thông qua CLI sử dụng giao thức SSH và Key Pair đã cấu hình. Giao diện dòng lệnh hiển thị shell đăng nhập thành công của Amazon Linux, xác nhận cấu hình định tuyến Internet Gateway và Security Group inbound port 22 hoạt động hoàn hảo.</em></p>
+</li>
+<li>
+<p><strong>Định tuyến và kết nối nội bộ vào EC2 Private Instance (ec2_connection_Private)</strong>
+<img src="../../../images/1-Worklog/Worklog_week1.4/ec2_connection_Private.png" alt="Kết nối nội bộ EC2 Private">
+<em>Mô tả chi tiết: Minh chứng thực hành kết nối nội bộ thành công vào EC2 Instance trong Private Subnet từ máy chủ EC2 Public (đóng vai trò là Bastion Host). Do Private Instance không thể truy cập trực tiếp từ Internet, việc cấu hình định tuyến bắc cầu này đảm bảo kiểm soát truy cập nghiêm ngặt và quản trị an toàn các máy chủ trong dải mạng nội bộ.</em></p>
+</li>
+</ol>
 
 
 
@@ -2328,19 +2347,19 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="../../../js/clipboard.min.js?1783705259"></script>
-    <script src="../../../js/perfect-scrollbar.min.js?1783705259"></script>
-    <script src="../../../js/perfect-scrollbar.jquery.min.js?1783705259"></script>
-    <script src="../../../js/jquery.sticky.js?1783705259"></script>
-    <script src="../../../js/featherlight.min.js?1783705259"></script>
-    <script src="../../../js/highlight.pack.js?1783705259"></script>
+    <script src="../../../js/clipboard.min.js?1783779025"></script>
+    <script src="../../../js/perfect-scrollbar.min.js?1783779025"></script>
+    <script src="../../../js/perfect-scrollbar.jquery.min.js?1783779025"></script>
+    <script src="../../../js/jquery.sticky.js?1783779025"></script>
+    <script src="../../../js/featherlight.min.js?1783779025"></script>
+    <script src="../../../js/highlight.pack.js?1783779025"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="../../../js/modernizr.custom-3.6.0.js?1783705259"></script>
-    <script src="../../../js/learn.js?1783705259"></script>
-    <script src="../../../js/hugo-learn.js?1783705259"></script>
+    <script src="../../../js/modernizr.custom-3.6.0.js?1783779025"></script>
+    <script src="../../../js/learn.js?1783779025"></script>
+    <script src="../../../js/hugo-learn.js?1783779025"></script>
 
-    <link href="../../../mermaid/mermaid.css?1783705259" rel="stylesheet" />
-    <script src="../../../mermaid/mermaid.js?1783705259"></script>
+    <link href="../../../mermaid/mermaid.css?1783779025" rel="stylesheet" />
+    <script src="../../../mermaid/mermaid.js?1783779025"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

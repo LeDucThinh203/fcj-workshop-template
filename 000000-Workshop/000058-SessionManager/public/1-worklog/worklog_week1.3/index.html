@@ -12,21 +12,21 @@
     <title>Week 3 Worklog :: AWS System Manager</title>
 
     
-    <link href='../../css/nucleus.css?1783705252' rel="stylesheet">
-    <link href='../../css/fontawesome-all.min.css?1783705252' rel="stylesheet">
-    <link href='../../css/hybrid.css?1783705252' rel="stylesheet">
-    <link href='../../css/featherlight.min.css?1783705252' rel="stylesheet">
-    <link href='../../css/perfect-scrollbar.min.css?1783705252' rel="stylesheet">
-    <link href='../../css/auto-complete.css?1783705252' rel="stylesheet">
-    <link href='../../css/atom-one-dark-reasonable.css?1783705252' rel="stylesheet">
-    <link href='../../css/theme.css?1783705252' rel="stylesheet">
-    <link href='../../css/hugo-theme.css?1783705252' rel="stylesheet">
+    <link href='../../css/nucleus.css?1783779024' rel="stylesheet">
+    <link href='../../css/fontawesome-all.min.css?1783779024' rel="stylesheet">
+    <link href='../../css/hybrid.css?1783779024' rel="stylesheet">
+    <link href='../../css/featherlight.min.css?1783779024' rel="stylesheet">
+    <link href='../../css/perfect-scrollbar.min.css?1783779024' rel="stylesheet">
+    <link href='../../css/auto-complete.css?1783779024' rel="stylesheet">
+    <link href='../../css/atom-one-dark-reasonable.css?1783779024' rel="stylesheet">
+    <link href='../../css/theme.css?1783779024' rel="stylesheet">
+    <link href='../../css/hugo-theme.css?1783779024' rel="stylesheet">
     
-    <link href='../../css/theme-workshop.css?1783705252' rel="stylesheet">
+    <link href='../../css/theme-workshop.css?1783779024' rel="stylesheet">
     
     
 
-    <script src='../../js/jquery-3.3.1.min.js?1783705252'></script>
+    <script src='../../js/jquery-3.3.1.min.js?1783779024'></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -57,14 +57,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="../../js/lunr.min.js?1783705252"></script>
-<script type="text/javascript" src="../../js/auto-complete.js?1783705252"></script>
+<script type="text/javascript" src="../../js/lunr.min.js?1783779024"></script>
+<script type="text/javascript" src="../../js/auto-complete.js?1783779024"></script>
 <script type="text/javascript">
     
         var baseurl = "http:\/\/localhost:1313\/fcj-workshop-template\/";
     
 </script>
-<script type="text/javascript" src="../../js/search.js?1783705253"></script>
+<script type="text/javascript" src="../../js/search.js?1783779024"></script>
 
     
   </div>
@@ -1444,6 +1444,13 @@
   <ul>
     <li><a href="#week-3-objectives">Week 3 Objectives:</a></li>
     <li><a href="#tasks-to-implement-this-week">Tasks to implement this week:</a></li>
+    <li><a href="#week-3-achievements">Week 3 Achievements:</a>
+      <ul>
+        <li><a href="#theory">Theory:</a></li>
+        <li><a href="#practice">Practice:</a></li>
+        <li><a href="#evidences">Evidences:</a></li>
+      </ul>
+    </li>
   </ul>
 </nav>
     </div>
@@ -1531,6 +1538,32 @@
       </tr>
   </tbody>
 </table>
+<h2 id="week-3-achievements">Week 3 Achievements:</h2>
+<h3 id="theory">Theory:</h3>
+<ul>
+<li>Gained a solid understanding of the architecture and mechanisms of Amazon EC2 (Elastic Compute Cloud).</li>
+<li>Understood core components: Instance Types (resource optimization), Amazon Machine Image (AMI - OS packaging), Key Pairs (public/private key security), and EBS Volumes/Snapshots (data storage and backups).</li>
+<li>Explored IAM Roles for EC2 to securely grant AWS resource permissions without embedding Access Keys on the servers.</li>
+</ul>
+<h3 id="practice">Practice:</h3>
+<ul>
+<li>Established a secure network environment and successfully launched 2 EC2 Instances (1 Linux Instance in the Public Subnet and 1 Linux Instance in the Private Subnet).</li>
+<li>Configured Security Groups with appropriate ports (port 22 for SSH, port 80/443 for Web Server) ensuring strict inbound/outbound traffic control.</li>
+<li>Successfully established remote connections to the instances and verified basic service deployments.</li>
+</ul>
+<h3 id="evidences">Evidences:</h3>
+<ol>
+<li>
+<p><strong>Initialization and Connectivity Check for Public Subnet EC2 Instance (EC2_Public)</strong>
+<img src="../../images/1-Worklog/Worklog_week1.3/EC2_Public.png" alt="EC2 Public Instance">
+<em>Description: Verification of successfully launching an EC2 Instance inside the Public Subnet. The host is assigned a Public IP and associated with a Security Group that permits remote connections. The screenshot shows the instance state as &lsquo;Running&rsquo; along with its networking details, fully prepared for SSH access.</em></p>
+</li>
+<li>
+<p><strong>Security Setup and Configuration for Private Subnet EC2 Instance (EC2_Private)</strong>
+<img src="../../images/1-Worklog/Worklog_week1.3/EC2_Private.png" alt="EC2 Private Instance">
+<em>Description: Screenshot showing the configurations of the EC2 Instance deployed entirely in the Private Subnet (highly secure internal network partition). This host does not have a Public IP assigned, effectively isolating it from the public internet to protect backend databases or application code. Connections to this instance are routed through a Bastion Host, NAT Gateway, or VPC Endpoints.</em></p>
+</li>
+</ol>
 
 
 
@@ -2271,19 +2304,19 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="../../js/clipboard.min.js?1783705255"></script>
-    <script src="../../js/perfect-scrollbar.min.js?1783705255"></script>
-    <script src="../../js/perfect-scrollbar.jquery.min.js?1783705255"></script>
-    <script src="../../js/jquery.sticky.js?1783705255"></script>
-    <script src="../../js/featherlight.min.js?1783705255"></script>
-    <script src="../../js/highlight.pack.js?1783705255"></script>
+    <script src="../../js/clipboard.min.js?1783779024"></script>
+    <script src="../../js/perfect-scrollbar.min.js?1783779024"></script>
+    <script src="../../js/perfect-scrollbar.jquery.min.js?1783779024"></script>
+    <script src="../../js/jquery.sticky.js?1783779024"></script>
+    <script src="../../js/featherlight.min.js?1783779024"></script>
+    <script src="../../js/highlight.pack.js?1783779024"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="../../js/modernizr.custom-3.6.0.js?1783705255"></script>
-    <script src="../../js/learn.js?1783705255"></script>
-    <script src="../../js/hugo-learn.js?1783705255"></script>
+    <script src="../../js/modernizr.custom-3.6.0.js?1783779024"></script>
+    <script src="../../js/learn.js?1783779024"></script>
+    <script src="../../js/hugo-learn.js?1783779024"></script>
 
-    <link href="../../mermaid/mermaid.css?1783705255" rel="stylesheet" />
-    <script src="../../mermaid/mermaid.js?1783705255"></script>
+    <link href="../../mermaid/mermaid.css?1783779024" rel="stylesheet" />
+    <script src="../../mermaid/mermaid.js?1783779024"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

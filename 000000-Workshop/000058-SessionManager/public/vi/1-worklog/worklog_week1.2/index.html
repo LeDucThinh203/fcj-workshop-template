@@ -12,21 +12,21 @@
     <title>Nhật ký Tuần 2 :: AWS System Manager</title>
 
     
-    <link href='../../../css/nucleus.css?1783705259' rel="stylesheet">
-    <link href='../../../css/fontawesome-all.min.css?1783705259' rel="stylesheet">
-    <link href='../../../css/hybrid.css?1783705259' rel="stylesheet">
-    <link href='../../../css/featherlight.min.css?1783705259' rel="stylesheet">
-    <link href='../../../css/perfect-scrollbar.min.css?1783705259' rel="stylesheet">
-    <link href='../../../css/auto-complete.css?1783705259' rel="stylesheet">
-    <link href='../../../css/atom-one-dark-reasonable.css?1783705259' rel="stylesheet">
-    <link href='../../../css/theme.css?1783705259' rel="stylesheet">
-    <link href='../../../css/hugo-theme.css?1783705259' rel="stylesheet">
+    <link href='../../../css/nucleus.css?1783779025' rel="stylesheet">
+    <link href='../../../css/fontawesome-all.min.css?1783779025' rel="stylesheet">
+    <link href='../../../css/hybrid.css?1783779025' rel="stylesheet">
+    <link href='../../../css/featherlight.min.css?1783779025' rel="stylesheet">
+    <link href='../../../css/perfect-scrollbar.min.css?1783779025' rel="stylesheet">
+    <link href='../../../css/auto-complete.css?1783779025' rel="stylesheet">
+    <link href='../../../css/atom-one-dark-reasonable.css?1783779025' rel="stylesheet">
+    <link href='../../../css/theme.css?1783779025' rel="stylesheet">
+    <link href='../../../css/hugo-theme.css?1783779025' rel="stylesheet">
     
-    <link href='../../../css/theme-workshop.css?1783705259' rel="stylesheet">
+    <link href='../../../css/theme-workshop.css?1783779025' rel="stylesheet">
     
     
 
-    <script src='../../../js/jquery-3.3.1.min.js?1783705259'></script>
+    <script src='../../../js/jquery-3.3.1.min.js?1783779025'></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -57,14 +57,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="../../../js/lunr.min.js?1783705259"></script>
-<script type="text/javascript" src="../../../js/auto-complete.js?1783705259"></script>
+<script type="text/javascript" src="../../../js/lunr.min.js?1783779025"></script>
+<script type="text/javascript" src="../../../js/auto-complete.js?1783779025"></script>
 <script type="text/javascript">
     
         var baseurl = "http:\/\/localhost:1313\/fcj-workshop-template\/\/vi";
     
 </script>
-<script type="text/javascript" src="../../../js/search.js?1783705259"></script>
+<script type="text/javascript" src="../../../js/search.js?1783779025"></script>
 
     
   </div>
@@ -1468,6 +1468,8 @@
     <li><a href="#thành-tựu-tuần-2">Thành tựu Tuần 2:</a>
       <ul>
         <li><a href="#lý-thuyết">Lý thuyết:</a></li>
+        <li><a href="#thực-hành">Thực hành:</a></li>
+        <li><a href="#hình-ảnh-minh-chứng">Hình ảnh minh chứng:</a></li>
       </ul>
     </li>
   </ul>
@@ -1563,6 +1565,35 @@
 <li>Có thể hiểu kiến trúc của Amazon VPC và cách quản lý dải địa chỉ IP qua CIDR</li>
 <li>Biết cách tạo và cấu hình route tables</li>
 </ul>
+<h3 id="thực-hành">Thực hành:</h3>
+<ul>
+<li>Đã thực hiện cấu hình VPC hoàn chỉnh bao gồm các Subnet công cộng và riêng tư.</li>
+<li>Thiết lập thành công Internet Gateway và NAT Gateway để định tuyến lưu lượng mạng.</li>
+<li>Triển khai EC2 Instance và cấu hình bảo mật thông qua Security Groups/Network ACLs.</li>
+</ul>
+<h3 id="hình-ảnh-minh-chứng">Hình ảnh minh chứng:</h3>
+<ol>
+<li>
+<p><strong>Lịch sử chuyên cần (Attendance History - Tuần 2)</strong>
+<img src="../../../images/1-Worklog/Worklog_week1.2/attendance_history_2.png" alt="Lịch sử chuyên cần">
+<em>Mô tả chi tiết: Hình ảnh ghi nhận lịch sử chấm công và tham gia đầy đủ các buổi học tập, thảo luận nhóm trong Tuần 2. Đây là bằng chứng xác thực cho việc tuân thủ giờ giấc làm việc, tinh thần tự giác và hoàn thành đầy đủ thời lượng đào tạo theo yêu cầu của chương trình First Cloud Journey.</em></p>
+</li>
+<li>
+<p><strong>Cấu hình sơ đồ mạng Lab07 - Bước 1: Khởi tạo VPC &amp; Thiết lập thông số cơ bản</strong>
+<img src="../../../images/1-Worklog/Worklog_week1.2/Module%2001-Lab07-01.png" alt="Cấu hình Lab07 - Bước 1">
+<em>Mô tả chi tiết: Minh chứng cho bước đầu tiên trong chuỗi thực hành Lab07 - tạo dựng môi trường mạng ảo Amazon VPC (Virtual Private Cloud). Hình ảnh hiển thị quá trình định nghĩa dải IPv4 CIDR Block chính cho hệ thống mạng nội bộ, kích hoạt các tính năng phân giải tên miền quan trọng như DNS Resolution và DNS Hostnames, tạo nền tảng vững chắc để xây dựng các phân khu mạng con (Subnets) ở các bước tiếp theo.</em></p>
+</li>
+<li>
+<p><strong>Cấu hình sơ đồ mạng Lab07 - Bước 2: Tạo Subnets &amp; Thiết lập Route Tables</strong>
+<img src="../../../images/1-Worklog/Worklog_week1.2/Module%2001-Lab07-02.png" alt="Cấu hình Lab07 - Bước 2">
+<em>Mô tả chi tiết: Minh chứng quá trình phân chia dải mạng lớn thành các Subnets độc lập bao gồm Public Subnets (mạng công cộng) và Private Subnets (mạng riêng tư) trên các Availability Zones (Vùng khả dụng) khác nhau để đảm bảo tính sẵn sàng cao. Đồng thời, cấu hình bảng định tuyến (Route Tables), liên kết chính xác từng subnet với bảng định tuyến tương ứng nhằm kiểm soát và phân luồng dữ liệu truy cập một cách bảo mật.</em></p>
+</li>
+<li>
+<p><strong>Cấu hình sơ đồ mạng Lab07 - Bước 3: Thiết lập Gateways &amp; Kiểm tra kết nối Internet</strong>
+<img src="../../../images/1-Worklog/Worklog_week1.2/Module%2001-Lab07-03.png" alt="Cấu hình Lab07 - Bước 3">
+<em>Mô tả chi tiết: Hình ảnh ghi nhận bước hoàn thiện sơ đồ mạng bằng cách cấu hình Internet Gateway (IGW) cho phép lưu lượng truy cập từ ngoài Internet vào Public Subnet, và thiết lập NAT Gateway để hỗ trợ các máy chủ EC2 ở Private Subnet tải cập nhật và kết nối Internet một chiều một cách an toàn. Đây là bước xác minh quan trọng chứng minh toàn bộ hệ thống định tuyến hoạt động ổn định và đúng thiết kế kiến trúc.</em></p>
+</li>
+</ol>
 
 
 
@@ -2319,19 +2350,19 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="../../../js/clipboard.min.js?1783705259"></script>
-    <script src="../../../js/perfect-scrollbar.min.js?1783705259"></script>
-    <script src="../../../js/perfect-scrollbar.jquery.min.js?1783705259"></script>
-    <script src="../../../js/jquery.sticky.js?1783705259"></script>
-    <script src="../../../js/featherlight.min.js?1783705259"></script>
-    <script src="../../../js/highlight.pack.js?1783705259"></script>
+    <script src="../../../js/clipboard.min.js?1783779025"></script>
+    <script src="../../../js/perfect-scrollbar.min.js?1783779025"></script>
+    <script src="../../../js/perfect-scrollbar.jquery.min.js?1783779025"></script>
+    <script src="../../../js/jquery.sticky.js?1783779025"></script>
+    <script src="../../../js/featherlight.min.js?1783779025"></script>
+    <script src="../../../js/highlight.pack.js?1783779025"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="../../../js/modernizr.custom-3.6.0.js?1783705259"></script>
-    <script src="../../../js/learn.js?1783705259"></script>
-    <script src="../../../js/hugo-learn.js?1783705259"></script>
+    <script src="../../../js/modernizr.custom-3.6.0.js?1783779025"></script>
+    <script src="../../../js/learn.js?1783779025"></script>
+    <script src="../../../js/hugo-learn.js?1783779025"></script>
 
-    <link href="../../../mermaid/mermaid.css?1783705259" rel="stylesheet" />
-    <script src="../../../mermaid/mermaid.js?1783705259"></script>
+    <link href="../../../mermaid/mermaid.css?1783779025" rel="stylesheet" />
+    <script src="../../../mermaid/mermaid.js?1783779025"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

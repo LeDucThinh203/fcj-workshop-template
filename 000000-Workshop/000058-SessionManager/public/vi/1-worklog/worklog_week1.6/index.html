@@ -12,21 +12,21 @@
     <title>Worklog Tuần 6 :: AWS System Manager</title>
 
     
-    <link href='../../../css/nucleus.css?1783705259' rel="stylesheet">
-    <link href='../../../css/fontawesome-all.min.css?1783705259' rel="stylesheet">
-    <link href='../../../css/hybrid.css?1783705259' rel="stylesheet">
-    <link href='../../../css/featherlight.min.css?1783705259' rel="stylesheet">
-    <link href='../../../css/perfect-scrollbar.min.css?1783705259' rel="stylesheet">
-    <link href='../../../css/auto-complete.css?1783705259' rel="stylesheet">
-    <link href='../../../css/atom-one-dark-reasonable.css?1783705259' rel="stylesheet">
-    <link href='../../../css/theme.css?1783705259' rel="stylesheet">
-    <link href='../../../css/hugo-theme.css?1783705259' rel="stylesheet">
+    <link href='../../../css/nucleus.css?1783779191' rel="stylesheet">
+    <link href='../../../css/fontawesome-all.min.css?1783779191' rel="stylesheet">
+    <link href='../../../css/hybrid.css?1783779191' rel="stylesheet">
+    <link href='../../../css/featherlight.min.css?1783779191' rel="stylesheet">
+    <link href='../../../css/perfect-scrollbar.min.css?1783779191' rel="stylesheet">
+    <link href='../../../css/auto-complete.css?1783779191' rel="stylesheet">
+    <link href='../../../css/atom-one-dark-reasonable.css?1783779191' rel="stylesheet">
+    <link href='../../../css/theme.css?1783779191' rel="stylesheet">
+    <link href='../../../css/hugo-theme.css?1783779191' rel="stylesheet">
     
-    <link href='../../../css/theme-workshop.css?1783705259' rel="stylesheet">
+    <link href='../../../css/theme-workshop.css?1783779191' rel="stylesheet">
     
     
 
-    <script src='../../../js/jquery-3.3.1.min.js?1783705259'></script>
+    <script src='../../../js/jquery-3.3.1.min.js?1783779191'></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -57,14 +57,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="../../../js/lunr.min.js?1783705259"></script>
-<script type="text/javascript" src="../../../js/auto-complete.js?1783705259"></script>
+<script type="text/javascript" src="../../../js/lunr.min.js?1783779191"></script>
+<script type="text/javascript" src="../../../js/auto-complete.js?1783779191"></script>
 <script type="text/javascript">
     
         var baseurl = "http:\/\/localhost:1313\/fcj-workshop-template\/\/vi";
     
 </script>
-<script type="text/javascript" src="../../../js/search.js?1783705259"></script>
+<script type="text/javascript" src="../../../js/search.js?1783779191"></script>
 
     
   </div>
@@ -1465,6 +1465,13 @@
   <ul>
     <li><a href="#mục-tiêu-tuần-6">Mục tiêu Tuần 6:</a></li>
     <li><a href="#công-việc-thực-hiện-trong-tuần-này">Công việc thực hiện trong tuần này:</a></li>
+    <li><a href="#thành-tựu-tuần-6">Thành tựu Tuần 6:</a>
+      <ul>
+        <li><a href="#lý-thuyết">Lý thuyết:</a></li>
+        <li><a href="#thực-hành">Thực hành:</a></li>
+        <li><a href="#hình-ảnh-minh-chứng">Hình ảnh minh chứng:</a></li>
+      </ul>
+    </li>
   </ul>
 </nav>
     </div>
@@ -1551,6 +1558,47 @@
       </tr>
   </tbody>
 </table>
+<h2 id="thành-tựu-tuần-6">Thành tựu Tuần 6:</h2>
+<h3 id="lý-thuyết">Lý thuyết:</h3>
+<ul>
+<li>Nắm vững kiến trúc Hybrid DNS kết nối hệ thống On-premises (giả lập Microsoft AD trên EC2) và AWS VPC sử dụng Route 53 Resolver (Inbound/Outbound Endpoints).</li>
+<li>Hiểu rõ cơ chế hoạt động của Amazon CloudWatch (Metrics, Logs, Alarms, Dashboards) để giám sát hiệu năng hệ thống.</li>
+<li>Tìm hiểu về AWS Support Plans và cách quản lý Support Cases trực tiếp trên AWS Console.</li>
+</ul>
+<h3 id="thực-hành">Thực hành:</h3>
+<ul>
+<li>Deploy thành công kiến trúc mạng Hybrid DNS bằng CloudFormation.</li>
+<li>Cấu hình chuẩn xác các quy tắc Security Groups cho phép luồng lưu lượng DNS (cổng 53 TCP/UDP) lưu thông an toàn giữa On-premises và AWS.</li>
+<li>Thiết lập thành công Inbound và Outbound Resolver Endpoints cùng Resolver Rules để phân giải chính xác tên miền chéo.</li>
+</ul>
+<h3 id="hình-ảnh-minh-chứng">Hình ảnh minh chứng:</h3>
+<ol>
+<li>
+<p><strong>Thiết kế và triển khai mô hình Hybrid DNS (HyDrid_DNS)</strong>
+<img src="../../../images/1-Worklog/Worklog_week1.6/HyDrid_DNS.png" alt="Mô hình Hybrid DNS">
+<em>Mô tả chi tiết: Hình ảnh thể hiện sơ đồ kiến trúc và giao diện cấu hình phân giải tên miền chéo Route 53 Resolver (Hybrid DNS). Trong đó mô tả chi tiết việc cấu hình các Route 53 Inbound Endpoint (nhận yêu cầu phân giải từ mạng tại chỗ On-premises gửi lên AWS) và Outbound Endpoint cùng với các Rule tương ứng (chuyển tiếp các truy vấn tên miền nội bộ của doanh nghiệp về DNS Server On-premises). Sự tích hợp này đảm bảo hệ thống mạng lai hoạt động liền mạch, phân giải tên miền ổn định giữa môi trường cloud và local.</em></p>
+</li>
+<li>
+<p><strong>Cấu hình Security Group cho hệ thống DNS (security group configuration)</strong>
+<img src="../../../images/1-Worklog/Worklog_week1.6/security%20group%20configuration.png" alt="Cấu hình Security Group">
+<em>Mô tả chi tiết: Ghi lại giao diện cấu hình chi tiết của Security Group áp dụng cho các Resolver Endpoints và máy chủ Active Directory. Các quy tắc Inbound và Outbound được thiết lập chặt chẽ để chỉ cho phép các gói tin DNS truy cập qua cổng 53 (cả hai giao thức TCP và UDP) từ các dải IP được định nghĩa trước của mạng On-premises và AWS VPC. Cấu hình này giúp ngăn chặn các truy cập trái phép và giảm thiểu tối đa diện tấn công vào hạ tầng phân giải tên miền.</em></p>
+</li>
+<li>
+<p><strong>Triển khai Microsoft Active Directory (Directory Service)</strong>
+<img src="../../../images/1-Worklog/Worklog_week1.6/Directory_Service.png" alt="Triển khai Directory Service">
+<em>Mô tả chi tiết: Hình ảnh hiển thị trạng thái triển khai thành công Microsoft Active Directory thông qua AWS Directory Service. Hệ thống AD này đóng vai trò giả lập thư mục doanh nghiệp tại chỗ (on-premises) và là DNS server chính yếu cho tên miền nội bộ. Đây là thành phần then chốt để xác thực tích hợp Hybrid DNS, nơi các truy vấn DNS từ AWS hướng về tên miền nội bộ sẽ được chuyển tiếp đến.</em></p>
+</li>
+<li>
+<p><strong>Cấu hình Route 53 Inbound Endpoint (Inbound Endpoint)</strong>
+<img src="../../../images/1-Worklog/Worklog_week1.6/Inbound_endpoint.png" alt="Cấu hình Inbound Endpoint">
+<em>Mô tả chi tiết: Minh họa quá trình thiết lập Route 53 Inbound Endpoint. Endpoint này tạo ra các giao diện mạng (ENI) bên trong AWS VPC, được gán địa chỉ IP cụ thể nhằm mục đích lắng nghe và tiếp nhận các truy vấn DNS gửi tới từ mạng On-premises. Thiết lập này đóng vai trò như cổng giao tiếp cho phép các máy chủ bên ngoài phân giải liền mạch các tên miền lưu trữ trên AWS.</em></p>
+</li>
+<li>
+<p><strong>Kiểm tra kết quả phân giải tên miền chéo (Test Result)</strong>
+<img src="../../../images/1-Worklog/Worklog_week1.6/Test_result.png" alt="Kết quả kiểm tra">
+<em>Mô tả chi tiết: Cung cấp kết quả kiểm thử (test result) xác nhận hệ thống Hybrid DNS hoạt động chính xác. Các lệnh kiểm tra như <code>nslookup</code> hoặc <code>dig</code> cho thấy mạng tại chỗ có thể phân giải thành công tên miền nội bộ của AWS (thông qua Inbound Endpoint) và ngược lại, máy chủ trên AWS cũng truy vấn được tên miền doanh nghiệp (qua Outbound Endpoint). Điều này chứng minh các Resolver Rules và kết nối mạng hai chiều đã được cấu hình chuẩn xác.</em></p>
+</li>
+</ol>
 
 
 
@@ -2307,19 +2355,19 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="../../../js/clipboard.min.js?1783705259"></script>
-    <script src="../../../js/perfect-scrollbar.min.js?1783705259"></script>
-    <script src="../../../js/perfect-scrollbar.jquery.min.js?1783705259"></script>
-    <script src="../../../js/jquery.sticky.js?1783705259"></script>
-    <script src="../../../js/featherlight.min.js?1783705259"></script>
-    <script src="../../../js/highlight.pack.js?1783705259"></script>
+    <script src="../../../js/clipboard.min.js?1783779191"></script>
+    <script src="../../../js/perfect-scrollbar.min.js?1783779191"></script>
+    <script src="../../../js/perfect-scrollbar.jquery.min.js?1783779191"></script>
+    <script src="../../../js/jquery.sticky.js?1783779191"></script>
+    <script src="../../../js/featherlight.min.js?1783779191"></script>
+    <script src="../../../js/highlight.pack.js?1783779191"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="../../../js/modernizr.custom-3.6.0.js?1783705259"></script>
-    <script src="../../../js/learn.js?1783705259"></script>
-    <script src="../../../js/hugo-learn.js?1783705259"></script>
+    <script src="../../../js/modernizr.custom-3.6.0.js?1783779191"></script>
+    <script src="../../../js/learn.js?1783779191"></script>
+    <script src="../../../js/hugo-learn.js?1783779191"></script>
 
-    <link href="../../../mermaid/mermaid.css?1783705259" rel="stylesheet" />
-    <script src="../../../mermaid/mermaid.js?1783705259"></script>
+    <link href="../../../mermaid/mermaid.css?1783779191" rel="stylesheet" />
+    <script src="../../../mermaid/mermaid.js?1783779191"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>
