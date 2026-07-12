@@ -12,21 +12,21 @@
     <title>Week 9 Worklog :: AWS System Manager</title>
 
     
-    <link href='../../css/nucleus.css?1783873780' rel="stylesheet">
-    <link href='../../css/fontawesome-all.min.css?1783873780' rel="stylesheet">
-    <link href='../../css/hybrid.css?1783873780' rel="stylesheet">
-    <link href='../../css/featherlight.min.css?1783873780' rel="stylesheet">
-    <link href='../../css/perfect-scrollbar.min.css?1783873780' rel="stylesheet">
-    <link href='../../css/auto-complete.css?1783873780' rel="stylesheet">
-    <link href='../../css/atom-one-dark-reasonable.css?1783873780' rel="stylesheet">
-    <link href='../../css/theme.css?1783873780' rel="stylesheet">
-    <link href='../../css/hugo-theme.css?1783873780' rel="stylesheet">
+    <link href='../../css/nucleus.css?1783885523' rel="stylesheet">
+    <link href='../../css/fontawesome-all.min.css?1783885523' rel="stylesheet">
+    <link href='../../css/hybrid.css?1783885523' rel="stylesheet">
+    <link href='../../css/featherlight.min.css?1783885523' rel="stylesheet">
+    <link href='../../css/perfect-scrollbar.min.css?1783885523' rel="stylesheet">
+    <link href='../../css/auto-complete.css?1783885523' rel="stylesheet">
+    <link href='../../css/atom-one-dark-reasonable.css?1783885523' rel="stylesheet">
+    <link href='../../css/theme.css?1783885523' rel="stylesheet">
+    <link href='../../css/hugo-theme.css?1783885523' rel="stylesheet">
     
-    <link href='../../css/theme-workshop.css?1783873780' rel="stylesheet">
+    <link href='../../css/theme-workshop.css?1783885523' rel="stylesheet">
     
     
 
-    <script src='../../js/jquery-3.3.1.min.js?1783873780'></script>
+    <script src='../../js/jquery-3.3.1.min.js?1783885523'></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -57,14 +57,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="../../js/lunr.min.js?1783873780"></script>
-<script type="text/javascript" src="../../js/auto-complete.js?1783873780"></script>
+<script type="text/javascript" src="../../js/lunr.min.js?1783885523"></script>
+<script type="text/javascript" src="../../js/auto-complete.js?1783885523"></script>
 <script type="text/javascript">
     
         var baseurl = "http:\/\/localhost:1313\/fcj-workshop-template\/";
     
 </script>
-<script type="text/javascript" src="../../js/search.js?1783873780"></script>
+<script type="text/javascript" src="../../js/search.js?1783885523"></script>
 
     
   </div>
@@ -1376,7 +1376,7 @@
         <div id="overlay"></div>
         <div class="padding highlightable">
               
-              <div>
+              <div id="top-bar-wrapper">
                 <div id="top-bar">
                   <div class="top-bar-controls">
                     <div class="language-switcher">
@@ -1444,7 +1444,11 @@
   <ul>
     <li><a href="#week-9-objectives">Week 9 Objectives:</a></li>
     <li><a href="#tasks-to-be-carried-out-this-week">Tasks to be carried out this week:</a></li>
-    <li><a href="#week-9-achievements">Week 9 Achievements:</a></li>
+    <li><a href="#week-9-achievements">Week 9 Achievements:</a>
+      <ul>
+        <li><a href="#evidences">Evidences:</a></li>
+      </ul>
+    </li>
   </ul>
 </nav>
     </div>
@@ -1541,6 +1545,89 @@
 <li><strong>Monitoring &amp; Log Routing</strong>: Enabled CloudWatch Container Insights metrics and deployed AWS Firelens (Fluent Bit) logs router sidecar to store container stdout/stderr logs in Amazon S3.</li>
 <li><strong>Security Auditing</strong>: Activated AWS Security Hub and obtained the security compliance score based on AWS Foundational Security Best Practices and CIS AWS Foundations Benchmark.</li>
 </ul>
+<h3 id="evidences">Evidences:</h3>
+<ol>
+<li>
+<p><strong>Create VPC (CreateVPC)</strong>
+<img src="../../images/1-Worklog/Worklog_week1.9/CreateVPC.png" alt="CreateVPC">
+<em>Description: This image illustrates the AWS Management Console during the creation of a new Virtual Private Cloud (VPC). The process involves defining the IPv4 CIDR block, setting up Subnets across different Availability Zones for high availability, and configuring an Internet Gateway (IGW) along with Route Tables to route internet traffic to Public Subnets securely.</em></p>
+</li>
+<li>
+<p><strong>Create Security Group (Create Security Group)</strong>
+<img src="../../images/1-Worklog/Worklog_week1.9/Create%20Security%20Group.png" alt="Create Security Group">
+<em>Description: This step involves setting up a virtual firewall at the instance level. The image displays the configuration of Inbound rules to open necessary network ports, such as port 22 for SSH remote management or port 80/443 for web traffic. This ensures that only specified IP addresses or network ranges can access the resources.</em></p>
+</li>
+<li>
+<p><strong>Launch EC2 Instance (Create Ec2)</strong>
+<img src="../../images/1-Worklog/Worklog_week1.9/Create%20Ec2.png" alt="Create Ec2">
+<em>Description: The image captures a successful EC2 instance launch screen. The virtual machine has been provisioned with specific configurations (AMI, Instance Type, Key Pair). It resides in the previously created VPC and Subnet and is attached to the proper Security Group. This core compute resource will be used to test the automated Start/Stop Lambda functions.</em></p>
+</li>
+<li>
+<p><strong>Create IAM Role for Lambda (Create Role for lamda)</strong>
+<img src="../../images/1-Worklog/Worklog_week1.9/Create%20Role%20for%20lamda.png" alt="Create Role for lamda">
+<em>Description: Displays the IAM (Identity and Access Management) console where a new Role is created specifically for the AWS Lambda service. This Role is attached with Policies that grant the Lambda function permissions to invoke EC2 API actions (like <code>ec2:StartInstances</code>, <code>ec2:StopInstances</code>) and write execution logs to CloudWatch Logs for debugging purposes.</em></p>
+</li>
+<li>
+<p><strong>Create Lambda Function to Stop Instance (Function stop instance)</strong>
+<img src="../../images/1-Worklog/Worklog_week1.9/Function%20stop%20instance.png" alt="Function stop instance">
+<em>Description: Detailed view of the AWS Lambda service showing a function designed to automatically stop EC2 instances. The function&rsquo;s code (typically written in Python using Boto3) scans for EC2 instances with specific Tags (e.g., <code>Environment=Dev</code>) and executes the stop command. This significantly saves compute costs during non-working hours or at night.</em></p>
+</li>
+<li>
+<p><strong>Create Lambda Function to Start Instance (Function start instance)</strong>
+<img src="../../images/1-Worklog/Worklog_week1.9/Function%20start%20instance.png" alt="Function start instance">
+<em>Description: Similar to the Stop function, this image illustrates the configuration of the Lambda function used to automatically start virtual machines. Triggered by an Amazon EventBridge cron schedule, this function runs at the beginning of the workday (e.g., 8:00 AM) to ensure systems are ready for use when employees start working.</em></p>
+</li>
+<li>
+<p><strong>Create EC2 Instance with Tags (Create EC2 Instance with tag)</strong>
+<img src="../../images/1-Worklog/Worklog_week1.9/Create%20EC2%20Instance%20with%20tag.png" alt="Create EC2 Instance with tag">
+<em>Description: Evidence of advanced configuration when launching a new EC2 instance. In the Tags section, Key-Value pairs (e.g., <code>Project = FirstCloudJourney</code>, <code>Environment = Test</code>) are defined. Tagging at launch helps automated systems (like our Lambda functions) correctly identify target instances without affecting Production servers.</em></p>
+</li>
+<li>
+<p><strong>Add Tag to Existing EC2 (EC2 add tag)</strong>
+<img src="../../images/1-Worklog/Worklog_week1.9/EC2%20add%20tag.png" alt="EC2 add tag">
+<em>Description: A screenshot of the Tags tab within a running EC2 instance&rsquo;s details. Through the console, additional metadata Tags are appended or modified for pre-existing servers. This is crucial for unified management, Cost Allocation tracking, and implementing Attribute-Based Access Control (ABAC) policies.</em></p>
+</li>
+<li>
+<p><strong>Manage Tags and Filter Resources (Managing Tags and Filter resources by tag)</strong>
+<img src="../../images/1-Worklog/Worklog_week1.9/Managing%20Tags%20and%20Filter%20resources%20by%20tag.png" alt="Managing Tags and Filter resources by tag">
+<em>Description: Using the AWS Tag Editor or Resource Groups console to search across resources in bulk. Instead of checking individual services, the image shows how to filter all resources (EC2, VPC, Lambda, etc.) that share a specific Tag value. This feature provides administrators with a holistic view of the system architecture.</em></p>
+</li>
+<li>
+<p><strong>Create a Resource Group (Create a Resource Group)</strong>
+<img src="../../images/1-Worklog/Worklog_week1.9/Create%20a%20Resource%20Group.png" alt="Create a Resource Group">
+<em>Description: The console view for creating a new AWS Resource Group. By utilizing Tag-based queries, the system groups scattered resources into a single logical collection. From this Resource Group, users can safely and quickly perform bulk administrative actions via AWS Systems Manager.</em></p>
+</li>
+<li>
+<p><strong>Configure Slack Incoming Web-hooks (Incoming Web-hooks slack)</strong>
+<img src="../../images/1-Worklog/Worklog_week1.9/Incoming%20Web-hooks%20slack.png" alt="Incoming Web-hooks slack">
+<em>Description: The configuration interface of the Slack application to generate an Incoming Webhook URL. This webhook acts as an endpoint to receive data payloads. In this lab, whenever the Lambda functions execute the Start/Stop actions, they send a payload containing the result notification (success/failure) through this webhook directly to the operations team&rsquo;s chat channel (ChatOps).</em></p>
+</li>
+<li>
+<p><strong>Check Result (Check Result)</strong>
+<img src="../../images/1-Worklog/Worklog_week1.9/Check%20Result.png" alt="Check Result">
+<em>Description: Concrete proof that the automation system operates flawlessly. The image captures the Slack application screen showing automated alert messages sent from AWS in real-time. Administrators can instantly know the status of virtual machines (stopped or started) without logging into the AWS Console, embodying the ChatOps philosophy.</em></p>
+</li>
+<li>
+<p><strong>Enable AWS Security Hub CSPM (Enable AWS Security Hub CSPM)</strong>
+<img src="../../images/1-Worklog/Worklog_week1.9/Enable%20AWS%20Security%20Hub%20CSPM.png" alt="Enable AWS Security Hub CSPM">
+<em>Description: The central dashboard of AWS Security Hub. The Cloud Security Posture Management (CSPM) feature has been activated to scan the entire account based on industry-standard security frameworks (like AWS Foundational Security Best Practices). The interface displays the compliance score chart and lists misconfigurations or vulnerabilities that need remediation.</em></p>
+</li>
+<li>
+<p><strong>Clean Up Security Hub (Clean Security Hub)</strong>
+<img src="../../images/1-Worklog/Worklog_week1.9/Clean%20Security%20Hub.png" alt="Clean Security Hub">
+<em>Description: Evidence of disabling and deleting data from AWS Security Hub within its Settings. Since Security Hub incurs charges based on the number of security checks performed, turning off this service after completing the lab is essential to prevent unexpected ongoing monthly fees.</em></p>
+</li>
+<li>
+<p><strong>Clean Up Tags (Clean Tags)</strong>
+<img src="../../images/1-Worklog/Worklog_week1.9/Clean%20Tags.png" alt="Clean Tags">
+<em>Description: Illustrates the use of Tag Editor to mass-delete the Tags created across multiple resources. This cleanup step keeps the AWS environment organized, preventing stale tags from cluttering cost reporting tools or disrupting other automated rule sets in the system.</em></p>
+</li>
+<li>
+<p><strong>Clean Up EC2, Lambda, and CloudWatch (Clean Ec2 and lamda and cloudwatch)</strong>
+<img src="../../images/1-Worklog/Worklog_week1.9/Clean%20Ec2%20and%20lamda%20and%20cloudwatch.png" alt="Clean Ec2 and lamda and cloudwatch">
+<em>Description: The final environment cleanup step (Terminate/Delete resources). The image shows the deletion of EC2 virtual machines, unused Lambda functions, and importantly, the removal of CloudWatch Log Groups. If left indefinitely, Log Groups can accumulate storage costs, so deleting them thoroughly ensures maximum Cost Optimization.</em></p>
+</li>
+</ol>
 
 
 
@@ -2281,19 +2368,19 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="../../js/clipboard.min.js?1783873780"></script>
-    <script src="../../js/perfect-scrollbar.min.js?1783873780"></script>
-    <script src="../../js/perfect-scrollbar.jquery.min.js?1783873780"></script>
-    <script src="../../js/jquery.sticky.js?1783873780"></script>
-    <script src="../../js/featherlight.min.js?1783873780"></script>
-    <script src="../../js/highlight.pack.js?1783873780"></script>
+    <script src="../../js/clipboard.min.js?1783885524"></script>
+    <script src="../../js/perfect-scrollbar.min.js?1783885524"></script>
+    <script src="../../js/perfect-scrollbar.jquery.min.js?1783885524"></script>
+    <script src="../../js/jquery.sticky.js?1783885524"></script>
+    <script src="../../js/featherlight.min.js?1783885524"></script>
+    <script src="../../js/highlight.pack.js?1783885524"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="../../js/modernizr.custom-3.6.0.js?1783873780"></script>
-    <script src="../../js/learn.js?1783873780"></script>
-    <script src="../../js/hugo-learn.js?1783873780"></script>
+    <script src="../../js/modernizr.custom-3.6.0.js?1783885524"></script>
+    <script src="../../js/learn.js?1783885524"></script>
+    <script src="../../js/hugo-learn.js?1783885524"></script>
 
-    <link href="../../mermaid/mermaid.css?1783873780" rel="stylesheet" />
-    <script src="../../mermaid/mermaid.js?1783873780"></script>
+    <link href="../../mermaid/mermaid.css?1783885524" rel="stylesheet" />
+    <script src="../../mermaid/mermaid.js?1783885524"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>
