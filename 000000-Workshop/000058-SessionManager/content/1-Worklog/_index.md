@@ -187,6 +187,28 @@ Create VPC (CloudStack lab):
 
 ### Week 7 Achievements:
 
+### Evidences:
+
+1. **Deploy Infrastructure (Deploy infrastructure)**
+   ![Deploy infrastructure](../images/1-Worklog/Worklog_week1.7/Deloy%20infrastructure.png)
+   *Description: The process of deploying the foundational infrastructure for the lab using AWS CloudFormation. Necessary resources such as EC2 instances, EBS volumes, or basic network configurations are automatically provisioned. This is a crucial preparation step to have actual resources for testing backup and restore capabilities.*
+
+2. **Create S3 Folder (Create s3 folder)**
+   ![Create S3 Folder](../images/1-Worklog/Worklog_week1.7/Create%20s3%20folder.png)
+   *Description: Initializing a directory or bucket on Amazon S3. S3 is commonly used as a secure, durable, and cost-effective storage location for backups (backup vault/storage) from AWS Backup or other services. Setting up a proper storage structure ensures that backup data is well-organized and easily retrievable when needed.*
+
+3. **Configure Backup Plans (Create Backup plans)**
+   ![Create Backup plans](../images/1-Worklog/Worklog_week1.7/Create%20Backup%20plans.png)
+   *Description: Configuring an AWS Backup plan. This step establishes rules for automating the backup process, including backup frequency (e.g., daily, weekly), retention period, and backup window. Automated backup management helps organizations comply with data security regulations without manual operational overhead.*
+
+4. **Test Data Restoration (Test Restore)**
+   ![Test Restore](../images/1-Worklog/Worklog_week1.7/Test%20Restore.png)
+   *Description: Executing the data restoration process from a previously created backup (recovery point). This is the most critical validation step in any backup strategy, ensuring that in the event of data loss or system failure, data can be restored intact and systems can return to normal operation.*
+
+5. **Clean Up Resources (Clean up resources)**
+   ![Clean up resources](../images/1-Worklog/Worklog_week1.7/Clean%20up%20resources.png)
+   *Description: Deleting the AWS resources created during the hands-on lab (such as EC2, S3, Backup plans, CloudFormation stacks). Careful cleanup after completing the lab is a mandatory best practice for Cost Optimization, ensuring the account does not incur ongoing charges for unused resources.*
+
 ---
 
 ## Week 8:

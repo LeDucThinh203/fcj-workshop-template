@@ -187,6 +187,28 @@ Tạo VPC (CloudStack lab):
 
 ### Thành tựu Tuần 7:
 
+### Hình ảnh minh chứng:
+
+1. **Khởi tạo hạ tầng (Deploy infrastructure)**
+   ![Deploy infrastructure](../../images/1-Worklog/Worklog_week1.7/Deloy%20infrastructure.png)
+   *Mô tả chi tiết: Quá trình triển khai hạ tầng cơ sở cho bài thực hành sử dụng AWS CloudFormation. Các tài nguyên cần thiết như EC2 instance, EBS volume, hoặc các thiết lập mạng cơ bản được tự động hóa khởi tạo. Đây là bước chuẩn bị quan trọng để có tài nguyên thực tế nhằm kiểm thử tính năng sao lưu (backup) và phục hồi (restore).*
+
+2. **Tạo thư mục S3 (Create s3 folder)**
+   ![Create S3 Folder](../../images/1-Worklog/Worklog_week1.7/Create%20s3%20folder.png)
+   *Mô tả chi tiết: Khởi tạo thư mục hoặc bucket trên Amazon S3. S3 thường được sử dụng làm nơi lưu trữ an toàn, bền bỉ và tiết kiệm chi phí cho các bản sao lưu (backup vault/storage) từ AWS Backup hoặc các dịch vụ khác. Việc thiết lập cấu trúc lưu trữ chuẩn xác đảm bảo dữ liệu backup được tổ chức tốt và dễ dàng truy xuất khi cần.*
+
+3. **Cấu hình kế hoạch sao lưu (Create Backup plans)**
+   ![Create Backup plans](../../images/1-Worklog/Worklog_week1.7/Create%20Backup%20plans.png)
+   *Mô tả chi tiết: Cấu hình AWS Backup plan. Bước này thiết lập các quy tắc tự động hóa quá trình sao lưu, bao gồm tần suất sao lưu (ví dụ: hàng ngày, hàng tuần), thời gian lưu trữ (retention period) và cửa sổ sao lưu (backup window). Quản lý sao lưu tự động giúp doanh nghiệp tuân thủ các quy định về an toàn dữ liệu mà không tốn công sức vận hành thủ công.*
+
+4. **Kiểm tra phục hồi dữ liệu (Test Restore)**
+   ![Test Restore](../../images/1-Worklog/Worklog_week1.7/Test%20Restore.png)
+   *Mô tả chi tiết: Thực hiện quy trình phục hồi (restore) dữ liệu từ một bản sao lưu (recovery point) đã tạo trước đó. Đây là bước kiểm chứng quan trọng nhất trong bất kỳ chiến lược sao lưu nào, đảm bảo rằng trong trường hợp xảy ra sự cố mất mát dữ liệu hoặc hỏng hóc hệ thống, dữ liệu có thể được khôi phục nguyên vẹn và hệ thống có thể hoạt động trở lại bình thường.*
+
+5. **Dọn dẹp tài nguyên (Clean up resources)**
+   ![Clean up resources](../../images/1-Worklog/Worklog_week1.7/Clean%20up%20resources.png)
+   *Mô tả chi tiết: Xóa bỏ các tài nguyên AWS đã được tạo ra trong suốt quá trình thực hành (như EC2, S3, Backup plans, CloudFormation stack). Việc dọn dẹp cẩn thận sau khi hoàn thành lab là thao tác bắt buộc để tối ưu hóa chi phí (Cost Optimization), đảm bảo tài khoản không phải chịu các khoản phí duy trì cho những tài nguyên không còn sử dụng.*
+
 ---
 
 ## Tuần 8:

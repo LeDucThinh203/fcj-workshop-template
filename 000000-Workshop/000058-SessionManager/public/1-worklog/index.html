@@ -12,21 +12,21 @@
     <title>Worklog :: AWS System Manager</title>
 
     
-    <link href='../css/nucleus.css?1783849068' rel="stylesheet">
-    <link href='../css/fontawesome-all.min.css?1783849068' rel="stylesheet">
-    <link href='../css/hybrid.css?1783849068' rel="stylesheet">
-    <link href='../css/featherlight.min.css?1783849068' rel="stylesheet">
-    <link href='../css/perfect-scrollbar.min.css?1783849068' rel="stylesheet">
-    <link href='../css/auto-complete.css?1783849068' rel="stylesheet">
-    <link href='../css/atom-one-dark-reasonable.css?1783849068' rel="stylesheet">
-    <link href='../css/theme.css?1783849068' rel="stylesheet">
-    <link href='../css/hugo-theme.css?1783849068' rel="stylesheet">
+    <link href='../css/nucleus.css?1783854024' rel="stylesheet">
+    <link href='../css/fontawesome-all.min.css?1783854024' rel="stylesheet">
+    <link href='../css/hybrid.css?1783854024' rel="stylesheet">
+    <link href='../css/featherlight.min.css?1783854024' rel="stylesheet">
+    <link href='../css/perfect-scrollbar.min.css?1783854024' rel="stylesheet">
+    <link href='../css/auto-complete.css?1783854024' rel="stylesheet">
+    <link href='../css/atom-one-dark-reasonable.css?1783854024' rel="stylesheet">
+    <link href='../css/theme.css?1783854024' rel="stylesheet">
+    <link href='../css/hugo-theme.css?1783854024' rel="stylesheet">
     
-    <link href='../css/theme-workshop.css?1783849068' rel="stylesheet">
+    <link href='../css/theme-workshop.css?1783854024' rel="stylesheet">
     
     
 
-    <script src='../js/jquery-3.3.1.min.js?1783849068'></script>
+    <script src='../js/jquery-3.3.1.min.js?1783854024'></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -57,14 +57,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="../js/lunr.min.js?1783849068"></script>
-<script type="text/javascript" src="../js/auto-complete.js?1783849068"></script>
+<script type="text/javascript" src="../js/lunr.min.js?1783854024"></script>
+<script type="text/javascript" src="../js/auto-complete.js?1783854024"></script>
 <script type="text/javascript">
     
         var baseurl = "http:\/\/localhost:1313\/fcj-workshop-template\/";
     
 </script>
-<script type="text/javascript" src="../js/search.js?1783849068"></script>
+<script type="text/javascript" src="../js/search.js?1783854024"></script>
 
     
   </div>
@@ -1479,6 +1479,7 @@
         <li><a href="#week-7-objectives">Week 7 Objectives:</a></li>
         <li><a href="#tasks-to-be-carried-out-this-week-4">Tasks to be carried out this week:</a></li>
         <li><a href="#week-7-achievements">Week 7 Achievements:</a></li>
+        <li><a href="#evidences">Evidences:</a></li>
       </ul>
     </li>
     <li><a href="#week-8">Week 8:</a>
@@ -1500,7 +1501,7 @@
         <li><a href="#week-10-objectives">Week 10 Objectives:</a></li>
         <li><a href="#tasks-to-be-carried-out-this-week-7">Tasks to be carried out this week:</a></li>
         <li><a href="#week-10-achievements">Week 10 Achievements:</a></li>
-        <li><a href="#evidences">Evidences:</a></li>
+        <li><a href="#evidences-1">Evidences:</a></li>
       </ul>
     </li>
     <li><a href="#week-11">Week 11:</a>
@@ -2040,6 +2041,34 @@
   </tbody>
 </table>
 <h3 id="week-7-achievements">Week 7 Achievements:</h3>
+<h3 id="evidences">Evidences:</h3>
+<ol>
+<li>
+<p><strong>Deploy Infrastructure (Deploy infrastructure)</strong>
+<img src="../images/1-Worklog/Worklog_week1.7/Deloy%20infrastructure.png" alt="Deploy infrastructure">
+<em>Description: The process of deploying the foundational infrastructure for the lab using AWS CloudFormation. Necessary resources such as EC2 instances, EBS volumes, or basic network configurations are automatically provisioned. This is a crucial preparation step to have actual resources for testing backup and restore capabilities.</em></p>
+</li>
+<li>
+<p><strong>Create S3 Folder (Create s3 folder)</strong>
+<img src="../images/1-Worklog/Worklog_week1.7/Create%20s3%20folder.png" alt="Create S3 Folder">
+<em>Description: Initializing a directory or bucket on Amazon S3. S3 is commonly used as a secure, durable, and cost-effective storage location for backups (backup vault/storage) from AWS Backup or other services. Setting up a proper storage structure ensures that backup data is well-organized and easily retrievable when needed.</em></p>
+</li>
+<li>
+<p><strong>Configure Backup Plans (Create Backup plans)</strong>
+<img src="../images/1-Worklog/Worklog_week1.7/Create%20Backup%20plans.png" alt="Create Backup plans">
+<em>Description: Configuring an AWS Backup plan. This step establishes rules for automating the backup process, including backup frequency (e.g., daily, weekly), retention period, and backup window. Automated backup management helps organizations comply with data security regulations without manual operational overhead.</em></p>
+</li>
+<li>
+<p><strong>Test Data Restoration (Test Restore)</strong>
+<img src="../images/1-Worklog/Worklog_week1.7/Test%20Restore.png" alt="Test Restore">
+<em>Description: Executing the data restoration process from a previously created backup (recovery point). This is the most critical validation step in any backup strategy, ensuring that in the event of data loss or system failure, data can be restored intact and systems can return to normal operation.</em></p>
+</li>
+<li>
+<p><strong>Clean Up Resources (Clean up resources)</strong>
+<img src="../images/1-Worklog/Worklog_week1.7/Clean%20up%20resources.png" alt="Clean up resources">
+<em>Description: Deleting the AWS resources created during the hands-on lab (such as EC2, S3, Backup plans, CloudFormation stacks). Careful cleanup after completing the lab is a mandatory best practice for Cost Optimization, ensuring the account does not incur ongoing charges for unused resources.</em></p>
+</li>
+</ol>
 <hr>
 <h2 id="week-8">Week 8:</h2>
 <h3 id="week-8-objectives">Week 8 Objectives:</h3>
@@ -2250,7 +2279,7 @@
 <li><strong>ChatOps Integration</strong>: Integrated AWS Lambda alerts with Slack channel notifications using Incoming Webhooks for real-time operation status reporting.</li>
 <li><strong>Scheduled Operations</strong>: Configured Amazon EventBridge Scheduler (cron triggers) to automatically invoke Lambda functions at specific times.</li>
 </ul>
-<h3 id="evidences">Evidences:</h3>
+<h3 id="evidences-1">Evidences:</h3>
 <ol>
 <li>
 <p><strong>VPC Peering CloudFormation Stack Creation (Create_Stack)</strong>
@@ -3206,19 +3235,19 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="../js/clipboard.min.js?1783849068"></script>
-    <script src="../js/perfect-scrollbar.min.js?1783849068"></script>
-    <script src="../js/perfect-scrollbar.jquery.min.js?1783849068"></script>
-    <script src="../js/jquery.sticky.js?1783849068"></script>
-    <script src="../js/featherlight.min.js?1783849068"></script>
-    <script src="../js/highlight.pack.js?1783849068"></script>
+    <script src="../js/clipboard.min.js?1783854024"></script>
+    <script src="../js/perfect-scrollbar.min.js?1783854024"></script>
+    <script src="../js/perfect-scrollbar.jquery.min.js?1783854024"></script>
+    <script src="../js/jquery.sticky.js?1783854024"></script>
+    <script src="../js/featherlight.min.js?1783854024"></script>
+    <script src="../js/highlight.pack.js?1783854024"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="../js/modernizr.custom-3.6.0.js?1783849068"></script>
-    <script src="../js/learn.js?1783849068"></script>
-    <script src="../js/hugo-learn.js?1783849068"></script>
+    <script src="../js/modernizr.custom-3.6.0.js?1783854024"></script>
+    <script src="../js/learn.js?1783854024"></script>
+    <script src="../js/hugo-learn.js?1783854024"></script>
 
-    <link href="../mermaid/mermaid.css?1783849068" rel="stylesheet" />
-    <script src="../mermaid/mermaid.js?1783849068"></script>
+    <link href="../mermaid/mermaid.css?1783854024" rel="stylesheet" />
+    <script src="../mermaid/mermaid.js?1783854024"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>
