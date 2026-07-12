@@ -12,21 +12,21 @@
     <title>Week 10 Worklog :: AWS System Manager</title>
 
     
-    <link href='../../css/nucleus.css?1783794628' rel="stylesheet">
-    <link href='../../css/fontawesome-all.min.css?1783794628' rel="stylesheet">
-    <link href='../../css/hybrid.css?1783794628' rel="stylesheet">
-    <link href='../../css/featherlight.min.css?1783794628' rel="stylesheet">
-    <link href='../../css/perfect-scrollbar.min.css?1783794628' rel="stylesheet">
-    <link href='../../css/auto-complete.css?1783794628' rel="stylesheet">
-    <link href='../../css/atom-one-dark-reasonable.css?1783794628' rel="stylesheet">
-    <link href='../../css/theme.css?1783794628' rel="stylesheet">
-    <link href='../../css/hugo-theme.css?1783794628' rel="stylesheet">
+    <link href='../../css/nucleus.css?1783849068' rel="stylesheet">
+    <link href='../../css/fontawesome-all.min.css?1783849068' rel="stylesheet">
+    <link href='../../css/hybrid.css?1783849068' rel="stylesheet">
+    <link href='../../css/featherlight.min.css?1783849068' rel="stylesheet">
+    <link href='../../css/perfect-scrollbar.min.css?1783849068' rel="stylesheet">
+    <link href='../../css/auto-complete.css?1783849068' rel="stylesheet">
+    <link href='../../css/atom-one-dark-reasonable.css?1783849068' rel="stylesheet">
+    <link href='../../css/theme.css?1783849068' rel="stylesheet">
+    <link href='../../css/hugo-theme.css?1783849068' rel="stylesheet">
     
-    <link href='../../css/theme-workshop.css?1783794628' rel="stylesheet">
+    <link href='../../css/theme-workshop.css?1783849068' rel="stylesheet">
     
     
 
-    <script src='../../js/jquery-3.3.1.min.js?1783794628'></script>
+    <script src='../../js/jquery-3.3.1.min.js?1783849068'></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -57,14 +57,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="../../js/lunr.min.js?1783794628"></script>
-<script type="text/javascript" src="../../js/auto-complete.js?1783794628"></script>
+<script type="text/javascript" src="../../js/lunr.min.js?1783849068"></script>
+<script type="text/javascript" src="../../js/auto-complete.js?1783849068"></script>
 <script type="text/javascript">
     
         var baseurl = "http:\/\/localhost:1313\/fcj-workshop-template\/";
     
 </script>
-<script type="text/javascript" src="../../js/search.js?1783794628"></script>
+<script type="text/javascript" src="../../js/search.js?1783849068"></script>
 
     
   </div>
@@ -1581,6 +1581,49 @@
 <img src="../../images/1-Worklog/Worklog_week1.10/ALI.png" alt="Network ACL Configuration">
 <em>Description: Presents the configuration and testing of Network ACLs (NACLs). Unlike Security Groups, NACLs act as stateless firewalls at the subnet level, meaning both inbound and outbound rules must be explicitly defined. This part of the lab emphasizes the difference between stateful and stateless filtering. The image demonstrates how modifying a NACL to block or allow specific traffic (like ICMP or SSH) immediately impacts the entire subnet, providing an additional, broader layer of network security defense beyond individual instance firewalls.</em></p>
 </li>
+<li>
+<p><strong>Initialize CloudFormation Template (Initialize CloudFormation Template)</strong>
+<img src="../../images/1-Worklog/Worklog_week1.10/Initialize%20CloudFormation%20Template.png" alt="Initialize CloudFormation Template">
+<em>Description: This image shows the first step in setting up the environment using AWS CloudFormation. Running the template automates the creation of VPCs, Subnets, Route Tables, and basic network resources required for the Transit Gateway lab. This is an efficient method to build infrastructure quickly and consistently rather than creating resources manually via the console.</em></p>
+</li>
+<li>
+<p><strong>Create Security Key Pair (Create_key_pair)</strong>
+<img src="../../images/1-Worklog/Worklog_week1.10/Create_key_pair.png" alt="Create Key Pair">
+<em>Description: The process of creating a new Amazon EC2 Key Pair is displayed here. The Key Pair (public key stored on AWS and private key downloaded by the user) acts as a crucial authentication mechanism, allowing administrators secure SSH access to the EC2 instances that will be launched in the VPCs. Careful management of security keys is a fundamental principle in cloud security.</em></p>
+</li>
+<li>
+<p><strong>Create AWS Transit Gateway (Create Transit gateways)</strong>
+<img src="../../images/1-Worklog/Worklog_week1.10/Create%20Transit%20gateways.png" alt="Create Transit Gateway">
+<em>Description: This image captures the successful initialization of the AWS Transit Gateway (TGW) resource. TGW acts as a central hub (cloud router) to connect multiple VPCs and on-premises networks, helping to replace complex full-mesh VPC Peering architectures with a simple, scalable, and centrally managed hub-and-spoke model.</em></p>
+</li>
+<li>
+<p><strong>Attach VPCs to Transit Gateway (Create Transit gateway attachments)</strong>
+<img src="../../images/1-Worklog/Worklog_week1.10/Create%20Transit%20gateway%20attachments.png" alt="Create Transit Gateway Attachments">
+<em>Description: The next step after creating the TGW is attaching specific VPC networks to this central hub. The screenshot illustrates the TGW Attachments creation process, linking the VPCs to the Transit Gateway. This allows network traffic from subnets within a VPC to be routed to the TGW and onward to other destination networks.</em></p>
+</li>
+<li>
+<p><strong>Configure Transit Gateway Route Tables (Create Transit gateway route tables)</strong>
+<img src="../../images/1-Worklog/Worklog_week1.10/Create%20Transit%20gateway%20route%20tables.png" alt="Create Transit Gateway Route Tables">
+<em>Description: This image displays the creation and configuration of Transit Gateway Route Tables. Unlike VPC Route Tables, TGW Route Tables control how packets are routed after they reach the Transit Gateway. By using multiple route tables, administrators can establish complex routing policies (e.g., isolating VPCs, or allowing specific VPCs to communicate with each other).</em></p>
+</li>
+<li>
+<p><strong>Update TGW Routing Rules (Create Transit gateway route tables 1)</strong>
+<img src="../../images/1-Worklog/Worklog_week1.10/Create%20Transit%20gateway%20route%20tables%201.png" alt="Create Transit Gateway Route Tables 1">
+<em>Description: Details the process of updating routing records (routes) inside the TGW Route Table. Specifying the destination CIDR and the corresponding attachment target ensures that packets know the exact path to reach the destination VPC. This is a critical step to establish cross-network (cross-VPC) communication capabilities.</em></p>
+</li>
+<li>
+<p><strong>Verify Network Routing via TGW (Transit Gateway Route result &amp; result 1)</strong>
+<img src="../../images/1-Worklog/Worklog_week1.10/Transit%20Gateway%20Route%20result.png" alt="Transit Gateway Route result">
+<img src="../../images/1-Worklog/Worklog_week1.10/Transit%20Gateway%20Route%20result%201.png" alt="Transit Gateway Route result 1">
+<em>Description: These images serve as evidence that routing through the Transit Gateway is functioning correctly. Successful ping or trace route results from a server in one VPC to a server in another VPC prove that the hub-and-spoke network is operational. The entire network architecture, from the subnet Route Tables to the TGW Route Tables, has been synchronized successfully.</em></p>
+</li>
+<li>
+<p><strong>Resource Cleanup for Cost Optimization (Clean)</strong>
+<img src="../../images/1-Worklog/Worklog_week1.10/clean%201.png" alt="Clean 1">
+<img src="../../images/1-Worklog/Worklog_week1.10/clean%202.png" alt="Clean 2">
+<img src="../../images/1-Worklog/Worklog_week1.10/Clean.png" alt="Clean">
+<em>Description: This final sequence of images records the &ldquo;tear down&rdquo; process of lab resources, including deleting Transit Gateway Attachments, deleting the Transit Gateway, terminating EC2 instances, and deleting CloudFormation stacks. Proactively deleting resources after completing a lab is an extremely important practice on AWS to prevent unexpected charges (cost optimization).</em></p>
+</li>
 </ol>
 
 
@@ -2322,19 +2365,19 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="../../js/clipboard.min.js?1783794628"></script>
-    <script src="../../js/perfect-scrollbar.min.js?1783794628"></script>
-    <script src="../../js/perfect-scrollbar.jquery.min.js?1783794628"></script>
-    <script src="../../js/jquery.sticky.js?1783794628"></script>
-    <script src="../../js/featherlight.min.js?1783794628"></script>
-    <script src="../../js/highlight.pack.js?1783794628"></script>
+    <script src="../../js/clipboard.min.js?1783849068"></script>
+    <script src="../../js/perfect-scrollbar.min.js?1783849068"></script>
+    <script src="../../js/perfect-scrollbar.jquery.min.js?1783849068"></script>
+    <script src="../../js/jquery.sticky.js?1783849068"></script>
+    <script src="../../js/featherlight.min.js?1783849068"></script>
+    <script src="../../js/highlight.pack.js?1783849068"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="../../js/modernizr.custom-3.6.0.js?1783794628"></script>
-    <script src="../../js/learn.js?1783794628"></script>
-    <script src="../../js/hugo-learn.js?1783794628"></script>
+    <script src="../../js/modernizr.custom-3.6.0.js?1783849068"></script>
+    <script src="../../js/learn.js?1783849068"></script>
+    <script src="../../js/hugo-learn.js?1783849068"></script>
 
-    <link href="../../mermaid/mermaid.css?1783794628" rel="stylesheet" />
-    <script src="../../mermaid/mermaid.js?1783794628"></script>
+    <link href="../../mermaid/mermaid.css?1783849068" rel="stylesheet" />
+    <script src="../../mermaid/mermaid.js?1783849068"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

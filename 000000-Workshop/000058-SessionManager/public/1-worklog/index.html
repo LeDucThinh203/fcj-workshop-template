@@ -12,21 +12,21 @@
     <title>Worklog :: AWS System Manager</title>
 
     
-    <link href='../css/nucleus.css?1783794628' rel="stylesheet">
-    <link href='../css/fontawesome-all.min.css?1783794628' rel="stylesheet">
-    <link href='../css/hybrid.css?1783794628' rel="stylesheet">
-    <link href='../css/featherlight.min.css?1783794628' rel="stylesheet">
-    <link href='../css/perfect-scrollbar.min.css?1783794628' rel="stylesheet">
-    <link href='../css/auto-complete.css?1783794628' rel="stylesheet">
-    <link href='../css/atom-one-dark-reasonable.css?1783794628' rel="stylesheet">
-    <link href='../css/theme.css?1783794628' rel="stylesheet">
-    <link href='../css/hugo-theme.css?1783794628' rel="stylesheet">
+    <link href='../css/nucleus.css?1783849068' rel="stylesheet">
+    <link href='../css/fontawesome-all.min.css?1783849068' rel="stylesheet">
+    <link href='../css/hybrid.css?1783849068' rel="stylesheet">
+    <link href='../css/featherlight.min.css?1783849068' rel="stylesheet">
+    <link href='../css/perfect-scrollbar.min.css?1783849068' rel="stylesheet">
+    <link href='../css/auto-complete.css?1783849068' rel="stylesheet">
+    <link href='../css/atom-one-dark-reasonable.css?1783849068' rel="stylesheet">
+    <link href='../css/theme.css?1783849068' rel="stylesheet">
+    <link href='../css/hugo-theme.css?1783849068' rel="stylesheet">
     
-    <link href='../css/theme-workshop.css?1783794628' rel="stylesheet">
+    <link href='../css/theme-workshop.css?1783849068' rel="stylesheet">
     
     
 
-    <script src='../js/jquery-3.3.1.min.js?1783794628'></script>
+    <script src='../js/jquery-3.3.1.min.js?1783849068'></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -57,14 +57,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="../js/lunr.min.js?1783794628"></script>
-<script type="text/javascript" src="../js/auto-complete.js?1783794628"></script>
+<script type="text/javascript" src="../js/lunr.min.js?1783849068"></script>
+<script type="text/javascript" src="../js/auto-complete.js?1783849068"></script>
 <script type="text/javascript">
     
         var baseurl = "http:\/\/localhost:1313\/fcj-workshop-template\/";
     
 </script>
-<script type="text/javascript" src="../js/search.js?1783794628"></script>
+<script type="text/javascript" src="../js/search.js?1783849068"></script>
 
     
   </div>
@@ -1500,6 +1500,7 @@
         <li><a href="#week-10-objectives">Week 10 Objectives:</a></li>
         <li><a href="#tasks-to-be-carried-out-this-week-7">Tasks to be carried out this week:</a></li>
         <li><a href="#week-10-achievements">Week 10 Achievements:</a></li>
+        <li><a href="#evidences">Evidences:</a></li>
       </ul>
     </li>
     <li><a href="#week-11">Week 11:</a>
@@ -2249,6 +2250,87 @@
 <li><strong>ChatOps Integration</strong>: Integrated AWS Lambda alerts with Slack channel notifications using Incoming Webhooks for real-time operation status reporting.</li>
 <li><strong>Scheduled Operations</strong>: Configured Amazon EventBridge Scheduler (cron triggers) to automatically invoke Lambda functions at specific times.</li>
 </ul>
+<h3 id="evidences">Evidences:</h3>
+<ol>
+<li>
+<p><strong>VPC Peering CloudFormation Stack Creation (Create_Stack)</strong>
+<img src="../images/1-Worklog/Worklog_week1.10/Create_Stack.png" alt="VPC Peering Stack">
+<em>Description: This image captures the successful initiation and creation of the AWS CloudFormation stack used to rapidly provision the baseline network environment for the VPC Peering lab. Utilizing Infrastructure as Code (IaC) ensures that all necessary VPCs, subnets, route tables, and instances are deployed consistently and accurately. The stack creates the foundational &lsquo;My VPC&rsquo; and &lsquo;HG VPC&rsquo; which will subsequently be peered, allowing for a structured and repeatable learning experience without manual setup overhead.</em></p>
+</li>
+<li>
+<p><strong>Security Group Configuration for My VPC (Create_MY VPC SG)</strong>
+<img src="../images/1-Worklog/Worklog_week1.10/Create_MY%20VPC%20SG.png" alt="My VPC Security Group">
+<em>Description: Depicts the specific Security Group rules configured for &lsquo;My VPC&rsquo;. Security groups act as stateful virtual firewalls at the instance level. In this configuration, inbound rules are carefully defined to permit SSH (port 22) and ICMP (ping) traffic originating only from trusted IP addresses or specifically from the peered VPC CIDR block. This demonstrates the principle of least privilege, ensuring that even when VPCs are connected, instances remain protected against unauthorized access attempts from the broader network.</em></p>
+</li>
+<li>
+<p><strong>Security Group Configuration for HG VPC (Create_HG VPC SG)</strong>
+<img src="../images/1-Worklog/Worklog_week1.10/Create_HG%20VPC%20SG.png" alt="HG VPC Security Group">
+<em>Description: Shows the corresponding Security Group configuration for instances located within the &lsquo;HG VPC&rsquo; (the peered network). Similar to the previous setup, this firewall rule is tailored to accept incoming traffic strictly from the &lsquo;My VPC&rsquo; CIDR range. By configuring these rules symmetrically across both VPCs, we establish a secure bidirectional communication channel, which is essential for verifying connectivity testing (like pinging instances) after the peering connection is actively established.</em></p>
+</li>
+<li>
+<p><strong>EC2 Instances Provisioning (Create EC2)</strong>
+<img src="../images/1-Worklog/Worklog_week1.10/Create%20EC2.png" alt="Create EC2 Instances">
+<em>Description: Illustrates the successful launch and running state of the EC2 instances deployed across the different VPCs (e.g., one instance in &lsquo;My VPC&rsquo; and another in &lsquo;HG VPC&rsquo;). These virtual servers act as the primary endpoints for our network connectivity tests. Verifying that these instances are running and possess the correct private IP addresses within their respective subnets is a critical prerequisite before attempting to validate the VPC peering routes and security group rules.</em></p>
+</li>
+<li>
+<p><strong>Establishing VPC Peering Connection (MyVPC peering to HG VPC)</strong>
+<img src="../images/1-Worklog/Worklog_week1.10/MyVPC%20peering%20to%20HG%20VPC.png" alt="VPC Peering Connection">
+<em>Description: Highlights the core objective of the lab—the active and functioning VPC Peering connection linking &lsquo;My VPC&rsquo; to &lsquo;HG VPC&rsquo;. A peering connection is a networking connection between two VPCs that enables the routing of traffic between them using private IPv4 or IPV6 addresses. This image confirms that the connection request was accepted, changing the status to &lsquo;Active&rsquo;, thereby virtually merging the two separate network segments into a continuous private network space without traversing the public internet.</em></p>
+</li>
+<li>
+<p><strong>Route Table Updates for Peering (route_table)</strong>
+<img src="../images/1-Worklog/Worklog_week1.10/route_table.png" alt="Route Table Configuration">
+<em>Description: Displays the crucial modifications made to the VPC route tables. For instances in one VPC to communicate with instances in the peered VPC, the route tables associated with their subnets must be updated. This screenshot shows the addition of a specific route where the destination is the CIDR block of the peered VPC, and the target is the newly created VPC Peering Connection ID (pcx-&hellip;). Without this exact routing configuration, the peering connection remains unutilized, and packets would simply be dropped.</em></p>
+</li>
+<li>
+<p><strong>Network Access Control List (NACL) Verification (ALI)</strong>
+<img src="../images/1-Worklog/Worklog_week1.10/ALI.png" alt="Network ACL Configuration">
+<em>Description: Presents the configuration and testing of Network ACLs (NACLs). Unlike Security Groups, NACLs act as stateless firewalls at the subnet level, meaning both inbound and outbound rules must be explicitly defined. This part of the lab emphasizes the difference between stateful and stateless filtering. The image demonstrates how modifying a NACL to block or allow specific traffic (like ICMP or SSH) immediately impacts the entire subnet, providing an additional, broader layer of network security defense beyond individual instance firewalls.</em></p>
+</li>
+<li>
+<p><strong>Initialize CloudFormation Template (Initialize CloudFormation Template)</strong>
+<img src="../images/1-Worklog/Worklog_week1.10/Initialize%20CloudFormation%20Template.png" alt="Initialize CloudFormation Template">
+<em>Description: This image shows the first step in setting up the environment using AWS CloudFormation. Running the template automates the creation of VPCs, Subnets, Route Tables, and basic network resources required for the Transit Gateway lab. This is an efficient method to build infrastructure quickly and consistently rather than creating resources manually via the console.</em></p>
+</li>
+<li>
+<p><strong>Create Security Key Pair (Create_key_pair)</strong>
+<img src="../images/1-Worklog/Worklog_week1.10/Create_key_pair.png" alt="Create Key Pair">
+<em>Description: The process of creating a new Amazon EC2 Key Pair is displayed here. The Key Pair (public key stored on AWS and private key downloaded by the user) acts as a crucial authentication mechanism, allowing administrators secure SSH access to the EC2 instances that will be launched in the VPCs. Careful management of security keys is a fundamental principle in cloud security.</em></p>
+</li>
+<li>
+<p><strong>Create AWS Transit Gateway (Create Transit gateways)</strong>
+<img src="../images/1-Worklog/Worklog_week1.10/Create%20Transit%20gateways.png" alt="Create Transit Gateway">
+<em>Description: This image captures the successful initialization of the AWS Transit Gateway (TGW) resource. TGW acts as a central hub (cloud router) to connect multiple VPCs and on-premises networks, helping to replace complex full-mesh VPC Peering architectures with a simple, scalable, and centrally managed hub-and-spoke model.</em></p>
+</li>
+<li>
+<p><strong>Attach VPCs to Transit Gateway (Create Transit gateway attachments)</strong>
+<img src="../images/1-Worklog/Worklog_week1.10/Create%20Transit%20gateway%20attachments.png" alt="Create Transit Gateway Attachments">
+<em>Description: The next step after creating the TGW is attaching specific VPC networks to this central hub. The screenshot illustrates the TGW Attachments creation process, linking the VPCs to the Transit Gateway. This allows network traffic from subnets within a VPC to be routed to the TGW and onward to other destination networks.</em></p>
+</li>
+<li>
+<p><strong>Configure Transit Gateway Route Tables (Create Transit gateway route tables)</strong>
+<img src="../images/1-Worklog/Worklog_week1.10/Create%20Transit%20gateway%20route%20tables.png" alt="Create Transit Gateway Route Tables">
+<em>Description: This image displays the creation and configuration of Transit Gateway Route Tables. Unlike VPC Route Tables, TGW Route Tables control how packets are routed after they reach the Transit Gateway. By using multiple route tables, administrators can establish complex routing policies (e.g., isolating VPCs, or allowing specific VPCs to communicate with each other).</em></p>
+</li>
+<li>
+<p><strong>Update TGW Routing Rules (Create Transit gateway route tables 1)</strong>
+<img src="../images/1-Worklog/Worklog_week1.10/Create%20Transit%20gateway%20route%20tables%201.png" alt="Create Transit Gateway Route Tables 1">
+<em>Description: Details the process of updating routing records (routes) inside the TGW Route Table. Specifying the destination CIDR and the corresponding attachment target ensures that packets know the exact path to reach the destination VPC. This is a critical step to establish cross-network (cross-VPC) communication capabilities.</em></p>
+</li>
+<li>
+<p><strong>Verify Network Routing via TGW (Transit Gateway Route result &amp; result 1)</strong>
+<img src="../images/1-Worklog/Worklog_week1.10/Transit%20Gateway%20Route%20result.png" alt="Transit Gateway Route result">
+<img src="../images/1-Worklog/Worklog_week1.10/Transit%20Gateway%20Route%20result%201.png" alt="Transit Gateway Route result 1">
+<em>Description: These images serve as evidence that routing through the Transit Gateway is functioning correctly. Successful ping or trace route results from a server in one VPC to a server in another VPC prove that the hub-and-spoke network is operational. The entire network architecture, from the subnet Route Tables to the TGW Route Tables, has been synchronized successfully.</em></p>
+</li>
+<li>
+<p><strong>Resource Cleanup for Cost Optimization (Clean)</strong>
+<img src="../images/1-Worklog/Worklog_week1.10/clean%201.png" alt="Clean 1">
+<img src="../images/1-Worklog/Worklog_week1.10/clean%202.png" alt="Clean 2">
+<img src="../images/1-Worklog/Worklog_week1.10/Clean.png" alt="Clean">
+<em>Description: This final sequence of images records the &ldquo;tear down&rdquo; process of lab resources, including deleting Transit Gateway Attachments, deleting the Transit Gateway, terminating EC2 instances, and deleting CloudFormation stacks. Proactively deleting resources after completing a lab is an extremely important practice on AWS to prevent unexpected charges (cost optimization).</em></p>
+</li>
+</ol>
 <hr>
 <h2 id="week-11">Week 11:</h2>
 <h3 id="week-11-objectives">Week 11 Objectives:</h3>
@@ -3124,19 +3206,19 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="../js/clipboard.min.js?1783794628"></script>
-    <script src="../js/perfect-scrollbar.min.js?1783794628"></script>
-    <script src="../js/perfect-scrollbar.jquery.min.js?1783794628"></script>
-    <script src="../js/jquery.sticky.js?1783794628"></script>
-    <script src="../js/featherlight.min.js?1783794628"></script>
-    <script src="../js/highlight.pack.js?1783794628"></script>
+    <script src="../js/clipboard.min.js?1783849068"></script>
+    <script src="../js/perfect-scrollbar.min.js?1783849068"></script>
+    <script src="../js/perfect-scrollbar.jquery.min.js?1783849068"></script>
+    <script src="../js/jquery.sticky.js?1783849068"></script>
+    <script src="../js/featherlight.min.js?1783849068"></script>
+    <script src="../js/highlight.pack.js?1783849068"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="../js/modernizr.custom-3.6.0.js?1783794628"></script>
-    <script src="../js/learn.js?1783794628"></script>
-    <script src="../js/hugo-learn.js?1783794628"></script>
+    <script src="../js/modernizr.custom-3.6.0.js?1783849068"></script>
+    <script src="../js/learn.js?1783849068"></script>
+    <script src="../js/hugo-learn.js?1783849068"></script>
 
-    <link href="../mermaid/mermaid.css?1783794628" rel="stylesheet" />
-    <script src="../mermaid/mermaid.js?1783794628"></script>
+    <link href="../mermaid/mermaid.css?1783849068" rel="stylesheet" />
+    <script src="../mermaid/mermaid.js?1783849068"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

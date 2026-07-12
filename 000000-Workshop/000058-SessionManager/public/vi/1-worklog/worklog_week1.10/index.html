@@ -12,21 +12,21 @@
     <title>Worklog Tuần 10 :: AWS System Manager</title>
 
     
-    <link href='../../../css/nucleus.css?1783794629' rel="stylesheet">
-    <link href='../../../css/fontawesome-all.min.css?1783794629' rel="stylesheet">
-    <link href='../../../css/hybrid.css?1783794629' rel="stylesheet">
-    <link href='../../../css/featherlight.min.css?1783794629' rel="stylesheet">
-    <link href='../../../css/perfect-scrollbar.min.css?1783794629' rel="stylesheet">
-    <link href='../../../css/auto-complete.css?1783794629' rel="stylesheet">
-    <link href='../../../css/atom-one-dark-reasonable.css?1783794629' rel="stylesheet">
-    <link href='../../../css/theme.css?1783794629' rel="stylesheet">
-    <link href='../../../css/hugo-theme.css?1783794629' rel="stylesheet">
+    <link href='../../../css/nucleus.css?1783849068' rel="stylesheet">
+    <link href='../../../css/fontawesome-all.min.css?1783849068' rel="stylesheet">
+    <link href='../../../css/hybrid.css?1783849068' rel="stylesheet">
+    <link href='../../../css/featherlight.min.css?1783849068' rel="stylesheet">
+    <link href='../../../css/perfect-scrollbar.min.css?1783849068' rel="stylesheet">
+    <link href='../../../css/auto-complete.css?1783849068' rel="stylesheet">
+    <link href='../../../css/atom-one-dark-reasonable.css?1783849068' rel="stylesheet">
+    <link href='../../../css/theme.css?1783849068' rel="stylesheet">
+    <link href='../../../css/hugo-theme.css?1783849068' rel="stylesheet">
     
-    <link href='../../../css/theme-workshop.css?1783794629' rel="stylesheet">
+    <link href='../../../css/theme-workshop.css?1783849068' rel="stylesheet">
     
     
 
-    <script src='../../../js/jquery-3.3.1.min.js?1783794629'></script>
+    <script src='../../../js/jquery-3.3.1.min.js?1783849068'></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -57,14 +57,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="../../../js/lunr.min.js?1783794629"></script>
-<script type="text/javascript" src="../../../js/auto-complete.js?1783794629"></script>
+<script type="text/javascript" src="../../../js/lunr.min.js?1783849068"></script>
+<script type="text/javascript" src="../../../js/auto-complete.js?1783849068"></script>
 <script type="text/javascript">
     
         var baseurl = "http:\/\/localhost:1313\/fcj-workshop-template\/\/vi";
     
 </script>
-<script type="text/javascript" src="../../../js/search.js?1783794629"></script>
+<script type="text/javascript" src="../../../js/search.js?1783849068"></script>
 
     
   </div>
@@ -1602,6 +1602,49 @@
 <img src="../../../images/1-Worklog/Worklog_week1.10/ALI.png" alt="Cấu hình NACL">
 <em>Mô tả chi tiết: Trình bày quá trình cấu hình và kiểm thử Network ACLs (NACLs). Khác với Security Group, NACL là tường lửa không trạng thái (stateless) hoạt động ở cấp độ subnet, yêu cầu phải định nghĩa rõ ràng cả quy tắc inbound và outbound. Hình ảnh minh chứng việc thay đổi một quy tắc NACL để chặn hoặc cho phép lưu lượng cụ thể (như ICMP hay SSH) sẽ ngay lập tức tác động đến toàn bộ subnet, cung cấp một lớp phòng thủ an ninh mạng bao quát và mạnh mẽ hơn.</em></p>
 </li>
+<li>
+<p><strong>Khởi tạo CloudFormation Template (Initialize CloudFormation Template)</strong>
+<img src="../../../images/1-Worklog/Worklog_week1.10/Initialize%20CloudFormation%20Template.png" alt="Khởi tạo CloudFormation Template">
+<em>Mô tả chi tiết: Hình ảnh này thể hiện bước đầu tiên trong việc thiết lập môi trường bằng cách sử dụng AWS CloudFormation. Việc chạy template sẽ tự động hóa quá trình tạo ra các VPC, Subnet, Route Table và các tài nguyên mạng cơ bản cần thiết cho bài thực hành Transit Gateway. Đây là phương pháp hiệu quả để xây dựng hạ tầng nhanh chóng và đồng nhất thay vì phải tạo từng tài nguyên thủ công qua console.</em></p>
+</li>
+<li>
+<p><strong>Tạo Key Pair bảo mật (Create_key_pair)</strong>
+<img src="../../../images/1-Worklog/Worklog_week1.10/Create_key_pair.png" alt="Tạo Key Pair">
+<em>Mô tả chi tiết: Quá trình tạo mới Amazon EC2 Key Pair được hiển thị trong ảnh này. Key Pair đóng vai trò xác thực quan trọng, cho phép quản trị viên truy cập an toàn (SSH) vào các máy chủ EC2 sẽ được khởi tạo trong các mạng VPC. Việc quản lý khóa bảo mật cẩn thận là nguyên tắc cơ bản trong bảo mật đám mây.</em></p>
+</li>
+<li>
+<p><strong>Tạo AWS Transit Gateway (Create Transit gateways)</strong>
+<img src="../../../images/1-Worklog/Worklog_week1.10/Create%20Transit%20gateways.png" alt="Tạo Transit Gateway">
+<em>Mô tả chi tiết: Hình ảnh ghi nhận việc khởi tạo thành công tài nguyên AWS Transit Gateway (TGW). TGW đóng vai trò là một hub trung tâm để kết nối nhiều mạng VPC và hệ thống mạng on-premises, giúp thay thế kiến trúc kết nối VPC Peering dạng lưới (full-mesh) phức tạp bằng mô hình hub-and-spoke đơn giản, dễ mở rộng và dễ quản lý tập trung.</em></p>
+</li>
+<li>
+<p><strong>Gắn kết VPC vào Transit Gateway (Create Transit gateway attachments)</strong>
+<img src="../../../images/1-Worklog/Worklog_week1.10/Create%20Transit%20gateway%20attachments.png" alt="Gắn kết Transit Gateway">
+<em>Mô tả chi tiết: Bước tiếp theo sau khi tạo TGW là gắn kết (attach) các mạng VPC cụ thể vào hub trung tâm này. Ảnh chụp màn hình minh họa quá trình tạo TGW Attachments, qua đó các VPC được liên kết vào Transit Gateway. Điều này cho phép lưu lượng mạng từ các subnet bên trong VPC có thể được định tuyến tới TGW để đi tới các mạng đích khác.</em></p>
+</li>
+<li>
+<p><strong>Cấu hình bảng định tuyến cho Transit Gateway (Create Transit gateway route tables)</strong>
+<img src="../../../images/1-Worklog/Worklog_week1.10/Create%20Transit%20gateway%20route%20tables.png" alt="Cấu hình Route Tables cho TGW">
+<em>Mô tả chi tiết: Hình ảnh này hiển thị việc tạo và cấu hình Transit Gateway Route Tables. Khác với Route Table của VPC, TGW Route Table kiểm soát cách thức gói tin được định tuyến sau khi đến Transit Gateway. Bằng cách sử dụng nhiều route table, người quản trị có thể thiết lập các chính sách định tuyến phức tạp (ví dụ: cách ly các VPC, hoặc cho phép một số VPC giao tiếp với nhau).</em></p>
+</li>
+<li>
+<p><strong>Cập nhật quy tắc định tuyến TGW (Create Transit gateway route tables 1)</strong>
+<img src="../../../images/1-Worklog/Worklog_week1.10/Create%20Transit%20gateway%20route%20tables%201.png" alt="Cập nhật Route Tables cho TGW">
+<em>Mô tả chi tiết: Chi tiết quá trình cập nhật các bản ghi định tuyến (routes) bên trong TGW Route Table. Việc khai báo đích đến (destination CIDR) và đính kèm (attachment target) tương ứng đảm bảo các gói tin biết chính xác đường đi để tới được VPC đích. Đây là bước quyết định để thiết lập khả năng giao tiếp xuyên mạng (cross-VPC).</em></p>
+</li>
+<li>
+<p><strong>Kiểm tra kết quả định tuyến mạng qua TGW (Transit Gateway Route result &amp; result 1)</strong>
+<img src="../../../images/1-Worklog/Worklog_week1.10/Transit%20Gateway%20Route%20result.png" alt="Kết quả định tuyến TGW">
+<img src="../../../images/1-Worklog/Worklog_week1.10/Transit%20Gateway%20Route%20result%201.png" alt="Kết quả kết nối TGW">
+<em>Mô tả chi tiết: Các hình ảnh này là bằng chứng xác nhận việc định tuyến thông qua Transit Gateway đã hoạt động chính xác. Kết quả ping hoặc trace route từ máy chủ ở VPC này tới máy chủ ở VPC khác thành công chứng minh rằng mạng lưới hub-and-spoke đã được thông suốt. Toàn bộ kiến trúc mạng từ Route Table của subnet tới Route Table của TGW đều đã được cấu hình đồng bộ.</em></p>
+</li>
+<li>
+<p><strong>Dọn dẹp tài nguyên để tối ưu chi phí (Clean)</strong>
+<img src="../../../images/1-Worklog/Worklog_week1.10/clean%201.png" alt="Clean 1">
+<img src="../../../images/1-Worklog/Worklog_week1.10/clean%202.png" alt="Clean 2">
+<img src="../../../images/1-Worklog/Worklog_week1.10/Clean.png" alt="Clean">
+<em>Mô tả chi tiết: Chuỗi hình ảnh cuối cùng này ghi nhận quá trình &ldquo;dọn dẹp&rdquo; (tear down) các tài nguyên thực hành bao gồm xóa Transit Gateway Attachments, xóa Transit Gateway, terminate EC2 instances và xóa CloudFormation stacks. Việc chủ động xóa các tài nguyên sau khi hoàn thành bài lab là thực hành cực kỳ quan trọng trên AWS để ngăn chặn các khoản phí phát sinh không mong muốn (cost optimization).</em></p>
+</li>
 </ol>
 
 
@@ -2359,19 +2402,19 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="../../../js/clipboard.min.js?1783794629"></script>
-    <script src="../../../js/perfect-scrollbar.min.js?1783794629"></script>
-    <script src="../../../js/perfect-scrollbar.jquery.min.js?1783794629"></script>
-    <script src="../../../js/jquery.sticky.js?1783794629"></script>
-    <script src="../../../js/featherlight.min.js?1783794629"></script>
-    <script src="../../../js/highlight.pack.js?1783794629"></script>
+    <script src="../../../js/clipboard.min.js?1783849068"></script>
+    <script src="../../../js/perfect-scrollbar.min.js?1783849068"></script>
+    <script src="../../../js/perfect-scrollbar.jquery.min.js?1783849068"></script>
+    <script src="../../../js/jquery.sticky.js?1783849068"></script>
+    <script src="../../../js/featherlight.min.js?1783849068"></script>
+    <script src="../../../js/highlight.pack.js?1783849068"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="../../../js/modernizr.custom-3.6.0.js?1783794629"></script>
-    <script src="../../../js/learn.js?1783794629"></script>
-    <script src="../../../js/hugo-learn.js?1783794629"></script>
+    <script src="../../../js/modernizr.custom-3.6.0.js?1783849068"></script>
+    <script src="../../../js/learn.js?1783849068"></script>
+    <script src="../../../js/hugo-learn.js?1783849068"></script>
 
-    <link href="../../../mermaid/mermaid.css?1783794629" rel="stylesheet" />
-    <script src="../../../mermaid/mermaid.js?1783794629"></script>
+    <link href="../../../mermaid/mermaid.css?1783849068" rel="stylesheet" />
+    <script src="../../../mermaid/mermaid.js?1783849068"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>
