@@ -22,9 +22,9 @@ chapter: false
 **Ảnh sinh viên**![alt text](/images/image.png)
 ### Nội dung
 
-1. [Giới thiệu](1-introduce/)
-2. [Các bước chuẩn bị](2-prerequiste/)
-3. [Kết nối đến máy chủ EC2](3-accessibilitytoinstances/)
+1. [Nhật ký công việc](1-Worklog/)
+2. [Đề xuất dự án](2-Proposal/)
+3. [Kết nối đến máy chủ EC2](3-Accessibilitytoinstances/)
 4. [Workshop](4-Workshop/)
 5. [Chuyển tiếp cổng (Port Forwarding)](5-Portfwd/)
 6. [Dọn dẹp tài nguyên](6-cleanup/)

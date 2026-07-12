@@ -21,9 +21,9 @@ chapter: false
 
 **Student Portrait**![alt text](/images/image.png)
 ### Content
- 1. [Introduction ](1-introduce/)
- 2. [Preparation](2-prerequiste/)
- 3. [Connect to EC2 instance](3-accessibilitytoinstances/)
+ 1. [Worklog](1-Worklog/)
+ 2. [Project Proposal](2-Proposal/)
+ 3. [Connect to EC2 servers](3-Accessibilitytoinstances/)
  4. [Workshop](4-Workshop/)
  5. [Port Forwarding](5-Portfwd/)
  6. [Clean up resources](6-cleanup/)

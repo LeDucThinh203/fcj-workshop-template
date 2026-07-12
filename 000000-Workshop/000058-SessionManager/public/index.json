@@ -32,7 +32,7 @@
 	"title": "Student Information",
 	"tags": [],
 	"description": "",
-	"content": "INTERNSHIP REPORT Student Information: Full name: Lê Đức Thịnh Phone number: 0345114805 Email: leducthinh203@gmail.com University: Ho Chi Minh City University of Technology (HUTECH) Major: Information Technology Class: 22DTHE4 Internship Company: Amazon Web Services Vietnam Company Limited Internship Position: Cloud Engineer - First Cloud AI Journey Internship Period: From April 17, 2026 to July 10, 2026 Student Portrait\nContent Introduction Preparation Connect to EC2 instance Workshop Port Forwarding Clean up resources "
+	"content": "INTERNSHIP REPORT Student Information: Full name: Lê Đức Thịnh Phone number: 0345114805 Email: leducthinh203@gmail.com University: Ho Chi Minh City University of Technology (HUTECH) Major: Information Technology Class: 22DTHE4 Internship Company: Amazon Web Services Vietnam Company Limited Internship Position: Cloud Engineer - First Cloud AI Journey Internship Period: From April 17, 2026 to July 10, 2026 Student Portrait\nContent Worklog Project Proposal Connect to EC2 servers Workshop Port Forwarding Clean up resources "
 },
 {
 	"uri": "http://localhost:1313/fcj-workshop-template/1-worklog/worklog_week1.1/",
