@@ -375,6 +375,32 @@ Tạo VPC (CloudStack lab):
 - **Quản lý tài nguyên với Tags & Resource Groups**: Đã học cách tổ chức và quản lý các tài nguyên AWS một cách hiệu quả bằng Tags và Resource Groups.
 - **Hoàn thành tất cả bài lab**: Đã hoàn thành thành công tất cả 4 bài lab thực hành như hướng dẫn.
 
+### Hình ảnh minh chứng:
+
+1. **Khởi tạo S3 Bucket (Create s3 bucket)**
+   ![Create s3 bucket](../images/1-Worklog/Worklog_week1.11/Create%20s3%20bucket.png)
+   *Mô tả chi tiết: Quá trình tạo Amazon S3 Bucket để làm nơi lưu trữ dữ liệu cho Storage Gateway. S3 cung cấp kho lưu trữ đối tượng an toàn, bền bỉ và có khả năng mở rộng, đóng vai trò là điểm đến (backend storage) cho các file được chia sẻ qua File Gateway.*
+
+2. **Khởi chạy EC2 (Create EC2)**
+   ![Create EC2](../images/1-Worklog/Worklog_week1.11/Create%20EC2.png)
+   *Mô tả chi tiết: Triển khai một máy ảo (EC2 instance) đóng vai trò như một máy chủ on-premises mô phỏng. Máy ảo này sẽ được cấu hình để mount (kết nối) vào File Share mà Storage Gateway cung cấp, nhằm kiểm tra khả năng lưu trữ file lên S3 từ môi trường mạng nội bộ.*
+
+3. **Tạo Storage Gateway (Create Storage GateWay)**
+   ![Create Storage GateWay](../images/1-Worklog/Worklog_week1.11/Create%20Storage%20GateWay.png)
+   *Mô tả chi tiết: Giao diện cấu hình và khởi tạo AWS File Storage Gateway. Storage Gateway đóng vai trò làm cầu nối (bridge) giữa ứng dụng on-premises và hệ sinh thái lưu trữ đám mây của AWS. Nó cung cấp giao thức SMB/NFS tiêu chuẩn để các ứng dụng cũ có thể dễ dàng lưu file lên S3 mà không cần thay đổi kiến trúc.*
+
+4. **Tạo File Share (Create File Share)**
+   ![Create File Share](../images/1-Worklog/Worklog_week1.11/Create%20File%20Share.png)
+   *Mô tả chi tiết: Quá trình thiết lập một File Share trên Storage Gateway vừa tạo. File share này được liên kết trực tiếp với S3 bucket. Bất kỳ file nào được ghi vào file share này thông qua NFS/SMB sẽ được Gateway tự động đẩy lên S3 dưới dạng các object.*
+
+5. **Kết nối File Share vào máy On-premises (Mount File shares on On-premises machine)**
+   ![Mount File shares on On-premises machine](../images/1-Worklog/Worklog_week1.11/Mount%20File%20shares%20on%20On-premises%20machine.png)
+   *Mô tả chi tiết: Thực hiện lệnh mount thư mục được chia sẻ từ Storage Gateway lên máy ảo EC2 (mô phỏng máy chủ on-premises). Hình ảnh cho thấy việc kết nối thành công, cho phép người dùng hoặc ứng dụng có thể đọc/ghi dữ liệu vào S3 thông qua một thư mục mạng cục bộ một cách hoàn toàn trong suốt.*
+
+6. **Dọn dẹp tài nguyên (Clean)**
+   ![Clean](../images/1-Worklog/Worklog_week1.11/Clean.png)
+   *Mô tả chi tiết: Thao tác xóa bỏ các tài nguyên đã tạo (Storage Gateway, File Share, S3 Bucket, EC2 Instance) sau khi hoàn thành bài thực hành. Đây là nguyên tắc quan trọng nhằm tối ưu hóa chi phí (Cost Optimization) và đảm bảo không có tài nguyên dư thừa bị bỏ quên.*
+
 ---
 
 ## Tuần 12:
