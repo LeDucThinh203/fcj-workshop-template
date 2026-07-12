@@ -197,19 +197,6 @@
                 href="http://localhost:1313/fcj-workshop-template/1-worklog/worklog_week1.2/"
                 />
   </url><url>
-    <loc>http://localhost:1313/fcj-workshop-template/2-proposal/</loc>
-    <lastmod>2026-04-27T00:00:00+00:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="vi"
-                href="http://localhost:1313/fcj-workshop-template/vi/2-proposal/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en-us"
-                href="http://localhost:1313/fcj-workshop-template/2-proposal/"
-                />
-  </url><url>
     <loc>http://localhost:1313/fcj-workshop-template/4-workshop/5.4-lambda-rekognition/5.4.2-rekognition-integration/</loc>
     <lastmod>2026-04-26T00:00:00+00:00</lastmod>
     <xhtml:link
@@ -247,6 +234,19 @@
                 rel="alternate"
                 hreflang="en-us"
                 href="http://localhost:1313/fcj-workshop-template/4-workshop/5.2-prerequisite/"
+                />
+  </url><url>
+    <loc>http://localhost:1313/fcj-workshop-template/2-proposal/</loc>
+    <lastmod>2026-04-26T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="vi"
+                href="http://localhost:1313/fcj-workshop-template/vi/2-proposal/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en-us"
+                href="http://localhost:1313/fcj-workshop-template/2-proposal/"
                 />
   </url><url>
     <loc>http://localhost:1313/fcj-workshop-template/3-accessibilitytoinstances/</loc>

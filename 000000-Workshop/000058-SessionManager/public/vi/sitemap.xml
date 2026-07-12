@@ -200,19 +200,6 @@
                 href="http://localhost:1313/fcj-workshop-template/vi/3-accessibilitytoinstances/3.2-private-instance/3.2.2-createvpcendpoint/"
                 />
   </url><url>
-    <loc>http://localhost:1313/fcj-workshop-template/vi/2-proposal/</loc>
-    <lastmod>2026-04-27T00:00:00+00:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en-us"
-                href="http://localhost:1313/fcj-workshop-template/2-proposal/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="vi"
-                href="http://localhost:1313/fcj-workshop-template/vi/2-proposal/"
-                />
-  </url><url>
     <loc>http://localhost:1313/fcj-workshop-template/vi/4-workshop/5.2-prerequisite/</loc>
     <lastmod>2026-04-26T00:00:00+00:00</lastmod>
     <xhtml:link
@@ -224,6 +211,19 @@
                 rel="alternate"
                 hreflang="vi"
                 href="http://localhost:1313/fcj-workshop-template/vi/4-workshop/5.2-prerequisite/"
+                />
+  </url><url>
+    <loc>http://localhost:1313/fcj-workshop-template/vi/2-proposal/</loc>
+    <lastmod>2026-04-26T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en-us"
+                href="http://localhost:1313/fcj-workshop-template/2-proposal/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="vi"
+                href="http://localhost:1313/fcj-workshop-template/vi/2-proposal/"
                 />
   </url><url>
     <loc>http://localhost:1313/fcj-workshop-template/vi/4-workshop/5.3-iot-core-s3/5.3.2-s3-presigned-url/</loc>

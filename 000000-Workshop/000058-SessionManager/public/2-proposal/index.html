@@ -12,21 +12,21 @@
     <title>Project Proposal :: AWS System Manager</title>
 
     
-    <link href='../css/nucleus.css?1783885524' rel="stylesheet">
-    <link href='../css/fontawesome-all.min.css?1783885524' rel="stylesheet">
-    <link href='../css/hybrid.css?1783885524' rel="stylesheet">
-    <link href='../css/featherlight.min.css?1783885524' rel="stylesheet">
-    <link href='../css/perfect-scrollbar.min.css?1783885524' rel="stylesheet">
-    <link href='../css/auto-complete.css?1783885524' rel="stylesheet">
-    <link href='../css/atom-one-dark-reasonable.css?1783885524' rel="stylesheet">
-    <link href='../css/theme.css?1783885524' rel="stylesheet">
-    <link href='../css/hugo-theme.css?1783885524' rel="stylesheet">
+    <link href='../css/nucleus.css?1783886011' rel="stylesheet">
+    <link href='../css/fontawesome-all.min.css?1783886011' rel="stylesheet">
+    <link href='../css/hybrid.css?1783886011' rel="stylesheet">
+    <link href='../css/featherlight.min.css?1783886011' rel="stylesheet">
+    <link href='../css/perfect-scrollbar.min.css?1783886011' rel="stylesheet">
+    <link href='../css/auto-complete.css?1783886011' rel="stylesheet">
+    <link href='../css/atom-one-dark-reasonable.css?1783886011' rel="stylesheet">
+    <link href='../css/theme.css?1783886011' rel="stylesheet">
+    <link href='../css/hugo-theme.css?1783886011' rel="stylesheet">
     
-    <link href='../css/theme-workshop.css?1783885524' rel="stylesheet">
+    <link href='../css/theme-workshop.css?1783886011' rel="stylesheet">
     
     
 
-    <script src='../js/jquery-3.3.1.min.js?1783885524'></script>
+    <script src='../js/jquery-3.3.1.min.js?1783886011'></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -57,14 +57,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="../js/lunr.min.js?1783885524"></script>
-<script type="text/javascript" src="../js/auto-complete.js?1783885524"></script>
+<script type="text/javascript" src="../js/lunr.min.js?1783886011"></script>
+<script type="text/javascript" src="../js/auto-complete.js?1783886011"></script>
 <script type="text/javascript">
     
         var baseurl = "http:\/\/localhost:1313\/fcj-workshop-template\/";
     
 </script>
-<script type="text/javascript" src="../js/search.js?1783885524"></script>
+<script type="text/javascript" src="../js/search.js?1783886011"></script>
 
     
   </div>
@@ -1376,7 +1376,7 @@
         <div id="overlay"></div>
         <div class="padding highlightable">
               
-              <div id="top-bar-wrapper">
+              <div>
                 <div id="top-bar">
                   <div class="top-bar-controls">
                     <div class="language-switcher">
@@ -1437,12 +1437,39 @@
 <nav id="TableOfContents">
   <ul>
     <li><a href="#1-executive-summary">1. Executive Summary</a></li>
-    <li><a href="#2-problem-statement">2. Problem Statement</a></li>
-    <li><a href="#3-solution-architecture">3. Solution Architecture</a></li>
-    <li><a href="#4-technical-implementation">4. Technical Implementation</a></li>
-    <li><a href="#5-budget--cost-estimation">5. Budget &amp; Cost Estimation</a></li>
-    <li><a href="#6-risk-assessment--mitigation">6. Risk Assessment &amp; Mitigation</a></li>
-    <li><a href="#7-expected-outcomes">7. Expected Outcomes</a></li>
+    <li><a href="#2-problem-statement">2. Problem Statement</a>
+      <ul>
+        <li><a href="#21-current-challenges">2.1. Current Challenges</a></li>
+        <li><a href="#22-proposed-solution">2.2. Proposed Solution</a></li>
+        <li><a href="#23-expected-outcomes">2.3. Expected Outcomes</a></li>
+        <li><a href="#24-project-scope">2.4. Project Scope</a></li>
+        <li><a href="#25-specific-objectives-kpis">2.5. Specific Objectives (KPIs)</a></li>
+      </ul>
+    </li>
+    <li><a href="#3-solution-architecture">3. Solution Architecture</a>
+      <ul>
+        <li><a href="#31-key-aws-services">3.1. Key AWS Services</a></li>
+      </ul>
+    </li>
+    <li><a href="#4-system-operational-flow">4. System Operational Flow</a>
+      <ul>
+        <li><a href="#41-webapp-access-flow">4.1. Web/App Access Flow</a></li>
+        <li><a href="#42-user-authentication-flow">4.2. User Authentication Flow</a></li>
+        <li><a href="#43-gate-area-wiring-diagram-esp32-camera">4.3. Gate Area Wiring Diagram (ESP32 Camera)</a></li>
+        <li><a href="#44-parking-area-wiring-diagram-esp32-sensors">4.4. Parking Area Wiring Diagram (ESP32 Sensors)</a></li>
+        <li><a href="#45-ai-service-processing-flow">4.5. AI Service Processing Flow</a></li>
+        <li><a href="#46-system-monitoring-flow">4.6. System Monitoring Flow</a></li>
+      </ul>
+    </li>
+    <li><a href="#5-technical-implementation">5. Technical Implementation</a></li>
+    <li><a href="#6-budget-estimation">6. Budget Estimation</a>
+      <ul>
+        <li><a href="#61-hardware-costs">6.1. Hardware Costs</a></li>
+        <li><a href="#62-aws-service-costs-pay-as-you-go">6.2. AWS Service Costs (Pay-as-you-go)</a></li>
+      </ul>
+    </li>
+    <li><a href="#7-risk-assessment--mitigation">7. Risk Assessment &amp; Mitigation</a></li>
+    <li><a href="#8-conclusion">8. Conclusion</a></li>
   </ul>
 </nav>
     </div>
@@ -1468,83 +1495,247 @@
 
 
 
-	<h1 id="project-proposal-iot-weather-platform-for-lab-research">PROJECT PROPOSAL: IoT Weather Platform for Lab Research</h1>
-<p><strong>A Serverless AWS Solution for Real-Time Weather Monitoring</strong></p>
+	<h1 id="smart-parking-iot-platform-with-aws-serverless">Smart Parking IoT Platform with AWS Serverless</h1>
+<blockquote>
+<p><strong>AWS Serverless Solution for Parking Monitoring, License Plate Recognition, and AI Assistance</strong></p>
+</blockquote>
+<hr>
 <h2 id="1-executive-summary">1. Executive Summary</h2>
-<p>The project aims to build an IoT platform for <strong>ITea Lab</strong> (Ho Chi Minh City) to optimize weather data collection and analysis. The system supports 5 existing stations and is scalable up to 15 stations, utilizing edge devices (Raspberry Pi/ESP32) connected via MQTT. By leveraging AWS Serverless infrastructure, the platform ensures real-time monitoring and predictive analytics with optimized operational costs.</p>
+<p>The project aims to build a <strong>Smart Parking IoT</strong> system that automates the parking monitoring process, vehicle recognition, and real-time data management. The system utilizes IoT devices such as <strong>ESP32 Camera</strong> and <strong>ESP32 Sensors</strong> to capture images of vehicles entering/exiting, monitor parking slot availability, and collect data from the parking lot.</p>
+<p>Data from the devices is transmitted to AWS through services like <strong>AWS IoT Core</strong>, <strong>Amazon S3</strong>, and <strong>Amazon API Gateway</strong>, and processed using <strong>AWS Lambda</strong>. Vehicle images are stored in <strong>Amazon S3</strong>, which triggers Lambda to process the images and call <strong>Amazon Rekognition</strong> for license plate recognition. The recognition results and sensor data are stored in <strong>Amazon DynamoDB</strong> for querying, management, and display on the Web/App.</p>
+<p>Additionally, the system integrates <strong>Amazon Bedrock</strong> via a <strong>Lambda AI Service</strong> layer to support data analysis, answer intelligent queries, and provide a modern parking management experience. With the AWS Serverless architecture, the system is highly scalable, reduces operational costs, and eliminates the need for traditional server management.</p>
+<hr>
 <h2 id="2-problem-statement">2. Problem Statement</h2>
+<h3 id="21-current-challenges">2.1. Current Challenges</h3>
+<p>Traditional parking lots face many limitations in operations and management. Controlling vehicle entry and exit still heavily relies on human effort, leading to errors in recording license plates, entry times, or parking slot statuses. As the number of vehicles increases, manual management becomes difficult, inaccurate, and time-consuming.</p>
+<p>Key issues include:</p>
 <ul>
-<li><strong>Current Challenges:</strong> Manual data collection process, lack of centralization, management difficulties as the number of stations grows, and high costs associated with third-party platforms.</li>
-<li><strong>Solution:</strong> Develop a centralized system using AWS IoT Core, AWS Glue ETL, and Amplify to fully automate the data pipeline from measurement stations to the analytics dashboard.</li>
-<li><strong>ROI:</strong> Reduces manual workload, improves data reliability, and provides a stable Data Lake for AI research. The estimated payback period is 6–12 months.</li>
+<li>Difficulty in quickly checking the availability of individual parking slots.</li>
+<li>Manual recording of vehicle entry/exit is prone to confusing license plates or times.</li>
+<li>Data regarding images, license plates, and parking lot status is not centrally managed.</li>
+<li>It is difficult for managers to track the historical activity of vehicles.</li>
+<li>Scaling the system when the number of cameras, sensors, or parking slots increases is challenging.</li>
+<li>Building a custom system can be expensive if physical servers need to be invested in.</li>
 </ul>
+<h3 id="22-proposed-solution">2.2. Proposed Solution</h3>
+<p>The project proposes building a smart Parking IoT system on the AWS Serverless platform. The system uses ESP32 Cameras to capture images of entering/exiting vehicles, and ESP32 Sensors to record the status of parking slots, then sends the data to AWS for processing and centralized storage.</p>
+<p><strong>The solution includes the following main functions:</strong></p>
+<ul>
+<li><strong>ESP32 Camera</strong> captures images of vehicles when they enter or leave the lot.</li>
+<li><strong>ESP32 Sensors</strong> detect the status of each parking slot.</li>
+<li>Vehicle images are uploaded to <strong>Amazon S3</strong> via Presigned URLs.</li>
+<li><strong>AWS Lambda</strong> processes events when new images are uploaded to S3.</li>
+<li><strong>Amazon Rekognition</strong> analyzes images and assists in recognizing license plates.</li>
+<li><strong>DynamoDB</strong> stores vehicle information, license plates, timestamps, statuses, and sensor data.</li>
+<li><strong>Web/App</strong> allows users to log in, view parking lot status, and track vehicle entry/exit history.</li>
+<li><strong>Amazon Cognito</strong> supports user authentication and authorization.</li>
+<li><strong>Amazon Bedrock</strong> provides an AI layer to analyze data and answer intelligent questions.</li>
+<li><strong>Amazon CloudWatch</strong> monitors logs, errors, and the operational status of the system.</li>
+</ul>
+<h3 id="23-expected-outcomes">2.3. Expected Outcomes</h3>
+<p>The system reduces manual operations, increases accuracy in parking management, supports real-time monitoring, and creates a data foundation for future AI analysis. By leveraging the Serverless architecture, the system can scale flexibly based on the number of devices, vehicles, and actual usage demand.</p>
+<h3 id="24-project-scope">2.4. Project Scope</h3>
+<p>Defining the scope ensures the project focuses on core functionalities and remains feasible during deployment:</p>
+<ul>
+<li><strong>In Scope:</strong> AI-based license plate recognition, tracking parking slot status using sensors, auto-logging entry/exit history, gate opening decisions, displaying a monitoring dashboard on a Web App, and supporting queries via Bedrock virtual assistant.</li>
+<li><strong>Out of Scope:</strong> Online parking fee payment modules are not integrated yet, and there is no native Mobile App developed (focusing entirely on the Web App platform).</li>
+</ul>
+<h3 id="25-specific-objectives-kpis">2.5. Specific Objectives (KPIs)</h3>
+<p>The project sets measurable technical targets to evaluate its success:</p>
+<ul>
+<li><strong>Latency:</strong> The time from capturing an image to storing data, analyzing the license plate, and sending the open-gate command is under 2-3 seconds.</li>
+<li><strong>Accuracy:</strong> The license plate recognition accuracy (Confidence score) exceeds 95% under good lighting conditions.</li>
+<li><strong>Reliability:</strong> The AWS Serverless infrastructure ensures up to 99.9% uptime and scales automatically during traffic spikes.</li>
+</ul>
+<hr>
 <h2 id="3-solution-architecture">3. Solution Architecture</h2>
-<p>The system adopts a Serverless architecture to ensure scalability and cost-efficiency.</p>
+<p>The system applies the <strong>AWS Serverless</strong> architecture to reduce infrastructure management costs, increase scalability, and easily integrate with AI, IoT, and database services on AWS.</p>
+<p><em>Overall Architecture Diagram (AWS Serverless Architecture):</em></p>
+<p><img src="../images/2-Proposal/2-proposal-architecture.png" alt="Overall Architecture - Smart Parking IoT"></p>
+<h3 id="31-key-aws-services">3.1. Key AWS Services</h3>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: left">Module</th>
+          <th style="text-align: left">AWS Service</th>
+          <th style="text-align: left">Function</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left"><strong>User Interface</strong></td>
+          <td style="text-align: left">Amazon Route 53 <br> Amazon CloudFront <br> AWS WAF <br> Amazon S3 Static Website</td>
+          <td style="text-align: left">Domain management. <br> Website content distribution. <br> Protect website from malicious access. <br> Host static Web/App interface.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>Authentication &amp; Authorization</strong></td>
+          <td style="text-align: left">Amazon Cognito <br> IAM</td>
+          <td style="text-align: left">Manage login, authentication. <br> Manage access permissions between services.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>API &amp; Backend</strong></td>
+          <td style="text-align: left">Amazon API Gateway <br> AWS Lambda</td>
+          <td style="text-align: left">Receive requests from Web/App/Devices. <br> Handle core business logic, image processing, sensor data, and AI.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>IoT &amp; Edge Devices</strong></td>
+          <td style="text-align: left">AWS IoT Core <br> ESP32 Camera / Sensors</td>
+          <td style="text-align: left">Receive MQTT data from IoT devices. <br> Collect images and parking slot statuses.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>Storage &amp; Database</strong></td>
+          <td style="text-align: left">Amazon S3 <br> Amazon DynamoDB</td>
+          <td style="text-align: left">Store vehicle images. <br> Store license plate data, history, and parking slot statuses.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>Image Processing &amp; AI</strong></td>
+          <td style="text-align: left">Amazon Rekognition <br> Amazon Bedrock</td>
+          <td style="text-align: left">Analyze images, recognize license plates. <br> Support data analysis, intelligent queries.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>System Monitoring</strong></td>
+          <td style="text-align: left">Amazon CloudWatch</td>
+          <td style="text-align: left">Log recording, error tracking, monitoring related components.</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h2 id="4-system-operational-flow">4. System Operational Flow</h2>
+<h3 id="41-webapp-access-flow">4.1. Web/App Access Flow</h3>
+<p>Users access the system through a web browser or mobile device. The website is hosted on Amazon S3 Static Website and distributed via Amazon CloudFront.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>User → Route 53 → CloudFront → AWS WAF → Amazon S3 Static Website → API Gateway → Lambda Backend → DynamoDB
+</span></span></code></pre></div><h3 id="42-user-authentication-flow">4.2. User Authentication Flow</h3>
+<p>The system uses Amazon Cognito to authenticate users. Cognito issues a token that the Web/App includes in requests to the API Gateway.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>User → Amazon Cognito → API Gateway (Cognito Authorizer) → Lambda Backend → DynamoDB
+</span></span></code></pre></div><h3 id="43-gate-area-wiring-diagram-esp32-camera">4.3. Gate Area Wiring Diagram (ESP32 Camera)</h3>
+<p>The gate area is equipped with an ESP32 microcontroller combined with a Camera module to recognize vehicles entering and exiting the parking lot.</p>
+<p><img src="../images/2-Proposal/1.Smart%20Parking%20Gate%20Wiring%20-%20English.png" alt="Gate Wiring Diagram"></p>
+<p><strong>Example of historical vehicle entry/exit data stored:</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;plate_number&#34;</span>: <span style="color:#e6db74">&#34;29A17938&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;timestamp&#34;</span>: <span style="color:#ae81ff">1782032316749</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;allow_open&#34;</span>: <span style="color:#66d9ef">true</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;bucket&#34;</span>: <span style="color:#e6db74">&#34;smart-parking-images-075647413376-ap-southeast-1-an&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;camera_id&#34;</span>: <span style="color:#e6db74">&#34;gate-in-01&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;confidence&#34;</span>: <span style="color:#ae81ff">98.23</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;created_at&#34;</span>: <span style="color:#e6db74">&#34;2026-06-21T15:58:36.749547+07:00&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;device_id&#34;</span>: <span style="color:#e6db74">&#34;gate-in-01&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;direction&#34;</span>: <span style="color:#e6db74">&#34;IN&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;display_plate_number&#34;</span>: <span style="color:#e6db74">&#34;29A-179.38&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;event_id&#34;</span>: <span style="color:#e6db74">&#34;evt_29A17938_1782032316749_IN_21668d9a&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;image_key&#34;</span>: <span style="color:#e6db74">&#34;parking/in/photo-1782032314126-8770cde7.jpg&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;raw_plate_number&#34;</span>: <span style="color:#e6db74">&#34;29A-179.38&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;status&#34;</span>: <span style="color:#e6db74">&#34;ALLOWED&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;vehicle_type&#34;</span>: <span style="color:#e6db74">&#34;GUEST&#34;</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="44-parking-area-wiring-diagram-esp32-sensors">4.4. Parking Area Wiring Diagram (ESP32 Sensors)</h3>
+<p>The parking slots are equipped with sensors (ultrasonic/infrared) connected to ESP32 microcontrollers to track availability status (empty/occupied).</p>
+<p><img src="../images/2-Proposal/2.Parking%20Area%20Wiring%20-%20English.png" alt="Parking Area Wiring Diagram"></p>
+<p><strong>Example of sensor data stored for each parking slot:</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;slot_id&#34;</span>: <span style="color:#e6db74">&#34;A1&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;distance_cm&#34;</span>: <span style="color:#ae81ff">2.8</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;is_occupied&#34;</span>: <span style="color:#ae81ff">1</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;sensor_id&#34;</span>: <span style="color:#e6db74">&#34;esp-slot-01&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;threshold_cm&#34;</span>: <span style="color:#ae81ff">3.5</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;updated_at&#34;</span>: <span style="color:#e6db74">&#34;2026-07-09T17:33:56.017039+07:00&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;zone&#34;</span>: <span style="color:#e6db74">&#34;Zone_A&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;zone_id&#34;</span>: <span style="color:#e6db74">&#34;A&#34;</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="45-ai-service-processing-flow">4.5. AI Service Processing Flow</h3>
+<p>The system integrates an AI layer to help users and administrators query parking lot data using natural language.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>Web/App → API Gateway → Lambda AI Service → Amazon Bedrock → DynamoDB → Web/App
+</span></span></code></pre></div><h3 id="46-system-monitoring-flow">4.6. System Monitoring Flow</h3>
+<p>Amazon CloudWatch is used to record logs and monitor the activities of all services.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>API Gateway / Lambda / IoT Core / Rekognition / DynamoDB → CloudWatch
+</span></span></code></pre></div><hr>
+<h2 id="5-technical-implementation">5. Technical Implementation</h2>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: left">Phase</th>
+          <th style="text-align: left">Content</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left"><strong>Phase 1: Analysis &amp; Design</strong></td>
+          <td style="text-align: left">Determine deployment scope, number of cameras/sensors, design architecture diagram, and database schema.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>Phase 2: IoT Deployment</strong></td>
+          <td style="text-align: left">Configure ESP32 Cameras for taking photos and ESP32 Sensors for MQTT connection with AWS IoT Core.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>Phase 3: AWS Backend</strong></td>
+          <td style="text-align: left">Create API Gateway, Lambda Functions, S3 Buckets, DynamoDB tables, and integrate Rekognition.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>Phase 4: Web/App Development</strong></td>
+          <td style="text-align: left">Develop the user interface, integrate Cognito authentication, and display parking lot status.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>Phase 5: AI &amp; Monitoring</strong></td>
+          <td style="text-align: left">Configure Amazon Bedrock, set up CloudWatch logging, and Alarms.</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h2 id="6-budget-estimation">6. Budget Estimation</h2>
+<h3 id="61-hardware-costs">6.1. Hardware Costs</h3>
 <ul>
-<li><strong>Key AWS Services:</strong>
+<li><strong>ESP32 Camera</strong>: Based on the number of entry/exit gates.</li>
+<li><strong>ESP32 Sensors &amp; Ultrasonic Sensors</strong>: Based on the number of parking slots.</li>
+<li><strong>Accessories</strong>: Power supply, wiring, protective housing, Router/WiFi.</li>
+</ul>
+<h3 id="62-aws-service-costs-pay-as-you-go">6.2. AWS Service Costs (Pay-as-you-go)</h3>
 <ul>
-<li><strong>Data Ingestion:</strong> AWS IoT Core (MQTT).</li>
-<li><strong>Compute &amp; Logic:</strong> AWS Lambda, AWS Glue (ETL Jobs).</li>
-<li><strong>Storage:</strong> Amazon S3 (Data Lake + Analytics Bucket).</li>
-<li><strong>User Interface:</strong> AWS Amplify (Next.js), Amazon Cognito.</li>
+<li><strong>Compute &amp; Processing</strong>: AWS Lambda, Amazon Rekognition, Amazon Bedrock.</li>
+<li><strong>Storage</strong>: Amazon S3 (Images), Amazon DynamoDB (Data).</li>
+<li><strong>Networking &amp; API</strong>: AWS IoT Core, Amazon API Gateway, Amazon CloudFront.</li>
+<li><strong>Management</strong>: Amazon Cognito, Amazon CloudWatch, AWS Budgets.</li>
 </ul>
-</li>
-<li><strong>Data Flow:</strong> Edge Device (Raspberry Pi) → AWS IoT Core → S3 Data Lake → AWS Glue → S3 Analytics → Web Dashboard.</li>
-<li><img src="../fcj-workshop-template/2-proposal/image.png" alt="alt text"></li>
-</ul>
-<h2 id="4-technical-implementation">4. Technical Implementation</h2>
-<ul>
-<li><strong>Implementation Phases:</strong>
-<ol>
-<li><strong>Month 0 (Planning):</strong> Legacy station assessment &amp; architecture design.</li>
-<li><strong>Month 1 (Feasibility):</strong> Cost estimation using AWS Pricing Calculator.</li>
-<li><strong>Month 2 (Optimization):</strong> Architecture optimization (Lambda &amp; Next.js).</li>
-<li><strong>Month 3 (Deployment):</strong> Development (CDK/SDK), testing, and go-live.</li>
-</ol>
-</li>
-<li><strong>Requirements:</strong> Raspberry Pi running Docker (edge filtering), utilizing AWS CDK for Infrastructure as Code (IaC).</li>
-</ul>
-<h2 id="5-budget--cost-estimation">5. Budget &amp; Cost Estimation</h2>
-<ul>
-<li><strong>Hardware Cost:</strong> ~265 USD (one-time investment).</li>
-<li><strong>AWS Operational Cost (Estimated):</strong> ~0.7 USD/month (~8.40 USD/year).
-<ul>
-<li><em>Main components:</em> MQTT messages, S3 Storage, AWS Glue, API Gateway.</li>
-</ul>
-</li>
-</ul>
-<h2 id="6-risk-assessment--mitigation">6. Risk Assessment &amp; Mitigation</h2>
+<hr>
+<h2 id="7-risk-assessment--mitigation">7. Risk Assessment &amp; Mitigation</h2>
 <table>
   <thead>
       <tr>
           <th style="text-align: left">Risk</th>
           <th style="text-align: left">Severity</th>
-          <th style="text-align: left">Mitigation Strategy</th>
+          <th style="text-align: left">Mitigation Plan</th>
       </tr>
   </thead>
   <tbody>
       <tr>
-          <td style="text-align: left">Network outage</td>
+          <td style="text-align: left"><strong>Device loses network connection</strong></td>
           <td style="text-align: left">Medium</td>
-          <td style="text-align: left">Local storage on Raspberry Pi (Docker).</td>
+          <td style="text-align: left">Temporarily store data locally and resend when the network is restored.</td>
       </tr>
       <tr>
-          <td style="text-align: left">Sensor failure</td>
+          <td style="text-align: left"><strong>Blurry license plate images</strong></td>
           <td style="text-align: left">High</td>
-          <td style="text-align: left">Periodic maintenance, spare parts.</td>
+          <td style="text-align: left">Adjust camera angle, lighting, and shooting distance.</td>
       </tr>
       <tr>
-          <td style="text-align: left">Budget overrun</td>
-          <td style="text-align: left">Low</td>
-          <td style="text-align: left">Set Budget Alerts in AWS Billing Dashboard.</td>
+          <td style="text-align: left"><strong>Incorrect license plate recognition</strong></td>
+          <td style="text-align: left">Medium</td>
+          <td style="text-align: left">Combine with manual verification and improve image quality.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>AWS Service Error (Lambda, API)</strong></td>
+          <td style="text-align: left">Medium</td>
+          <td style="text-align: left">Monitor CloudWatch Alarms for timely handling.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>Exceeding AWS budget</strong></td>
+          <td style="text-align: left">Medium</td>
+          <td style="text-align: left">Set up AWS Budgets for automated alerts.</td>
       </tr>
   </tbody>
 </table>
-<h2 id="7-expected-outcomes">7. Expected Outcomes</h2>
-<ul>
-<li><strong>Technical:</strong> Build an automated system to replace manual processes, scalable up to 15 stations.</li>
-<li><strong>Research:</strong> Establish a stable Data Lake for AI model training and internal research projects for at least 1 year.</li>
-</ul>
+<hr>
+<h2 id="8-conclusion">8. Conclusion</h2>
+<p>The <strong>Smart Parking IoT</strong> project using AWS Serverless is an appropriate solution for modernizing parking lot management. The combination of <strong>IoT, Serverless, and AI (Rekognition, Bedrock)</strong> creates an automated, highly accurate, and infinitely scalable management platform without the need to maintain physical servers.</p>
 
 
 
@@ -2284,19 +2475,19 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="../js/clipboard.min.js?1783885524"></script>
-    <script src="../js/perfect-scrollbar.min.js?1783885524"></script>
-    <script src="../js/perfect-scrollbar.jquery.min.js?1783885524"></script>
-    <script src="../js/jquery.sticky.js?1783885524"></script>
-    <script src="../js/featherlight.min.js?1783885524"></script>
-    <script src="../js/highlight.pack.js?1783885524"></script>
+    <script src="../js/clipboard.min.js?1783886011"></script>
+    <script src="../js/perfect-scrollbar.min.js?1783886011"></script>
+    <script src="../js/perfect-scrollbar.jquery.min.js?1783886011"></script>
+    <script src="../js/jquery.sticky.js?1783886011"></script>
+    <script src="../js/featherlight.min.js?1783886011"></script>
+    <script src="../js/highlight.pack.js?1783886011"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="../js/modernizr.custom-3.6.0.js?1783885524"></script>
-    <script src="../js/learn.js?1783885524"></script>
-    <script src="../js/hugo-learn.js?1783885524"></script>
+    <script src="../js/modernizr.custom-3.6.0.js?1783886011"></script>
+    <script src="../js/learn.js?1783886011"></script>
+    <script src="../js/hugo-learn.js?1783886011"></script>
 
-    <link href="../mermaid/mermaid.css?1783885524" rel="stylesheet" />
-    <script src="../mermaid/mermaid.js?1783885524"></script>
+    <link href="../mermaid/mermaid.css?1783886011" rel="stylesheet" />
+    <script src="../mermaid/mermaid.js?1783886011"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>
