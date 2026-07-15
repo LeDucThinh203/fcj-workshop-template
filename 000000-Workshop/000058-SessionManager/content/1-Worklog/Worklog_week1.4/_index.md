@@ -1005,3 +1005,604 @@ Confirm successful restoration:
 **Pro Tip:** To verify all resources have been properly deleted, check your AWS Billing dashboard or use AWS Cost Explorer to ensure no unexpected charges appear after cleanup.
 {{% /notice %}}
 
+
+---
+
+### 10. Install Git on Amazon EC2 2023
+
+Below are instructions for installing Git on an Amazon EC2 virtual machine running Amazon Linux 2023 using basic steps.
+
+**Update System Packages**
+First, update your system packages to make sure you're using the latest version:
+```bash
+sudo dnf update -y
+```
+
+**Find Git Packages**
+Use the following command to find Git packages in the repository:
+```bash
+sudo dnf search git
+```
+
+**Install Git**
+Once you find the Git package, you can install it with the following command:
+```bash
+sudo dnf install git -y
+```
+
+**Verify Git Settings**
+Finally, check the Git version was successfully installed:
+```bash
+git --version
+```
+If you see the Git version appear, it means the installation is complete.
+
+![Verify Git Installation](/images/1-Worklog/Worklog_week1.4/Create%20RDS%20database%20instance.png)
+
+---
+
+### 11. Install Node.js on Amazon EC2 Linux 2023
+
+Below is a Bash script to install Node.js on Amazon EC2 Linux:
+
+```bash
+#!/bin/bash
+
+# Color for formatting
+GREEN='\033[0;32m'
+NC='\033[0m' # Colorless
+
+# Check if NVM is installed
+if ! command -v nvm &> /dev/null; then
+  # Step 1: Install nvm
+  curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash
+  source ~/.nvm/nvm.sh
+fi
+
+# Verify nvm installation
+nvm --version
+
+# Install the LTS version of Node.js
+nvm install --lts
+
+# Use the installed LTS version
+nvm use --lts
+
+# Verify Node.js and npm installation
+node -v
+npm -v
+
+# Step 4: Create package.json file (if it doesn't exist yet)
+if [ ! -f package.json ]; then
+  npm init -y
+  echo -e "${GREEN}Created file package.json.${NC}"
+fi
+
+# Step 5: Install necessary npm packages
+echo -e "Installing required npm packages..."
+npm install express dotenv express-handlebars body-parser mysql
+
+# Step 6: Install nodemon as a development dependency
+echo -e "Installing nodemon as a development dependency..."
+npm install --save-dev nodemon
+npm install -g nodemon
+
+# Step 7: Add npm start script to package.json
+if ! grep -q '"start":' package.json; then
+  npm set-script start "index.js" # Replace "your-app.js" with your entry point file
+  echo -e "${GREEN}Added npm start script to package.json.${NC}"
+fi
+
+echo -e "${GREEN}Installation completed. You can now start building and running your Node.js application using 'npm start'.${NC}"
+```
+
+![Node.js Installation Output](/images/1-Worklog/Worklog_week1.4/Create%20RDS%20database%20instance%201.png)
+
+---
+
+### 12. Creating a DB Instance on AWS
+
+To create a DB Instance on AWS, you can use the AWS Management Console with the option of Easy create either enabled or disabled. When Easy create is enabled, you only need to specify the DB engine type, DB Instance size, and DB Instance identifier. Easy create uses default settings for other configuration options. When Easy create is disabled, you need to specify more configuration options when creating a database, including options for availability, security, backups, and maintenance.
+
+*Note: In the procedure below, the Standard create option is enabled, and Easy create is not. This procedure uses MySQL as an example.*
+
+To create a DB Instance:
+
+1. Sign in to the AWS Management Console and open the Amazon RDS console at [https://console.aws.amazon.com/rds/](https://console.aws.amazon.com/rds/).
+2. In the upper right corner of the Amazon RDS console, select the AWS region where you want to create the DB Instance.
+3. In the navigation pane, choose **Databases**.
+4. Choose **Create database**, and then select **Standard create**.
+   ![Standard Create](/images/1-Worklog/Worklog_week1.4/Create%20RDS%20database%20instance%202.png)
+
+5. For **Engine type**, choose MariaDB, Microsoft SQL Server, MySQL, Oracle, or PostgreSQL. In this example, we are using Microsoft SQL Server.
+6. For **Database management type**, if you are using Oracle or SQL Server, select Amazon RDS or Amazon RDS Custom.
+7. For **Edition**, if you are using Oracle or SQL Server, select the version of the DB engine you want to use.
+8. For **Version**, select the engine version.
+   ![Select Version](/images/1-Worklog/Worklog_week1.4/Create%20RDS%20database%20instance%203.png)
+
+9. In the **Templates** section, choose a template that matches your use case. If you choose **Production**, the following options will be pre-selected in the next step:
+   - Multi-AZ failover option
+   - Provisioned IOPS SSD (io1) storage option
+   - Protection against deletion option
+   We recommend using these features for a production environment.
+
+10. To enter your master password, follow these steps:
+    - In the **Settings** section, open Credential Settings.
+    - If you want to specify a password, uncheck the **Auto generate a password** box if it's already selected.
+    - (Optional) Change the **Master username** value.
+    - Enter the same password in both **Master password** and **Confirm password**.
+    - (Optional) Set up a connection to a compute resource for this DB Instance.
+    ![Setup Connection](/images/1-Worklog/Worklog_week1.4/Create%20RDS%20database%20instance%204.png)
+
+11. You can configure the connection between an Amazon EC2 instance and the new DB Instance during the DB Instance creation process. 
+12. In the Connectivity section under **VPC security group (firewall)**, if you choose **Create new**, a VPC security group with a login rule allowing your local computer's IP address to access the database will be created.
+    ![VPC Security Group](/images/1-Worklog/Worklog_week1.4/Create%20RDS%20database%20instance%205.png)
+
+13. For the remaining sections, specify your DB Instance settings.
+14. Choose **Create database**.
+    ![Create Database Button](/images/1-Worklog/Worklog_week1.4/Create%20RDS%20database%20instance%206.png)
+
+15. If you choose to use an automatically generated password, the **View credential details** button will appear on the Databases page. To view the master username and password for the DB Instance, select View credential details.
+16. Under **Databases**, select the name of the new DB Instance.
+    ![Select DB Instance](/images/1-Worklog/Worklog_week1.4/Create%20RDS%20database%20instance%207.png)
+
+17. On the RDS console, information about the new DB Instance will appear. The DB Instance will have a **Creating** status until it is created and ready for use. Once the status changes to **Available**, you can connect to the DB Instance.
+    ![DB Instance Available](/images/1-Worklog/Worklog_week1.4/Create%20RDS%20database%20instance%208.png)
+
+---
+
+### 13. Check RDS
+
+In the details page of the RDS instance, you can find connection-related information such as Endpoint, Port, and Username.
+The Endpoint is the URL or IP address you use to connect to the RDS database.
+![Check RDS Details](/images/1-Worklog/Worklog_week1.4/Create%20RDS%20database%20instance%209.png)
+
+---
+
+### 14. Viewing Logs and Events on AWS RDS
+
+To monitor Logs and Events on Amazon RDS, you can follow these steps:
+1. Sign in to the AWS Management Console.
+2. Choose the **Amazon RDS** service from the AWS dashboard.
+3. Select the RDS instance you want to view Logs and Events for.
+4. In the instance details page, click on the **Logs & events** tab.
+
+Here, you can view various logs such as:
+- **Error log:** Records errors that occur on the instance.
+- **General log:** Records general activities on the instance.
+- **Slow query log:** Records slow queries.
+- **Event log:** Displays important events related to the instance.
+
+You can customize settings for viewing Logs and Events here, such as the time range you want to view logs or setting up email notifications for important events.
+![View Logs and Events](/images/1-Worklog/Worklog_week1.4/Create%20RDS%20database%20instance%2010.png)
+
+---
+
+### 15. Viewing Maintenance and Backups on AWS RDS
+
+**Viewing Maintenance Information**
+To view information about maintenance for a DB instance in RDS:
+1. In the DB instance management page, navigate to the **Maintenance & backups** tab.
+2. Here, you will see information about the maintenance schedule, including the times when the DB instance will be automatically backed up and maintenance tasks will be performed.
+
+**Viewing Backup Information**
+1. Navigate to the **Maintenance & backups** tab.
+2. Here, you can view information about automatic backups and manual backups. You can also configure and manage backup settings.
+
+![Maintenance and Backups](/images/1-Worklog/Worklog_week1.4/Create%20RDS%20database%20instance%2011.png)
+
+
+---
+
+### 16. Application Deployment
+
+**Deploy the Application**
+To clone the repository from GitHub of AWS-First-Cloud-Journey, you can use the following command:
+```bash
+git clone https://github.com/AWS-First-Cloud-Journey/AWS-FCJ-Management
+```
+![Clone Repository](/images/1-Worklog/Worklog_week1.4/Application%20Deployment.png)
+
+**Instructions for installing Node.js on Amazon Linux 2023**
+Below is a Bash script to install Node.js on Amazon Linux. Please copy and execute the following steps:
+```bash
+#!/bin/bash
+
+# Colors for formatting
+GREEN='\033[0;32m'
+NC='\033[0m' # No Color
+
+# Check if NVM is installed
+if ! command -v nvm &> /dev/null; then
+  # Step 1: Install nvm
+  curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash
+  source ~/.nvm/nvm.sh
+fi
+
+# Verify nvm installation
+nvm --version
+
+# Install the LTS version of Node.js
+nvm install --lts
+
+# Use the installed LTS version
+nvm use --lts
+
+# Verify Node.js and npm installation
+node -v
+npm -v
+
+# Step 4: Create package.json file (if it doesn't exist yet)
+if [ ! -f package.json ]; then
+  npm init -y
+  echo -e "${GREEN}Created file package.json.${NC}"
+fi
+
+# Step 5: Install necessary npm packages
+echo -e "Installing required npm packages..."
+npm install express dotenv express-handlebars body-parser mysql
+
+# Step 6: Install nodemon as a development dependency
+echo -e "Installing nodemon as a development dependency..."
+npm install --save-dev nodemon
+npm install -g nodemon
+
+# Step 7: Add npm start script to package.json
+if ! grep -q '"start":' package.json; then
+  npm set-script start "index.js"  # Replace "your-app.js" with your entry point file
+  echo -e "${GREEN}Added npm start script to package.json.${NC}"
+fi
+
+echo -e "${GREEN}Installation completed. You can now start building and running your Node.js application using 'npm start'.${NC}"
+```
+![Install Node.js](/images/1-Worklog/Worklog_week1.4/Application%20Deployment%201.png)
+
+**Install and Configure MySQL Server**
+This is a Bash script used to install and configure MySQL server on a system. This script performs the following steps:
+- Set variables with MySQL RPM path and database information such as RDS address, database name, username and password.
+- Check if the MySQL community repository RPM already exists in the current directory. If it does not exist, it will download the RPM from the specified URL.
+- Install RPM of MySQL community repository and MySQL Server.
+- Start the MySQL server and configure it to automatically start with the system.
+- Check the installed MySQL version.
+- Secure the MySQL server with the `mysql_secure_installation` command.
+- Create or update an `.env` file with database information (address, database name, username, and password).
+- Connect to MySQL server with credentials and you can add specific SQL commands here.
+
+*Note: To execute this script, you need to have sudo permissions and make sure you have provided the correct database information (RDS Endpoint, database name, username and password) before run script.*
+
+```bash
+#!/bin/bash
+
+# Set variables for MySQL RPM and database information
+MYSQL_RPM_URL="https://dev.mysql.com/get/mysql80-community-release-el9-1.noarch.rpm"
+DB_HOST="RDS Endpoint"
+DB_NAME="Database name"
+DB_USER="Database username"
+DB_PASS="Database password"
+
+
+# Check if MySQL Community repository RPM already exists
+if [ ! -f mysql80-community-release-el9-1.noarch.rpm ]; then
+  sudo wget $MYSQL_RPM_URL
+fi
+
+# Install MySQL Community repository
+sudo dnf install -y mysql80-community-release-el9-1.noarch.rpm
+
+# Install MySQL server
+sudo dnf install -y mysql-community-server
+
+# Start MySQL server
+sudo systemctl start mysqld
+
+# Enable MySQL to start on boot
+sudo systemctl enable mysqld
+
+# Check MySQL version
+mysql -V
+
+# Secure the MySQL server
+sudo mysql_secure_installation
+
+# Create or update the .env file with database information
+echo "DB_HOST=$DB_HOST" >> .env
+echo "DB_NAME=$DB_NAME" >> .env
+echo "DB_USER=$DB_USER" >> .env
+echo "DB_PASS=$DB_PASS" >> .env
+
+# Connect to MySQL and create a new database (you might want to add specific SQL commands here)
+mysql -h $DB_HOST -P 3306 -u $DB_USER -p$DB_PASS
+```
+![Install MySQL](/images/1-Worklog/Worklog_week1.4/Application%20Deployment%202.png)
+
+**Create Database and Table in AWS RDS**
+After successfully connecting to RDS (Relational Database Service) on AWS, we can create a new database and define a table in it using the following SQL script.
+
+**Create Database**
+First, we will create a new database if it does not exist yet. Use the following command:
+```sql
+CREATE DATABASE IF NOT EXISTS first_cloud_users;
+```
+This command checks whether the database “first_cloud_users” exists or not. If it does not exist, it will create a new database named “first_cloud_users”.
+
+**Using Database**
+Next, we use the “first_cloud_users” database using the command:
+```sql
+USE first_cloud_users;
+```
+This command indicates that all SQL commands will then be executed in the “first_cloud_users” database.
+
+**Create Table “user”**
+We have created the database and used it. Now, we will define a “user” table in this database using the following SQL script:
+```sql
+CREATE TABLE `user`
+(
+    `id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    `first_name` VARCHAR(45) NOT NULL,
+    `last_name` VARCHAR(45) NOT NULL,
+    `email` VARCHAR(100) NOT NULL UNIQUE,
+    `phone` VARCHAR(15) NOT NULL,
+    `comments` TEXT NOT NULL,
+    `status` ENUM('active', 'inactive') NOT NULL DEFAULT 'active'
+) ENGINE = InnoDB;
+```
+This command defines the structure of the “user” table with columns such as “id”, “first_name”, “last_name”, “email”, “phone”, “comments”, and “status”. These columns represent information about the user, and the “id” column is set as the auto-incrementing primary key.
+
+**Add Data to Table “user”**
+Finally, we can add data to the “user” table using the `INSERT INTO` command. Here is an example that adds some records to a table:
+```sql
+INSERT INTO `user`
+(`first_name`, `last_name`, `email`, `phone`, `comments`, `status`)
+VALUES
+('Amanda', 'Nunes', 'anunes@ufc.com', '012345 678910', 'I love AWS FCJ', 'active'),
+('Alexander', 'Volkanovski', 'avolkanovski@ufc.com', '012345 678910', 'I love AWS FCJ', 'active'),
+('Khabib', 'Nurmagomedov', 'knurmagomedov@ufc.com', '012345 678910', 'I love AWS FCJ', 'active'),
+('Kamaru', 'Usman', 'kusman@ufc.com', '012345 678910', 'I love AWS FCJ', 'active'),
+('Israel', 'Adesanya', 'iadesanya@ufc.com', '012345 678910', 'I love AWS FCJ', 'active'),
+('Henry', 'Cejudo', 'hcejudo@ufc.com', '012345 678910', 'I love AWS FCJ', 'active'),
+('Valentina', 'Shevchenko', 'vshevchenko@ufc.com', '012345 678910', 'I love AWS FCJ', 'active'),
+('Tyron', 'Woodley', 'twoodley@ufc.com', '012345 678910', 'I love AWS FCJ', 'active'),
+('Rose', 'Namajunas', 'rnamajunas@ufc.com', '012345 678910', 'I love AWS FCJ', 'active'),
+('Tony', 'Ferguson', 'tferguson@ufc.com', '012345 678910', 'I love AWS FCJ', 'active'),
+('Jorge', 'Masvidal', 'jmasvidal@ufc.com', '012345 678910', 'I love AWS FCJ', 'active'),
+('Nate', 'Diaz', 'ndiaz@ufc.com', '012345 678910', 'I love AWS FCJ', 'active'),
+('Conor', 'McGregor', 'cmcGregor@ufc.com', '012345 678910', 'I love AWS FCJ', 'active'),
+('Cris', 'Cyborg', 'ccyborg@ufc.com', '012345 678910', 'I love AWS FCJ', 'active'),
+('Tecia', 'Torres', 'ttorres@ufc.com', '012345 678910', 'I love AWS FCJ', 'active'),
+('Ronda', 'Rousey', 'rrousey@ufc.com', '012345 678910', 'I love AWS FCJ', 'active'),
+('Holly', 'Holm', 'hholm@ufc.com', '012345 678910', 'I love AWS FCJ', 'active'),
+('Joanna', 'Jedrzejczyk', 'jjedrzejczyk@ufc.com', '012345 678910', 'I love AWS FCJ', 'active');
+```
+This command adds user records to the “user” table with information such as name, email, phone number, comments, and a default status of “active”.
+
+Here are some SQL commands to check database information in a DBMS such as MySQL or PostgreSQL:
+
+**Display a list of all databases:**
+```sql
+SHOW DATABASES;
+```
+
+**Choose a specific database to work with:**
+```sql
+USE database_name;
+```
+
+**Display tables in the current database:**
+```sql
+SHOW TABLES;
+```
+
+**Shows the structure of a specific table:**
+```sql
+DESCRIBE table_name;
+```
+
+**Display information about database size:**
+```sql
+SELECT table_schema "Database Name", SUM(data_length + index_length) / 1024 / 1024 "Database Size (MB)"
+FROM information_schema.tables
+GROUP BY table_schema;
+```
+Remember to replace “database_name” and “table_name” with the specific names of the database and table you want to test.
+![SQL Commands](/images/1-Worklog/Worklog_week1.4/Application%20Deployment%203.png)
+
+**Run the Application**
+Once you are in the application directory, run the following command to start the application using npm start:
+```bash
+npm start
+```
+![npm start](/images/1-Worklog/Worklog_week1.4/Application%20Deployment%204.png)
+
+**Test the application in the browser:**
+Check EC2 Instance status: Make sure your EC2 Instance is running and functioning properly.
+Open a web browser and enter the IP address or domain name of the EC2 Instance, followed by port 5000:
+`http://<IP address or domain name>:5000`
+
+Test results: The browser will display your application if everything is configured correctly and the EC2 Instance is working.
+![Browser Test](/images/1-Worklog/Worklog_week1.4/Application%20Deployment%205.png)
+
+---
+
+### 17. Monitoring and Restoring AWS RDS
+
+**Monitoring AWS RDS**
+On the AWS RDS interface, you can perform the following steps to monitor:
+1. Select **Databases**.
+2. Choose the DB instance you’ve created.
+3. Select **Monitoring**.
+![Monitoring RDS](/images/1-Worklog/Worklog_week1.4/Application%20Deployment%206.png)
+
+**Viewing Backup Information**
+To view information about backups of the DB instance in AWS RDS, follow these steps:
+1. Log in to the AWS Management Console.
+2. Select the **Amazon RDS** service from the list of services.
+3. In the RDS dashboard, choose the DB instance you want to check.
+4. On the DB instance management page, navigate to the **Maintenance & backups** tab.
+Here, you can view information about automatic and manual backups. You can also configure and manage backup settings.
+![Backups](/images/1-Worklog/Worklog_week1.4/Application%20Deployment%207.png)
+
+**View Snapshot Information**
+![Snapshot](/images/1-Worklog/Worklog_week1.4/Application%20Deployment%208.png)
+
+**Restore Snapshot**
+Choose the DB snapshot you want to restore. In the Actions section, select **Restore snapshot**.
+![Restore Snapshot](/images/1-Worklog/Worklog_week1.4/Application%20Deployment%209.png)
+
+On the Restore snapshot page, enter a name for the DB instance you want to restore in the DB instance identifier field. Select other settings such as allocated memory size.
+Finally, select **Restore DB instance**.
+![Restore Settings](/images/1-Worklog/Worklog_week1.4/Application%20Deployment%2010.png)
+
+Complete the restore snapshot process and check the restored database instance.
+![Restore Complete](/images/1-Worklog/Worklog_week1.4/Application%20Deployment%2011.png)
+
+
+---
+
+### 18. Backup and Restore
+
+**Understanding Amazon RDS Backup and Restore**
+
+{{% notice info %}}
+**Information:** Amazon RDS provides automated backups and allows manual snapshots to ensure your database data is protected and can be recovered when needed. These capabilities are essential for disaster recovery planning and maintaining business continuity.
+{{% /notice %}}
+
+**Monitoring Backup Status in Amazon RDS**
+To access backup monitoring in the Amazon RDS console:
+1. Navigate to the Databases section in the AWS Management Console
+2. Select your target DB instance
+3. Click on the **Monitoring** tab to view performance metrics
+![AWS RDS Monitoring](/images/1-Worklog/Worklog_week1.4/Backup%20and%20restore.png)
+
+**Viewing Backup Information**
+To review backup details for your Amazon RDS instance:
+1. Sign in to the AWS Management Console
+2. Select Amazon RDS from the services menu
+3. In the RDS dashboard, select your DB instance
+4. Navigate to the **Maintenance & backups** tab
+Here you can view both automated and manual backup information and configure backup settings.
+![AWS RDS Backup](/images/1-Worklog/Worklog_week1.4/Backup%20and%20restore%201.png)
+
+**Managing Database Snapshots**
+View your available DB snapshots in the snapshots section:
+![Snapshot Information](/images/1-Worklog/Worklog_week1.4/Backup%20and%20restore%202.png)
+
+**Restoring from a DB Snapshot**
+Select the DB snapshot you want to use as your restore point:
+1. Under the Actions dropdown menu, select **Restore snapshot**
+![Restore Snapshot](/images/1-Worklog/Worklog_week1.4/Backup%20and%20restore%203.png)
+
+**Configure your restored database instance:**
+1. Provide a unique DB instance identifier for the new instance
+2. Select appropriate instance specifications (compute, storage, etc.)
+3. Configure network and security settings
+
+{{% notice tip %}}
+**Pro Tip:** When restoring a production database, consider restoring to a smaller instance class first for testing, then scale up as needed to minimize costs during validation.
+{{% /notice %}}
+
+**Initiate the restore process:**
+1. Review your configuration settings
+2. Click **Restore DB instance** to begin the process
+
+{{% notice warning %}}
+**Warning:** The restore process creates a completely new database instance with its own endpoint. You will need to update your application connection strings to point to this new instance if you intend to use it for production.
+{{% /notice %}}
+
+**Verifying the Restored Database**
+Confirm successful restoration:
+1. Check that the new DB instance appears in your RDS console
+2. Verify the status shows as "Available" when the restore completes
+3. Test connectivity and data integrity before directing production traffic to the restored instance
+
+{{% notice warning %}}
+**Security Note:** Remember to configure the same security groups and parameter groups as your original instance if you want identical access controls and database settings.
+{{% /notice %}}
+
+
+---
+
+### 19. Clean up resources
+
+**Resource Cleanup**
+
+{{% notice info %}}
+**Information:** After completing your lab, it's important to clean up all AWS resources to avoid ongoing charges. Follow these steps to properly remove all resources created during this workshop.
+{{% /notice %}}
+
+**Delete Database Resources**
+
+**Delete the DB subnet group:**
+1. Navigate to the Amazon RDS console
+2. In the navigation pane, select **Subnet groups**
+3. Select the DB subnet group related to the lab
+4. Choose **Delete**, then confirm by selecting Delete in the confirmation window
+![Delete DB Subnet Group](/images/1-Worklog/Worklog_week1.4/Clean.png)
+
+**Delete DB Instance:**
+1. Access the RDS Management Console
+2. In the left navigation bar, select **Databases**
+3. Select the DB Instance related to the lab
+4. Click Actions, then **Delete**
+![Delete DB Instance](/images/1-Worklog/Worklog_week1.4/Clean1.png)
+
+5. Uncheck *Create final snapshot?* and acknowledge that automated backups will no longer be available
+6. Enter `delete me` in the confirmation field
+7. Click **Delete**
+![Confirm Delete DB Instance](/images/1-Worklog/Worklog_week1.4/Clean2.png)
+
+**Delete DB Snapshots:**
+1. In the RDS Management Console, select **Snapshots** from the navigation bar
+2. Select all snapshots related to the lab
+3. Click Actions, then **Delete snapshot**
+4. Confirm by clicking **Delete**
+![Delete DB Snapshots](/images/1-Worklog/Worklog_week1.4/Clean3.png)
+
+**Delete Network Resources**
+
+**Delete security groups:**
+1. Open the Amazon VPC console
+2. Choose **Security Groups** from the navigation pane
+3. Select the security group related to the lab
+4. Choose Actions, select **Delete security groups**, then confirm
+![Delete Security Groups](/images/1-Worklog/Worklog_week1.4/Clean4.png)
+
+**Delete NAT gateway:**
+1. In the VPC console, select **NAT Gateways**
+2. Select the NAT Gateway related to the lab
+3. Choose Actions, select **Delete NAT gateway**
+4. Confirm the deletion
+![Delete NAT Gateway](/images/1-Worklog/Worklog_week1.4/Clean5.png)
+
+**Release Elastic IP addresses:**
+1. Open the Amazon EC2 console
+2. Select **Elastic IPs** from the navigation pane
+3. Select the Elastic IP address related to the lab
+4. From Actions, select **Release Elastic IP addresses**
+5. Confirm by choosing **Release**
+![Release Elastic IP](/images/1-Worklog/Worklog_week1.4/Clean6.png)
+
+**Delete the VPC:**
+1. In the VPC console, select **Your VPCs**
+2. Select the VPC you created for this lab
+3. From Actions, select **Delete VPC**
+4. On the confirmation page, enter `delete` and choose **Delete**
+![Delete VPC](/images/1-Worklog/Worklog_week1.4/Clean7.png)
+
+**Delete Compute Resources**
+
+**Terminate EC2 instances:**
+1. Access the EC2 Management Console
+2. Select **Instances** from the navigation pane
+3. Select all EC2 Instances related to the lab
+4. Click Instance state, then **Terminate instance**
+5. Confirm by clicking **Terminate**
+![Terminate EC2 Instances](/images/1-Worklog/Worklog_week1.4/Clean8.png)
+
+{{% notice warning %}}
+**Warning:** Terminating resources is permanent and cannot be undone. Ensure you have backed up any important data before proceeding with cleanup.
+{{% /notice %}}
+
+{{% notice tip %}}
+**Pro Tip:** To verify all resources have been properly deleted, check your AWS Billing dashboard or use AWS Cost Explorer to ensure no unexpected charges appear after cleanup.
+{{% /notice %}}
+
