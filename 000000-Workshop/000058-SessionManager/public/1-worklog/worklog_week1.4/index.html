@@ -12,21 +12,21 @@
     <title>Week 4 Worklog :: AWS System Manager</title>
 
     
-    <link href='../../css/nucleus.css?1784130489' rel="stylesheet">
-    <link href='../../css/fontawesome-all.min.css?1784130489' rel="stylesheet">
-    <link href='../../css/hybrid.css?1784130489' rel="stylesheet">
-    <link href='../../css/featherlight.min.css?1784130489' rel="stylesheet">
-    <link href='../../css/perfect-scrollbar.min.css?1784130489' rel="stylesheet">
-    <link href='../../css/auto-complete.css?1784130489' rel="stylesheet">
-    <link href='../../css/atom-one-dark-reasonable.css?1784130489' rel="stylesheet">
-    <link href='../../css/theme.css?1784130489' rel="stylesheet">
-    <link href='../../css/hugo-theme.css?1784130489' rel="stylesheet">
+    <link href='../../css/nucleus.css?1784132199' rel="stylesheet">
+    <link href='../../css/fontawesome-all.min.css?1784132199' rel="stylesheet">
+    <link href='../../css/hybrid.css?1784132199' rel="stylesheet">
+    <link href='../../css/featherlight.min.css?1784132199' rel="stylesheet">
+    <link href='../../css/perfect-scrollbar.min.css?1784132199' rel="stylesheet">
+    <link href='../../css/auto-complete.css?1784132199' rel="stylesheet">
+    <link href='../../css/atom-one-dark-reasonable.css?1784132199' rel="stylesheet">
+    <link href='../../css/theme.css?1784132199' rel="stylesheet">
+    <link href='../../css/hugo-theme.css?1784132199' rel="stylesheet">
     
-    <link href='../../css/theme-workshop.css?1784130489' rel="stylesheet">
+    <link href='../../css/theme-workshop.css?1784132199' rel="stylesheet">
     
     
 
-    <script src='../../js/jquery-3.3.1.min.js?1784130489'></script>
+    <script src='../../js/jquery-3.3.1.min.js?1784132199'></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -57,14 +57,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="../../js/lunr.min.js?1784130489"></script>
-<script type="text/javascript" src="../../js/auto-complete.js?1784130489"></script>
+<script type="text/javascript" src="../../js/lunr.min.js?1784132199"></script>
+<script type="text/javascript" src="../../js/auto-complete.js?1784132199"></script>
 <script type="text/javascript">
     
         var baseurl = "http:\/\/localhost:1313\/fcj-workshop-template\/";
     
 </script>
-<script type="text/javascript" src="../../js/search.js?1784130489"></script>
+<script type="text/javascript" src="../../js/search.js?1784132199"></script>
 
     
   </div>
@@ -1463,6 +1463,16 @@
         <li><a href="#17-monitoring-and-restoring-aws-rds">17. Monitoring and Restoring AWS RDS</a></li>
         <li><a href="#18-backup-and-restore">18. Backup and Restore</a></li>
         <li><a href="#19-clean-up-resources">19. Clean up resources</a></li>
+        <li><a href="#10-install-git-on-amazon-ec2-2023-1">10. Install Git on Amazon EC2 2023</a></li>
+        <li><a href="#11-install-nodejs-on-amazon-ec2-linux-2023-1">11. Install Node.js on Amazon EC2 Linux 2023</a></li>
+        <li><a href="#12-creating-a-db-instance-on-aws-1">12. Creating a DB Instance on AWS</a></li>
+        <li><a href="#13-check-rds-1">13. Check RDS</a></li>
+        <li><a href="#14-viewing-logs-and-events-on-aws-rds-1">14. Viewing Logs and Events on AWS RDS</a></li>
+        <li><a href="#15-viewing-maintenance-and-backups-on-aws-rds-1">15. Viewing Maintenance and Backups on AWS RDS</a></li>
+        <li><a href="#16-application-deployment-1">16. Application Deployment</a></li>
+        <li><a href="#17-monitoring-and-restoring-aws-rds-1">17. Monitoring and Restoring AWS RDS</a></li>
+        <li><a href="#18-backup-and-restore-1">18. Backup and Restore</a></li>
+        <li><a href="#19-clean-up-resources-1">19. Clean up resources</a></li>
       </ul>
     </li>
   </ul>
@@ -2553,6 +2563,570 @@ Confirm successful restoration:</p>
 <div class="notices tip" ><p><strong>Pro Tip:</strong> To verify all resources have been properly deleted, check your AWS Billing dashboard or use AWS Cost Explorer to ensure no unexpected charges appear after cleanup.</p>
 </div>
 
+<hr>
+<h3 id="10-install-git-on-amazon-ec2-2023-1">10. Install Git on Amazon EC2 2023</h3>
+<p>Below are instructions for installing Git on an Amazon EC2 virtual machine running Amazon Linux 2023 using basic steps.</p>
+<p><strong>Update System Packages</strong>
+First, update your system packages to make sure you&rsquo;re using the latest version:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo dnf update -y
+</span></span></code></pre></div><p><strong>Find Git Packages</strong>
+Use the following command to find Git packages in the repository:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo dnf search git
+</span></span></code></pre></div><p><strong>Install Git</strong>
+Once you find the Git package, you can install it with the following command:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo dnf install git -y
+</span></span></code></pre></div><p><strong>Verify Git Settings</strong>
+Finally, check the Git version was successfully installed:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git --version
+</span></span></code></pre></div><p>If you see the Git version appear, it means the installation is complete.</p>
+<p><img src="../../images/1-Worklog/Worklog_week1.4/Create%20RDS%20database%20instance.png" alt="Verify Git Installation"></p>
+<hr>
+<h3 id="11-install-nodejs-on-amazon-ec2-linux-2023-1">11. Install Node.js on Amazon EC2 Linux 2023</h3>
+<p>Below is a Bash script to install Node.js on Amazon EC2 Linux:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e">#!/bin/bash
+</span></span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Color for formatting</span>
+</span></span><span style="display:flex;"><span>GREEN<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;\033[0;32m&#39;</span>
+</span></span><span style="display:flex;"><span>NC<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;\033[0m&#39;</span> <span style="color:#75715e"># Colorless</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Check if NVM is installed</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> ! command -v nvm &amp;&gt; /dev/null; <span style="color:#66d9ef">then</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e"># Step 1: Install nvm</span>
+</span></span><span style="display:flex;"><span>  curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash
+</span></span><span style="display:flex;"><span>  source ~/.nvm/nvm.sh
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">fi</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Verify nvm installation</span>
+</span></span><span style="display:flex;"><span>nvm --version
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Install the LTS version of Node.js</span>
+</span></span><span style="display:flex;"><span>nvm install --lts
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Use the installed LTS version</span>
+</span></span><span style="display:flex;"><span>nvm use --lts
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Verify Node.js and npm installation</span>
+</span></span><span style="display:flex;"><span>node -v
+</span></span><span style="display:flex;"><span>npm -v
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Step 4: Create package.json file (if it doesn&#39;t exist yet)</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> <span style="color:#f92672">[</span> ! -f package.json <span style="color:#f92672">]</span>; <span style="color:#66d9ef">then</span>
+</span></span><span style="display:flex;"><span>  npm init -y
+</span></span><span style="display:flex;"><span>  echo -e <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>GREEN<span style="color:#e6db74">}</span><span style="color:#e6db74">Created file package.json.</span><span style="color:#e6db74">${</span>NC<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">fi</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Step 5: Install necessary npm packages</span>
+</span></span><span style="display:flex;"><span>echo -e <span style="color:#e6db74">&#34;Installing required npm packages...&#34;</span>
+</span></span><span style="display:flex;"><span>npm install express dotenv express-handlebars body-parser mysql
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Step 6: Install nodemon as a development dependency</span>
+</span></span><span style="display:flex;"><span>echo -e <span style="color:#e6db74">&#34;Installing nodemon as a development dependency...&#34;</span>
+</span></span><span style="display:flex;"><span>npm install --save-dev nodemon
+</span></span><span style="display:flex;"><span>npm install -g nodemon
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Step 7: Add npm start script to package.json</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> ! grep -q <span style="color:#e6db74">&#39;&#34;start&#34;:&#39;</span> package.json; <span style="color:#66d9ef">then</span>
+</span></span><span style="display:flex;"><span>  npm set-script start <span style="color:#e6db74">&#34;index.js&#34;</span> <span style="color:#75715e"># Replace &#34;your-app.js&#34; with your entry point file</span>
+</span></span><span style="display:flex;"><span>  echo -e <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>GREEN<span style="color:#e6db74">}</span><span style="color:#e6db74">Added npm start script to package.json.</span><span style="color:#e6db74">${</span>NC<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">fi</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>echo -e <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>GREEN<span style="color:#e6db74">}</span><span style="color:#e6db74">Installation completed. You can now start building and running your Node.js application using &#39;npm start&#39;.</span><span style="color:#e6db74">${</span>NC<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>
+</span></span></code></pre></div><p><img src="../../images/1-Worklog/Worklog_week1.4/Create%20RDS%20database%20instance%201.png" alt="Node.js Installation Output"></p>
+<hr>
+<h3 id="12-creating-a-db-instance-on-aws-1">12. Creating a DB Instance on AWS</h3>
+<p>To create a DB Instance on AWS, you can use the AWS Management Console with the option of Easy create either enabled or disabled. When Easy create is enabled, you only need to specify the DB engine type, DB Instance size, and DB Instance identifier. Easy create uses default settings for other configuration options. When Easy create is disabled, you need to specify more configuration options when creating a database, including options for availability, security, backups, and maintenance.</p>
+<p><em>Note: In the procedure below, the Standard create option is enabled, and Easy create is not. This procedure uses MySQL as an example.</em></p>
+<p>To create a DB Instance:</p>
+<ol>
+<li>
+<p>Sign in to the AWS Management Console and open the Amazon RDS console at <a href="https://console.aws.amazon.com/rds/">https://console.aws.amazon.com/rds/</a>.</p>
+</li>
+<li>
+<p>In the upper right corner of the Amazon RDS console, select the AWS region where you want to create the DB Instance.</p>
+</li>
+<li>
+<p>In the navigation pane, choose <strong>Databases</strong>.</p>
+</li>
+<li>
+<p>Choose <strong>Create database</strong>, and then select <strong>Standard create</strong>.
+<img src="../../images/1-Worklog/Worklog_week1.4/Create%20RDS%20database%20instance%202.png" alt="Standard Create"></p>
+</li>
+<li>
+<p>For <strong>Engine type</strong>, choose MariaDB, Microsoft SQL Server, MySQL, Oracle, or PostgreSQL. In this example, we are using Microsoft SQL Server.</p>
+</li>
+<li>
+<p>For <strong>Database management type</strong>, if you are using Oracle or SQL Server, select Amazon RDS or Amazon RDS Custom.</p>
+</li>
+<li>
+<p>For <strong>Edition</strong>, if you are using Oracle or SQL Server, select the version of the DB engine you want to use.</p>
+</li>
+<li>
+<p>For <strong>Version</strong>, select the engine version.
+<img src="../../images/1-Worklog/Worklog_week1.4/Create%20RDS%20database%20instance%203.png" alt="Select Version"></p>
+</li>
+<li>
+<p>In the <strong>Templates</strong> section, choose a template that matches your use case. If you choose <strong>Production</strong>, the following options will be pre-selected in the next step:</p>
+<ul>
+<li>Multi-AZ failover option</li>
+<li>Provisioned IOPS SSD (io1) storage option</li>
+<li>Protection against deletion option
+We recommend using these features for a production environment.</li>
+</ul>
+</li>
+<li>
+<p>To enter your master password, follow these steps:</p>
+<ul>
+<li>In the <strong>Settings</strong> section, open Credential Settings.</li>
+<li>If you want to specify a password, uncheck the <strong>Auto generate a password</strong> box if it&rsquo;s already selected.</li>
+<li>(Optional) Change the <strong>Master username</strong> value.</li>
+<li>Enter the same password in both <strong>Master password</strong> and <strong>Confirm password</strong>.</li>
+<li>(Optional) Set up a connection to a compute resource for this DB Instance.
+<img src="../../images/1-Worklog/Worklog_week1.4/Create%20RDS%20database%20instance%204.png" alt="Setup Connection"></li>
+</ul>
+</li>
+<li>
+<p>You can configure the connection between an Amazon EC2 instance and the new DB Instance during the DB Instance creation process.</p>
+</li>
+<li>
+<p>In the Connectivity section under <strong>VPC security group (firewall)</strong>, if you choose <strong>Create new</strong>, a VPC security group with a login rule allowing your local computer&rsquo;s IP address to access the database will be created.
+<img src="../../images/1-Worklog/Worklog_week1.4/Create%20RDS%20database%20instance%205.png" alt="VPC Security Group"></p>
+</li>
+<li>
+<p>For the remaining sections, specify your DB Instance settings.</p>
+</li>
+<li>
+<p>Choose <strong>Create database</strong>.
+<img src="../../images/1-Worklog/Worklog_week1.4/Create%20RDS%20database%20instance%206.png" alt="Create Database Button"></p>
+</li>
+<li>
+<p>If you choose to use an automatically generated password, the <strong>View credential details</strong> button will appear on the Databases page. To view the master username and password for the DB Instance, select View credential details.</p>
+</li>
+<li>
+<p>Under <strong>Databases</strong>, select the name of the new DB Instance.
+<img src="../../images/1-Worklog/Worklog_week1.4/Create%20RDS%20database%20instance%207.png" alt="Select DB Instance"></p>
+</li>
+<li>
+<p>On the RDS console, information about the new DB Instance will appear. The DB Instance will have a <strong>Creating</strong> status until it is created and ready for use. Once the status changes to <strong>Available</strong>, you can connect to the DB Instance.
+<img src="../../images/1-Worklog/Worklog_week1.4/Create%20RDS%20database%20instance%208.png" alt="DB Instance Available"></p>
+</li>
+</ol>
+<hr>
+<h3 id="13-check-rds-1">13. Check RDS</h3>
+<p>In the details page of the RDS instance, you can find connection-related information such as Endpoint, Port, and Username.
+The Endpoint is the URL or IP address you use to connect to the RDS database.
+<img src="../../images/1-Worklog/Worklog_week1.4/Create%20RDS%20database%20instance%209.png" alt="Check RDS Details"></p>
+<hr>
+<h3 id="14-viewing-logs-and-events-on-aws-rds-1">14. Viewing Logs and Events on AWS RDS</h3>
+<p>To monitor Logs and Events on Amazon RDS, you can follow these steps:</p>
+<ol>
+<li>Sign in to the AWS Management Console.</li>
+<li>Choose the <strong>Amazon RDS</strong> service from the AWS dashboard.</li>
+<li>Select the RDS instance you want to view Logs and Events for.</li>
+<li>In the instance details page, click on the <strong>Logs &amp; events</strong> tab.</li>
+</ol>
+<p>Here, you can view various logs such as:</p>
+<ul>
+<li><strong>Error log:</strong> Records errors that occur on the instance.</li>
+<li><strong>General log:</strong> Records general activities on the instance.</li>
+<li><strong>Slow query log:</strong> Records slow queries.</li>
+<li><strong>Event log:</strong> Displays important events related to the instance.</li>
+</ul>
+<p>You can customize settings for viewing Logs and Events here, such as the time range you want to view logs or setting up email notifications for important events.
+<img src="../../images/1-Worklog/Worklog_week1.4/Create%20RDS%20database%20instance%2010.png" alt="View Logs and Events"></p>
+<hr>
+<h3 id="15-viewing-maintenance-and-backups-on-aws-rds-1">15. Viewing Maintenance and Backups on AWS RDS</h3>
+<p><strong>Viewing Maintenance Information</strong>
+To view information about maintenance for a DB instance in RDS:</p>
+<ol>
+<li>In the DB instance management page, navigate to the <strong>Maintenance &amp; backups</strong> tab.</li>
+<li>Here, you will see information about the maintenance schedule, including the times when the DB instance will be automatically backed up and maintenance tasks will be performed.</li>
+</ol>
+<p><strong>Viewing Backup Information</strong></p>
+<ol>
+<li>Navigate to the <strong>Maintenance &amp; backups</strong> tab.</li>
+<li>Here, you can view information about automatic backups and manual backups. You can also configure and manage backup settings.</li>
+</ol>
+<p><img src="../../images/1-Worklog/Worklog_week1.4/Create%20RDS%20database%20instance%2011.png" alt="Maintenance and Backups"></p>
+<hr>
+<h3 id="16-application-deployment-1">16. Application Deployment</h3>
+<p><strong>Deploy the Application</strong>
+To clone the repository from GitHub of AWS-First-Cloud-Journey, you can use the following command:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git clone https://github.com/AWS-First-Cloud-Journey/AWS-FCJ-Management
+</span></span></code></pre></div><p><img src="../../images/1-Worklog/Worklog_week1.4/Application%20Deployment.png" alt="Clone Repository"></p>
+<p><strong>Instructions for installing Node.js on Amazon Linux 2023</strong>
+Below is a Bash script to install Node.js on Amazon Linux. Please copy and execute the following steps:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e">#!/bin/bash
+</span></span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Colors for formatting</span>
+</span></span><span style="display:flex;"><span>GREEN<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;\033[0;32m&#39;</span>
+</span></span><span style="display:flex;"><span>NC<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;\033[0m&#39;</span> <span style="color:#75715e"># No Color</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Check if NVM is installed</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> ! command -v nvm &amp;&gt; /dev/null; <span style="color:#66d9ef">then</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e"># Step 1: Install nvm</span>
+</span></span><span style="display:flex;"><span>  curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash
+</span></span><span style="display:flex;"><span>  source ~/.nvm/nvm.sh
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">fi</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Verify nvm installation</span>
+</span></span><span style="display:flex;"><span>nvm --version
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Install the LTS version of Node.js</span>
+</span></span><span style="display:flex;"><span>nvm install --lts
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Use the installed LTS version</span>
+</span></span><span style="display:flex;"><span>nvm use --lts
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Verify Node.js and npm installation</span>
+</span></span><span style="display:flex;"><span>node -v
+</span></span><span style="display:flex;"><span>npm -v
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Step 4: Create package.json file (if it doesn&#39;t exist yet)</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> <span style="color:#f92672">[</span> ! -f package.json <span style="color:#f92672">]</span>; <span style="color:#66d9ef">then</span>
+</span></span><span style="display:flex;"><span>  npm init -y
+</span></span><span style="display:flex;"><span>  echo -e <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>GREEN<span style="color:#e6db74">}</span><span style="color:#e6db74">Created file package.json.</span><span style="color:#e6db74">${</span>NC<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">fi</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Step 5: Install necessary npm packages</span>
+</span></span><span style="display:flex;"><span>echo -e <span style="color:#e6db74">&#34;Installing required npm packages...&#34;</span>
+</span></span><span style="display:flex;"><span>npm install express dotenv express-handlebars body-parser mysql
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Step 6: Install nodemon as a development dependency</span>
+</span></span><span style="display:flex;"><span>echo -e <span style="color:#e6db74">&#34;Installing nodemon as a development dependency...&#34;</span>
+</span></span><span style="display:flex;"><span>npm install --save-dev nodemon
+</span></span><span style="display:flex;"><span>npm install -g nodemon
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Step 7: Add npm start script to package.json</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> ! grep -q <span style="color:#e6db74">&#39;&#34;start&#34;:&#39;</span> package.json; <span style="color:#66d9ef">then</span>
+</span></span><span style="display:flex;"><span>  npm set-script start <span style="color:#e6db74">&#34;index.js&#34;</span>  <span style="color:#75715e"># Replace &#34;your-app.js&#34; with your entry point file</span>
+</span></span><span style="display:flex;"><span>  echo -e <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>GREEN<span style="color:#e6db74">}</span><span style="color:#e6db74">Added npm start script to package.json.</span><span style="color:#e6db74">${</span>NC<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">fi</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>echo -e <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>GREEN<span style="color:#e6db74">}</span><span style="color:#e6db74">Installation completed. You can now start building and running your Node.js application using &#39;npm start&#39;.</span><span style="color:#e6db74">${</span>NC<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>
+</span></span></code></pre></div><p><img src="../../images/1-Worklog/Worklog_week1.4/Application%20Deployment%201.png" alt="Install Node.js"></p>
+<p><strong>Install and Configure MySQL Server</strong>
+This is a Bash script used to install and configure MySQL server on a system. This script performs the following steps:</p>
+<ul>
+<li>Set variables with MySQL RPM path and database information such as RDS address, database name, username and password.</li>
+<li>Check if the MySQL community repository RPM already exists in the current directory. If it does not exist, it will download the RPM from the specified URL.</li>
+<li>Install RPM of MySQL community repository and MySQL Server.</li>
+<li>Start the MySQL server and configure it to automatically start with the system.</li>
+<li>Check the installed MySQL version.</li>
+<li>Secure the MySQL server with the <code>mysql_secure_installation</code> command.</li>
+<li>Create or update an <code>.env</code> file with database information (address, database name, username, and password).</li>
+<li>Connect to MySQL server with credentials and you can add specific SQL commands here.</li>
+</ul>
+<p><em>Note: To execute this script, you need to have sudo permissions and make sure you have provided the correct database information (RDS Endpoint, database name, username and password) before run script.</em></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e">#!/bin/bash
+</span></span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Set variables for MySQL RPM and database information</span>
+</span></span><span style="display:flex;"><span>MYSQL_RPM_URL<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;https://dev.mysql.com/get/mysql80-community-release-el9-1.noarch.rpm&#34;</span>
+</span></span><span style="display:flex;"><span>DB_HOST<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;RDS Endpoint&#34;</span>
+</span></span><span style="display:flex;"><span>DB_NAME<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Database name&#34;</span>
+</span></span><span style="display:flex;"><span>DB_USER<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Database username&#34;</span>
+</span></span><span style="display:flex;"><span>DB_PASS<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Database password&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Check if MySQL Community repository RPM already exists</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> <span style="color:#f92672">[</span> ! -f mysql80-community-release-el9-1.noarch.rpm <span style="color:#f92672">]</span>; <span style="color:#66d9ef">then</span>
+</span></span><span style="display:flex;"><span>  sudo wget $MYSQL_RPM_URL
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">fi</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Install MySQL Community repository</span>
+</span></span><span style="display:flex;"><span>sudo dnf install -y mysql80-community-release-el9-1.noarch.rpm
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Install MySQL server</span>
+</span></span><span style="display:flex;"><span>sudo dnf install -y mysql-community-server
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Start MySQL server</span>
+</span></span><span style="display:flex;"><span>sudo systemctl start mysqld
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Enable MySQL to start on boot</span>
+</span></span><span style="display:flex;"><span>sudo systemctl enable mysqld
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Check MySQL version</span>
+</span></span><span style="display:flex;"><span>mysql -V
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Secure the MySQL server</span>
+</span></span><span style="display:flex;"><span>sudo mysql_secure_installation
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Create or update the .env file with database information</span>
+</span></span><span style="display:flex;"><span>echo <span style="color:#e6db74">&#34;DB_HOST=</span>$DB_HOST<span style="color:#e6db74">&#34;</span> &gt;&gt; .env
+</span></span><span style="display:flex;"><span>echo <span style="color:#e6db74">&#34;DB_NAME=</span>$DB_NAME<span style="color:#e6db74">&#34;</span> &gt;&gt; .env
+</span></span><span style="display:flex;"><span>echo <span style="color:#e6db74">&#34;DB_USER=</span>$DB_USER<span style="color:#e6db74">&#34;</span> &gt;&gt; .env
+</span></span><span style="display:flex;"><span>echo <span style="color:#e6db74">&#34;DB_PASS=</span>$DB_PASS<span style="color:#e6db74">&#34;</span> &gt;&gt; .env
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Connect to MySQL and create a new database (you might want to add specific SQL commands here)</span>
+</span></span><span style="display:flex;"><span>mysql -h $DB_HOST -P <span style="color:#ae81ff">3306</span> -u $DB_USER -p$DB_PASS
+</span></span></code></pre></div><p><img src="../../images/1-Worklog/Worklog_week1.4/Application%20Deployment%202.png" alt="Install MySQL"></p>
+<p><strong>Create Database and Table in AWS RDS</strong>
+After successfully connecting to RDS (Relational Database Service) on AWS, we can create a new database and define a table in it using the following SQL script.</p>
+<p><strong>Create Database</strong>
+First, we will create a new database if it does not exist yet. Use the following command:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">CREATE</span> <span style="color:#66d9ef">DATABASE</span> <span style="color:#66d9ef">IF</span> <span style="color:#66d9ef">NOT</span> <span style="color:#66d9ef">EXISTS</span> first_cloud_users;
+</span></span></code></pre></div><p>This command checks whether the database “first_cloud_users” exists or not. If it does not exist, it will create a new database named “first_cloud_users”.</p>
+<p><strong>Using Database</strong>
+Next, we use the “first_cloud_users” database using the command:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span>USE first_cloud_users;
+</span></span></code></pre></div><p>This command indicates that all SQL commands will then be executed in the “first_cloud_users” database.</p>
+<p><strong>Create Table “user”</strong>
+We have created the database and used it. Now, we will define a “user” table in this database using the following SQL script:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">CREATE</span> <span style="color:#66d9ef">TABLE</span> <span style="color:#f92672">`</span><span style="color:#66d9ef">user</span><span style="color:#f92672">`</span>
+</span></span><span style="display:flex;"><span>(
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">`</span>id<span style="color:#f92672">`</span> INT <span style="color:#66d9ef">NOT</span> <span style="color:#66d9ef">NULL</span> AUTO_INCREMENT <span style="color:#66d9ef">PRIMARY</span> <span style="color:#66d9ef">KEY</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">`</span>first_name<span style="color:#f92672">`</span> VARCHAR(<span style="color:#ae81ff">45</span>) <span style="color:#66d9ef">NOT</span> <span style="color:#66d9ef">NULL</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">`</span>last_name<span style="color:#f92672">`</span> VARCHAR(<span style="color:#ae81ff">45</span>) <span style="color:#66d9ef">NOT</span> <span style="color:#66d9ef">NULL</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">`</span>email<span style="color:#f92672">`</span> VARCHAR(<span style="color:#ae81ff">100</span>) <span style="color:#66d9ef">NOT</span> <span style="color:#66d9ef">NULL</span> <span style="color:#66d9ef">UNIQUE</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">`</span>phone<span style="color:#f92672">`</span> VARCHAR(<span style="color:#ae81ff">15</span>) <span style="color:#66d9ef">NOT</span> <span style="color:#66d9ef">NULL</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">`</span>comments<span style="color:#f92672">`</span> TEXT <span style="color:#66d9ef">NOT</span> <span style="color:#66d9ef">NULL</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">`</span>status<span style="color:#f92672">`</span> ENUM(<span style="color:#e6db74">&#39;active&#39;</span>, <span style="color:#e6db74">&#39;inactive&#39;</span>) <span style="color:#66d9ef">NOT</span> <span style="color:#66d9ef">NULL</span> <span style="color:#66d9ef">DEFAULT</span> <span style="color:#e6db74">&#39;active&#39;</span>
+</span></span><span style="display:flex;"><span>) ENGINE <span style="color:#f92672">=</span> InnoDB;
+</span></span></code></pre></div><p>This command defines the structure of the “user” table with columns such as “id”, “first_name”, “last_name”, “email”, “phone”, “comments”, and “status”. These columns represent information about the user, and the “id” column is set as the auto-incrementing primary key.</p>
+<p><strong>Add Data to Table “user”</strong>
+Finally, we can add data to the “user” table using the <code>INSERT INTO</code> command. Here is an example that adds some records to a table:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">INSERT</span> <span style="color:#66d9ef">INTO</span> <span style="color:#f92672">`</span><span style="color:#66d9ef">user</span><span style="color:#f92672">`</span>
+</span></span><span style="display:flex;"><span>(<span style="color:#f92672">`</span>first_name<span style="color:#f92672">`</span>, <span style="color:#f92672">`</span>last_name<span style="color:#f92672">`</span>, <span style="color:#f92672">`</span>email<span style="color:#f92672">`</span>, <span style="color:#f92672">`</span>phone<span style="color:#f92672">`</span>, <span style="color:#f92672">`</span>comments<span style="color:#f92672">`</span>, <span style="color:#f92672">`</span>status<span style="color:#f92672">`</span>)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">VALUES</span>
+</span></span><span style="display:flex;"><span>(<span style="color:#e6db74">&#39;Amanda&#39;</span>, <span style="color:#e6db74">&#39;Nunes&#39;</span>, <span style="color:#e6db74">&#39;anunes@ufc.com&#39;</span>, <span style="color:#e6db74">&#39;012345 678910&#39;</span>, <span style="color:#e6db74">&#39;I love AWS FCJ&#39;</span>, <span style="color:#e6db74">&#39;active&#39;</span>),
+</span></span><span style="display:flex;"><span>(<span style="color:#e6db74">&#39;Alexander&#39;</span>, <span style="color:#e6db74">&#39;Volkanovski&#39;</span>, <span style="color:#e6db74">&#39;avolkanovski@ufc.com&#39;</span>, <span style="color:#e6db74">&#39;012345 678910&#39;</span>, <span style="color:#e6db74">&#39;I love AWS FCJ&#39;</span>, <span style="color:#e6db74">&#39;active&#39;</span>),
+</span></span><span style="display:flex;"><span>(<span style="color:#e6db74">&#39;Khabib&#39;</span>, <span style="color:#e6db74">&#39;Nurmagomedov&#39;</span>, <span style="color:#e6db74">&#39;knurmagomedov@ufc.com&#39;</span>, <span style="color:#e6db74">&#39;012345 678910&#39;</span>, <span style="color:#e6db74">&#39;I love AWS FCJ&#39;</span>, <span style="color:#e6db74">&#39;active&#39;</span>),
+</span></span><span style="display:flex;"><span>(<span style="color:#e6db74">&#39;Kamaru&#39;</span>, <span style="color:#e6db74">&#39;Usman&#39;</span>, <span style="color:#e6db74">&#39;kusman@ufc.com&#39;</span>, <span style="color:#e6db74">&#39;012345 678910&#39;</span>, <span style="color:#e6db74">&#39;I love AWS FCJ&#39;</span>, <span style="color:#e6db74">&#39;active&#39;</span>),
+</span></span><span style="display:flex;"><span>(<span style="color:#e6db74">&#39;Israel&#39;</span>, <span style="color:#e6db74">&#39;Adesanya&#39;</span>, <span style="color:#e6db74">&#39;iadesanya@ufc.com&#39;</span>, <span style="color:#e6db74">&#39;012345 678910&#39;</span>, <span style="color:#e6db74">&#39;I love AWS FCJ&#39;</span>, <span style="color:#e6db74">&#39;active&#39;</span>),
+</span></span><span style="display:flex;"><span>(<span style="color:#e6db74">&#39;Henry&#39;</span>, <span style="color:#e6db74">&#39;Cejudo&#39;</span>, <span style="color:#e6db74">&#39;hcejudo@ufc.com&#39;</span>, <span style="color:#e6db74">&#39;012345 678910&#39;</span>, <span style="color:#e6db74">&#39;I love AWS FCJ&#39;</span>, <span style="color:#e6db74">&#39;active&#39;</span>),
+</span></span><span style="display:flex;"><span>(<span style="color:#e6db74">&#39;Valentina&#39;</span>, <span style="color:#e6db74">&#39;Shevchenko&#39;</span>, <span style="color:#e6db74">&#39;vshevchenko@ufc.com&#39;</span>, <span style="color:#e6db74">&#39;012345 678910&#39;</span>, <span style="color:#e6db74">&#39;I love AWS FCJ&#39;</span>, <span style="color:#e6db74">&#39;active&#39;</span>),
+</span></span><span style="display:flex;"><span>(<span style="color:#e6db74">&#39;Tyron&#39;</span>, <span style="color:#e6db74">&#39;Woodley&#39;</span>, <span style="color:#e6db74">&#39;twoodley@ufc.com&#39;</span>, <span style="color:#e6db74">&#39;012345 678910&#39;</span>, <span style="color:#e6db74">&#39;I love AWS FCJ&#39;</span>, <span style="color:#e6db74">&#39;active&#39;</span>),
+</span></span><span style="display:flex;"><span>(<span style="color:#e6db74">&#39;Rose&#39;</span>, <span style="color:#e6db74">&#39;Namajunas&#39;</span>, <span style="color:#e6db74">&#39;rnamajunas@ufc.com&#39;</span>, <span style="color:#e6db74">&#39;012345 678910&#39;</span>, <span style="color:#e6db74">&#39;I love AWS FCJ&#39;</span>, <span style="color:#e6db74">&#39;active&#39;</span>),
+</span></span><span style="display:flex;"><span>(<span style="color:#e6db74">&#39;Tony&#39;</span>, <span style="color:#e6db74">&#39;Ferguson&#39;</span>, <span style="color:#e6db74">&#39;tferguson@ufc.com&#39;</span>, <span style="color:#e6db74">&#39;012345 678910&#39;</span>, <span style="color:#e6db74">&#39;I love AWS FCJ&#39;</span>, <span style="color:#e6db74">&#39;active&#39;</span>),
+</span></span><span style="display:flex;"><span>(<span style="color:#e6db74">&#39;Jorge&#39;</span>, <span style="color:#e6db74">&#39;Masvidal&#39;</span>, <span style="color:#e6db74">&#39;jmasvidal@ufc.com&#39;</span>, <span style="color:#e6db74">&#39;012345 678910&#39;</span>, <span style="color:#e6db74">&#39;I love AWS FCJ&#39;</span>, <span style="color:#e6db74">&#39;active&#39;</span>),
+</span></span><span style="display:flex;"><span>(<span style="color:#e6db74">&#39;Nate&#39;</span>, <span style="color:#e6db74">&#39;Diaz&#39;</span>, <span style="color:#e6db74">&#39;ndiaz@ufc.com&#39;</span>, <span style="color:#e6db74">&#39;012345 678910&#39;</span>, <span style="color:#e6db74">&#39;I love AWS FCJ&#39;</span>, <span style="color:#e6db74">&#39;active&#39;</span>),
+</span></span><span style="display:flex;"><span>(<span style="color:#e6db74">&#39;Conor&#39;</span>, <span style="color:#e6db74">&#39;McGregor&#39;</span>, <span style="color:#e6db74">&#39;cmcGregor@ufc.com&#39;</span>, <span style="color:#e6db74">&#39;012345 678910&#39;</span>, <span style="color:#e6db74">&#39;I love AWS FCJ&#39;</span>, <span style="color:#e6db74">&#39;active&#39;</span>),
+</span></span><span style="display:flex;"><span>(<span style="color:#e6db74">&#39;Cris&#39;</span>, <span style="color:#e6db74">&#39;Cyborg&#39;</span>, <span style="color:#e6db74">&#39;ccyborg@ufc.com&#39;</span>, <span style="color:#e6db74">&#39;012345 678910&#39;</span>, <span style="color:#e6db74">&#39;I love AWS FCJ&#39;</span>, <span style="color:#e6db74">&#39;active&#39;</span>),
+</span></span><span style="display:flex;"><span>(<span style="color:#e6db74">&#39;Tecia&#39;</span>, <span style="color:#e6db74">&#39;Torres&#39;</span>, <span style="color:#e6db74">&#39;ttorres@ufc.com&#39;</span>, <span style="color:#e6db74">&#39;012345 678910&#39;</span>, <span style="color:#e6db74">&#39;I love AWS FCJ&#39;</span>, <span style="color:#e6db74">&#39;active&#39;</span>),
+</span></span><span style="display:flex;"><span>(<span style="color:#e6db74">&#39;Ronda&#39;</span>, <span style="color:#e6db74">&#39;Rousey&#39;</span>, <span style="color:#e6db74">&#39;rrousey@ufc.com&#39;</span>, <span style="color:#e6db74">&#39;012345 678910&#39;</span>, <span style="color:#e6db74">&#39;I love AWS FCJ&#39;</span>, <span style="color:#e6db74">&#39;active&#39;</span>),
+</span></span><span style="display:flex;"><span>(<span style="color:#e6db74">&#39;Holly&#39;</span>, <span style="color:#e6db74">&#39;Holm&#39;</span>, <span style="color:#e6db74">&#39;hholm@ufc.com&#39;</span>, <span style="color:#e6db74">&#39;012345 678910&#39;</span>, <span style="color:#e6db74">&#39;I love AWS FCJ&#39;</span>, <span style="color:#e6db74">&#39;active&#39;</span>),
+</span></span><span style="display:flex;"><span>(<span style="color:#e6db74">&#39;Joanna&#39;</span>, <span style="color:#e6db74">&#39;Jedrzejczyk&#39;</span>, <span style="color:#e6db74">&#39;jjedrzejczyk@ufc.com&#39;</span>, <span style="color:#e6db74">&#39;012345 678910&#39;</span>, <span style="color:#e6db74">&#39;I love AWS FCJ&#39;</span>, <span style="color:#e6db74">&#39;active&#39;</span>);
+</span></span></code></pre></div><p>This command adds user records to the “user” table with information such as name, email, phone number, comments, and a default status of “active”.</p>
+<p>Here are some SQL commands to check database information in a DBMS such as MySQL or PostgreSQL:</p>
+<p><strong>Display a list of all databases:</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">SHOW</span> DATABASES;
+</span></span></code></pre></div><p><strong>Choose a specific database to work with:</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span>USE database_name;
+</span></span></code></pre></div><p><strong>Display tables in the current database:</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">SHOW</span> TABLES;
+</span></span></code></pre></div><p><strong>Shows the structure of a specific table:</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">DESCRIBE</span> <span style="color:#66d9ef">table_name</span>;
+</span></span></code></pre></div><p><strong>Display information about database size:</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">SELECT</span> table_schema <span style="color:#e6db74">&#34;Database Name&#34;</span>, <span style="color:#66d9ef">SUM</span>(data_length <span style="color:#f92672">+</span> index_length) <span style="color:#f92672">/</span> <span style="color:#ae81ff">1024</span> <span style="color:#f92672">/</span> <span style="color:#ae81ff">1024</span> <span style="color:#e6db74">&#34;Database Size (MB)&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">FROM</span> information_schema.tables
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">GROUP</span> <span style="color:#66d9ef">BY</span> table_schema;
+</span></span></code></pre></div><p>Remember to replace “database_name” and “table_name” with the specific names of the database and table you want to test.
+<img src="../../images/1-Worklog/Worklog_week1.4/Application%20Deployment%203.png" alt="SQL Commands"></p>
+<p><strong>Run the Application</strong>
+Once you are in the application directory, run the following command to start the application using npm start:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>npm start
+</span></span></code></pre></div><p><img src="../../images/1-Worklog/Worklog_week1.4/Application%20Deployment%204.png" alt="npm start"></p>
+<p><strong>Test the application in the browser:</strong>
+Check EC2 Instance status: Make sure your EC2 Instance is running and functioning properly.
+Open a web browser and enter the IP address or domain name of the EC2 Instance, followed by port 5000:
+<code>http://&lt;IP address or domain name&gt;:5000</code></p>
+<p>Test results: The browser will display your application if everything is configured correctly and the EC2 Instance is working.
+<img src="../../images/1-Worklog/Worklog_week1.4/Application%20Deployment%205.png" alt="Browser Test"></p>
+<hr>
+<h3 id="17-monitoring-and-restoring-aws-rds-1">17. Monitoring and Restoring AWS RDS</h3>
+<p><strong>Monitoring AWS RDS</strong>
+On the AWS RDS interface, you can perform the following steps to monitor:</p>
+<ol>
+<li>Select <strong>Databases</strong>.</li>
+<li>Choose the DB instance you’ve created.</li>
+<li>Select <strong>Monitoring</strong>.
+<img src="../../images/1-Worklog/Worklog_week1.4/Application%20Deployment%206.png" alt="Monitoring RDS"></li>
+</ol>
+<p><strong>Viewing Backup Information</strong>
+To view information about backups of the DB instance in AWS RDS, follow these steps:</p>
+<ol>
+<li>Log in to the AWS Management Console.</li>
+<li>Select the <strong>Amazon RDS</strong> service from the list of services.</li>
+<li>In the RDS dashboard, choose the DB instance you want to check.</li>
+<li>On the DB instance management page, navigate to the <strong>Maintenance &amp; backups</strong> tab.
+Here, you can view information about automatic and manual backups. You can also configure and manage backup settings.
+<img src="../../images/1-Worklog/Worklog_week1.4/Application%20Deployment%207.png" alt="Backups"></li>
+</ol>
+<p><strong>View Snapshot Information</strong>
+<img src="../../images/1-Worklog/Worklog_week1.4/Application%20Deployment%208.png" alt="Snapshot"></p>
+<p><strong>Restore Snapshot</strong>
+Choose the DB snapshot you want to restore. In the Actions section, select <strong>Restore snapshot</strong>.
+<img src="../../images/1-Worklog/Worklog_week1.4/Application%20Deployment%209.png" alt="Restore Snapshot"></p>
+<p>On the Restore snapshot page, enter a name for the DB instance you want to restore in the DB instance identifier field. Select other settings such as allocated memory size.
+Finally, select <strong>Restore DB instance</strong>.
+<img src="../../images/1-Worklog/Worklog_week1.4/Application%20Deployment%2010.png" alt="Restore Settings"></p>
+<p>Complete the restore snapshot process and check the restored database instance.
+<img src="../../images/1-Worklog/Worklog_week1.4/Application%20Deployment%2011.png" alt="Restore Complete"></p>
+<hr>
+<h3 id="18-backup-and-restore-1">18. Backup and Restore</h3>
+<p><strong>Understanding Amazon RDS Backup and Restore</strong></p>
+
+<div class="notices info" ><p><strong>Information:</strong> Amazon RDS provides automated backups and allows manual snapshots to ensure your database data is protected and can be recovered when needed. These capabilities are essential for disaster recovery planning and maintaining business continuity.</p>
+</div>
+
+<p><strong>Monitoring Backup Status in Amazon RDS</strong>
+To access backup monitoring in the Amazon RDS console:</p>
+<ol>
+<li>Navigate to the Databases section in the AWS Management Console</li>
+<li>Select your target DB instance</li>
+<li>Click on the <strong>Monitoring</strong> tab to view performance metrics
+<img src="../../images/1-Worklog/Worklog_week1.4/Backup%20and%20restore.png" alt="AWS RDS Monitoring"></li>
+</ol>
+<p><strong>Viewing Backup Information</strong>
+To review backup details for your Amazon RDS instance:</p>
+<ol>
+<li>Sign in to the AWS Management Console</li>
+<li>Select Amazon RDS from the services menu</li>
+<li>In the RDS dashboard, select your DB instance</li>
+<li>Navigate to the <strong>Maintenance &amp; backups</strong> tab
+Here you can view both automated and manual backup information and configure backup settings.
+<img src="../../images/1-Worklog/Worklog_week1.4/Backup%20and%20restore%201.png" alt="AWS RDS Backup"></li>
+</ol>
+<p><strong>Managing Database Snapshots</strong>
+View your available DB snapshots in the snapshots section:
+<img src="../../images/1-Worklog/Worklog_week1.4/Backup%20and%20restore%202.png" alt="Snapshot Information"></p>
+<p><strong>Restoring from a DB Snapshot</strong>
+Select the DB snapshot you want to use as your restore point:</p>
+<ol>
+<li>Under the Actions dropdown menu, select <strong>Restore snapshot</strong>
+<img src="../../images/1-Worklog/Worklog_week1.4/Backup%20and%20restore%203.png" alt="Restore Snapshot"></li>
+</ol>
+<p><strong>Configure your restored database instance:</strong></p>
+<ol>
+<li>Provide a unique DB instance identifier for the new instance</li>
+<li>Select appropriate instance specifications (compute, storage, etc.)</li>
+<li>Configure network and security settings</li>
+</ol>
+
+<div class="notices tip" ><p><strong>Pro Tip:</strong> When restoring a production database, consider restoring to a smaller instance class first for testing, then scale up as needed to minimize costs during validation.</p>
+</div>
+
+<p><strong>Initiate the restore process:</strong></p>
+<ol>
+<li>Review your configuration settings</li>
+<li>Click <strong>Restore DB instance</strong> to begin the process</li>
+</ol>
+
+<div class="notices warning" ><p><strong>Warning:</strong> The restore process creates a completely new database instance with its own endpoint. You will need to update your application connection strings to point to this new instance if you intend to use it for production.</p>
+</div>
+
+<p><strong>Verifying the Restored Database</strong>
+Confirm successful restoration:</p>
+<ol>
+<li>Check that the new DB instance appears in your RDS console</li>
+<li>Verify the status shows as &ldquo;Available&rdquo; when the restore completes</li>
+<li>Test connectivity and data integrity before directing production traffic to the restored instance</li>
+</ol>
+
+<div class="notices warning" ><p><strong>Security Note:</strong> Remember to configure the same security groups and parameter groups as your original instance if you want identical access controls and database settings.</p>
+</div>
+
+<hr>
+<h3 id="19-clean-up-resources-1">19. Clean up resources</h3>
+<p><strong>Resource Cleanup</strong></p>
+
+<div class="notices info" ><p><strong>Information:</strong> After completing your lab, it&rsquo;s important to clean up all AWS resources to avoid ongoing charges. Follow these steps to properly remove all resources created during this workshop.</p>
+</div>
+
+<p><strong>Delete Database Resources</strong></p>
+<p><strong>Delete the DB subnet group:</strong></p>
+<ol>
+<li>Navigate to the Amazon RDS console</li>
+<li>In the navigation pane, select <strong>Subnet groups</strong></li>
+<li>Select the DB subnet group related to the lab</li>
+<li>Choose <strong>Delete</strong>, then confirm by selecting Delete in the confirmation window
+<img src="../../images/1-Worklog/Worklog_week1.4/Clean.png" alt="Delete DB Subnet Group"></li>
+</ol>
+<p><strong>Delete DB Instance:</strong></p>
+<ol>
+<li>
+<p>Access the RDS Management Console</p>
+</li>
+<li>
+<p>In the left navigation bar, select <strong>Databases</strong></p>
+</li>
+<li>
+<p>Select the DB Instance related to the lab</p>
+</li>
+<li>
+<p>Click Actions, then <strong>Delete</strong>
+<img src="../../images/1-Worklog/Worklog_week1.4/Clean1.png" alt="Delete DB Instance"></p>
+</li>
+<li>
+<p>Uncheck <em>Create final snapshot?</em> and acknowledge that automated backups will no longer be available</p>
+</li>
+<li>
+<p>Enter <code>delete me</code> in the confirmation field</p>
+</li>
+<li>
+<p>Click <strong>Delete</strong>
+<img src="../../images/1-Worklog/Worklog_week1.4/Clean2.png" alt="Confirm Delete DB Instance"></p>
+</li>
+</ol>
+<p><strong>Delete DB Snapshots:</strong></p>
+<ol>
+<li>In the RDS Management Console, select <strong>Snapshots</strong> from the navigation bar</li>
+<li>Select all snapshots related to the lab</li>
+<li>Click Actions, then <strong>Delete snapshot</strong></li>
+<li>Confirm by clicking <strong>Delete</strong>
+<img src="../../images/1-Worklog/Worklog_week1.4/Clean3.png" alt="Delete DB Snapshots"></li>
+</ol>
+<p><strong>Delete Network Resources</strong></p>
+<p><strong>Delete security groups:</strong></p>
+<ol>
+<li>Open the Amazon VPC console</li>
+<li>Choose <strong>Security Groups</strong> from the navigation pane</li>
+<li>Select the security group related to the lab</li>
+<li>Choose Actions, select <strong>Delete security groups</strong>, then confirm
+<img src="../../images/1-Worklog/Worklog_week1.4/Clean4.png" alt="Delete Security Groups"></li>
+</ol>
+<p><strong>Delete NAT gateway:</strong></p>
+<ol>
+<li>In the VPC console, select <strong>NAT Gateways</strong></li>
+<li>Select the NAT Gateway related to the lab</li>
+<li>Choose Actions, select <strong>Delete NAT gateway</strong></li>
+<li>Confirm the deletion
+<img src="../../images/1-Worklog/Worklog_week1.4/Clean5.png" alt="Delete NAT Gateway"></li>
+</ol>
+<p><strong>Release Elastic IP addresses:</strong></p>
+<ol>
+<li>Open the Amazon EC2 console</li>
+<li>Select <strong>Elastic IPs</strong> from the navigation pane</li>
+<li>Select the Elastic IP address related to the lab</li>
+<li>From Actions, select <strong>Release Elastic IP addresses</strong></li>
+<li>Confirm by choosing <strong>Release</strong>
+<img src="../../images/1-Worklog/Worklog_week1.4/Clean6.png" alt="Release Elastic IP"></li>
+</ol>
+<p><strong>Delete the VPC:</strong></p>
+<ol>
+<li>In the VPC console, select <strong>Your VPCs</strong></li>
+<li>Select the VPC you created for this lab</li>
+<li>From Actions, select <strong>Delete VPC</strong></li>
+<li>On the confirmation page, enter <code>delete</code> and choose <strong>Delete</strong>
+<img src="../../images/1-Worklog/Worklog_week1.4/Clean7.png" alt="Delete VPC"></li>
+</ol>
+<p><strong>Delete Compute Resources</strong></p>
+<p><strong>Terminate EC2 instances:</strong></p>
+<ol>
+<li>Access the EC2 Management Console</li>
+<li>Select <strong>Instances</strong> from the navigation pane</li>
+<li>Select all EC2 Instances related to the lab</li>
+<li>Click Instance state, then <strong>Terminate instance</strong></li>
+<li>Confirm by clicking <strong>Terminate</strong>
+<img src="../../images/1-Worklog/Worklog_week1.4/Clean8.png" alt="Terminate EC2 Instances"></li>
+</ol>
+
+<div class="notices warning" ><p><strong>Warning:</strong> Terminating resources is permanent and cannot be undone. Ensure you have backed up any important data before proceeding with cleanup.</p>
+</div>
+
+
+<div class="notices tip" ><p><strong>Pro Tip:</strong> To verify all resources have been properly deleted, check your AWS Billing dashboard or use AWS Cost Explorer to ensure no unexpected charges appear after cleanup.</p>
+</div>
+
 
 
 
@@ -3293,19 +3867,19 @@ Confirm successful restoration:</p>
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="../../js/clipboard.min.js?1784130489"></script>
-    <script src="../../js/perfect-scrollbar.min.js?1784130489"></script>
-    <script src="../../js/perfect-scrollbar.jquery.min.js?1784130489"></script>
-    <script src="../../js/jquery.sticky.js?1784130489"></script>
-    <script src="../../js/featherlight.min.js?1784130489"></script>
-    <script src="../../js/highlight.pack.js?1784130489"></script>
+    <script src="../../js/clipboard.min.js?1784132199"></script>
+    <script src="../../js/perfect-scrollbar.min.js?1784132199"></script>
+    <script src="../../js/perfect-scrollbar.jquery.min.js?1784132199"></script>
+    <script src="../../js/jquery.sticky.js?1784132199"></script>
+    <script src="../../js/featherlight.min.js?1784132199"></script>
+    <script src="../../js/highlight.pack.js?1784132199"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="../../js/modernizr.custom-3.6.0.js?1784130489"></script>
-    <script src="../../js/learn.js?1784130489"></script>
-    <script src="../../js/hugo-learn.js?1784130489"></script>
+    <script src="../../js/modernizr.custom-3.6.0.js?1784132199"></script>
+    <script src="../../js/learn.js?1784132199"></script>
+    <script src="../../js/hugo-learn.js?1784132199"></script>
 
-    <link href="../../mermaid/mermaid.css?1784130489" rel="stylesheet" />
-    <script src="../../mermaid/mermaid.js?1784130489"></script>
+    <link href="../../mermaid/mermaid.css?1784132199" rel="stylesheet" />
+    <script src="../../mermaid/mermaid.js?1784132199"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

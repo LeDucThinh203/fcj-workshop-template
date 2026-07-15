@@ -12,21 +12,21 @@
     <title>Worklog Tuần 3 :: AWS System Manager</title>
 
     
-    <link href='../../../css/nucleus.css?1784115264' rel="stylesheet">
-    <link href='../../../css/fontawesome-all.min.css?1784115264' rel="stylesheet">
-    <link href='../../../css/hybrid.css?1784115264' rel="stylesheet">
-    <link href='../../../css/featherlight.min.css?1784115264' rel="stylesheet">
-    <link href='../../../css/perfect-scrollbar.min.css?1784115264' rel="stylesheet">
-    <link href='../../../css/auto-complete.css?1784115264' rel="stylesheet">
-    <link href='../../../css/atom-one-dark-reasonable.css?1784115264' rel="stylesheet">
-    <link href='../../../css/theme.css?1784115264' rel="stylesheet">
-    <link href='../../../css/hugo-theme.css?1784115264' rel="stylesheet">
+    <link href='../../../css/nucleus.css?1784131936' rel="stylesheet">
+    <link href='../../../css/fontawesome-all.min.css?1784131936' rel="stylesheet">
+    <link href='../../../css/hybrid.css?1784131936' rel="stylesheet">
+    <link href='../../../css/featherlight.min.css?1784131936' rel="stylesheet">
+    <link href='../../../css/perfect-scrollbar.min.css?1784131936' rel="stylesheet">
+    <link href='../../../css/auto-complete.css?1784131936' rel="stylesheet">
+    <link href='../../../css/atom-one-dark-reasonable.css?1784131936' rel="stylesheet">
+    <link href='../../../css/theme.css?1784131936' rel="stylesheet">
+    <link href='../../../css/hugo-theme.css?1784131936' rel="stylesheet">
     
-    <link href='../../../css/theme-workshop.css?1784115264' rel="stylesheet">
+    <link href='../../../css/theme-workshop.css?1784131936' rel="stylesheet">
     
     
 
-    <script src='../../../js/jquery-3.3.1.min.js?1784115264'></script>
+    <script src='../../../js/jquery-3.3.1.min.js?1784131936'></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -57,14 +57,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="../../../js/lunr.min.js?1784115264"></script>
-<script type="text/javascript" src="../../../js/auto-complete.js?1784115264"></script>
+<script type="text/javascript" src="../../../js/lunr.min.js?1784131936"></script>
+<script type="text/javascript" src="../../../js/auto-complete.js?1784131936"></script>
 <script type="text/javascript">
     
         var baseurl = "http:\/\/localhost:1313\/fcj-workshop-template\/\/vi";
     
 </script>
-<script type="text/javascript" src="../../../js/search.js?1784115264"></script>
+<script type="text/javascript" src="../../../js/search.js?1784131936"></script>
 
     
   </div>
@@ -197,13 +197,13 @@
  
   
     
-    <li data-nav-id="/vi/1-worklog/worklog_week1.4/" title="Worklog Tuần 4" class="dd-item 
+    <li data-nav-id="/vi/1-worklog/worklog_week1.4/" title="Worklog Tuáº§n 4" class="dd-item 
         
         
         
         ">
       <a href="../../../vi/1-worklog/worklog_week1.4/">
-           <b> 1.4 </b> Worklog Tuần 4
+           <b> 1.4 </b> Worklog Tuáº§n 4
           
             <i class="fas fa-check read-icon"></i>
           
@@ -1563,6 +1563,36 @@
 <img src="../../../images/1-Worklog/Worklog_week1.3/EC2_Private.png" alt="EC2 Private Instance">
 <em>Mô tả chi tiết: Hình ảnh ghi nhận cấu hình của EC2 Instance được triển khai hoàn toàn trong Private Subnet (phân khu mạng nội bộ bảo mật cao). Máy chủ này không được cấp phát Public IP nhằm cô lập hoàn toàn khỏi môi trường Internet công cộng, đảm bảo an toàn tuyệt đối cho cơ sở dữ liệu hoặc các ứng dụng backend bên trong. Mọi kết nối đến instance này đều phải đi qua máy chủ trung chuyển (Bastion Host / NAT Gateway) hoặc thông qua VPC Endpoints.</em></p>
 </li>
+<li>
+<p><strong>Tạo Người dùng IAM (Create IAM User)</strong>
+<img src="../../../images/1-Worklog/Worklog_week1.3/Create%20IAM%20User.png" alt="Create IAM User">
+<em>Mô tả chi tiết: Quá trình tạo mới một IAM User trong AWS Management Console. Bước này bao gồm việc thiết lập thông tin người dùng, lựa chọn loại truy cập (truy cập qua CLI hoặc qua Console), và cấp phát các thông tin đăng nhập ban đầu một cách an toàn.</em></p>
+</li>
+<li>
+<p><strong>Tạo Nhóm Người dùng (Create User Groups)</strong>
+<img src="../../../images/1-Worklog/Worklog_week1.3/Create%20user%20groups.png" alt="Create user groups">
+<em>Mô tả chi tiết: Nhóm các người dùng IAM lại với nhau. Việc tạo nhóm giúp quản lý phân quyền dễ dàng hơn bằng cách gán các chính sách (IAM policies) cho toàn bộ nhóm thay vì gán lẻ tẻ cho từng người dùng, tuân thủ nguyên tắc đặc quyền tối thiểu.</em></p>
+</li>
+<li>
+<p><strong>Kiểm tra Quyền hạn (Check Permission)</strong>
+<img src="../../../images/1-Worklog/Worklog_week1.3/Check%20permission.png" alt="Check permission">
+<em>Mô tả chi tiết: Xác minh các chính sách đã đính kèm và quyền hạn được giao cho người dùng hoặc nhóm IAM. Bước này nhằm đảm bảo các thực thể được cấu hình có chính xác các quyền cần thiết để thực hiện thao tác trên AWS mà không vượt quá giới hạn cho phép.</em></p>
+</li>
+<li>
+<p><strong>Kiểm tra Tổng thể (General Check)</strong>
+<img src="../../../images/1-Worklog/Worklog_week1.3/Check.png" alt="Check">
+<em>Mô tả chi tiết: Bước kiểm tra và xác nhận tổng thể để đảm bảo rằng tất cả các cấu hình IAM, bao gồm việc tạo người dùng và gán nhóm, đã được áp dụng thành công và đang hoạt động đúng như mong đợi.</em></p>
+</li>
+<li>
+<p><strong>Giới hạn chuyển đổi Role theo IP (Limit Switch Role by IP)</strong>
+<img src="../../../images/1-Worklog/Worklog_week1.3/limit%20switch%20by%20IP.png" alt="Limit switch by IP">
+<em>Mô tả chi tiết: Triển khai các chính sách bảo mật nâng cao sử dụng điều kiện IAM. Hình ảnh này minh họa việc hạn chế hành động sts:AssumeRole (Switch Role) sao cho nó chỉ có thể được thực hiện từ các địa chỉ IP đáng tin cậy cụ thể (ws:SourceIp), giúp tăng cường đáng kể bảo mật mạng.</em></p>
+</li>
+<li>
+<p><strong>Giới hạn chuyển đổi Role theo thời gian (Limit Switch Role by Time)</strong>
+<img src="../../../images/1-Worklog/Worklog_week1.3/limit%20switch%20role%20by%20time.png" alt="Limit switch role by time">
+<em>Mô tả chi tiết: Áp dụng các hạn chế về thời gian cho IAM roles. Cấu hình này sử dụng các điều kiện như ws:CurrentTime để đảm bảo rằng người dùng chỉ có thể đảm nhận các role cụ thể trong khoảng thời gian làm việc được chỉ định, giảm thiểu rủi ro truy cập trái phép ngoài giờ hoạt động.</em></p>
+</li>
 </ol>
 
 
@@ -2294,7 +2324,7 @@
 			<a class="nav nav-prev" href="../../../vi/1-worklog/worklog_week1.2/" title="Nhật ký Tuần 2"> <i class="fa fa-chevron-left"></i></a>
 		
 		
-			<a class="nav nav-next" href="../../../vi/1-worklog/worklog_week1.4/" title="Worklog Tuần 4" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+			<a class="nav nav-next" href="../../../vi/1-worklog/worklog_week1.4/" title="Worklog Tuáº§n 4" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
 		
 	
     </div>
@@ -2304,19 +2334,19 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="../../../js/clipboard.min.js?1784115264"></script>
-    <script src="../../../js/perfect-scrollbar.min.js?1784115264"></script>
-    <script src="../../../js/perfect-scrollbar.jquery.min.js?1784115264"></script>
-    <script src="../../../js/jquery.sticky.js?1784115264"></script>
-    <script src="../../../js/featherlight.min.js?1784115264"></script>
-    <script src="../../../js/highlight.pack.js?1784115264"></script>
+    <script src="../../../js/clipboard.min.js?1784131936"></script>
+    <script src="../../../js/perfect-scrollbar.min.js?1784131936"></script>
+    <script src="../../../js/perfect-scrollbar.jquery.min.js?1784131936"></script>
+    <script src="../../../js/jquery.sticky.js?1784131936"></script>
+    <script src="../../../js/featherlight.min.js?1784131936"></script>
+    <script src="../../../js/highlight.pack.js?1784131936"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="../../../js/modernizr.custom-3.6.0.js?1784115264"></script>
-    <script src="../../../js/learn.js?1784115264"></script>
-    <script src="../../../js/hugo-learn.js?1784115264"></script>
+    <script src="../../../js/modernizr.custom-3.6.0.js?1784131936"></script>
+    <script src="../../../js/learn.js?1784131936"></script>
+    <script src="../../../js/hugo-learn.js?1784131936"></script>
 
-    <link href="../../../mermaid/mermaid.css?1784115264" rel="stylesheet" />
-    <script src="../../../mermaid/mermaid.js?1784115264"></script>
+    <link href="../../../mermaid/mermaid.css?1784131936" rel="stylesheet" />
+    <script src="../../../mermaid/mermaid.js?1784131936"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

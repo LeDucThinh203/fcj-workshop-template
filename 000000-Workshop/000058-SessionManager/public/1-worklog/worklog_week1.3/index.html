@@ -12,21 +12,21 @@
     <title>Week 3 Worklog :: AWS System Manager</title>
 
     
-    <link href='../../css/nucleus.css?1784115262' rel="stylesheet">
-    <link href='../../css/fontawesome-all.min.css?1784115262' rel="stylesheet">
-    <link href='../../css/hybrid.css?1784115262' rel="stylesheet">
-    <link href='../../css/featherlight.min.css?1784115262' rel="stylesheet">
-    <link href='../../css/perfect-scrollbar.min.css?1784115262' rel="stylesheet">
-    <link href='../../css/auto-complete.css?1784115262' rel="stylesheet">
-    <link href='../../css/atom-one-dark-reasonable.css?1784115262' rel="stylesheet">
-    <link href='../../css/theme.css?1784115262' rel="stylesheet">
-    <link href='../../css/hugo-theme.css?1784115262' rel="stylesheet">
+    <link href='../../css/nucleus.css?1784131935' rel="stylesheet">
+    <link href='../../css/fontawesome-all.min.css?1784131935' rel="stylesheet">
+    <link href='../../css/hybrid.css?1784131935' rel="stylesheet">
+    <link href='../../css/featherlight.min.css?1784131935' rel="stylesheet">
+    <link href='../../css/perfect-scrollbar.min.css?1784131935' rel="stylesheet">
+    <link href='../../css/auto-complete.css?1784131935' rel="stylesheet">
+    <link href='../../css/atom-one-dark-reasonable.css?1784131935' rel="stylesheet">
+    <link href='../../css/theme.css?1784131935' rel="stylesheet">
+    <link href='../../css/hugo-theme.css?1784131935' rel="stylesheet">
     
-    <link href='../../css/theme-workshop.css?1784115262' rel="stylesheet">
+    <link href='../../css/theme-workshop.css?1784131935' rel="stylesheet">
     
     
 
-    <script src='../../js/jquery-3.3.1.min.js?1784115262'></script>
+    <script src='../../js/jquery-3.3.1.min.js?1784131935'></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -57,14 +57,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="../../js/lunr.min.js?1784115262"></script>
-<script type="text/javascript" src="../../js/auto-complete.js?1784115262"></script>
+<script type="text/javascript" src="../../js/lunr.min.js?1784131935"></script>
+<script type="text/javascript" src="../../js/auto-complete.js?1784131935"></script>
 <script type="text/javascript">
     
         var baseurl = "http:\/\/localhost:1313\/fcj-workshop-template\/";
     
 </script>
-<script type="text/javascript" src="../../js/search.js?1784115262"></script>
+<script type="text/javascript" src="../../js/search.js?1784131935"></script>
 
     
   </div>
@@ -1563,6 +1563,36 @@
 <img src="../../images/1-Worklog/Worklog_week1.3/EC2_Private.png" alt="EC2 Private Instance">
 <em>Description: Screenshot showing the configurations of the EC2 Instance deployed entirely in the Private Subnet (highly secure internal network partition). This host does not have a Public IP assigned, effectively isolating it from the public internet to protect backend databases or application code. Connections to this instance are routed through a Bastion Host, NAT Gateway, or VPC Endpoints.</em></p>
 </li>
+<li>
+<p><strong>Create IAM User</strong>
+<img src="../../images/1-Worklog/Worklog_week1.3/Create%20IAM%20User.png" alt="Create IAM User">
+<em>Description: The process of creating a new IAM User in the AWS Management Console. This involves setting up user details, selecting AWS access type (programmatic access or AWS Management Console access), and securely generating initial credentials.</em></p>
+</li>
+<li>
+<p><strong>Create User Groups</strong>
+<img src="../../images/1-Worklog/Worklog_week1.3/Create%20user%20groups.png" alt="Create user groups">
+<em>Description: Organizing IAM users into groups. Creating user groups allows for easier permission management by applying IAM policies to the group rather than individually to each user, adhering to the principle of least privilege.</em></p>
+</li>
+<li>
+<p><strong>Check Permissions</strong>
+<img src="../../images/1-Worklog/Worklog_week1.3/Check%20permission.png" alt="Check permission">
+<em>Description: Verifying the attached policies and assigned permissions for the IAM user or group. This step ensures that the configured entities have exactly the required access rights to perform necessary AWS operations without exceeding their authorized scope.</em></p>
+</li>
+<li>
+<p><strong>General Check</strong>
+<img src="../../images/1-Worklog/Worklog_week1.3/Check.png" alt="Check">
+<em>Description: A comprehensive review and validation step to ensure all IAM configurations, including user creation and group assignments, have been successfully applied and are functioning as intended.</em></p>
+</li>
+<li>
+<p><strong>Limit Switch Role by IP</strong>
+<img src="../../images/1-Worklog/Worklog_week1.3/limit%20switch%20by%20IP.png" alt="Limit switch by IP">
+<em>Description: Implementing advanced security policies using IAM conditions. This screenshot demonstrates restricting the sts:AssumeRole action (Switch Role) so that it can only be performed from specific trusted IP addresses (ws:SourceIp), greatly enhancing network security.</em></p>
+</li>
+<li>
+<p><strong>Limit Switch Role by Time</strong>
+<img src="../../images/1-Worklog/Worklog_week1.3/limit%20switch%20role%20by%20time.png" alt="Limit switch role by time">
+<em>Description: Applying time-based restrictions to IAM roles. This configuration uses conditions such as ws:CurrentTime to ensure that users can only assume specific roles during designated working hours, reducing the risk of unauthorized access outside of regular operational windows.</em></p>
+</li>
 </ol>
 
 
@@ -2304,19 +2334,19 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="../../js/clipboard.min.js?1784115262"></script>
-    <script src="../../js/perfect-scrollbar.min.js?1784115262"></script>
-    <script src="../../js/perfect-scrollbar.jquery.min.js?1784115262"></script>
-    <script src="../../js/jquery.sticky.js?1784115262"></script>
-    <script src="../../js/featherlight.min.js?1784115262"></script>
-    <script src="../../js/highlight.pack.js?1784115262"></script>
+    <script src="../../js/clipboard.min.js?1784131935"></script>
+    <script src="../../js/perfect-scrollbar.min.js?1784131935"></script>
+    <script src="../../js/perfect-scrollbar.jquery.min.js?1784131935"></script>
+    <script src="../../js/jquery.sticky.js?1784131935"></script>
+    <script src="../../js/featherlight.min.js?1784131935"></script>
+    <script src="../../js/highlight.pack.js?1784131935"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="../../js/modernizr.custom-3.6.0.js?1784115262"></script>
-    <script src="../../js/learn.js?1784115262"></script>
-    <script src="../../js/hugo-learn.js?1784115262"></script>
+    <script src="../../js/modernizr.custom-3.6.0.js?1784131935"></script>
+    <script src="../../js/learn.js?1784131935"></script>
+    <script src="../../js/hugo-learn.js?1784131935"></script>
 
-    <link href="../../mermaid/mermaid.css?1784115262" rel="stylesheet" />
-    <script src="../../mermaid/mermaid.js?1784115262"></script>
+    <link href="../../mermaid/mermaid.css?1784131935" rel="stylesheet" />
+    <script src="../../mermaid/mermaid.js?1784131935"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

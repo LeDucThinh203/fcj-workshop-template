@@ -44,3 +44,27 @@ pre: " <b> 1.3 </b> "
    *Description: Screenshot showing the configurations of the EC2 Instance deployed entirely in the Private Subnet (highly secure internal network partition). This host does not have a Public IP assigned, effectively isolating it from the public internet to protect backend databases or application code. Connections to this instance are routed through a Bastion Host, NAT Gateway, or VPC Endpoints.*
 
 
+
+3. **Create IAM User**
+   ![Create IAM User](/images/1-Worklog/Worklog_week1.3/Create%20IAM%20User.png)
+   *Description: The process of creating a new IAM User in the AWS Management Console. This involves setting up user details, selecting AWS access type (programmatic access or AWS Management Console access), and securely generating initial credentials.*
+
+4. **Create User Groups**
+   ![Create user groups](/images/1-Worklog/Worklog_week1.3/Create%20user%20groups.png)
+   *Description: Organizing IAM users into groups. Creating user groups allows for easier permission management by applying IAM policies to the group rather than individually to each user, adhering to the principle of least privilege.*
+
+5. **Check Permissions**
+   ![Check permission](/images/1-Worklog/Worklog_week1.3/Check%20permission.png)
+   *Description: Verifying the attached policies and assigned permissions for the IAM user or group. This step ensures that the configured entities have exactly the required access rights to perform necessary AWS operations without exceeding their authorized scope.*
+
+6. **General Check**
+   ![Check](/images/1-Worklog/Worklog_week1.3/Check.png)
+   *Description: A comprehensive review and validation step to ensure all IAM configurations, including user creation and group assignments, have been successfully applied and are functioning as intended.*
+
+7. **Limit Switch Role by IP**
+   ![Limit switch by IP](/images/1-Worklog/Worklog_week1.3/limit%20switch%20by%20IP.png)
+   *Description: Implementing advanced security policies using IAM conditions. This screenshot demonstrates restricting the sts:AssumeRole action (Switch Role) so that it can only be performed from specific trusted IP addresses (ws:SourceIp), greatly enhancing network security.*
+
+8. **Limit Switch Role by Time**
+   ![Limit switch role by time](/images/1-Worklog/Worklog_week1.3/limit%20switch%20role%20by%20time.png)
+   *Description: Applying time-based restrictions to IAM roles. This configuration uses conditions such as ws:CurrentTime to ensure that users can only assume specific roles during designated working hours, reducing the risk of unauthorized access outside of regular operational windows.*

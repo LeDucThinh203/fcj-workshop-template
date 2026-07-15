@@ -42,3 +42,27 @@ pre: " <b> 1.3 </b> "
 2. **Khởi tạo và cấu hình bảo mật cho EC2 Instance trong Private Subnet (EC2_Private)**
    ![EC2 Private Instance](/images/1-Worklog/Worklog_week1.3/EC2_Private.png)
    *Mô tả chi tiết: Hình ảnh ghi nhận cấu hình của EC2 Instance được triển khai hoàn toàn trong Private Subnet (phân khu mạng nội bộ bảo mật cao). Máy chủ này không được cấp phát Public IP nhằm cô lập hoàn toàn khỏi môi trường Internet công cộng, đảm bảo an toàn tuyệt đối cho cơ sở dữ liệu hoặc các ứng dụng backend bên trong. Mọi kết nối đến instance này đều phải đi qua máy chủ trung chuyển (Bastion Host / NAT Gateway) hoặc thông qua VPC Endpoints.*
+
+3. **Tạo Người dùng IAM (Create IAM User)**
+   ![Create IAM User](/images/1-Worklog/Worklog_week1.3/Create%20IAM%20User.png)
+   *Mô tả chi tiết: Quá trình tạo mới một IAM User trong AWS Management Console. Bước này bao gồm việc thiết lập thông tin người dùng, lựa chọn loại truy cập (truy cập qua CLI hoặc qua Console), và cấp phát các thông tin đăng nhập ban đầu một cách an toàn.*
+
+4. **Tạo Nhóm Người dùng (Create User Groups)**
+   ![Create user groups](/images/1-Worklog/Worklog_week1.3/Create%20user%20groups.png)
+   *Mô tả chi tiết: Nhóm các người dùng IAM lại với nhau. Việc tạo nhóm giúp quản lý phân quyền dễ dàng hơn bằng cách gán các chính sách (IAM policies) cho toàn bộ nhóm thay vì gán lẻ tẻ cho từng người dùng, tuân thủ nguyên tắc đặc quyền tối thiểu.*
+
+5. **Kiểm tra Quyền hạn (Check Permission)**
+   ![Check permission](/images/1-Worklog/Worklog_week1.3/Check%20permission.png)
+   *Mô tả chi tiết: Xác minh các chính sách đã đính kèm và quyền hạn được giao cho người dùng hoặc nhóm IAM. Bước này nhằm đảm bảo các thực thể được cấu hình có chính xác các quyền cần thiết để thực hiện thao tác trên AWS mà không vượt quá giới hạn cho phép.*
+
+6. **Kiểm tra Tổng thể (General Check)**
+   ![Check](/images/1-Worklog/Worklog_week1.3/Check.png)
+   *Mô tả chi tiết: Bước kiểm tra và xác nhận tổng thể để đảm bảo rằng tất cả các cấu hình IAM, bao gồm việc tạo người dùng và gán nhóm, đã được áp dụng thành công và đang hoạt động đúng như mong đợi.*
+
+7. **Giới hạn chuyển đổi Role theo IP (Limit Switch Role by IP)**
+   ![Limit switch by IP](/images/1-Worklog/Worklog_week1.3/limit%20switch%20by%20IP.png)
+   *Mô tả chi tiết: Triển khai các chính sách bảo mật nâng cao sử dụng điều kiện IAM. Hình ảnh này minh họa việc hạn chế hành động sts:AssumeRole (Switch Role) sao cho nó chỉ có thể được thực hiện từ các địa chỉ IP đáng tin cậy cụ thể (ws:SourceIp), giúp tăng cường đáng kể bảo mật mạng.*
+
+8. **Giới hạn chuyển đổi Role theo thời gian (Limit Switch Role by Time)**
+   ![Limit switch role by time](/images/1-Worklog/Worklog_week1.3/limit%20switch%20role%20by%20time.png)
+   *Mô tả chi tiết: Áp dụng các hạn chế về thời gian cho IAM roles. Cấu hình này sử dụng các điều kiện như ws:CurrentTime để đảm bảo rằng người dùng chỉ có thể đảm nhận các role cụ thể trong khoảng thời gian làm việc được chỉ định, giảm thiểu rủi ro truy cập trái phép ngoài giờ hoạt động.*

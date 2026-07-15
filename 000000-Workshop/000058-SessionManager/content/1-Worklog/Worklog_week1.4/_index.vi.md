@@ -1,54 +1,54 @@
-﻿---
-title: "Worklog Tuáº§n 4"
+---
+title: "Worklog Tuần 4"
 date: 2026-05-13
 weight: 4
 chapter: false
 pre: " <b> 1.4 </b> "
 ---
 
-## Má»¥c tiĂªu Tuáº§n 4:
-- Khá»Ÿi táº¡o vĂ  cáº¥u hĂ¬nh má»™t Amazon RDS database instance.
-- Káº¿t ná»‘i á»©ng dá»¥ng cháº¡y trĂªn EC2 Ä‘áº¿n RDS database.
-- Hiá»ƒu cĂ¡c cÆ¡ cháº¿ Backup, Restore vĂ  cĂ¡c tĂ­nh nÄƒng nĂ¢ng cao (Multi-AZ, Read Replicas).
+## Mục tiêu Tuần 4:
+- Khởi tạo và cấu hình một Amazon RDS database instance.
+- Kết nối ứng dụng chạy trên EC2 đến RDS database.
+- Hiểu các cơ chế Backup, Restore và các tính năng nâng cao (Multi-AZ, Read Replicas).
 
-## CĂ´ng viá»‡c thá»±c hiá»‡n trong tuáº§n nĂ y:
+## Công việc thực hiện trong tuần này:
 
-| Thá»© | CĂ´ng viá»‡c | NgĂ y báº¯t Ä‘áº§u | NgĂ y káº¿t thĂºc | Nguá»“n tham kháº£o |
+| Thứ | Công việc | Ngày bắt đầu | Ngày kết thúc | Nguồn tham khảo |
 | :--- | :--- | :--- | :--- | :--- |
-| 2 | - Tá»•ng quan vá» Amazon RDS<br>- So sĂ¡nh RDS vá»›i cĂ¡c dá»‹ch vá»¥ lÆ°u trá»¯ khĂ¡c (EC2 DB, DynamoDB, Redshift) | 11/05/2026 | 11/05/2026 | [Amazon RDS Documentation](https://docs.aws.amazon.com/rds/) |
-| 3 | - Cáº¥u hĂ¬nh máº¡ng cho RDS:<br>  + Táº¡o VPC<br>  + Táº¡o Security Groups cho EC2 vĂ  RDS<br>  + Táº¡o DB Subnet Group | 12/05/2026 | 12/05/2026 | [VPC for RDS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_VPC.WorkingWithRDSInstanceinaVPC.html) |
-| 4 | - Thá»±c hĂ nh khá»Ÿi táº¡o má»™t Amazon RDS instance<br>- Cáº¥u hĂ¬nh cĂ¡c tham sá»‘ vĂ  cĂ¡c tĂ¹y chá»n báº£o máº­t cho Database | 13/05/2026 | 13/05/2026 | [Creating an RDS DB Instance](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_CreateDBInstance.html) |
-| 5 | - Triá»ƒn khai á»©ng dá»¥ng trĂªn EC2 vĂ  káº¿t ná»‘i Ä‘áº¿n RDS<br>- XĂ¡c minh truy cáº­p vĂ  quáº£n lĂ½ dá»¯ liá»‡u qua Endpoint | 14/05/2026 | 14/05/2026 | [Connecting to RDS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_GettingStarted.CreatingConnecting.MySQL.html) |
-| 6 | - Há»c vĂ  thá»±c hĂ nh Backup & Restore<br>- Thá»±c hĂ nh Snapshot thá»§ cĂ´ng vĂ  tá»± Ä‘á»™ng | 15/05/2026 | 15/05/2026 | [RDS Backup and Restore](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_CommonTasks.BackupRestore.html) |
-| 7 - Chá»§ nháº­t | - Há»c vá» Multi-AZ vĂ  Read Replicas<br>- Dá»n dáº¹p tĂ i nguyĂªn Ä‘á»ƒ tá»‘i Æ°u chi phĂ­ | 16/05/2026 | 17/05/2026 | [High Availability (Multi-AZ)](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.MultiAZ.html) |
+| 2 | - Tổng quan về Amazon RDS<br>- So sánh RDS với các dịch vụ lưu trữ khác (EC2 DB, DynamoDB, Redshift) | 11/05/2026 | 11/05/2026 | [Amazon RDS Documentation](https://docs.aws.amazon.com/rds/) |
+| 3 | - Cấu hình mạng cho RDS:<br>  + Tạo VPC<br>  + Tạo Security Groups cho EC2 và RDS<br>  + Tạo DB Subnet Group | 12/05/2026 | 12/05/2026 | [VPC for RDS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_VPC.WorkingWithRDSInstanceinaVPC.html) |
+| 4 | - Thực hành khởi tạo một Amazon RDS instance<br>- Cấu hình các tham số và các tùy chọn bảo mật cho Database | 13/05/2026 | 13/05/2026 | [Creating an RDS DB Instance](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_CreateDBInstance.html) |
+| 5 | - Triển khai ứng dụng trên EC2 và kết nối đến RDS<br>- Xác minh truy cập và quản lý dữ liệu qua Endpoint | 14/05/2026 | 14/05/2026 | [Connecting to RDS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_GettingStarted.CreatingConnecting.MySQL.html) |
+| 6 | - Học và thực hành Backup & Restore<br>- Thực hành Snapshot thủ công và tự động | 15/05/2026 | 15/05/2026 | [RDS Backup and Restore](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_CommonTasks.BackupRestore.html) |
+| 7 - Chủ nhật | - Học về Multi-AZ và Read Replicas<br>- Dọn dẹp tài nguyên để tối ưu chi phí | 16/05/2026 | 17/05/2026 | [High Availability (Multi-AZ)](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.MultiAZ.html) |
 
-### Káº¿t quáº£ Tuáº§n 4:
-#### LĂ½ thuyáº¿t:
-- Náº¯m vá»¯ng kiáº¿n thá»©c vá» Amazon RDS: Lá»£i Ă­ch, cĂ¡c engine DB Ä‘Æ°á»£c há»— trá»£, cĂ¡c tĂ­nh nÄƒng quáº£n lĂ½.
-- Hiá»ƒu cĂ¡ch hoáº¡t Ä‘á»™ng cá»§a Multi-AZ vĂ  Read Replicas.
-- Há»c cĂ¡ch phĂ¢n biá»‡t khi nĂ o sá»­ dá»¥ng RDS, DynamoDB, Redshift hoáº·c S3.
-- Hiá»ƒu cĂ¡c cÆ¡ cháº¿ báº£o máº­t (Security Groups, Encryption) vĂ  sao lÆ°u (Snapshots) trĂªn RDS.
-#### Thá»±c hĂ nh:
-- Thiáº¿t láº­p thĂ nh cĂ´ng mĂ´i trÆ°á»ng máº¡ng an toĂ n cho Database (DB Subnet Group, Security Groups).
-- Khá»Ÿi táº¡o thĂ nh cĂ´ng má»™t Amazon RDS instance (MySQL/MariaDB).
-- Káº¿t ná»‘i thĂ nh cĂ´ng á»©ng dá»¥ng Web trĂªn EC2 vá»›i RDS database qua Endpoint.
-- Thá»±c hiá»‡n thĂ nh cĂ´ng sao lÆ°u vĂ  khĂ´i phá»¥c dá»¯ liá»‡u báº±ng Snapshots.
-- Quáº£n lĂ½ tĂ i nguyĂªn hiá»‡u quáº£ vĂ  dá»n dáº¹p Ä‘á»ƒ trĂ¡nh chi phĂ­ khĂ´ng cáº§n thiáº¿t.
+### Kết quả Tuần 4:
+#### Lý thuyết:
+- Nắm vững kiến thức về Amazon RDS: Lợi ích, các engine DB được hỗ trợ, các tính năng quản lý.
+- Hiểu cách hoạt động của Multi-AZ và Read Replicas.
+- Học cách phân biệt khi nào sử dụng RDS, DynamoDB, Redshift hoặc S3.
+- Hiểu các cơ chế bảo mật (Security Groups, Encryption) và sao lưu (Snapshots) trên RDS.
 
-### HĂ¬nh áº£nh minh chá»©ng:
+#### Thực hành:
+- Thiết lập thành công môi trường mạng an toàn cho Database (DB Subnet Group, Security Groups).
+- Khởi tạo thành công một Amazon RDS instance (MySQL/MariaDB).
+- Kết nối thành công ứng dụng Web trên EC2 với RDS database qua Endpoint.
+- Thực hiện thành công sao lưu và khôi phục dữ liệu bằng Snapshots.
+- Quản lý tài nguyên hiệu quả và dọn dẹp để tránh chi phí không cần thiết.
 
-1. **Cáº¥u hĂ¬nh SSH Key Pair báº£o máº­t káº¿t ná»‘i (ec2_connection_key)**
-   ![Cáº¥u hĂ¬nh SSH Key Pair](/images/1-Worklog/Worklog_week1.4/ec2_connection_key.png)
-   *MĂ´ táº£ chi tiáº¿t: HĂ¬nh áº£nh thá»ƒ hiá»‡n viá»‡c phĂ¢n quyá»n truy cáº­p cho tá»‡p khĂ³a báº£o máº­t Private Key (`.pem`) báº±ng lá»‡nh `chmod 400` trĂªn mĂ´i trÆ°á»ng dĂ²ng lá»‡nh Linux. Viá»‡c háº¡n cháº¿ quyá»n Ä‘á»c/ghi cho tá»‡p khĂ³a lĂ  yĂªu cáº§u báº£o máº­t báº¯t buá»™c cá»§a giao thá»©c SSH Ä‘á»ƒ Ä‘áº£m báº£o khĂ³a khĂ´ng bá»‹ lá»™ hoáº·c bá»‹ sá»­ dá»¥ng bá»Ÿi ngÆ°á»i dĂ¹ng khĂ¡c trĂªn cĂ¹ng há»‡ thá»‘ng trÆ°á»›c khi báº¯t Ä‘áº§u phiĂªn káº¿t ná»‘i.*
+### Hình ảnh minh chứng:
 
-2. **Káº¿t ná»‘i SSH thĂ nh cĂ´ng vĂ o Linux EC2 Public Instance (ec2_connection)**
-   ![Káº¿t ná»‘i SSH thĂ nh cĂ´ng](/images/1-Worklog/Worklog_week1.4/ec2_connection.png)
-   *MĂ´ táº£ chi tiáº¿t: Ghi láº¡i káº¿t quáº£ thá»±c táº¿ khi káº¿t ná»‘i thĂ nh cĂ´ng tá»« mĂ¡y khĂ¡ch cá»¥c bá»™ vĂ o mĂ¡y chá»§ EC2 Public Instance thĂ´ng qua CLI sá»­ dá»¥ng giao thá»©c SSH vĂ  Key Pair Ä‘Ă£ cáº¥u hĂ¬nh. Giao diá»‡n dĂ²ng lá»‡nh hiá»ƒn thá»‹ shell Ä‘Äƒng nháº­p thĂ nh cĂ´ng cá»§a Amazon Linux, xĂ¡c nháº­n cáº¥u hĂ¬nh Ä‘á»‹nh tuyáº¿n Internet Gateway vĂ  Security Group inbound port 22 hoáº¡t Ä‘á»™ng hoĂ n háº£o.*
+#### Cấu hình SSH Key Pair bảo mật kết nối (ec2_connection_key)
+![Cấu hình SSH Key Pair](/images/1-Worklog/Worklog_week1.4/ec2_connection_key.png)
+*Mô tả chi tiết: Hình ảnh thể hiện việc phân quyền truy cập cho tệp khóa bảo mật Private Key (.pem) bằng lệnh `chmod 400` trên môi trường dòng lệnh Linux. Việc hạn chế quyền đọc/ghi cho tệp khóa là yêu cầu bảo mật bắt buộc của giao thức SSH để đảm bảo khóa không bị lộ hoặc bị sử dụng bởi người dùng khác trên cùng hệ thống trước khi bắt đầu phiên kết nối.*
 
-3. **Äá»‹nh tuyáº¿n vĂ  káº¿t ná»‘i ná»™i bá»™ vĂ o EC2 Private Instance (ec2_connection_Private)**
-   ![Káº¿t ná»‘i ná»™i bá»™ EC2 Private](/images/1-Worklog/Worklog_week1.4/ec2_connection_Private.png)
-   *MĂ´ táº£ chi tiáº¿t: Minh chá»©ng thá»±c hĂ nh káº¿t ná»‘i ná»™i bá»™ thĂ nh cĂ´ng vĂ o EC2 Instance trong Private Subnet tá»« mĂ¡y chá»§ EC2 Public (Ä‘Ă³ng vai trĂ² lĂ  Bastion Host). Do Private Instance khĂ´ng thá»ƒ truy cáº­p trá»±c tiáº¿p tá»« Internet, viá»‡c cáº¥u hĂ¬nh Ä‘á»‹nh tuyáº¿n báº¯c cáº§u nĂ y Ä‘áº£m báº£o kiá»ƒm soĂ¡t truy cáº­p nghiĂªm ngáº·t vĂ  quáº£n trá»‹ an toĂ n cĂ¡c mĂ¡y chá»§ trong dáº£i máº¡ng ná»™i bá»™.*
+#### Kết nối SSH thành công vào Linux EC2 Public Instance (ec2_connection)
+![Kết nối SSH thành công](/images/1-Worklog/Worklog_week1.4/ec2_connection.png)
+*Mô tả chi tiết: Ghi lại kết quả thực tế khi kết nối thành công từ máy khách cục bộ vào máy chủ EC2 Public Instance thông qua CLI sử dụng giao thức SSH và Key Pair đã cấu hình. Giao diện dòng lệnh hiển thị shell đăng nhập thành công của Amazon Linux, xác nhận cấu hình định tuyến Internet Gateway và Security Group inbound port 22 hoạt động hoàn hảo.*
 
+#### Định tuyến và kết nối nội bộ vào EC2 Private Instance (ec2_connection_Private)
+![Kết nối nội bộ EC2 Private](/images/1-Worklog/Worklog_week1.4/ec2_connection_Private.png)
+*Mô tả chi tiết: Minh chứng thực hành kết nối nội bộ thành công vào EC2 Instance trong Private Subnet từ máy chủ EC2 Public (đóng vai trò là Bastion Host). Do Private Instance không thể truy cập trực tiếp từ Internet, việc cấu hình định tuyến bắc cầu này đảm bảo kiểm soát truy cập nghiêm ngặt và quản trị an toàn các máy chủ trong dải mạng nội bộ.*
 
 
 ### 4. Khởi tạo một VPC
