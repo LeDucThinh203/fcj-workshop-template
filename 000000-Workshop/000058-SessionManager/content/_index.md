@@ -23,7 +23,7 @@ chapter: false
 ### Content
  1. [Worklog](1-Worklog/)
  2. [Project Proposal](2-Proposal/)
- 3. [Connect to EC2 servers](3-Accessibilitytoinstances/)
+ 3. [Project: Smart Parking IoT](3-Project-Smart-Parking-IoT/)
  4. [Workshop](4-Workshop/)
  5. [Port Forwarding](5-Portfwd/)
  6. [Clean up resources](6-cleanup/)
