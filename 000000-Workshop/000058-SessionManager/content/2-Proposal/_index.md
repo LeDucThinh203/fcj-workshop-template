@@ -10,6 +10,14 @@ pre: " <b> 2. </b> "
 
 > **AWS Serverless Solution for Parking Monitoring, License Plate Recognition, and AI Assistance**
 
+**Demo / Link Deploy Web:** [https://d3imp0j8sdburp.cloudfront.net](https://d3imp0j8sdburp.cloudfront.net)
+
+**Tài khoản Admin:**
+- **Email:** `leducthinh17203@gmail.com`
+- **Password:** `Admin123@`
+
+**Tài khoản User:** Đăng ký miễn phí tại trang web
+
 ---
 
 ## 1. Executive Summary
