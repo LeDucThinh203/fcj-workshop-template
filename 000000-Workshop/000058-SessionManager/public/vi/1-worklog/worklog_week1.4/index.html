@@ -12,21 +12,21 @@
     <title>Worklog Tuần 4 :: AWS System Manager</title>
 
     
-    <link href='../../../css/nucleus.css?1784132199' rel="stylesheet">
-    <link href='../../../css/fontawesome-all.min.css?1784132199' rel="stylesheet">
-    <link href='../../../css/hybrid.css?1784132199' rel="stylesheet">
-    <link href='../../../css/featherlight.min.css?1784132199' rel="stylesheet">
-    <link href='../../../css/perfect-scrollbar.min.css?1784132199' rel="stylesheet">
-    <link href='../../../css/auto-complete.css?1784132199' rel="stylesheet">
-    <link href='../../../css/atom-one-dark-reasonable.css?1784132199' rel="stylesheet">
-    <link href='../../../css/theme.css?1784132199' rel="stylesheet">
-    <link href='../../../css/hugo-theme.css?1784132199' rel="stylesheet">
+    <link href='../../../css/nucleus.css?1784346760' rel="stylesheet">
+    <link href='../../../css/fontawesome-all.min.css?1784346760' rel="stylesheet">
+    <link href='../../../css/hybrid.css?1784346760' rel="stylesheet">
+    <link href='../../../css/featherlight.min.css?1784346760' rel="stylesheet">
+    <link href='../../../css/perfect-scrollbar.min.css?1784346760' rel="stylesheet">
+    <link href='../../../css/auto-complete.css?1784346760' rel="stylesheet">
+    <link href='../../../css/atom-one-dark-reasonable.css?1784346760' rel="stylesheet">
+    <link href='../../../css/theme.css?1784346760' rel="stylesheet">
+    <link href='../../../css/hugo-theme.css?1784346760' rel="stylesheet">
     
-    <link href='../../../css/theme-workshop.css?1784132199' rel="stylesheet">
+    <link href='../../../css/theme-workshop.css?1784346760' rel="stylesheet">
     
     
 
-    <script src='../../../js/jquery-3.3.1.min.js?1784132199'></script>
+    <script src='../../../js/jquery-3.3.1.min.js?1784346760'></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -57,14 +57,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="../../../js/lunr.min.js?1784132199"></script>
-<script type="text/javascript" src="../../../js/auto-complete.js?1784132199"></script>
+<script type="text/javascript" src="../../../js/lunr.min.js?1784346760"></script>
+<script type="text/javascript" src="../../../js/auto-complete.js?1784346760"></script>
 <script type="text/javascript">
     
         var baseurl = "http:\/\/localhost:1313\/fcj-workshop-template\/\/vi";
     
 </script>
-<script type="text/javascript" src="../../../js/search.js?1784132199"></script>
+<script type="text/javascript" src="../../../js/search.js?1784346760"></script>
 
     
   </div>
@@ -1502,9 +1502,10 @@
 
 	<h2 id="mục-tiêu-tuần-4">Mục tiêu Tuần 4:</h2>
 <ul>
-<li>Khởi tạo và cấu hình một Amazon RDS database instance.</li>
-<li>Kết nối ứng dụng chạy trên EC2 đến RDS database.</li>
-<li>Hiểu các cơ chế Backup, Restore và các tính năng nâng cao (Multi-AZ, Read Replicas).</li>
+<li>Khởi tạo và cấu hình môi trường mạng (VPC, Subnet Groups, Security Groups) cho các EC2 Instance và RDS DB Instance.</li>
+<li>Triển khai EC2 Instance chạy Linux, cấu hình quyền hạn file khóa SSH và thực hiện kết nối SSH an toàn qua MobaXterm.</li>
+<li>Cài đặt Git, Node.js và MySQL client trên máy chủ EC2 để chuẩn bị và chạy ứng dụng Web Node.js kết nối tới RDS database.</li>
+<li>Hiểu rõ các thao tác quản trị cơ sở dữ liệu trên RDS bao gồm xem Logs &amp; Events, thiết lập Maintenance &amp; Backup, thực hiện Snapshots và tìm hiểu kiến trúc sẵn sàng cao (Multi-AZ, Read Replicas).</li>
 </ul>
 <h2 id="công-việc-thực-hiện-trong-tuần-này">Công việc thực hiện trong tuần này:</h2>
 <table>
@@ -1520,45 +1521,45 @@
   <tbody>
       <tr>
           <td style="text-align: left">2</td>
-          <td style="text-align: left">- Tổng quan về Amazon RDS<br>- So sánh RDS với các dịch vụ lưu trữ khác (EC2 DB, DynamoDB, Redshift)</td>
+          <td style="text-align: left">- Tổng quan về Amazon RDS<br>- So sánh RDS với các dịch vụ lưu trữ khác (EC2 DB, DynamoDB, Redshift, S3)</td>
           <td style="text-align: left">11/05/2026</td>
           <td style="text-align: left">11/05/2026</td>
           <td style="text-align: left"><a href="https://docs.aws.amazon.com/rds/">Amazon RDS Documentation</a></td>
       </tr>
       <tr>
           <td style="text-align: left">3</td>
-          <td style="text-align: left">- Cấu hình mạng cho RDS:<br>  + Tạo VPC<br>  + Tạo Security Groups cho EC2 và RDS<br>  + Tạo DB Subnet Group</td>
+          <td style="text-align: left">- Cấu hình mạng cho RDS:<br>  + Tạo VPC và các subnet liên quan<br>  + Tạo Security Groups cho EC2 và RDS<br>  + Tạo DB Subnet Group</td>
           <td style="text-align: left">12/05/2026</td>
           <td style="text-align: left">12/05/2026</td>
           <td style="text-align: left"><a href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_VPC.WorkingWithRDSInstanceinaVPC.html">VPC for RDS</a></td>
       </tr>
       <tr>
           <td style="text-align: left">4</td>
-          <td style="text-align: left">- Thực hành khởi tạo một Amazon RDS instance<br>- Cấu hình các tham số và các tùy chọn bảo mật cho Database</td>
+          <td style="text-align: left">- Thực hành khởi tạo một Amazon RDS instance<br>- Cấu hình các tham số, thông tin tài khoản và cấu hình bảo mật cho Database</td>
           <td style="text-align: left">13/05/2026</td>
           <td style="text-align: left">13/05/2026</td>
           <td style="text-align: left"><a href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_CreateDBInstance.html">Creating an RDS DB Instance</a></td>
       </tr>
       <tr>
           <td style="text-align: left">5</td>
-          <td style="text-align: left">- Triển khai ứng dụng trên EC2 và kết nối đến RDS<br>- Xác minh truy cập và quản lý dữ liệu qua Endpoint</td>
+          <td style="text-align: left">- Khởi tạo EC2 Instance và chuẩn bị môi trường kết nối:<br>  + Tạo Linux EC2 Instance<br>  + Cấu hình quyền truy cập SSH Key Pair (<code>chmod 400</code>) và kết nối bằng MobaXterm<br>  + Cài đặt môi trường runtime Git và Node.js trên EC2</td>
           <td style="text-align: left">14/05/2026</td>
           <td style="text-align: left">14/05/2026</td>
-          <td style="text-align: left"><a href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_GettingStarted.CreatingConnecting.MySQL.html">Connecting to RDS</a></td>
+          <td style="text-align: left"><a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/concepts.html">EC2 Linux Guide</a><br>FCJ Lab</td>
       </tr>
       <tr>
           <td style="text-align: left">6</td>
-          <td style="text-align: left">- Học và thực hành Backup &amp; Restore<br>- Thực hành Snapshot thủ công và tự động</td>
+          <td style="text-align: left">- Triển khai ứng dụng Web trên EC2 và kết nối đến RDS:<br>  + Clone repository dự án từ Github và cài đặt các package phụ thuộc<br>  + Cài đặt MySQL client, chạy các script SQL khởi tạo cơ sở dữ liệu và các bảng<br>  + Thêm dữ liệu mẫu (mock user data) và kiểm tra kết nối ứng dụng qua RDS Endpoint</td>
           <td style="text-align: left">15/05/2026</td>
           <td style="text-align: left">15/05/2026</td>
-          <td style="text-align: left"><a href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_CommonTasks.BackupRestore.html">RDS Backup and Restore</a></td>
+          <td style="text-align: left"><a href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_GettingStarted.CreatingConnecting.MySQL.html">Connecting to RDS</a><br>FCJ Lab</td>
       </tr>
       <tr>
           <td style="text-align: left">7 - Chủ nhật</td>
-          <td style="text-align: left">- Học về Multi-AZ và Read Replicas<br>- Dọn dẹp tài nguyên để tối ưu chi phí</td>
+          <td style="text-align: left">- Quản trị và bảo trì cơ sở dữ liệu:<br>  + Xem và theo dõi Logs &amp; Events của RDS<br>  + Cấu hình các tùy chọn bảo trì, thực hành tạo Snapshot thủ công và tự động<br>  + Tìm hiểu kiến trúc Multi-AZ, Read Replicas và dọn dẹp tài nguyên tối ưu chi phí</td>
           <td style="text-align: left">16/05/2026</td>
           <td style="text-align: left">17/05/2026</td>
-          <td style="text-align: left"><a href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.MultiAZ.html">High Availability (Multi-AZ)</a></td>
+          <td style="text-align: left"><a href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_CommonTasks.BackupRestore.html">RDS Backup and Restore</a><br>FCJ Lab</td>
       </tr>
   </tbody>
 </table>
@@ -3869,19 +3870,19 @@ Xác nhận khôi phục thành công:</p>
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="../../../js/clipboard.min.js?1784132199"></script>
-    <script src="../../../js/perfect-scrollbar.min.js?1784132199"></script>
-    <script src="../../../js/perfect-scrollbar.jquery.min.js?1784132199"></script>
-    <script src="../../../js/jquery.sticky.js?1784132199"></script>
-    <script src="../../../js/featherlight.min.js?1784132199"></script>
-    <script src="../../../js/highlight.pack.js?1784132199"></script>
+    <script src="../../../js/clipboard.min.js?1784346760"></script>
+    <script src="../../../js/perfect-scrollbar.min.js?1784346760"></script>
+    <script src="../../../js/perfect-scrollbar.jquery.min.js?1784346760"></script>
+    <script src="../../../js/jquery.sticky.js?1784346760"></script>
+    <script src="../../../js/featherlight.min.js?1784346760"></script>
+    <script src="../../../js/highlight.pack.js?1784346760"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="../../../js/modernizr.custom-3.6.0.js?1784132199"></script>
-    <script src="../../../js/learn.js?1784132199"></script>
-    <script src="../../../js/hugo-learn.js?1784132199"></script>
+    <script src="../../../js/modernizr.custom-3.6.0.js?1784346760"></script>
+    <script src="../../../js/learn.js?1784346760"></script>
+    <script src="../../../js/hugo-learn.js?1784346760"></script>
 
-    <link href="../../../mermaid/mermaid.css?1784132199" rel="stylesheet" />
-    <script src="../../../mermaid/mermaid.js?1784132199"></script>
+    <link href="../../../mermaid/mermaid.css?1784346760" rel="stylesheet" />
+    <script src="../../../mermaid/mermaid.js?1784346760"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

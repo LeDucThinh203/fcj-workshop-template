@@ -7,55 +7,29 @@ pre: " <b> 1.5 </b> "
 ---
 
 ## Week 5 Objectives:
-- Mastered life cycle of AWS S3: Lazy Loading, Transient Storage, Set Policies, Crossfeed Period.
-- Understood Role of Application Load Balancer (ELB) in traffic and high availability.
-- Distinguished Auto Scaling Group of EC2 instances.
-- Understand the importance of cost management techniques and monitor resources spending.
+- Understood the concept and architecture of AWS Systems Manager (SSM) Session Manager for secure instance administration.
+- Understood the role of VPC Endpoints (Interface endpoints) for private connection to AWS services without internet routing.
+- Understood how NAT Gateway translates private IP addresses for outbound-only internet traffic.
 
 ## Tasks to be carried out this week:
 
 | Day | Task | Start Date | Completion Date | Reference Material |
 | :--- | :--- | :--- | :--- | :--- |
-| 2 | - Study EC2 Auto Scaling (Lazy Storage, Set Policies, Crossfeed Period)<br>- Understand Static Website Hosting on S3 and Route S3 as a backup for CloudFront<br>- Research on S3 Subject of cost management | 18/05/2026 | 18/05/2026 | https://cloudjourney.awsstudygroup.com/ |
-| 3 | - **Practice:**<br>  + Create an S3 bucket, configure static website hosting<br>  + Configure Static Website Hosting for EC2 Management UI (S3 UI)<br>  + Create an Auto Scaling Group | 19/05/2026 | 19/05/2026 | https://cloudjourney.awsstudygroup.com/ |
-| 4 | - **Practice:**<br>  + Configure the Application Load Balancer<br>  + Configure the Auto Scaling Group<br>  + Configure the CloudFront with S3 | 20/05/2026 | 20/05/2026 | https://cloudjourney.awsstudygroup.com/ |
-| 5 | - **Practice:**<br>  + Test the Auto Scaling Group<br>  + Test the Application Load Balancer<br>  + Test the CloudFront and S3 integration<br>  + Test the EC2 Management application | 21/05/2026 | 21/05/2026 | https://cloudjourney.awsstudygroup.com/ |
+| 2 | - Study the theory of AWS Systems Manager (SSM) Session Manager<br>- Learn about VPC Endpoints (Interface Endpoints and Gateway Endpoints)<br>- Learn about NAT Gateway and how it operates in a Public Subnet to provide internet access to Private Subnets | 18/05/2026 | 18/05/2026 | https://cloudjourney.awsstudygroup.com/ |
+| 3 | - **Practice (Part 1):**<br>  + Create a custom VPC with Public Subnet and Private Subnets<br>  + Initialize and configure a NAT Gateway in the Public Subnet and associate it with an Elastic IP<br>  + Configure routing rules in the Private Route Table to allow outbound internet access via the NAT Gateway | 19/05/2026 | 19/05/2026 | https://cloudjourney.awsstudygroup.com/ |
+| 4 | - **Practice (Part 2):**<br>  + Launch a Linux EC2 Instance in the Private Subnet (without a Public IP)<br>  + Create and associate an IAM Role with the EC2 Instance containing the necessary permissions to communicate with AWS Systems Manager (`AmazonSSMManagedInstanceCore`)<br>  + Configure the Security Group for the EC2 Instance (no port 22 SSH open) | 20/05/2026 | 20/05/2026 | https://cloudjourney.awsstudygroup.com/ |
+| 5 | - **Practice (Part 3):**<br>  + Establish VPC Endpoints (`ssm`, `ssmmessages`, `ec2messages`) in the Private Subnet<br>  + Configure the Security Group for the VPC Endpoints to allow inbound traffic from the EC2 instance<br>  + Verify secure connection to the private EC2 instance via Systems Manager Session Manager<br>  + Clean up resources to prevent charges | 21/05/2026 | 21/05/2026 | https://cloudjourney.awsstudygroup.com/ |
 
 ### Week 5 Achievements:
 #### Theory:
-- Mastered life cycle of AWS S3: Lazy Loading, Transient Storage, Set Policies, Crossfeed Period.
-- Understood Role of Application Load Balancer (ELB) in traffic and high availability.
-- Distinguished Auto Scaling Group of EC2 instances.
-- Understand the importance of cost management techniques and monitor resources spending.
+- Understood the concept and architecture of AWS Systems Manager (SSM) Session Manager for secure instance administration.
+- Understood the role of VPC Endpoints (Interface endpoints) for private connection to AWS services without internet routing.
+- Understood how NAT Gateway translates private IP addresses for outbound-only internet traffic.
 
 #### Practice:
-I can use AWS services effectively:
-- Successfully built the EC2 Management application using Amazon EC2 Auto-Scaling with Elastic Load Balancing to ensure high availability and flexibility.
-- All Services used:
-  - Amazon VPC: Created an isolated virtual environment for deploying AWS resources.
-  - Application Load Balancer: Distributes traffic between EC2 instances, improves application fault tolerance.
-  - Auto Scaling Group: Automatically scales EC2 instances according to actual demand, cost optimization.
-  - Amazon S3: Stores static website files, supports static website hosting.
-  - Amazon CloudFront: Delivers static website content quickly through AWS's global network of edge locations.
-  - IAM: Manages access permissions securely for AWS services.
-
-Create VPC (CloudStack lab):
-- In this CloudFormation lab, configure the following:
-  - 1 VPC with CIDR: 10.10.0.0/16
-  - 2 Public Subnets with CIDR: 10.10.1.0/24, 10.10.2.0/24
-  - 2 Private Subnets with CIDR: 10.10.3.0/24, 10.10.4.0/24
-  - 1 Internet Gateway
-  - 2 NAT Gateway
-  - 2 Public Route Table
-  - 2 Private Route Table
-  - Security Groups for Application Load Balancer, Public EC2, Private EC2
-  - IAM Role for EC2
-  - Launch Template
-  - Auto Scaling Group
-  - Application Load Balancer
-  - Target Group
-  - S3 Bucket
-  - CloudFront Distribution
+- Launched a custom VPC with isolated private subnets and a NAT Gateway in the public subnet.
+- Configured routing rules in the Private Route Table to allow outbound internet access via the NAT Gateway.
+- Established secure connections to the private EC2 instance via Systems Manager Session Manager by setting up VPC Endpoints (`ssm`, `ssmmessages`, `ec2messages`) and IAM roles.
 
 ### Evidences:
 

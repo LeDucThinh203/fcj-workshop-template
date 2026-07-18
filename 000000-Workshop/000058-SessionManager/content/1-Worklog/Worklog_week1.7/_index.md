@@ -7,8 +7,9 @@ pre: " <b> 1.7 </b> "
 ---
 
 ## Week 7 Objectives:
-- Connect and get acquainted with members of First Cloud Journey.
-- Understand basic AWS services, how to use the console & CLI.
+- Get familiar with and practice using the AWS Command Line Interface (CLI) to view, configure, and manage AWS resources (S3, SNS, IAM, VPC, EC2).
+- Understand multi-account management using AWS Organizations, configuring Organizational Units (OUs), and IAM Identity Center.
+- Master centralized backup solutions using AWS Backup to protect data safety on AWS.
 
 ## Tasks to be carried out this week:
 
@@ -22,6 +23,15 @@ pre: " <b> 1.7 </b> "
 | 7 - Sun | - Setup Backup plan & configure notifications<br> - Test Restore operations<br> - Clean up resources to prevent charges | 06/06/2026 | 07/06/2026 | [Creating backup plans](https://docs.aws.amazon.com/aws-backup/latest/devguide/whatisbackup.html)<br> [Restoring a backup](https://docs.aws.amazon.com/aws-backup/latest/devguide/whatisbackup.html) |
 
 ## Week 7 Achievements:
+### Theory:
+- Understood how to configure and invoke AWS service APIs via the AWS CLI.
+- Mastered enterprise-scale account management with AWS Organizations and IAM Identity Center, including time-based access controls and Customer Managed Policies.
+- Understood the core mechanism of AWS Backup: Backup Vaults, Backup Plans, Retention rules, and data restoration (Restore).
+
+### Practice:
+- Proficiently used CLI commands to query and manage EC2, S3, IAM, and VPC resources.
+- Successfully built an automated backup system (AWS Backup Plan) for EC2 server infrastructure and S3 storage.
+- Successfully performed recovery testing (Test Restore) from backup points and executed cleanups for Cost Optimization.
 
 ### Evidences:
 

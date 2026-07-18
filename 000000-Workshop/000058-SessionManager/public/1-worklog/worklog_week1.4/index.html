@@ -12,21 +12,21 @@
     <title>Week 4 Worklog :: AWS System Manager</title>
 
     
-    <link href='../../css/nucleus.css?1784132199' rel="stylesheet">
-    <link href='../../css/fontawesome-all.min.css?1784132199' rel="stylesheet">
-    <link href='../../css/hybrid.css?1784132199' rel="stylesheet">
-    <link href='../../css/featherlight.min.css?1784132199' rel="stylesheet">
-    <link href='../../css/perfect-scrollbar.min.css?1784132199' rel="stylesheet">
-    <link href='../../css/auto-complete.css?1784132199' rel="stylesheet">
-    <link href='../../css/atom-one-dark-reasonable.css?1784132199' rel="stylesheet">
-    <link href='../../css/theme.css?1784132199' rel="stylesheet">
-    <link href='../../css/hugo-theme.css?1784132199' rel="stylesheet">
+    <link href='../../css/nucleus.css?1784345801' rel="stylesheet">
+    <link href='../../css/fontawesome-all.min.css?1784345801' rel="stylesheet">
+    <link href='../../css/hybrid.css?1784345801' rel="stylesheet">
+    <link href='../../css/featherlight.min.css?1784345801' rel="stylesheet">
+    <link href='../../css/perfect-scrollbar.min.css?1784345801' rel="stylesheet">
+    <link href='../../css/auto-complete.css?1784345801' rel="stylesheet">
+    <link href='../../css/atom-one-dark-reasonable.css?1784345801' rel="stylesheet">
+    <link href='../../css/theme.css?1784345801' rel="stylesheet">
+    <link href='../../css/hugo-theme.css?1784345801' rel="stylesheet">
     
-    <link href='../../css/theme-workshop.css?1784132199' rel="stylesheet">
+    <link href='../../css/theme-workshop.css?1784345801' rel="stylesheet">
     
     
 
-    <script src='../../js/jquery-3.3.1.min.js?1784132199'></script>
+    <script src='../../js/jquery-3.3.1.min.js?1784345801'></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -57,14 +57,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="../../js/lunr.min.js?1784132199"></script>
-<script type="text/javascript" src="../../js/auto-complete.js?1784132199"></script>
+<script type="text/javascript" src="../../js/lunr.min.js?1784345801"></script>
+<script type="text/javascript" src="../../js/auto-complete.js?1784345801"></script>
 <script type="text/javascript">
     
         var baseurl = "http:\/\/localhost:1313\/fcj-workshop-template\/";
     
 </script>
-<script type="text/javascript" src="../../js/search.js?1784132199"></script>
+<script type="text/javascript" src="../../js/search.js?1784345801"></script>
 
     
   </div>
@@ -1502,9 +1502,10 @@
 
 	<h2 id="week-4-objectives">Week 4 Objectives:</h2>
 <ul>
-<li>Initialize and configure an Amazon RDS database instance.</li>
-<li>Connect an application running on EC2 to the RDS database.</li>
-<li>Understand Backup, Restore mechanisms, and advanced features (Multi-AZ, Read Replicas).</li>
+<li>Initialize and configure network environments (VPC, Subnet Groups, Security Groups) for EC2 and RDS instances.</li>
+<li>Launch a Linux EC2 Instance, configure SSH Key Pair permissions, and establish secure SSH connections.</li>
+<li>Install Git, Node.js, and MySQL client on EC2 to deploy and connect a Node.js web application to an Amazon RDS database.</li>
+<li>Understand database management operations, including maintenance, monitoring logs, manual/automatic snapshots, and high-availability architecture.</li>
 </ul>
 <h2 id="tasks-to-be-implemented-this-week">Tasks to be implemented this week:</h2>
 <table>
@@ -1520,45 +1521,45 @@
   <tbody>
       <tr>
           <td style="text-align: left">2</td>
-          <td style="text-align: left">- Overview of Amazon RDS<br>- Compare RDS with other storage services (EC2 DB, DynamoDB, Redshift)</td>
+          <td style="text-align: left">- Overview of Amazon RDS<br>- Compare RDS with other storage services (EC2 DB, DynamoDB, Redshift, S3)</td>
           <td style="text-align: left">11/05/2026</td>
           <td style="text-align: left">11/05/2026</td>
           <td style="text-align: left"><a href="https://docs.aws.amazon.com/rds/">Amazon RDS Documentation</a></td>
       </tr>
       <tr>
           <td style="text-align: left">3</td>
-          <td style="text-align: left">- Network setup for RDS:<br>  + Create VPC<br>  + Create Security Groups for EC2 and RDS<br>  + Create DB Subnet Group</td>
+          <td style="text-align: left">- Network setup for RDS:<br>  + Create VPC and subnets<br>  + Create Security Groups for EC2 and RDS<br>  + Create DB Subnet Group</td>
           <td style="text-align: left">12/05/2026</td>
           <td style="text-align: left">12/05/2026</td>
           <td style="text-align: left"><a href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_VPC.WorkingWithRDSInstanceinaVPC.html">VPC for RDS</a></td>
       </tr>
       <tr>
           <td style="text-align: left">4</td>
-          <td style="text-align: left">- Practice initializing an Amazon RDS instance<br>- Configure parameters and security options for the Database</td>
+          <td style="text-align: left">- Practice initializing an Amazon RDS instance<br>- Configure DB engine, credentials, and database security options</td>
           <td style="text-align: left">13/05/2026</td>
           <td style="text-align: left">13/05/2026</td>
           <td style="text-align: left"><a href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_CreateDBInstance.html">Creating an RDS DB Instance</a></td>
       </tr>
       <tr>
           <td style="text-align: left">5</td>
-          <td style="text-align: left">- Deploy application on EC2 and connect to RDS<br>- Verify access and data management via Endpoint</td>
+          <td style="text-align: left">- Initialize EC2 Instance and prepare client environment:<br>  + Create Linux EC2 Instance<br>  + Configure SSH Key Pair permissions (<code>chmod 400</code>) and connect via SSH (MobaXterm)<br>  + Install Git and Node.js runtime environments on EC2</td>
           <td style="text-align: left">14/05/2026</td>
           <td style="text-align: left">14/05/2026</td>
-          <td style="text-align: left"><a href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_GettingStarted.CreatingConnecting.MySQL.html">Connecting to RDS</a></td>
+          <td style="text-align: left"><a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/concepts.html">EC2 Linux Guide</a><br>FCJ Lab</td>
       </tr>
       <tr>
           <td style="text-align: left">6</td>
-          <td style="text-align: left">- Learn and practice Backup &amp; Restore<br>- Practice manual and automatic Snapshots</td>
+          <td style="text-align: left">- Deploy web application on EC2 and connect to RDS:<br>  + Clone repository and install dependencies<br>  + Install MySQL server client, execute SQL scripts to create databases and tables<br>  + Seed mock user data and verify connection via RDS Endpoint</td>
           <td style="text-align: left">15/05/2026</td>
           <td style="text-align: left">15/05/2026</td>
-          <td style="text-align: left"><a href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_CommonTasks.BackupRestore.html">RDS Backup and Restore</a></td>
+          <td style="text-align: left"><a href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_GettingStarted.CreatingConnecting.MySQL.html">Connecting to RDS</a><br>FCJ Lab</td>
       </tr>
       <tr>
           <td style="text-align: left">7 - Sun</td>
-          <td style="text-align: left">- Learn about Multi-AZ and Read Replicas<br>- Resource cleanup to optimize costs</td>
+          <td style="text-align: left">- Database administration and maintenance:<br>  + View RDS Logs &amp; Events<br>  + Configure Maintenance &amp; Backup options, perform manual/automatic Snapshots<br>  + Learn about Multi-AZ, Read Replicas, and clean up resources</td>
           <td style="text-align: left">16/05/2026</td>
           <td style="text-align: left">17/05/2026</td>
-          <td style="text-align: left"><a href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.MultiAZ.html">High Availability (Multi-AZ)</a></td>
+          <td style="text-align: left"><a href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_CommonTasks.BackupRestore.html">RDS Backup and Restore</a><br>FCJ Lab</td>
       </tr>
   </tbody>
 </table>
@@ -3867,19 +3868,19 @@ Confirm successful restoration:</p>
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="../../js/clipboard.min.js?1784132199"></script>
-    <script src="../../js/perfect-scrollbar.min.js?1784132199"></script>
-    <script src="../../js/perfect-scrollbar.jquery.min.js?1784132199"></script>
-    <script src="../../js/jquery.sticky.js?1784132199"></script>
-    <script src="../../js/featherlight.min.js?1784132199"></script>
-    <script src="../../js/highlight.pack.js?1784132199"></script>
+    <script src="../../js/clipboard.min.js?1784345801"></script>
+    <script src="../../js/perfect-scrollbar.min.js?1784345801"></script>
+    <script src="../../js/perfect-scrollbar.jquery.min.js?1784345801"></script>
+    <script src="../../js/jquery.sticky.js?1784345801"></script>
+    <script src="../../js/featherlight.min.js?1784345801"></script>
+    <script src="../../js/highlight.pack.js?1784345801"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="../../js/modernizr.custom-3.6.0.js?1784132199"></script>
-    <script src="../../js/learn.js?1784132199"></script>
-    <script src="../../js/hugo-learn.js?1784132199"></script>
+    <script src="../../js/modernizr.custom-3.6.0.js?1784345801"></script>
+    <script src="../../js/learn.js?1784345801"></script>
+    <script src="../../js/hugo-learn.js?1784345801"></script>
 
-    <link href="../../mermaid/mermaid.css?1784132199" rel="stylesheet" />
-    <script src="../../mermaid/mermaid.js?1784132199"></script>
+    <link href="../../mermaid/mermaid.css?1784345801" rel="stylesheet" />
+    <script src="../../mermaid/mermaid.js?1784345801"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

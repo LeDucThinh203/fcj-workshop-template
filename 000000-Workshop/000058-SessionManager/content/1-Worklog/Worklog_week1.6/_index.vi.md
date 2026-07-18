@@ -7,7 +7,8 @@ pre: " <b> 1.6 </b> "
 ---
 
 ## Mục tiêu Tuần 6:
-- Hiểu AWS Cloud Trail và các báo cáo được quản lý tại đây trong AWS Support.
+- Hiểu rõ cơ chế hoạt động của Amazon CloudWatch (Metrics, Logs, Alarms, Dashboards) để giám sát hiệu năng hệ thống.
+- Tìm hiểu về AWS Support Plans và cách quản lý Support Cases trực tiếp trên AWS Console.
 - Triển khai tích hợp Hybrid DNS trên các máy chủ tại chỗ với AWS bằng Route 53 Resolver và Microsoft AD.
 
 ## Công việc thực hiện trong tuần này:

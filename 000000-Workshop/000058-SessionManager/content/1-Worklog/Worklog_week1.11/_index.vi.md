@@ -8,28 +8,25 @@ pre: " <b> 1.11 </b> "
 ---
 
 ## Mục tiêu Tuần 11:
-- Thực hành triển khai CI/CD pipeline bằng AWS CodePipeline, CodeCommit, CodeBuild và CodeDeploy.
-- Hiểu và cấu hình AWS Storage Gateway để kết nối với môi trường on-premises.
-- Bảo vệ ứng dụng hiệu quả bằng AWS Web Application Firewall (WAF).
-- Quản lý tài nguyên AWS bằng Tags và Resource Groups.
+- Tìm hiểu các khái niệm về dịch vụ AWS Storage Gateway và mô hình lưu trữ lai (Hybrid Cloud Storage).
+- Thực hành triển khai và cấu hình AWS File Storage Gateway để kết nối hạ tầng lưu trữ tại chỗ (On-premises) với dịch vụ lưu trữ đám mây Amazon S3.
+- Thực hành kết nối (mount) File Share (NFS/SMB) từ Storage Gateway lên hệ điều hành Linux (giả lập máy chủ On-premises).
 
 ## Công việc cần thực hiện trong tuần này:
 
 | Thứ | Công việc | Ngày bắt đầu | Ngày hoàn thành | Tài liệu tham khảo |
 | :--- | :--- | :--- | :--- | :--- |
-| 2 | - **Thực hành**: Triển khai ứng dụng lên EC2 với AWS CodePipeline (Phần 1)<br>+ Chuẩn bị (S3, Git, IAM roles)<br>+ Khởi chạy EC2 và cài đặt CodeDeploy Agent | 29/06/2026 | 29/06/2026 | <a href="https://docs.aws.amazon.com/codedeploy/latest/userguide/welcome.html" target="_blank">AWS CodeDeploy Guide</a> |
-| 3 | - **Thực hành**: Triển khai ứng dụng lên EC2 với AWS CodePipeline (Phần 2)<br>+ Thiết lập AWS CodeCommit, CodeBuild, CodeDeploy<br>+ Cấu hình CodePipeline cho tự động hóa CI/CD | 30/06/2026 | 30/06/2026 | <a href="https://docs.aws.amazon.com/codepipeline/latest/userguide/welcome.html" target="_blank">AWS CodePipeline Guide</a> |
-| 4 | - **Thực hành**: AWS Storage Gateway<br>+ Tạo S3 Bucket cho Storage Gateway<br>+ Khởi tạo Storage Gateway và File Shares<br>+ Gắn File Shares lên máy On-premises | 01/07/2026 | 01/07/2026 | <a href="https://docs.aws.amazon.com/storagegateway/" target="_blank">AWS Storage Gateway</a> |
-| 5 | - **Thực hành**: AWS Web Application Firewall (Phần 1)<br>+ Triển khai Web App mẫu<br>+ Sử dụng AWS WAF, cấu hình ACLs và Managed rules | 02/07/2026 | 02/07/2026 | <a href="https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html" target="_blank">AWS WAF Developer Guide</a> |
-| 6 | - **Thực hành**: AWS Web Application Firewall (Phần 2)<br>+ Tạo Custom rules để chặn IP/Quốc gia<br>+ Bật Logging và Kiểm tra | 03/07/2026 | 03/07/2026 | <a href="https://docs.aws.amazon.com/waf/latest/developerguide/aws-managed-rule-groups.html" target="_blank">AWS WAF Managed Rules</a> |
-| 7 - Chủ nhật | - **Thực hành**: Quản lý tài nguyên bằng Tags và Resource Groups<br>+ Sử dụng Tags trên Console và CLI<br>+ Tạo và quản lý Resource Groups | 04/07/2026 | 05/07/2026 | <a href="https://docs.aws.amazon.com/tag-editor/latest/userguide/tagging.html" target="_blank">Tagging AWS resources</a><br><a href="https://docs.aws.amazon.com/ARG/latest/userguide/resource-groups.html" target="_blank">AWS Resource Groups</a> |
+| 2 | - Học lý thuyết về AWS Storage Gateway, phân loại các dòng Gateway và mô hình Hybrid Cloud Storage | 29/06/2026 | 29/06/2026 | [AWS Storage Gateway Guide](https://docs.aws.amazon.com/storagegateway/latest/userguide/WhatIsStorageGateway.html) |
+| 3 | - **Thực hành (Phần 1)**: Khởi tạo S3 bucket trên AWS để đóng vai trò làm backend storage cho Storage Gateway | 30/06/2026 | 30/06/2026 | [Amazon S3 Documentation](https://docs.aws.amazon.com/s3/) |
+| 4 | - **Thực hành (Phần 2)**: Khởi chạy một EC2 instance chạy Linux để giả lập môi trường máy chủ nội bộ (On-premises machine) | 01/07/2026 | 01/07/2026 | [Amazon EC2 User Guide](https://docs.aws.amazon.com/ec2/) |
+| 5 | - **Thực hành (Phần 3)**: Tạo và cấu hình AWS File Storage Gateway thông qua giao diện quản trị AWS Console | 02/07/2026 | 02/07/2026 | [Creating a File Gateway](https://docs.aws.amazon.com/storagegateway/latest/userguide/CreatingAnAppliance.html) |
+| 6 | - **Thực hành (Phần 4)**: Tạo File Share trên Storage Gateway và liên kết trực tiếp với S3 bucket đã chuẩn bị ở bước trước | 03/07/2026 | 03/07/2026 | [Creating a File Share](https://docs.aws.amazon.com/storagegateway/latest/userguide/CreatingAFileShare.html) |
+| 7 - Chủ nhật | - **Thực hành (Phần 5)**: Thực hiện kết nối (mount) File Share NFS lên máy chủ EC2 giả lập, kiểm tra đồng bộ ghi dữ liệu chéo lên S3<br>- Tiến hành dọn dẹp sạch sẽ tài nguyên để tránh phát sinh chi phí | 04/07/2026 | 05/07/2026 | [Mounting a File Share](https://docs.aws.amazon.com/storagegateway/latest/userguide/mounting-file-share.html) |
 
 ## Thành tựu Tuần 11:
-- **Thành thạo CI/CD Pipeline trên AWS**: Đã tích hợp các dịch vụ như CodeCommit, CodeBuild, CodeDeploy và CodePipeline để tự động hóa hoàn toàn việc triển khai ứng dụng.
-- **Cấu hình AWS Storage Gateway**: Đã hiểu và cấu hình thành công AWS File Storage Gateway để kết nối bộ nhớ on-premises với AWS S3.
-- **Bảo vệ ứng dụng web với WAF**: Đã triển khai AWS WAF để bảo vệ các ứng dụng web khỏi các cuộc tấn công bằng Web ACLs và các quy tắc tuỳ chỉnh.
-- **Quản lý tài nguyên với Tags & Resource Groups**: Đã học cách tổ chức và quản lý các tài nguyên AWS một cách hiệu quả bằng Tags và Resource Groups.
-- **Hoàn thành tất cả bài lab**: Đã hoàn thành thành công tất cả 4 bài lab thực hành như hướng dẫn.
+- **Cấu hình AWS Storage Gateway**: Hiểu rõ nguyên lý hoạt động của kiến trúc lưu trữ lai (Hybrid Cloud Storage) và cấu hình thành công AWS File Storage Gateway để kết nối bộ nhớ on-premises với AWS S3 thông qua các giao thức chia sẻ tệp tiêu chuẩn.
+- **Tích hợp hạ tầng lai**: Thực hành thành công quy trình mount File Share NFS và xác minh khả năng đồng bộ hóa tệp dữ liệu tự động giữa môi trường tại chỗ và cloud.
+- **Tối ưu hóa chi phí**: Chủ động dọn dẹp hoàn toàn các tài nguyên thực hành (Storage Gateway, File Share, S3 Bucket, EC2 Instance) để tránh phát sinh chi phí duy trì dịch vụ Storage Gateway.
 
 ### Hình ảnh minh chứng:
 

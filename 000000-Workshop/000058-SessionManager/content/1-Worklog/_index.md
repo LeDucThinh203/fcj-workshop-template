@@ -7,80 +7,85 @@ pre : " <b> 1. </b> "
 
 ## Week 1:
 - Connect and get acquainted with members of First Cloud Journey.
-- Understand basic AWS services, how to use the console & CLI.
+- Study basic AWS service concepts and read documentation on the AWS Management Console & AWS CLI.
 
 ### Tasks to be carried out this week:
 
 | Day | Task | Start Date | Completion Date | Reference Material |
 | :--- | :--- | :--- | :--- | :--- |
 | 2 | - Get acquainted with FCJ members<br>- Read and take note of the rules and regulations at the internship unit | 20/04/2026 | 20/04/2026 |  |
-| 3 | - Learn about AWS and its service categories<br>  + Compute<br>  + Storage<br>  + Networking<br>  + Database<br>  + ... | [21/04/2026](./Worklog_week1.1/) | [21/04/2026](./Worklog_week1.1/) | https://cloudjourney.awsstudygroup.com/ |
-| 4 | - Create an AWS Free Tier account<br>- Learn about AWS Console & AWS CLI<br>- **Practice:**<br>  + Create an AWS account<br>  + Install and configure AWS CLI<br>  + Learn how to use AWS CLI | 22/04/2026 | 22/04/2026 | https://cloudjourney.awsstudygroup.com/ |
-| 5 | - Learn the basics of EC2:<br>  + Instance types<br>  + AMI<br>  + EBS<br>  + ...<br>- Explore methods for remotely connecting to EC2 via SSH<br>- Learn about Elastic IP | 23/04/2026 | 23/04/2026 | https://cloudjourney.awsstudygroup.com/ |
-| 6 | - **Practice:**<br>  + Create an EC2 instance<br>  + Connect via SSH<br>  + Attach an EBS volume | 24/04/2026 | 24/04/2026 | https://cloudjourney.awsstudygroup.com/ |
-| 7 - Sun | - **Advanced practice:**<br>  + Recreate the EC2 instance and configure the Security Group<br>  + Connect via SSH and install a Web Server (Apache/Nginx)<br>  + Deploy a simple website and access it through the Public IP<br>  + Learn and experiment with AWS S3 (create a bucket, upload files) | 25/04/2026 | 26/04/2026 | https://cloudjourney.awsstudygroup.com/ |
+| 3 | - Learn about cloud computing theory and AWS service categories:<br>  + Compute (EC2, Lambda)<br>  + Storage (S3, EBS)<br>  + Networking (VPC, Route 53)<br>  + Database (RDS, DynamoDB) | [21/04/2026](./Worklog_week1.1/) | [21/04/2026](./Worklog_week1.1/) | [AWS Cloud Concepts](https://docs.aws.amazon.com/whitepapers/latest/aws-overview/introduction.html) |
+| 4 | - Study AWS Free Tier account policies<br>- Research AWS Management Console and AWS CLI documentation:<br>  + Read guides on AWS account registration procedures<br>  + Study AWS CLI installation and configuration workflows for different OS | 22/04/2026 | 22/04/2026 | [Installing the AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html) |
+| 5 | - Learn the theoretical basics of Amazon EC2:<br>  + Understand Instance types, AMI, Key Pair, and EBS Volumes/Snapshots<br>  + Study methods for remotely connecting to EC2 via SSH<br>  + Learn about Elastic IP functions | 23/04/2026 | 23/04/2026 | [Amazon EC2 Overview](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/concepts.html) |
+| 6 | - Read documentation on:<br>  + Launching EC2 instances via Console and CLI<br>  + Connecting to instances via SSH using private keys<br>  + Mounting and configuring EBS volumes | 24/04/2026 | 24/04/2026 | [Amazon EC2 Instance Lifecycle](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-lifecycle.html) |
+| 7 - Sun | - Conduct advanced theoretical research:<br>  + Study Security Group configurations and port management best practices<br>  + Learn the setup logic for Web Servers (Apache/Nginx) on Linux<br>  + Understand Amazon S3 storage architecture (buckets, objects, and permissions) | 25/04/2026 | 26/04/2026 | [Amazon S3 Basics](https://docs.aws.amazon.com/AmazonS3/latest/userguide/Welcome.html) |
 
 ---
 
 ## Week 2:
 ### Week 2 Objectives:
-- Understand basic networking in AWS (VPC)
-- Master how to configure network components and security within a VPC
-- Practice building a complete VPC
+- Understand AWS Billing and Cost Management tools.
+- Master the role and configuration of AWS Budgets to monitor cloud spending.
+- Practice setting budget limits and configuring automated threshold-based email alerts.
 
 ### Tasks to be carried out this week:
 
 | Day | Task | Start Date | Completion Date | Reference Material |
 | :--- | :--- | :--- | :--- | :--- |
-| 2 | - Learn VPC basics:<br>  + VPC Overview<br>  + CIDR Block<br>  + Distinguish Public / Private Subnets | 27/04/2026 | 27/04/2026 | [VPC Basics](https://docs.aws.amazon.com/vpc/latest/userguide/what-is-amazon-vpc.html) |
-| 3 | - Learn about subnets & Route Tables:<br>  + How to divide subnets<br>  + Configure Route Tables | [28/04/2026](./Worklog_week1.2/) | [28/04/2026](./Worklog_week1.2/) | [Subnets & Route Tables](https://docs.aws.amazon.com/vpc/latest/userguide/how-it-works.html) |
-| 4 | - Learn about Internet Gateway & NAT Gateway:<br>  + Internet Gateway for Public Subnets<br>  + NAT Gateway for Private Subnets | 29/04/2026 | 29/04/2026 | [NAT Gateways](https://docs.aws.amazon.com/vpc/latest/userguide/vpc-nat-gateway.html) |
-| 5 | - Learn about security in VPC:<br>  + Security Groups<br>  + Network ACLs<br>  + Inbound / Outbound rules | 30/04/2026 | 30/04/2026 | [VPC Security Groups](https://docs.aws.amazon.com/vpc/latest/userguide/vpc-security-groups.html) |
-| 6 | - **Practice:**<br>  + Create VPC<br>  + Create Public & Private Subnets<br>  + Configure Route Tables | 01/05/2026 | 01/05/2026 | [FCJ Lab - Create VPC](https://cloudjourney.awsstudygroup.com/2-prerequisites/2.1-createvpc/) |
-| 7 - Sun | - **Advanced practice:**<br>  + Attach Internet Gateway<br>  + Create NAT Gateway<br>  + Deploy EC2 in Private/Public Subnets<br>  + Verify internet connectivity | 02/05/2026 | 03/05/2026 | [FCJ Lab - Public/Private](https://cloudjourney.awsstudygroup.com/2-prerequisites/2.2-publicprivateinstance/) |
+| 2 | - Learn about AWS Billing & Cost Management tools:<br>  + AWS Billing Tools<br>  + Calculate basic service costs | 27/04/2026 | 27/04/2026 | [AWS Billing Overview](https://docs.aws.amazon.com/billing/latest/userguide/billing-whatis.html) |
+| 3 | - Understand AWS Budgets mechanisms:<br>  + Cost budget vs. Usage budget concepts<br>  + Actual and forecasted cost alert thresholds | [28/04/2026](./Worklog_week1.2/) | [28/04/2026](./Worklog_week1.2/) | [AWS Budgets Guide](https://docs.aws.amazon.com/cost-management/latest/userguide/budgets-managing-costs.html) |
+| 4 | - Plan monthly budget limits for an AWS Free Tier account to avoid unexpected charges. | 29/04/2026 | 29/04/2026 | [AWS Free Tier Budgets](https://docs.aws.amazon.com/cost-management/latest/userguide/budgets-create.html) |
+| 5 | - Learn how to configure budget alerts via email and automated notification channels (Amazon SNS). | 30/04/2026 | 30/04/2026 | [AWS Budgets Alerts](https://docs.aws.amazon.com/cost-management/latest/userguide/budgets-alerts.html) |
+| 6 | - **Practice (Part 1):** Initialize a monthly cost budget (`My Monthly Cost Budget`) with a $100 limit. | 01/05/2026 | 01/05/2026 | [Creating a Cost Budget](https://docs.aws.amazon.com/cost-management/latest/userguide/budgets-create-cost.html) |
+| 7 - Sun | - **Practice (Part 2):** Create a backup cost budget (`My-200$-budget`) and resource usage budget (`Cost budget`). Verify health status and alert triggers. | 02/05/2026 | 03/05/2026 | [Monitoring Budgets](https://docs.aws.amazon.com/cost-management/latest/userguide/budgets-viewing.html) |
 
 ### Week 2 Achievements:
 #### Theory:
-- Can understand the architecture of Amazon VPC and how to manage IP address ranges via CIDR
-- Know how to create and configure route tables
+- Gained a solid understanding of AWS pricing models, billing drivers, and how to use AWS Budgets as a financial safety net.
+- Distinguished between Cost Budgets (financial monitoring) and Usage Budgets (resource utilization monitoring).
+
+#### Practice:
+- Successfully initialized three separate budgets to monitor spending from multiple dimensions on the AWS Console.
+- Configured automated email alerts when actual costs reach 80% of the limit or forecasted charges exceed the threshold.
 
 ---
 
 ## Week 3:
 ### Week 3 Objectives:
 - Learn about Amazon EC2 services on AWS.
-- Practice initializing, configuring, and managing EC2 Instances.
-- Deploy Node.js applications on Linux and Windows environments.
+- Practice initializing, configuring, and managing EC2 Instances in Public and Private Subnets.
+- Understand AWS IAM service and implement security permissions, including advanced restrictions on switching roles by IP and time.
 
 ### Tasks to implement this week:
 
 | Day | Tasks | Start Date | Completion Date | Reference Sources |
 | :--- | :--- | :--- | :--- | :--- |
 | 2 | - Overview of Amazon EC2<br>- Learn about Instance Types, AMI, Key Pair, and Snapshot<br>- Understand the mechanism of EC2 Instances | 05/04/2026 | 05/04/2026 | [Amazon EC2 Basics](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/concepts.html)<br>FCJ Lab |
-| 3 | - Prepare EC2 environment<br>+ Create VPC for Linux<br>+ Create VPC for Windows<br>+ Create Security Group for Linux and Windows Instances | [05/05/2026](./Worklog_week1.3/) | [05/05/2026](./Worklog_week1.3/) | [EC2 Security Groups](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-security-groups.html)<br>FCJ Lab |
-| 4 | - Initialize Windows EC2 Instance<br>+ Create Windows Instance<br>+ Connect via Remote Desktop to Windows Instance | 05/06/2026 | 05/06/2026 | [EC2 Windows Guide](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/concepts.html)<br>FCJ Lab |
-| 5 | - Initialize Linux EC2 Instance<br>+ Create Linux Instance<br>+ Connect via SSH to Linux Instance<br>- Learn about changing EC2 configuration and managing EBS Snapshot | 05/07/2026 | 05/07/2026 | [EC2 Linux Guide](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/concepts.html)<br>FCJ Lab |
-| 6 | - Advanced EC2 Practice<br>+ Create Custom AMI<br>+ Create Instance from Custom AMI<br>+ Practice EC2 access when losing Key Pair | 05/08/2026 | 05/08/2026 | [Amazon Machine Images (AMI)](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AMIs.html)<br>FCJ Lab |
-| 7 - Sun | - Deploy Node.js application on EC2<br>+ Install LAMP/XAMPP Server<br>+ Install Node.js on Linux and Windows<br>+ Deploy Node.js application<br>- Learn about resource limits using IAM | 05/09/2026 | 05/10/2026 | [IAM for Amazon EC2](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/iam-policies-for-amazon-ec2.html)<br>FCJ Lab |
+| 3 | - Prepare EC2 environment<br>+ Create a VPC with Public and Private Subnets<br>+ Create Security Groups with appropriate ports (22 for SSH, 80/443 for HTTP/HTTPS) | [05/05/2026](./Worklog_week1.3/) | [05/05/2026](./Worklog_week1.3/) | [EC2 Security Groups](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-security-groups.html)<br>FCJ Lab |
+| 4 | - Initialize Public Subnet EC2 Instance (EC2_Public)<br>+ Launch a Linux EC2 Instance in the Public Subnet<br>+ Test connection and accessibility to the Public EC2 Instance | 05/06/2026 | 05/06/2026 | [EC2 Public Instance Guide](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/concepts.html)<br>FCJ Lab |
+| 5 | - Initialize Private Subnet EC2 Instance (EC2_Private)<br>+ Launch a Linux EC2 Instance in the Private Subnet<br>+ Test remote connectivity and configurations for the Private EC2 Instance | 05/07/2026 | 05/07/2026 | [EC2 Private Instance Guide](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/concepts.html)<br>FCJ Lab |
+| 6 | - Learn about AWS IAM security management<br>+ Create IAM Users and User Groups<br>+ Assign IAM policies and check permissions | 05/08/2026 | 05/08/2026 | [AWS IAM Basics](https://docs.aws.amazon.com/IAM/latest/UserGuide/introduction.html)<br>FCJ Lab |
+| 7 - Sun | - Learn about advanced security policies for IAM roles<br>+ Restrict Switch Role action by specific IP addresses (SourceIp)<br>+ Restrict Switch Role action by specific working hours (CurrentTime) | 05/09/2026 | 05/10/2026 | [IAM Policies & Switch Role](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use_switch-role-console.html)<br>FCJ Lab |
 
 ---
 
 ## Week 4:
 ### Week 4 Objectives:
-- Initialize and configure an Amazon RDS database instance.
-- Connect an application running on EC2 to the RDS database.
-- Understand Backup, Restore mechanisms, and advanced features (Multi-AZ, Read Replicas).
+- Initialize and configure network environments (VPC, Subnet Groups, Security Groups) for EC2 and RDS instances.
+- Launch a Linux EC2 Instance, configure SSH Key Pair permissions, and establish secure SSH connections.
+- Install Git, Node.js, and MySQL client on EC2 to deploy and connect a Node.js web application to an Amazon RDS database.
+- Understand database management operations, including maintenance, monitoring logs, manual/automatic snapshots, and high-availability architecture.
 
 ### Tasks to be implemented this week:
 
 | Day | Task | Start Date | End Date | Resource |
 | :--- | :--- | :--- | :--- | :--- |
-| 2 | - Overview of Amazon RDS<br>- Compare RDS with other storage services (EC2 DB, DynamoDB, Redshift) | 11/05/2026 | 11/05/2026 | [Amazon RDS Documentation](https://docs.aws.amazon.com/rds/) |
-| 3 | - Network setup for RDS:<br>  + Create VPC<br>  + Create Security Groups for EC2 and RDS<br>  + Create DB Subnet Group | [12/05/2026](./Worklog_week1.4/) | [12/05/2026](./Worklog_week1.4/) | [VPC for RDS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_VPC.WorkingWithRDSInstanceinaVPC.html) |
-| 4 | - Practice initializing an Amazon RDS instance<br>- Configure parameters and security options for the Database | 13/05/2026 | 13/05/2026 | [Creating an RDS DB Instance](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_CreateDBInstance.html) |
-| 5 | - Deploy application on EC2 and connect to RDS<br>- Verify access and data management via Endpoint | 14/05/2026 | 14/05/2026 | [Connecting to RDS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_GettingStarted.CreatingConnecting.MySQL.html) |
-| 6 | - Learn and practice Backup & Restore<br>- Practice manual and automatic Snapshots | 15/05/2026 | 15/05/2026 | [RDS Backup and Restore](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_CommonTasks.BackupRestore.html) |
-| 7 - Sun | - Learn about Multi-AZ and Read Replicas<br>- Resource cleanup to optimize costs | 16/05/2026 | 17/05/2026 | [High Availability (Multi-AZ)](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.MultiAZ.html) |
+| 2 | - Overview of Amazon RDS<br>- Compare RDS with other storage services (EC2 DB, DynamoDB, Redshift, S3) | 11/05/2026 | 11/05/2026 | [Amazon RDS Documentation](https://docs.aws.amazon.com/rds/) |
+| 3 | - Network setup for RDS:<br>  + Create VPC and subnets<br>  + Create Security Groups for EC2 and RDS<br>  + Create DB Subnet Group | [12/05/2026](./Worklog_week1.4/) | [12/05/2026](./Worklog_week1.4/) | [VPC for RDS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_VPC.WorkingWithRDSInstanceinaVPC.html) |
+| 4 | - Practice initializing an Amazon RDS instance<br>- Configure DB engine, credentials, and database security options | 13/05/2026 | 13/05/2026 | [Creating an RDS DB Instance](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_CreateDBInstance.html) |
+| 5 | - Initialize EC2 Instance and prepare client environment:<br>  + Create Linux EC2 Instance<br>  + Configure SSH Key Pair permissions (`chmod 400`) and connect via SSH (MobaXterm)<br>  + Install Git and Node.js runtime environments on EC2 | 14/05/2026 | 14/05/2026 | [EC2 Linux Guide](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/concepts.html)<br>FCJ Lab |
+| 6 | - Deploy web application on EC2 and connect to RDS:<br>  + Clone repository and install dependencies<br>  + Install MySQL server client, execute SQL scripts to create databases and tables<br>  + Seed mock user data and verify connection via RDS Endpoint | 15/05/2026 | 15/05/2026 | [Connecting to RDS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_GettingStarted.CreatingConnecting.MySQL.html)<br>FCJ Lab |
+| 7 - Sun | - Database administration and maintenance:<br>  + View RDS Logs & Events<br>  + Configure Maintenance & Backup options, perform manual/automatic Snapshots<br>  + Learn about Multi-AZ, Read Replicas, and clean up resources | 16/05/2026 | 17/05/2026 | [RDS Backup and Restore](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_CommonTasks.BackupRestore.html)<br>FCJ Lab |
 
 ### Week 4 Results:
 #### Theoretical:
@@ -99,61 +104,36 @@ pre : " <b> 1. </b> "
 
 ## Week 5:
 ### Week 5 Objectives:
-- Mastered life cycle of AWS S3: Lazy Loading, Transient Storage, Set Policies, Crossfeed Period.
-- Understood Role of Application Load Balancer (ELB) in traffic and high availability.
-- Distinguished Auto Scaling Group of EC2 instances.
-- Understand the importance of cost management techniques and monitor resources spending.
+- Understood the concept and architecture of AWS Systems Manager (SSM) Session Manager for secure instance administration.
+- Understood the role of VPC Endpoints (Interface endpoints) for private connection to AWS services without internet routing.
+- Understood how NAT Gateway translates private IP addresses for outbound-only internet traffic.
 
 ### Tasks to be carried out this week:
 
 | Day | Task | Start Date | Completion Date | Reference Material |
 | :--- | :--- | :--- | :--- | :--- |
-| 2 | - Study EC2 Auto Scaling (Lazy Storage, Set Policies, Crossfeed Period)<br>- Understand Static Website Hosting on S3 and Route S3 as a backup for CloudFront<br>- Research on S3 Subject of cost management | 18/05/2026 | 18/05/2026 | https://cloudjourney.awsstudygroup.com/ |
-| 3 | - **Practice:**<br>  + Create an S3 bucket, configure static website hosting<br>  + Configure Static Website Hosting for EC2 Management UI (S3 UI)<br>  + Create an Auto Scaling Group | 19/05/2026 | 19/05/2026 | https://cloudjourney.awsstudygroup.com/ |
-| 4 | - **Practice:**<br>  + Configure the Application Load Balancer<br>  + Configure the Auto Scaling Group<br>  + Configure the CloudFront with S3 | 20/05/2026 | 20/05/2026 | https://cloudjourney.awsstudygroup.com/ |
-| 5 | - **Practice:**<br>  + Test the Auto Scaling Group<br>  + Test the Application Load Balancer<br>  + Test the CloudFront and S3 integration<br>  + Test the EC2 Management application | [21/05/2026](./Worklog_week1.5/) | [21/05/2026](./Worklog_week1.5/) | https://cloudjourney.awsstudygroup.com/ |
+| 2 | - Study the theory of AWS Systems Manager (SSM) Session Manager<br>- Learn about VPC Endpoints (Interface Endpoints and Gateway Endpoints)<br>- Learn about NAT Gateway and how it operates in a Public Subnet to provide internet access to Private Subnets | 18/05/2026 | 18/05/2026 | https://cloudjourney.awsstudygroup.com/ |
+| 3 | - **Practice (Part 1):**<br>  + Create a custom VPC with Public Subnet and Private Subnets<br>  + Initialize and configure a NAT Gateway in the Public Subnet and associate it with an Elastic IP<br>  + Configure routing rules in the Private Route Table to allow outbound internet access via the NAT Gateway | 19/05/2026 | 19/05/2026 | https://cloudjourney.awsstudygroup.com/ |
+| 4 | - **Practice (Part 2):**<br>  + Launch a Linux EC2 Instance in the Private Subnet (without a Public IP)<br>  + Create and associate an IAM Role with the EC2 Instance containing the necessary permissions to communicate with AWS Systems Manager (`AmazonSSMManagedInstanceCore`)<br>  + Configure the Security Group for the EC2 Instance (no port 22 SSH open) | 20/05/2026 | 20/05/2026 | https://cloudjourney.awsstudygroup.com/ |
+| 5 | - **Practice (Part 3):**<br>  + Establish VPC Endpoints (`ssm`, `ssmmessages`, `ec2messages`) in the Private Subnet<br>  + Configure the Security Group for the VPC Endpoints to allow inbound traffic from the EC2 instance<br>  + Verify secure connection to the private EC2 instance via Systems Manager Session Manager<br>  + Clean up resources to prevent charges | [21/05/2026](./Worklog_week1.5/) | [21/05/2026](./Worklog_week1.5/) | https://cloudjourney.awsstudygroup.com/ |
 
 ### Week 5 Achievements:
 #### Theory:
-- Mastered life cycle of AWS S3: Lazy Loading, Transient Storage, Set Policies, Crossfeed Period.
-- Understood Role of Application Load Balancer (ELB) in traffic and high availability.
-- Distinguished Auto Scaling Group of EC2 instances.
-- Understand the importance of cost management techniques and monitor resources spending.
+- Understood the concept and architecture of AWS Systems Manager (SSM) Session Manager for secure instance administration.
+- Understood the role of VPC Endpoints (Interface endpoints) for private connection to AWS services without internet routing.
+- Understood how NAT Gateway translates private IP addresses for outbound-only internet traffic.
 
 #### Practice:
-I can use AWS services effectively:
-- Successfully built the EC2 Management application using Amazon EC2 Auto-Scaling with Elastic Load Balancing to ensure high availability and flexibility.
-- All Services used:
-  - Amazon VPC: Created an isolated virtual environment for deploying AWS resources.
-  - Application Load Balancer: Distributes traffic between EC2 instances, improves application fault tolerance.
-  - Auto Scaling Group: Automatically scales EC2 instances according to actual demand, cost optimization.
-  - Amazon S3: Stores static website files, supports static website hosting.
-  - Amazon CloudFront: Delivers static website content quickly through AWS's global network of edge locations.
-  - IAM: Manages access permissions securely for AWS services.
-
-Create VPC (CloudStack lab):
-- In this CloudFormation lab, configure the following:
-  - 1 VPC with CIDR: 10.10.0.0/16
-  - 2 Public Subnets with CIDR: 10.10.1.0/24, 10.10.2.0/24
-  - 2 Private Subnets with CIDR: 10.10.3.0/24, 10.10.4.0/24
-  - 1 Internet Gateway
-  - 2 NAT Gateway
-  - 2 Public Route Table
-  - 2 Private Route Table
-  - Security Groups for Application Load Balancer, Public EC2, Private EC2
-  - IAM Role for EC2
-  - Launch Template
-  - Auto Scaling Group
-  - Application Load Balancer
-  - Target Group
-  - S3 Bucket
-  - CloudFront Distribution
+- Launched a custom VPC with isolated private subnets and a NAT Gateway in the public subnet.
+- Configured routing rules in the Private Route Table to allow outbound internet access via the NAT Gateway.
+- Established secure connections to the private EC2 instance via Systems Manager Session Manager by setting up VPC Endpoints (ssm, ssmmessages, ec2messages) and IAM roles.
 
 ---
 
 ## Week 6:
 ### Week 6 Objectives:
-- Understand AWS Cloud Trail and managed reports here in AWS Support.
+- Understood the core operations of Amazon CloudWatch (Metrics, Logs, Alarms, Dashboards) to monitor infrastructure performance.
+- Explored AWS Support Plans and how to handle technical or billing support cases in the AWS Console.
 - Deploy a Hybrid DNS integration on premises with AWS using Route 53 Resolver and Microsoft AD.
 
 ### Tasks to be carried out this week:
@@ -167,12 +147,24 @@ Create VPC (CloudStack lab):
 | 6 | - Read hybrid DNS lab overview<br> - Generate Key Pair<br> - Initialize CloudFormation Template<br> - Configure Security Group<br> - Connect to RDGW (Remote Desktop Gateway)<br> - Deploy Microsoft Active Directory | [29/05/2026](./Worklog_week1.6/) | [29/05/2026](./Worklog_week1.6/) | [What is AWS Directory Service?](https://docs.aws.amazon.com/directoryservice/latest/admin-guide/what_is.html)<br> [AWS CloudFormation User Guide](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/Welcome.html) |
 | 7 - Sun | - Set up DNS with Route 53:<br>  + Create Route 53 Outbound Endpoint<br>  + Create Route 53 Resolver Rules<br>  + Create Route 53 Inbound Endpoints<br>  + Test results<br>  + Clean up resources | 30/05/2026 | 31/05/2026 | [Forwarding outbound DNS queries](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/resolver-forwarding-outbound-queries.html)<br> [Forwarding inbound DNS queries](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/resolver-forwarding-inbound-queries.html) |
 
+### Week 6 Achievements:
+#### Theory:
+- Mastered Hybrid DNS architecture connecting On-premises systems (simulated via Microsoft AD on EC2) and AWS VPCs using Route 53 Resolver (Inbound/Outbound Endpoints).
+- Understood the core operations of Amazon CloudWatch (Metrics, Logs, Alarms, Dashboards) to monitor infrastructure performance.
+- Explored AWS Support Plans and how to handle technical or billing support cases in the AWS Console.
+
+#### Practice:
+- Successfully deployed a Hybrid DNS architecture using AWS CloudFormation.
+- Configured precise Security Group rules to safely allow DNS traffic (port 53 TCP/UDP) between On-premises and AWS networks.
+- Set up Inbound/Outbound Resolver Endpoints and custom Route 53 Resolver Rules to achieve cross-environment domain resolution.
+
 ---
 
 ## Week 7:
 ### Week 7 Objectives:
-- Connect and get acquainted with members of First Cloud Journey.
-- Understand basic AWS services, how to use the console & CLI.
+- Get familiar with and practice using the AWS Command Line Interface (CLI) to view, configure, and manage AWS resources (S3, SNS, IAM, VPC, EC2).
+- Understand multi-account management using AWS Organizations, configuring Organizational Units (OUs), and IAM Identity Center.
+- Master centralized backup solutions using AWS Backup to protect data safety on AWS.
 
 ### Tasks to be carried out this week:
 
@@ -186,6 +178,15 @@ Create VPC (CloudStack lab):
 | 7 - Sun | - Setup Backup plan & configure notifications<br> - Test Restore operations<br> - Clean up resources to prevent charges | [06/06/2026](./Worklog_week1.7/) | [07/06/2026](./Worklog_week1.7/) | [Creating backup plans](https://docs.aws.amazon.com/aws-backup/latest/devguide/whatisbackup.html)<br> [Restoring a backup](https://docs.aws.amazon.com/aws-backup/latest/devguide/whatisbackup.html) |
 
 ### Week 7 Achievements:
+#### Theory:
+- Understood how to configure and invoke AWS service APIs via the AWS CLI.
+- Mastered enterprise-scale account management with AWS Organizations and IAM Identity Center, including time-based access controls and Customer Managed Policies.
+- Understood the core mechanism of AWS Backup: Backup Vaults, Backup Plans, Retention rules, and data restoration (Restore).
+
+#### Practice:
+- Proficiently used CLI commands to query and manage EC2, S3, IAM, and VPC resources.
+- Successfully built an automated backup system (AWS Backup Plan) for EC2 server infrastructure and S3 storage.
+- Successfully performed recovery testing (Test Restore) from backup points and executed cleanups for Cost Optimization.
 
 ### Evidences:
 
@@ -213,49 +214,96 @@ Create VPC (CloudStack lab):
 
 ## Week 8:
 ### Week 8 Objectives:
-- Learn and practice migrating servers from On-premise to AWS using VM Import/Export.
-- Containerize applications using Docker and manage containers with Docker Compose on Amazon EC2.
-- Configure application containers to connect with Amazon RDS and store container images in Amazon ECR and Docker Hub.
+- Learn advanced identity and access management using IAM Groups, Users, Policies, and Roles.
+- Understand data encryption on Amazon S3 using AWS Key Management Service (KMS), and configure secure cross-account encrypted data sharing.
+- Configure system activity tracking and auditing using AWS CloudTrail.
+- Use Amazon Athena to query and analyze CloudTrail logs stored in Amazon S3 using standard SQL.
 
 ### Tasks to be carried out this week:
 
 | Day | Task | Start Date | Completion Date | Reference Material |
 | :--- | :--- | :--- | :--- | :--- |
-| 2 | - Learn VM Import/Export concepts<br> - Lab 14: Prepare VM and export from On-premise environment | 08/06/2026 | 08/06/2026 | [VM Import/Export Requirements](https://docs.aws.amazon.com/vm-import/latest/userguide/vmie_prereqs.html) |
-| 3 | - Lab 14: Upload VM file to Amazon S3<br> - Run CLI commands to import VM as AWS AMI and launch EC2 instance | 09/06/2026 | 09/06/2026 | [Importing a VM as an Image](https://docs.aws.amazon.com/vm-import/latest/userguide/what-is-vmimport.html) |
-| 4 | - Lab 14: Configure S3 Bucket ACL<br> - Export EC2 instance back to S3 as VM file and clean up resources | 10/06/2026 | 10/06/2026 | [Exporting an Instance/Image](https://docs.aws.amazon.com/vm-import/latest/userguide/vmexport.html) |
-| 5 | - Lab 15: Deploy and test the application on Local environment<br> - AWS Preparation: Configure VPC, Security Group, IAM Roles for ECR, and log in to Docker Hub | 11/06/2026 | 11/06/2026 | [Docker Documentation](https://docs.docker.com/)<br> [Amazon ECR IAM Policies](https://docs.aws.amazon.com/AmazonECR/latest/userguide/security_iam_id-based-policy-examples.html) |
-| 6 | - Lab 15: Create DB Subnet Group and launch RDS Instance<br> - Launch and configure EC2 Instance as Docker host and install dependencies | 12/06/2026 | 12/06/2026 | [Amazon RDS DB Instance Creation](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_CreateDBInstance.html)<br> [Docker on AWS EC2](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/Welcome.html) |
-| 7 - Sun | - Lab 15: Build Docker image, run container and configure Docker Compose on EC2 to connect to RDS<br> - Push Docker Image to Amazon ECR and Docker Hub<br> - Clean up resources to prevent charges | 13/06/2026 | 14/06/2026 | [Docker Compose Reference](https://docs.docker.com/compose/)<br> [ECR Push Image Commands](https://docs.aws.amazon.com/AmazonECR/latest/userguide/docker-push-ecr-image.html) |
+| 2 | - Learn advanced concepts of IAM Groups, Users, Policies, and Roles under the principle of least privilege<br>- **Practice (Part 1)**: Create IAM Groups and Users to control access boundaries | 08/06/2026 | 08/06/2026 | [IAM Policies Reference](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies.html) |
+| 3 | - Study AWS KMS encryption principles (SSE-KMS, Customer Managed Keys, Key Policies)<br>- **Practice (Part 2)**: Create a Customer Managed Key in AWS Key Management Service (KMS) and set up its Key Policy | 09/06/2026 | 09/06/2026 | [AWS KMS Developer Guide](https://docs.aws.amazon.com/kms/latest/developerguide/overview.html) |
+| 4 | - **Practice (Part 3)**: Author IAM Policies and Roles to delegate usage permissions for the KMS Key<br>- Create a new S3 bucket and upload test files, setting up server-side encryption via KMS (SSE-KMS) | 10/06/2026 | 10/06/2026 | [Amazon S3 KMS Encryption](https://docs.aws.amazon.com/AmazonS3/latest/userguide/UsingKMSEncryption.html) |
+| 5 | - **Practice (Part 4)**: Verify encryption and share the encrypted S3 objects with an external AWS account | 11/06/2026 | 11/06/2026 | [S3 Cross-Account Access](https://docs.aws.amazon.com/AmazonS3/latest/userguide/example-bucket-policies.html) |
+| 6 | - Study system auditing with AWS CloudTrail<br>- **Practice (Part 5)**: Deploy an AWS CloudTrail trail to deliver API activity logs to a secure S3 bucket | 12/06/2026 | 12/06/2026 | [AWS CloudTrail User Guide](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-user-guide.html) |
+| 7 - Sun | - **Practice (Part 6)**: Configure Amazon Athena, define query result locations on S3, and run SQL queries against CloudTrail log tables<br>- Clean up all provisioned resources for Cost Optimization | [13/06/2026](./Worklog_week1.8/) | [14/06/2026](./Worklog_week1.8/) | [Querying CloudTrail Logs with Athena](https://docs.aws.amazon.com/athena/latest/ug/querying-cloudtrail-logs.html) |
 
 ### Week 8 Achievements:
+- **Access Management (IAM)**: Successfully configured granular access controls using IAM Groups, Users, Policies, and Roles to enforce least privilege.
+- **Data Encryption & Sharing**: Implemented AWS KMS server-side encryption on Amazon S3 and securely shared encrypted datasets across separate AWS accounts.
+- **Monitoring & Auditing**: Deployed AWS CloudTrail to log and deliver API activity histories to durable S3 storage.
+- **Log Analytics (Athena)**: Mastered Amazon Athena to run SQL queries directly on S3 to inspect CloudTrail operational logs for security audits.
+- **Cost Optimization**: Cleaned up all temporary lab resources to prevent ongoing charges.
+
+### Evidences:
+
+1. **Create IAM Group and User (Create Group and User)**
+   ![Create IAM Group and User](/images/1-Worklog/Worklog_week1.8/Create%20Group%20and%20User.png)
+   *Description: Shows the IAM console after successfully creating a new group and user. Placing users into groups simplifies permission management and adheres to best practices.*
+
+2. **Initialize AWS Key Management Service (Create Key Management Service)**
+   ![Create KMS Key](/images/1-Worklog/Worklog_week1.8/Create%20Key%20Management%20Service.png)
+   *Description: Displays the creation of a Customer Managed Key in AWS KMS, which will be utilized to encrypt data on S3 and regulate access via Key Policies.*
+
+3. **Configure Policy and Role in IAM (Create policy and role)**
+   ![Create IAM Policy and Role](/images/1-Worklog/Worklog_week1.8/Create%20policy%20and%20role.png)
+   *Description: Shows custom IAM Policies and Roles designed to delegate KMS encryption/decryption rights to specific services or external users.*
+
+4. **Create S3 Bucket and Upload Data (Create and upload data bucket)**
+   ![Create S3 Bucket and Upload](/images/1-Worklog/Worklog_week1.8/Create%20and%20upload%20data%20bucket.png)
+   *Description: Demonstrates creating a new Amazon S3 bucket and uploading sample datasets to prepare for server-side encryption testing.*
+
+5. **Test and Share Encrypted S3 Data (Test and share encrypted data on S3)**
+   ![Share Encrypted Data](/images/1-Worklog/Worklog_week1.8/Test%20and%20share%20encrypted%20data%20on%20S3.png)
+   *Description: Confirms SSE-KMS encryption is active on the S3 bucket and verifies cross-account sharing permissions, allowing authorized external accounts to read the encrypted files.*
+
+6. **Initialize AWS CloudTrail (Create CloudTrail)**
+   ![Create CloudTrail](/images/1-Worklog/Worklog_week1.8/Create%20CloudTrail.png)
+   *Description: Shows the configuration of a new AWS CloudTrail trail logging all API calls and delivery of those logs to a centralized S3 bucket.*
+
+7. **Log System Activity to CloudTrail (Logging to CloudTrail)**
+   ![CloudTrail Logging](/images/1-Worklog/Worklog_week1.8/Logging%20to%20CloudTrail.png)
+   *Description: Verifies that account events are actively captured and written as compressed log files in the specified S3 storage path.*
+
+8. **Configure Amazon Athena (Create Amazon Athena)**
+   ![Configure Amazon Athena](/images/1-Worklog/Worklog_week1.8/Create%20Amazon%20Athena.png)
+   *Description: Illustrates configuring Amazon Athena's query output folder on S3 and setting up database tables linked to the CloudTrail log datasets.*
+
+9. **Query Logs with Athena SQL (Retrieve data with athena)**
+   ![Query Logs with Athena](/images/1-Worklog/Worklog_week1.8/Retrieve%20data%20with%20athena.png)
+   *Description: Demonstrates running SQL SELECT queries in Athena to parse, filter, and audit specific API operations recorded by CloudTrail.*
+
+10. **Clean Up Lab Resources (Clean)**
+    ![Clean Up Resources](/images/1-Worklog/Worklog_week1.8/Clean.png)
+    *Description: Shows the systematic deletion of all trial resources (KMS keys, S3 buckets, CloudTrail trails, Athena tables, IAM roles/policies/users/groups) to maintain a clean environment and avoid unwanted costs.*
 
 ---
 
 ## Week 9:
 ### Week 9 Objectives:
-- Understand and practice deploying applications on Amazon ECS (Elastic Container Service) using Fargate, ALB, and Cloud Map.
-- Learn and configure automated CI/CD pipelines using GitLab CI/CD, GitHub Actions, and AWS CodeBuild.
-- Configure container monitoring with Amazon CloudWatch Container Insights and logging using AWS FireLens.
-- Utilize AWS Security Hub to evaluate the overall security posture (Security Score) against AWS security standards.
+- Learn and implement serverless operations automation using AWS Lambda and Amazon EventBridge to automatically start/stop EC2 instances based on schedules.
+- Understand resource tagging strategies, AWS Resource Groups, and resource filtering.
+- Configure ChatOps integration to route Lambda execution logs and operational alerts to Slack using Incoming Webhooks.
+- Activate and configure AWS Security Hub to evaluate account security posture (CSPM - Cloud Security Posture Management).
 
 ### Tasks to be carried out this week:
 
 | Day | Task | Start Date | Completion Date | Reference Material |
 | :--- | :--- | :--- | :--- | :--- |
-| 2 | - Learn concepts of Amazon ECS, Fargate, Task Definitions, and ECS Cluster operations | 15/06/2026 | 15/06/2026 | [Amazon ECS Developer Guide](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/Welcome.html) |
-| 3 | - **Lab 16 (Part 1)**: Configure VPC network, Subnets, Security Groups, and push Docker images to ECR/Docker Hub | 16/06/2026 | 16/06/2026 | [AWS ECR User Guide](https://docs.aws.amazon.com/AmazonECR/latest/userguide/what-is-ecr.html) |
-| 4 | - **Lab 16 (Part 2)**: Create ECS Cluster, Task Definitions for Frontend/Backend, configure Target Groups, ALB, and launch ECS Services (Blue/Green for Backend & Rolling Update for Frontend) | 17/06/2026 | 17/06/2026 | [AWS ECS Blue/Green Deployments](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/deployment-type-blue-green.html) |
-| 5 | - **Lab 17 (Part 1)**: Integrate automated CI/CD using GitLab Runner (set up IAM roles, variables, run pipeline) and GitHub Actions | 18/06/2026 | 18/06/2026 | [GitLab CI/CD Docs](https://docs.gitlab.com/ci/)<br> [GitHub Actions Docs](https://docs.github.com/en/actions)<br> [AWS CodeBuild User Guide](https://docs.aws.amazon.com/codebuild/latest/userguide/welcome.html) |
-| 6 | - **Lab 17 (Part 2)**: Set up AWS CodeBuild for Frontend/Backend, configure Container Insights (CloudWatch) and logging via AWS FireLens to S3 | 19/06/2026 | 19/06/2026 | [AWS Firelens Guide](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/using_firelens.html) |
-| 7 - Sun | - **Lab 18**: Enable AWS Security Hub, activate security standards, analyze the Security Score, and clean up resources | 20/06/2026 | 21/06/2026 | [AWS Security Hub User Guide](https://docs.aws.amazon.com/securityhub/latest/userguide/what-is-securityhub.html) |
+| 2 | - Learn basic concepts of AWS Lambda serverless computing and EventBridge scheduling triggers (cron jobs)<br>- Understand resource tagging, bulk tag editing via Tag Editor, and creating AWS Resource Groups | 15/06/2026 | 15/06/2026 | [AWS Lambda Developer Guide](https://docs.aws.amazon.com/lambda/) |
+| 3 | - **Practice (Part 1)**: Create a VPC, subnets, security groups, and launch EC2 instances to prepare the environment<br>- Create an IAM Role for Lambda with permissions to invoke EC2 actions and write logs to CloudWatch | 16/06/2026 | 16/06/2026 | [AWS Lambda IAM Permissions](https://docs.aws.amazon.com/lambda/latest/dg/lambda-intro-execution-role.html) |
+| 4 | - **Practice (Part 2)**: Implement Python Lambda code (boto3) to stop EC2 instances containing specific resource tags (e.g. `Environment=Dev`) | 17/06/2026 | 17/06/2026 | [Boto3 EC2 Client Documentation](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/ec2.html) |
+| 5 | - **Practice (Part 3)**: Implement Python Lambda code (boto3) to start EC2 instances<br>- Configure Incoming Webhooks on Slack to generate a webhook URL endpoint | 18/06/2026 | 18/06/2026 | [Slack Incoming Webhooks Guide](https://api.slack.com/messaging/webhooks) |
+| 6 | - **Practice (Part 4)**: Integrate the Slack webhook payload notification within the Lambda functions and verify manually | 19/06/2026 | 19/06/2026 | [Sending Slack Messages with Lambda](https://api.slack.com/messaging/webhooks) |
+| 7 - Sun | - **Practice (Part 5)**: Enable AWS Security Hub and standard security posture management (CSPM) compliance benchmarks, check score, and clean up resources | [20/06/2026](./Worklog_week1.9/) | [21/06/2026](./Worklog_week1.9/) | [AWS Security Hub User Guide](https://docs.aws.amazon.com/securityhub/latest/userguide/what-is-securityhub.html) |
 
 ### Week 9 Achievements:
-- **Amazon ECS (Fargate)**: Successfully deployed a containerized architecture on ECS with independent Frontend and Backend services using Serverless compute.
-- **Load Balancing & Routing**: Configured Application Load Balancers (ALB) to handle path-based routing, Blue/Green Deployment (via AWS CodeDeploy) for Backend, and Rolling Update for Frontend.
-- **Multi-Platform CI/CD**: Designed automation workflows using self-hosted GitLab Runner on EC2, GitHub Actions workflow secrets, and AWS CodeBuild project configurations.
-- **Monitoring & Log Routing**: Enabled CloudWatch Container Insights metrics and deployed AWS Firelens (Fluent Bit) logs router sidecar to store container stdout/stderr logs in Amazon S3.
-- **Security Auditing**: Activated AWS Security Hub and obtained the security compliance score based on AWS Foundational Security Best Practices and CIS AWS Foundations Benchmark.
+- **Serverless Automation**: Successfully built a serverless scheduling solution using AWS Lambda (Python boto3) combined with EventBridge Scheduler rules to stop EC2 hosts at night and start them in the morning for cost optimization.
+- **ChatOps Integration**: Integrated AWS Lambda alerts with Slack channel notifications using Slack Incoming Webhooks to report VM operations in real-time.
+- **Resource Management**: Mastered bulk resource tagging using Tag Editor and logical grouping via AWS Resource Groups.
+- **Security & Optimization**: Activated AWS Security Hub to evaluate compliance posture (CSPM) and performed thorough cleanup of all lab resources to optimize costs.
 
 ### Evidences:
 
@@ -327,27 +375,25 @@ Create VPC (CloudStack lab):
 
 ## Week 10:
 ### Week 10 Objectives:
-- Understand and configure VPC Peering to connect two separate VPC networks, configure routing, and set up Network ACLs (NACLs) for subnet-level stateless security control.
-- Learn and deploy AWS Transit Gateway (TGW) to connect multiple VPCs in a Hub-and-Spoke model, simplifying large-scale network architecture.
-- Implement serverless operations automation using AWS Lambda and Amazon EventBridge to automatically start/stop EC2 instances based on schedules and route execution logs/alerts to Slack.
+- Understand and configure VPC Peering to connect two separate VPC networks, configure routing rules, and verify Cross-Peer DNS resolution.
+- Set up and verify Network Access Control Lists (NACLs) for subnet-level stateless security filtering within VPCs.
+- Learn and deploy AWS Transit Gateway (TGW) as a central cloud router to connect multiple VPCs in a Hub-and-Spoke model, simplifying large-scale network architecture.
 
 ### Tasks to be carried out this week:
 
 | Day | Task | Start Date | Completion Date | Reference Material |
 | :--- | :--- | :--- | :--- | :--- |
-| 2 | - Learn concepts of VPC Peering and Network Access Control Lists (NACLs)<br>- **Lab 19 (Part 1)**: Set up baseline network environment using Cloudformation, create Security Groups and EC2s | 22/06/2026 | 22/06/2026 | VPC Peering Guide<br>VPC ACLs |
-| 3 | - **Lab 19 (Part 2)**: Configure Custom VPC Peering, create VPC Peering connection, update route tables, and verify Cross-Peer DNS resolution | 23/06/2026 | 23/06/2026 | Network Peering DNS Support |
-| 4 | - Learn concepts of AWS Transit Gateway (TGW)<br>- **Lab 20 (Part 1)**: Set up 3 VPCs for demonstration, create Transit Gateway and configure VPC attachments | 24/06/2026 | 24/06/2026 | AWS Transit Gateway |
-| 5 | - **Lab 20 (Part 2)**: Setup Transit Gateway Route Tables, add Routes to TGW Route Tables, and verify cross-VPC network connectivity | 25/06/2026 | 25/06/2026 | TGW Route Tables |
-| 6 | - Learn AWS Lambda Serverless compute and EventBridge scheduling services<br>- **Lab 22 (Part 1)**: Set up IAM workshop, tag EC2 instances, and configure IAM Role for Lambda | 26/06/2026 | 26/06/2026 | AWS Lambda Developer Guide<br>Slack Webhooks |
-| 7 - Sun | - **Lab 22 (Part 2)**: Implement Lambda Python code (boto3) to start/stop EC2s and send alerts to Slack, schedule via EventBridge, and clean up resources | 27/06/2026 | 28/06/2026 | Boto3 EC2 Client<br>EventBridge Scheduler |
+| 2 | - Learn concepts of VPC Peering and Network Access Control Lists (NACLs)<br>- **Lab 19 (Part 1)**: Set up baseline network environment using CloudFormation, create Security Groups and EC2s | 22/06/2026 | 22/06/2026 | [VPC Peering Guide](https://docs.aws.amazon.com/vpc/latest/peering/what-is-vpc-peering.html)<br>[VPC ACLs](https://docs.aws.amazon.com/vpc/latest/userguide/vpc-network-acls.html) |
+| 3 | - **Lab 19 (Part 2)**: Configure Custom VPC Peering, create VPC Peering connection, update route tables, and verify Cross-Peer DNS resolution | 23/06/2026 | 23/06/2026 | [Network Peering DNS Support](https://docs.aws.amazon.com/vpc/latest/peering/what-is-vpc-peering.html) |
+| 4 | - **Lab 19 (Part 3)**: Configure Network ACLs (NACLs) at the subnet level to filter ICMP and SSH traffic, verify stateless filtering behavior, and compare it with stateful Security Groups | 24/06/2026 | 24/06/2026 | [VPC ACLs](https://docs.aws.amazon.com/vpc/latest/userguide/vpc-network-acls.html) |
+| 5 | - Learn AWS Transit Gateway (TGW) concepts and the advantages of a Hub-and-Spoke model<br>- **Lab 20 (Part 1)**: Set up 3 VPCs for demonstration using CloudFormation | 25/06/2026 | 25/06/2026 | [AWS Transit Gateway](https://docs.aws.amazon.com/vpc/latest/tgw/what-is-transit-gateway.html) |
+| 6 | - **Lab 20 (Part 2)**: Create Transit Gateway and configure VPC attachments | 26/06/2026 | 26/06/2026 | [Transit Gateway Attachments](https://docs.aws.amazon.com/vpc/latest/tgw/tgw-vpc-attachments.html) |
+| 7 - Sun | - **Lab 20 (Part 3)**: Setup Transit Gateway Route Tables, add Routes to TGW Route Tables, and verify cross-VPC network connectivity<br>- Perform resource cleanup to prevent ongoing AWS charges | [27/06/2026](./Worklog_week1.10/) | [28/06/2026](./Worklog_week1.10/) | [TGW Route Tables](https://docs.aws.amazon.com/vpc/latest/tgw/tgw-route-tables.html) |
 
 ### Week 10 Achievements:
 - **VPC Peering & Security**: Successfully established a private network link between two isolated VPCs; applied Network ACLs to control inbound/outbound packets and gained deep knowledge of stateless NACL behavior versus stateful Security Groups.
-- **Transit Gateway Deployment**: Implemented a centralized Hub-and-Spoke network interconnecting 3 VPCs using AWS Transit Gateway, eliminating the need for a complex full-mesh peering topology.
-- **Serverless Automation**: Built a serverless management solution using AWS Lambda (Python boto3) that reads instance resource tags, stopping development hosts at night and starting them before business hours.
-- **ChatOps Integration**: Integrated AWS Lambda alerts with Slack channel notifications using Incoming Webhooks for real-time operation status reporting.
-- **Scheduled Operations**: Configured Amazon EventBridge Scheduler (cron triggers) to automatically invoke Lambda functions at specific times.
+- **Transit Gateway Deployment**: Implemented a centralized Hub-and-Spoke network interconnecting 3 VPCs using AWS Transit Gateway, eliminating the need for a complex full-mesh peering topology and allowing scalable network expansion.
+- **Cost Optimization**: Performed a thorough cleanup of all networking and compute resources to prevent unexpected charges.
 
 ### Evidences:
 
@@ -418,28 +464,25 @@ Create VPC (CloudStack lab):
 
 ## Week 11:
 ### Week 11 Objectives:
-- Practice deploying a CI/CD pipeline using AWS CodePipeline, CodeCommit, CodeBuild, and CodeDeploy.
-- Understand and configure AWS Storage Gateway to connect with on-premises environments.
-- Secure applications efficiently using AWS Web Application Firewall (WAF).
-- Manage AWS resources using Tags and Resource Groups.
+- Understand the core concepts of AWS Storage Gateway and hybrid cloud storage models.
+- Practice deploying and configuring AWS File Storage Gateway to connect on-premises storage infrastructure with Amazon S3 cloud storage.
+- Mount NFS/SMB File Shares from the Storage Gateway onto a Linux client (simulating an on-premises host).
 
 ### Tasks to be carried out this week:
 
 | Day | Task | Start Date | Completion Date | Reference Material |
 | :--- | :--- | :--- | :--- | :--- |
-| 2 | - **Practice**: Deploy applications to EC2 with AWS CodePipeline (Part 1)<br>+ Preparation (S3, Git, IAM roles)<br>+ Launch EC2 and install CodeDeploy Agent | 29/06/2026 | 29/06/2026 | <a href="https://docs.aws.amazon.com/codedeploy/latest/userguide/welcome.html" target="_blank">AWS CodeDeploy Guide</a> |
-| 3 | - **Practice**: Deploy applications to EC2 with AWS CodePipeline (Part 2)<br>+ Setup AWS CodeCommit, CodeBuild, CodeDeploy<br>+ Configure CodePipeline for CI/CD automation | 30/06/2026 | 30/06/2026 | <a href="https://docs.aws.amazon.com/codepipeline/latest/userguide/welcome.html" target="_blank">AWS CodePipeline Guide</a> |
-| 4 | - **Practice**: AWS Storage Gateway<br>+ Create S3 Bucket for Storage Gateway<br>+ Initialize Storage Gateway and File Shares<br>+ Mount File Shares on On-premises machine | 01/07/2026 | 01/07/2026 | <a href="https://docs.aws.amazon.com/storagegateway/" target="_blank">AWS Storage Gateway</a> |
-| 5 | - **Practice**: AWS Web Application Firewall (Part 1)<br>+ Deploy the sample Web App<br>+ Use AWS WAF, configure ACLs and Managed rules | 02/07/2026 | 02/07/2026 | <a href="https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html" target="_blank">AWS WAF Developer Guide</a> |
-| 6 | - **Practice**: AWS Web Application Firewall (Part 2)<br>+ Create Custom rules to block IP/Countries<br>+ Enable Logging and Testing | 03/07/2026 | 03/07/2026 | <a href="https://docs.aws.amazon.com/waf/latest/developerguide/aws-managed-rule-groups.html" target="_blank">AWS WAF Managed Rules</a> |
-| 7 - Sun | - **Practice**: Managing Resources Using Tags and Resource Groups<br>+ Use Tags on Console and CLI<br>+ Create and manage Resource Groups | [04/07/2026](./Worklog_week1.11/) | [05/07/2026](./Worklog_week1.11/) | <a href="https://docs.aws.amazon.com/tag-editor/latest/userguide/tagging.html" target="_blank">Tagging AWS resources</a><br><a href="https://docs.aws.amazon.com/ARG/latest/userguide/resource-groups.html" target="_blank">AWS Resource Groups</a> |
+| 2 | - Study the theoretical concepts of AWS Storage Gateway, its types, and hybrid cloud storage architectures | 29/06/2026 | 29/06/2026 | [AWS Storage Gateway Guide](https://docs.aws.amazon.com/storagegateway/latest/userguide/WhatIsStorageGateway.html) |
+| 3 | - **Practice (Part 1)**: Create an Amazon S3 Bucket to act as the backend storage for the Storage Gateway | 30/06/2026 | 30/06/2026 | [Amazon S3 Documentation](https://docs.aws.amazon.com/s3/) |
+| 4 | - **Practice (Part 2)**: Launch a Linux EC2 instance to simulate an on-premises client host | 01/07/2026 | 01/07/2026 | [Amazon EC2 User Guide](https://docs.aws.amazon.com/ec2/) |
+| 5 | - **Practice (Part 3)**: Deploy and configure the AWS File Storage Gateway via the AWS Console | 02/07/2026 | 02/07/2026 | [Creating a File Gateway](https://docs.aws.amazon.com/storagegateway/latest/userguide/CreatingAnAppliance.html) |
+| 6 | - **Practice (Part 4)**: Create a File Share on the Storage Gateway and associate it directly with the S3 bucket | 03/07/2026 | 03/07/2026 | [Creating a File Share](https://docs.aws.amazon.com/storagegateway/latest/userguide/CreatingAFileShare.html) |
+| 7 - Sun | - **Practice (Part 5)**: Mount the NFS File Share onto the simulated Linux host (EC2 instance), verify data synchronization from the host to the S3 bucket<br>- Tear down and clean up all lab resources to prevent ongoing charges | [04/07/2026](./Worklog_week1.11/) | [05/07/2026](./Worklog_week1.11/) | [Mounting a File Share](https://docs.aws.amazon.com/storagegateway/latest/userguide/mounting-file-share.html) |
 
 ### Week 11 Achievements:
-- **Mastered CI/CD Pipeline on AWS**: Integrated services like CodeCommit, CodeBuild, CodeDeploy, and CodePipeline to fully automate application deployments.
-- **AWS Storage Gateway Configuration**: Successfully understood and configured AWS File Storage Gateway to connect on-premises storage to AWS S3.
-- **Web Application Security with WAF**: Deployed AWS WAF to secure web applications against attacks using Web ACLs and custom rules.
-- **Resource Management with Tags & Groups**: Learned how to effectively organize and manage AWS resources using Tags and Resource Groups.
-- **All Labs Completed**: Successfully completed all 4 practical labs as guided.
+- **AWS Storage Gateway Configuration**: Mastered hybrid cloud storage mechanisms and successfully configured AWS File Storage Gateway to link simulated on-premises file storage with AWS S3 using standard file sharing protocols.
+- **Hybrid Infrastructure Integration**: Successfully mounted NFS File Shares and verified seamless automated file synchronization between local and cloud environments.
+- **Cost Optimization**: Cleaned up all provisioned Storage Gateway resources, virtual hosts, and storage buckets to prevent ongoing monthly charges.
 
 ### Evidences:
 
@@ -471,10 +514,11 @@ Create VPC (CloudStack lab):
 
 ## Week 12:
 ### Week 12 Objectives:
-- Understand and configure IAM Tag-based Access Control for EC2 resources.
-- Learn about open-source monitoring tool Grafana and how to build basic dashboards.
-- Set up IAM Permissions Boundaries to delegate permissions and limit the maximum access of IAM Entities.
-- Utilize AWS Systems Manager (SSM) suite to manage server infrastructure remotely, including Fleet Manager, automated OS patching via Patch Manager, and executing remote scripts via Run Command.
+- **Synthesis & Review:** Summarize, evaluate, and check the entire 12-week study, research, and hands-on practice journey of the First Cloud Journey program.
+- **Systems Administration:** Utilize AWS Systems Manager (SSM) suite, including Fleet Manager, Patch Manager, and Run Command, to manage and operate Windows Server fleets.
+- **Advanced Access Controls:** Configure IAM Tag-based Access Control for EC2 resources and set up IAM Permissions Boundaries to restrict maximum delegated permissions of IAM Entities.
+- **Advanced Monitoring:** Explore the open-source monitoring tool Grafana to design intuitive resource observation dashboards.
+- **Attendance Auditing:** Review and verify complete attendance logs and check-in history across the 12-week timeline.
 
 ### Tasks to be carried out this week:
 
@@ -485,6 +529,37 @@ Create VPC (CloudStack lab):
 | 4 | - Learn IAM Permission Boundary<br>- Configure permission boundaries to limit the maximum permissions of IAM Entities | 08/07/2026 | 08/07/2026 | <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_boundaries.html" target="_blank">AWS Permissions Boundaries</a> |
 | 5 | - Learn AWS Systems Manager (SSM) concepts<br>- Study introduction to SSM, Fleet Manager, Patch Manager, and Run Command | 09/07/2026 | 09/07/2026 | <a href="https://docs.aws.amazon.com/systems-manager/latest/userguide/what-is-systems-manager.html" target="_blank">AWS Systems Manager User Guide</a> |
 | 6 | - Set up network infrastructure and IAM Roles for SSM<br>- Create VPC `windows-lab-ssm`, Internet Gateway, 2 Subnets<br>- Create IAM Role/Instance Profile with `AmazonSSMManagedInstanceCore` policy<br>- Launch 2 Windows Server EC2 instances attached with the IAM Role | 10/07/2026 | 10/07/2026 | <a href="https://docs.aws.amazon.com/systems-manager/latest/userguide/what-is-systems-manager.html" target="_blank">SSM Agent on Windows Server</a> |
-| 7 - Sun | - Execute patching and remote commands via SSM<br>- Use Patch Manager to scan vulnerabilities and auto-install OS updates<br>- Use Run Command to run PowerShell `net user` remotely and store logs in S3<br>- Perform clean-up of all AWS resources to avoid any charges | [11/07/2026](./Worklog_week1.12/) | [12/07/2026](./Worklog_week1.12/) | <a href="https://docs.aws.amazon.com/systems-manager/latest/userguide/patch-manager.html" target="_blank">SSM Patch Manager</a><br><a href="https://docs.aws.amazon.com/systems-manager/latest/userguide/run-command.html" target="_blank">SSM Run Command</a> |
+| 7 - Sun | - Execute patching and remote commands via SSM<br>- Use Patch Manager to scan vulnerabilities and auto-install OS updates<br>- Use Run Command to run PowerShell `net user` remotely and store logs in S3<br>- Review the entire 12-week learning path and perform final cleanup of resources | [11/07/2026](./Worklog_week1.12/) | [12/07/2026](./Worklog_week1.12/) | <a href="https://docs.aws.amazon.com/systems-manager/latest/userguide/patch-manager.html" target="_blank">SSM Patch Manager</a><br><a href="https://docs.aws.amazon.com/systems-manager/latest/userguide/run-command.html" target="_blank">SSM Run Command</a> |
 
 ### Week 12 Achievements:
+
+#### 1. Synthesis of the 12-Week Study & Research Path:
+Over the 12-week timeline of the **First Cloud Journey** program, all knowledge milestones have been successfully completed:
+* **Weeks 1 - 2 (Onboarding & Cost Guardrails):** Onboarded with the team, studied fundamental S3/EC2 concepts, and set up financial safety checks using **AWS Budgets**.
+* **Weeks 3 - 4 (Compute & Database Infrastructures):** Deployed EC2 instances (Public/Private Subnets), customized IAM policies, and connected application code to **Amazon RDS** databases (configuring Multi-AZ, Backups, and Snapshots).
+* **Weeks 5 - 6 (High Availability & Monitoring):** Designed scalable structures with **Auto Scaling Groups**, **Load Balancers**, **CloudFront**, and **Route 53** fallback. Built alerting networks using **Amazon CloudWatch** (Metrics, Alarms, Logs Insights).
+* **Weeks 7 - 8 (Automation & Audit Security):** Automated setups via **AWS CLI** and scheduled automated backup plans using **AWS Backup**. Enhanced security with **AWS S3 SSE-KMS**, audited API calls with **AWS CloudTrail**, and queried logs via **Amazon Athena**.
+* **Weeks 9 - 11 (Serverless Operations & Enterprise Networking):** Automated EC2 states using **AWS Lambda** & **EventBridge** rules with Slack messaging (ChatOps). Designed multi-VPC networks via **VPC Peering**, **Transit Gateway**, and hybrid storage connectivity with **AWS Storage Gateway (NFS)**.
+* **Weeks 12 (Centralized Systems Management & Completion):** Enforced safety via **IAM Permissions Boundaries** and **Tag-based Access Control**. Deployed **AWS Systems Manager (SSM)** to manage hosts, patch OS vulnerabilities (Patch Manager), and run remote scripts (Run Command) without opening management ports (SSH/RDP).
+
+#### 2. Results in Week 12:
+* Week 12 was dedicated entirely to literature review, conceptual studies, and compiling the final report. No cloud resources were provisioned or modified on the AWS platform.
+* Audited and verified full attendance history and check-ins for the entire course.
+
+### Evidences & Attendance History:
+
+1. **Attendance History - Part 1**
+   ![Attendance History 1](/images/1-Worklog/Worklog_week1.12/Attendance%20history%201.png)
+   *Description: Captures the attendance log from the initial phase of the training program on the student portal, confirming attendance in all theoretical lectures, syncs, and tasks.*
+
+2. **Attendance History - Part 2**
+   ![Attendance History 2](/images/1-Worklog/Worklog_week1.12/Attendance%20history%202.png)
+   *Description: Shows the attendance history for the subsequent phase, reflecting high discipline, persistence, and continuous learning achievements.*
+
+3. **General Attendance History**
+   ![General Attendance History](/images/1-Worklog/Worklog_week1.12/Attendance%20history.png)
+   *Description: The summary attendance report indicating 100% attendance rate throughout the 12-week First Cloud Journey program, documenting completion of all training obligations.*
+
+4. **Selfie Check-in at the Internship Office (Attendance history picture checkin)**
+   ![Selfie Check-in](/images/1-Worklog/Worklog_week1.12/Attendance%20history%20picture%20checkin.png)
+   *Description: Selfie of the student during a collaborative working and sync session at the internship office, showing active physical attendance, engagement, and team coordination.*

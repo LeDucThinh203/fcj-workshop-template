@@ -7,8 +7,9 @@ pre: " <b> 1.7 </b> "
 ---
 
 ## Mục tiêu Tuần 7:
-- Kết nối và làm quen với các thành viên của First Cloud Journey.
-- Hiểu các dịch vụ AWS cơ bản, cách sử dụng console & CLI.
+- Làm quen và thực hành sử dụng AWS CLI để xem, cấu hình và quản trị các tài nguyên AWS (S3, SNS, IAM, VPC, EC2).
+- Hiểu kiến trúc quản lý đa tài khoản bằng AWS Organizations, cấu hình đơn vị tổ chức (OU) và IAM Identity Center.
+- Nắm vững giải pháp sao lưu tập trung bằng AWS Backup để bảo vệ an toàn dữ liệu trên AWS.
 
 ## Công việc thực hiện trong tuần này:
 
@@ -22,6 +23,15 @@ pre: " <b> 1.7 </b> "
 | 7 - Chủ nhật | - Thiết lập Backup plan & cấu hình thông báo<br> - Thực hiện các hoạt động Khôi phục kiểm tra<br> - Dọn dẹp tài nguyên để tránh chi phí | 06/06/2026 | 07/06/2026 | [Creating backup plans](https://docs.aws.amazon.com/aws-backup/latest/devguide/whatisbackup.html)<br> [Restoring a backup](https://docs.aws.amazon.com/aws-backup/latest/devguide/whatisbackup.html) |
 
 ## Thành tựu Tuần 7:
+### Lý thuyết:
+- Hiểu cách cấu hình và gọi các API dịch vụ AWS qua AWS CLI.
+- Nắm vững mô hình quản trị tài khoản quy mô doanh nghiệp với AWS Organizations và IAM Identity Center, phân quyền theo thời gian và chính sách khách hàng tự quản (Customer Managed Policies).
+- Hiểu nguyên lý hoạt động của AWS Backup: Backup Vaults, Backup Plans, Retention rules và khôi phục dữ liệu (Restore).
+
+### Thực hành:
+- Thực hành thành thạo các câu lệnh CLI cơ bản và nâng cao để tạo/quản lý EC2, S3, IAM và VPC.
+- Xây dựng thành công hệ thống sao lưu tự động (AWS Backup Plan) cho hạ tầng máy chủ EC2 và lưu trữ S3.
+- Thực hiện thành công quy trình kiểm thử khôi phục dữ liệu (Test Restore) từ bản sao lưu và dọn dẹp tài nguyên (Cost Optimization).
 
 ### Hình ảnh minh chứng:
 

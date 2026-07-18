@@ -7,48 +7,40 @@ pre: " <b> 1.2 </b> "
 ---
 
 ## Week 2 Objectives:
-- Understand basic networking in AWS (VPC)
-- Master how to configure network components and security within a VPC
-- Practice building a complete VPC
+- Understand AWS Billing and Cost Management tools.
+- Master the role and configuration of AWS Budgets to monitor cloud spending.
+- Practice setting budget limits and configuring automated threshold-based email alerts.
 
 ## Tasks to be carried out this week:
 
 | Day | Task | Start Date | Completion Date | Reference Material |
 | :--- | :--- | :--- | :--- | :--- |
-| 2 | - Learn VPC basics:<br>  + VPC Overview<br>  + CIDR Block<br>  + Distinguish Public / Private Subnets | 27/04/2026 | 27/04/2026 | [VPC Basics](https://docs.aws.amazon.com/vpc/latest/userguide/what-is-amazon-vpc.html) |
-| 3 | - Learn about subnets & Route Tables:<br>  + How to divide subnets<br>  + Configure Route Tables | 28/04/2026 | 28/04/2026 | [Subnets & Route Tables](https://docs.aws.amazon.com/vpc/latest/userguide/how-it-works.html) |
-| 4 | - Learn about Internet Gateway & NAT Gateway:<br>  + Internet Gateway for Public Subnets<br>  + NAT Gateway for Private Subnets | 29/04/2026 | 29/04/2026 | [NAT Gateways](https://docs.aws.amazon.com/vpc/latest/userguide/vpc-nat-gateway.html) |
-| 5 | - Learn about security in VPC:<br>  + Security Groups<br>  + Network ACLs<br>  + Inbound / Outbound rules | 30/04/2026 | 30/04/2026 | [VPC Security Groups](https://docs.aws.amazon.com/vpc/latest/userguide/vpc-security-groups.html) |
-| 6 | - **Practice:**<br>  + Create VPC<br>  + Create Public & Private Subnets<br>  + Configure Route Tables | 01/05/2026 | 01/05/2026 | [FCJ Lab - Create VPC](https://cloudjourney.awsstudygroup.com/2-prerequisites/2.1-createvpc/) |
-| 7 - Sun | - **Advanced practice:**<br>  + Attach Internet Gateway<br>  + Create NAT Gateway<br>  + Deploy EC2 in Private/Public Subnets<br>  + Verify internet connectivity | 02/05/2026 | 03/05/2026 | [FCJ Lab - Public/Private](https://cloudjourney.awsstudygroup.com/2-prerequisites/2.2-publicprivateinstance/) |
+| 2 | - Learn about AWS Billing & Cost Management tools:<br>  + AWS Billing Tools<br>  + Calculate basic service costs | 27/04/2026 | 27/04/2026 | [AWS Billing Overview](https://docs.aws.amazon.com/billing/latest/userguide/billing-whatis.html) |
+| 3 | - Understand AWS Budgets mechanisms:<br>  + Cost budget vs. Usage budget concepts<br>  + Actual and forecasted cost alert thresholds | 28/04/2026 | 28/04/2026 | [AWS Budgets Guide](https://docs.aws.amazon.com/cost-management/latest/userguide/budgets-managing-costs.html) |
+| 4 | - Plan monthly budget limits for an AWS Free Tier account to avoid unexpected charges. | 29/04/2026 | 29/04/2026 | [AWS Free Tier Budgets](https://docs.aws.amazon.com/cost-management/latest/userguide/budgets-create.html) |
+| 5 | - Learn how to configure budget alerts via email and automated notification channels (Amazon SNS). | 30/04/2026 | 30/04/2026 | [AWS Budgets Alerts](https://docs.aws.amazon.com/cost-management/latest/userguide/budgets-alerts.html) |
+| 6 | - **Practice (Part 1):** Initialize a monthly cost budget (`My Monthly Cost Budget`) with a $100 limit. | 01/05/2026 | 01/05/2026 | [Creating a Cost Budget](https://docs.aws.amazon.com/cost-management/latest/userguide/budgets-create-cost.html) |
+| 7 - Sun | - **Practice (Part 2):** Create a backup cost budget (`My-200$-budget`) and resource usage budget (`Cost budget`). Verify health status and alert triggers. | 02/05/2026 | 03/05/2026 | [Monitoring Budgets](https://docs.aws.amazon.com/cost-management/latest/userguide/budgets-viewing.html) |
 
 ## Week 2 Achievements:
 ### Theory:
-- Can understand the architecture of Amazon VPC and how to manage IP address ranges via CIDR
-- Know how to create and configure route tables
+- Gained a solid understanding of AWS pricing models, billing drivers, and how to use AWS Budgets as a financial safety net.
+- Distinguished between Cost Budgets (financial monitoring) and Usage Budgets (resource utilization monitoring).
 
 ### Practice:
-- Completed the configuration of a complete VPC including public and private subnets.
-- Successfully set up Internet Gateway and NAT Gateway to route network traffic.
-- Deployed EC2 Instances and configured security using Security Groups/Network ACLs.
+- Successfully initialized three separate budgets to monitor spending from multiple dimensions on the AWS Console.
+- Configured automated email alerts when actual costs reach 80% of the limit or forecasted charges exceed the threshold.
 
 ### Evidences:
 
-1. **Attendance History - Week 2**
-   ![Attendance History](/images/1-Worklog/Worklog_week1.2/attendance_history_2.png)
-   *Description: Screenshot confirming the attendance log and full participation in all learning, mentoring, and team sync sessions during Week 2. This serves as verification of schedule compliance, self-discipline, and completing the required training hours under the First Cloud Journey program.*
-
-2. **Lab07 Network Configuration - Step 1: VPC Initialization & DNS Setup**
+1. **AWS Budgets - Initial Budget Creation (Create budget)**
    ![Lab07 Configuration - Step 1](/images/1-Worklog/Worklog_week1.2/Module%2001-Lab07-01.png)
-   *Description: Hands-on evidence of the initial step in the Lab07 exercise - setting up the Virtual Private Cloud (VPC) environment. This image details the configuration of the primary IPv4 CIDR Block and enabling crucial attributes such as DNS Resolution and DNS Hostnames, laying a solid foundation for subnet deployment.*
+   *Description: Shows the Budgets Overview dashboard with two active, healthy budgets: `My Monthly Cost Budget` ($100 monthly cost tracker) and `My-200$-budget` ($200 cost tracker), indicating healthy status with no alerts triggered.*
 
-3. **Lab07 Network Configuration - Step 2: Subnet Partitioning & Route Tables**
+2. **AWS Budgets - Successful Creation of Cost Budget (Add cost budget)**
    ![Lab07 Configuration - Step 2](/images/1-Worklog/Worklog_week1.2/Module%2001-Lab07-02.png)
-   *Description: Architectural configuration demonstrating the subdivision of the CIDR block into isolated Public and Private Subnets across multiple Availability Zones for high availability. It also displays the customization of Route Tables and subnet associations to ensure proper and secure routing control.*
+   *Description: Banner confirming that a third budget named `Cost budget` has been successfully provisioned with a limit of $200, raising the total monitored budgets to three for detailed categorizations.*
 
-4. **Lab07 Network Configuration - Step 3: Gateway Attachment & Connectivity Verification**
+3. **AWS Budgets - Budget Details Verification (Budget details)**
    ![Lab07 Configuration - Step 3](/images/1-Worklog/Worklog_week1.2/Module%2001-Lab07-03.png)
-   *Description: Verification screenshot of the final network design phase. This shows the setup of an Internet Gateway (IGW) to handle external traffic for Public Subnets, and a NAT Gateway to securely connect instances in Private Subnets to the Internet for updates. All routing controls are successfully verified and tested.*
-
-
-
+   *Description: Displays detailed metrics for the newly created `Cost budget`, confirming a Healthy status, usage amount of 1.440 Hrs, monthly tracking period, and a configuration start date of 2026-05-01.*

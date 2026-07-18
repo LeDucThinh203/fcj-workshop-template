@@ -12,21 +12,21 @@
     <title>Worklog Tuần 10 :: AWS System Manager</title>
 
     
-    <link href='../../../css/nucleus.css?1784131936' rel="stylesheet">
-    <link href='../../../css/fontawesome-all.min.css?1784131936' rel="stylesheet">
-    <link href='../../../css/hybrid.css?1784131936' rel="stylesheet">
-    <link href='../../../css/featherlight.min.css?1784131936' rel="stylesheet">
-    <link href='../../../css/perfect-scrollbar.min.css?1784131936' rel="stylesheet">
-    <link href='../../../css/auto-complete.css?1784131936' rel="stylesheet">
-    <link href='../../../css/atom-one-dark-reasonable.css?1784131936' rel="stylesheet">
-    <link href='../../../css/theme.css?1784131936' rel="stylesheet">
-    <link href='../../../css/hugo-theme.css?1784131936' rel="stylesheet">
+    <link href='../../../css/nucleus.css?1784347607' rel="stylesheet">
+    <link href='../../../css/fontawesome-all.min.css?1784347607' rel="stylesheet">
+    <link href='../../../css/hybrid.css?1784347607' rel="stylesheet">
+    <link href='../../../css/featherlight.min.css?1784347607' rel="stylesheet">
+    <link href='../../../css/perfect-scrollbar.min.css?1784347607' rel="stylesheet">
+    <link href='../../../css/auto-complete.css?1784347607' rel="stylesheet">
+    <link href='../../../css/atom-one-dark-reasonable.css?1784347607' rel="stylesheet">
+    <link href='../../../css/theme.css?1784347607' rel="stylesheet">
+    <link href='../../../css/hugo-theme.css?1784347607' rel="stylesheet">
     
-    <link href='../../../css/theme-workshop.css?1784131936' rel="stylesheet">
+    <link href='../../../css/theme-workshop.css?1784347607' rel="stylesheet">
     
     
 
-    <script src='../../../js/jquery-3.3.1.min.js?1784131936'></script>
+    <script src='../../../js/jquery-3.3.1.min.js?1784347607'></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -57,14 +57,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="../../../js/lunr.min.js?1784131936"></script>
-<script type="text/javascript" src="../../../js/auto-complete.js?1784131936"></script>
+<script type="text/javascript" src="../../../js/lunr.min.js?1784347607"></script>
+<script type="text/javascript" src="../../../js/auto-complete.js?1784347607"></script>
 <script type="text/javascript">
     
         var baseurl = "http:\/\/localhost:1313\/fcj-workshop-template\/\/vi";
     
 </script>
-<script type="text/javascript" src="../../../js/search.js?1784131936"></script>
+<script type="text/javascript" src="../../../js/search.js?1784347607"></script>
 
     
   </div>
@@ -197,13 +197,13 @@
  
   
     
-    <li data-nav-id="/vi/1-worklog/worklog_week1.4/" title="Worklog Tuáº§n 4" class="dd-item 
+    <li data-nav-id="/vi/1-worklog/worklog_week1.4/" title="Worklog Tuần 4" class="dd-item 
         
         
         
         ">
       <a href="../../../vi/1-worklog/worklog_week1.4/">
-           <b> 1.4 </b> Worklog Tuáº§n 4
+           <b> 1.4 </b> Worklog Tuần 4
           
             <i class="fas fa-check read-icon"></i>
           
@@ -1476,9 +1476,9 @@
 
 	<h2 id="mục-tiêu-tuần-10">Mục tiêu Tuần 10:</h2>
 <ul>
-<li>Hiểu và cấu hình VPC Peering để kết nối hai mạng VPC riêng biệt, cấu hình routing và thiết lập Network ACLs (NACLs) để kiểm soát bảo mật stateless ở mức subnet.</li>
-<li>Học và triển khai AWS Transit Gateway (TGW) để kết nối nhiều VPC theo mô hình Hub-and-Spoke, đơn giản hóa kiến trúc mạng quy mô lớn.</li>
-<li>Thực hiện tự động hóa hoạt động serverless sử dụng AWS Lambda và Amazon EventBridge để tự động start/stop EC2 instances dựa trên lịch trình và chuyển hướng log/alarm thực thi đến Slack.</li>
+<li>Hiểu và cấu hình VPC Peering để kết nối hai mạng VPC riêng biệt, cấu hình định tuyến (routing) và kiểm tra phân giải DNS chéo (Cross-Peer DNS resolution).</li>
+<li>Thiết lập và kiểm chứng Network Access Control Lists (NACLs) để kiểm soát bảo mật không trạng thái (stateless firewall) ở mức subnet trong VPC.</li>
+<li>Tìm hiểu và triển khai AWS Transit Gateway (TGW) làm bộ định tuyến trung tâm để kết nối nhiều VPC theo mô hình Hub-and-Spoke, đơn giản hóa kiến trúc mạng quy mô lớn.</li>
 </ul>
 <h2 id="công-việc-thực-hiện-trong-tuần-này">Công việc thực hiện trong tuần này:</h2>
 <table>
@@ -1494,55 +1494,53 @@
   <tbody>
       <tr>
           <td style="text-align: left">2</td>
-          <td style="text-align: left">- Học các khái niệm VPC Peering và Network Access Control Lists (NACLs)<br>- <strong>Lab 19 (Part 1)</strong>: Thiết lập môi trường mạng cơ sở sử dụng Cloudformation, tạo Security Groups và EC2s</td>
+          <td style="text-align: left">- Học các khái niệm VPC Peering và Network Access Control Lists (NACLs)<br>- <strong>Lab 19 (Phần 1)</strong>: Thiết lập môi trường mạng cơ sở sử dụng CloudFormation, tạo Security Groups và EC2s</td>
           <td style="text-align: left">22/06/2026</td>
           <td style="text-align: left">22/06/2026</td>
-          <td style="text-align: left"><a href="https://docs.aws.amazon.com/vpc/latest/peering/what-is-vpc-peering.html" target="_blank">VPC Peering Guide</a><br><a href="https://docs.aws.amazon.com/vpc/latest/userguide/vpc-network-acls.html" target="_blank">Network ACLs</a></td>
+          <td style="text-align: left"><a href="https://docs.aws.amazon.com/vpc/latest/peering/what-is-vpc-peering.html">VPC Peering Guide</a><br><a href="https://docs.aws.amazon.com/vpc/latest/userguide/vpc-network-acls.html">Network ACLs</a></td>
       </tr>
       <tr>
           <td style="text-align: left">3</td>
-          <td style="text-align: left">- <strong>Lab 19 (Part 2)</strong>: Cấu hình Custom VPC Peering, tạo kết nối VPC Peering, cập nhật route tables và xác minh Cross-Peer DNS resolution</td>
+          <td style="text-align: left">- <strong>Lab 19 (Phần 2)</strong>: Cấu hình Custom VPC Peering, tạo kết nối VPC Peering, cập nhật route tables và xác minh Cross-Peer DNS resolution</td>
           <td style="text-align: left">23/06/2026</td>
           <td style="text-align: left">23/06/2026</td>
-          <td style="text-align: left"><a href="https://docs.aws.amazon.com/vpc/latest/peering/what-is-vpc-peering.html" target="_blank">VPC Peering DNS Support</a></td>
+          <td style="text-align: left"><a href="https://docs.aws.amazon.com/vpc/latest/peering/what-is-vpc-peering.html">VPC Peering DNS Support</a></td>
       </tr>
       <tr>
           <td style="text-align: left">4</td>
-          <td style="text-align: left">- Học các khái niệm AWS Transit Gateway (TGW)<br>- <strong>Lab 20 (Part 1)</strong>: Thiết lập 3 VPC để minh họa, tạo Transit Gateway và cấu hình VPC attachments</td>
+          <td style="text-align: left">- <strong>Lab 19 (Phần 3)</strong>: Cấu hình Network ACLs (NACLs) ở mức subnet để chặn/cho phép lưu lượng ICMP/SSH, kiểm tra tính chất không trạng thái (stateless) và so sánh với Security Groups</td>
           <td style="text-align: left">24/06/2026</td>
           <td style="text-align: left">24/06/2026</td>
-          <td style="text-align: left"><a href="https://docs.aws.amazon.com/vpc/latest/tgw/what-is-transit-gateway.html" target="_blank">AWS Transit Gateway Guide</a></td>
+          <td style="text-align: left"><a href="https://docs.aws.amazon.com/vpc/latest/userguide/vpc-network-acls.html">Network ACLs</a></td>
       </tr>
       <tr>
           <td style="text-align: left">5</td>
-          <td style="text-align: left">- <strong>Lab 20 (Part 2)</strong>: Thiết lập Transit Gateway Route Tables, thêm Routes vào TGW Route Tables và xác minh kết nối mạng cross-VPC</td>
+          <td style="text-align: left">- Học các khái niệm AWS Transit Gateway (TGW) và mô hình Hub-and-Spoke<br>- <strong>Lab 20 (Phần 1)</strong>: Thiết lập 3 VPC để minh họa sử dụng CloudFormation</td>
           <td style="text-align: left">25/06/2026</td>
           <td style="text-align: left">25/06/2026</td>
-          <td style="text-align: left"><a href="https://docs.aws.amazon.com/vpc/latest/tgw/tgw-route-tables.html" target="_blank">TGW Route Tables</a></td>
+          <td style="text-align: left"><a href="https://docs.aws.amazon.com/vpc/latest/tgw/what-is-transit-gateway.html">AWS Transit Gateway Guide</a></td>
       </tr>
       <tr>
           <td style="text-align: left">6</td>
-          <td style="text-align: left">- Học dịch vụ tính toán serverless AWS Lambda và EventBridge scheduling<br>- <strong>Lab 22 (Part 1)</strong>: Thiết lập IAM workshop, gán thẻ cho EC2 instances và cấu hình IAM Role cho Lambda</td>
+          <td style="text-align: left">- <strong>Lab 20 (Phần 2)</strong>: Tạo Transit Gateway và cấu hình gắn kết (attachments) cho các VPC</td>
           <td style="text-align: left">26/06/2026</td>
           <td style="text-align: left">26/06/2026</td>
-          <td style="text-align: left"><a href="https://docs.aws.amazon.com/lambda/latest/dg/welcome.html" target="_blank">AWS Lambda Developer Guide</a><br><a href="https://docs.slack.dev/messaging/sending-messages-using-incoming-webhooks/" target="_blank">Slack Webhooks</a></td>
+          <td style="text-align: left"><a href="https://docs.aws.amazon.com/vpc/latest/tgw/tgw-vpc-attachments.html">Transit Gateway Attachments</a></td>
       </tr>
       <tr>
           <td style="text-align: left">7 - Chủ nhật</td>
-          <td style="text-align: left">- <strong>Lab 22 (Part 2)</strong>: Triển khai mã Python Lambda (boto3) để start/stop EC2s và gửi cảnh báo đến Slack, lên lịch thông qua EventBridge và dọn dẹp tài nguyên</td>
+          <td style="text-align: left">- <strong>Lab 20 (Phần 3)</strong>: Thiết lập Transit Gateway Route Tables, thêm Routes vào TGW Route Tables và xác minh kết nối mạng cross-VPC<br>- Tiến hành dọn dẹp sạch sẽ tài nguyên để tránh phát sinh chi phí</td>
           <td style="text-align: left">27/06/2026</td>
           <td style="text-align: left">28/06/2026</td>
-          <td style="text-align: left"><a href="https://docs.aws.amazon.com/boto3/latest/reference/services/ec2.html" target="_blank">Boto3 EC2 Client</a><br><a href="https://docs.aws.amazon.com/scheduler/latest/UserGuide/what-is-scheduler.html" target="_blank">EventBridge Scheduler</a></td>
+          <td style="text-align: left"><a href="https://docs.aws.amazon.com/vpc/latest/tgw/tgw-route-tables.html">TGW Route Tables</a></td>
       </tr>
   </tbody>
 </table>
 <h2 id="thành-tựu-tuần-10">Thành tựu Tuần 10:</h2>
 <ul>
 <li><strong>VPC Peering &amp; Bảo mật</strong>: Đã thiết lập thành công kết nối mạng riêng giữa hai VPC cô lập; áp dụng Network ACLs để kiểm soát các gói tin vào/ra và hiểu rõ hơn về hoạt động không giữ trạng thái (stateless) của NACL so với Security Groups giữ trạng thái (stateful).</li>
-<li><strong>Triển khai Transit Gateway</strong>: Đã xây dựng mạng Hub-and-Spoke trung tâm kết nối 3 VPC bằng AWS Transit Gateway, loại bỏ nhu cầu cấu hình peering dạng full-mesh phức tạp.</li>
-<li><strong>Tự động hóa Serverless</strong>: Đã xây dựng giải pháp quản lý serverless bằng AWS Lambda (Python boto3) đọc các tag tài nguyên của instance, dừng các máy chủ phát triển vào ban đêm và khởi động trước giờ làm việc.</li>
-<li><strong>Tích hợp ChatOps</strong>: Đã tích hợp cảnh báo AWS Lambda với thông báo trên kênh Slack bằng Incoming Webhooks để báo cáo trạng thái hoạt động theo thời gian thực.</li>
-<li><strong>Hoạt động theo lịch trình</strong>: Đã cấu hình Amazon EventBridge Scheduler (các trình kích hoạt cron) để tự động gọi các hàm Lambda vào các thời điểm cụ thể.</li>
+<li><strong>Triển khai Transit Gateway</strong>: Đã xây dựng mạng Hub-and-Spoke trung tâm kết nối 3 VPC bằng AWS Transit Gateway, loại bỏ nhu cầu cấu hình peering dạng full-mesh phức tạp, giúp quản trị và mở rộng hạ tầng mạng quy mô lớn dễ dàng hơn.</li>
+<li><strong>Tối ưu hóa chi phí</strong>: Thực hiện dọn dẹp triệt để toàn bộ các tài nguyên (TGW, EC2, CloudFormation stacks) sau khi hoàn tất các bài lab để tránh phát sinh chi phí không mong muốn.</li>
 </ul>
 <h3 id="hình-ảnh-minh-chứng">Hình ảnh minh chứng:</h3>
 <ol>
@@ -2365,19 +2363,19 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="../../../js/clipboard.min.js?1784131936"></script>
-    <script src="../../../js/perfect-scrollbar.min.js?1784131936"></script>
-    <script src="../../../js/perfect-scrollbar.jquery.min.js?1784131936"></script>
-    <script src="../../../js/jquery.sticky.js?1784131936"></script>
-    <script src="../../../js/featherlight.min.js?1784131936"></script>
-    <script src="../../../js/highlight.pack.js?1784131936"></script>
+    <script src="../../../js/clipboard.min.js?1784347607"></script>
+    <script src="../../../js/perfect-scrollbar.min.js?1784347607"></script>
+    <script src="../../../js/perfect-scrollbar.jquery.min.js?1784347607"></script>
+    <script src="../../../js/jquery.sticky.js?1784347607"></script>
+    <script src="../../../js/featherlight.min.js?1784347607"></script>
+    <script src="../../../js/highlight.pack.js?1784347607"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="../../../js/modernizr.custom-3.6.0.js?1784131936"></script>
-    <script src="../../../js/learn.js?1784131936"></script>
-    <script src="../../../js/hugo-learn.js?1784131936"></script>
+    <script src="../../../js/modernizr.custom-3.6.0.js?1784347607"></script>
+    <script src="../../../js/learn.js?1784347607"></script>
+    <script src="../../../js/hugo-learn.js?1784347607"></script>
 
-    <link href="../../../mermaid/mermaid.css?1784131936" rel="stylesheet" />
-    <script src="../../../mermaid/mermaid.js?1784131936"></script>
+    <link href="../../../mermaid/mermaid.css?1784347607" rel="stylesheet" />
+    <script src="../../../mermaid/mermaid.js?1784347607"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

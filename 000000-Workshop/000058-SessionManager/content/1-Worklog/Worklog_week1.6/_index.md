@@ -7,7 +7,8 @@ pre: " <b> 1.6 </b> "
 ---
 
 ## Week 6 Objectives:
-- Understand AWS Cloud Trail and managed reports here in AWS Support.
+- Understood the core operations of Amazon CloudWatch (Metrics, Logs, Alarms, Dashboards) to monitor infrastructure performance.
+- Explored AWS Support Plans and how to handle technical or billing support cases in the AWS Console.
 - Deploy a Hybrid DNS integration on premises with AWS using Route 53 Resolver and Microsoft AD.
 
 ## Tasks to be carried out this week:

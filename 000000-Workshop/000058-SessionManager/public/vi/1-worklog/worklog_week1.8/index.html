@@ -12,21 +12,21 @@
     <title>Worklog Tuần 8 :: AWS System Manager</title>
 
     
-    <link href='../../../css/nucleus.css?1784131936' rel="stylesheet">
-    <link href='../../../css/fontawesome-all.min.css?1784131936' rel="stylesheet">
-    <link href='../../../css/hybrid.css?1784131936' rel="stylesheet">
-    <link href='../../../css/featherlight.min.css?1784131936' rel="stylesheet">
-    <link href='../../../css/perfect-scrollbar.min.css?1784131936' rel="stylesheet">
-    <link href='../../../css/auto-complete.css?1784131936' rel="stylesheet">
-    <link href='../../../css/atom-one-dark-reasonable.css?1784131936' rel="stylesheet">
-    <link href='../../../css/theme.css?1784131936' rel="stylesheet">
-    <link href='../../../css/hugo-theme.css?1784131936' rel="stylesheet">
+    <link href='../../../css/nucleus.css?1784348118' rel="stylesheet">
+    <link href='../../../css/fontawesome-all.min.css?1784348118' rel="stylesheet">
+    <link href='../../../css/hybrid.css?1784348118' rel="stylesheet">
+    <link href='../../../css/featherlight.min.css?1784348118' rel="stylesheet">
+    <link href='../../../css/perfect-scrollbar.min.css?1784348118' rel="stylesheet">
+    <link href='../../../css/auto-complete.css?1784348118' rel="stylesheet">
+    <link href='../../../css/atom-one-dark-reasonable.css?1784348118' rel="stylesheet">
+    <link href='../../../css/theme.css?1784348118' rel="stylesheet">
+    <link href='../../../css/hugo-theme.css?1784348118' rel="stylesheet">
     
-    <link href='../../../css/theme-workshop.css?1784131936' rel="stylesheet">
+    <link href='../../../css/theme-workshop.css?1784348118' rel="stylesheet">
     
     
 
-    <script src='../../../js/jquery-3.3.1.min.js?1784131936'></script>
+    <script src='../../../js/jquery-3.3.1.min.js?1784348118'></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -57,14 +57,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="../../../js/lunr.min.js?1784131936"></script>
-<script type="text/javascript" src="../../../js/auto-complete.js?1784131936"></script>
+<script type="text/javascript" src="../../../js/lunr.min.js?1784348118"></script>
+<script type="text/javascript" src="../../../js/auto-complete.js?1784348118"></script>
 <script type="text/javascript">
     
         var baseurl = "http:\/\/localhost:1313\/fcj-workshop-template\/\/vi";
     
 </script>
-<script type="text/javascript" src="../../../js/search.js?1784131936"></script>
+<script type="text/javascript" src="../../../js/search.js?1784348118"></script>
 
     
   </div>
@@ -197,13 +197,13 @@
  
   
     
-    <li data-nav-id="/vi/1-worklog/worklog_week1.4/" title="Worklog Tuáº§n 4" class="dd-item 
+    <li data-nav-id="/vi/1-worklog/worklog_week1.4/" title="Worklog Tuần 4" class="dd-item 
         
         
         
         ">
       <a href="../../../vi/1-worklog/worklog_week1.4/">
-           <b> 1.4 </b> Worklog Tuáº§n 4
+           <b> 1.4 </b> Worklog Tuần 4
           
             <i class="fas fa-check read-icon"></i>
           
@@ -1444,7 +1444,11 @@
   <ul>
     <li><a href="#mục-tiêu-tuần-8">Mục tiêu Tuần 8:</a></li>
     <li><a href="#công-việc-thực-hiện-trong-tuần-này">Công việc thực hiện trong tuần này:</a></li>
-    <li><a href="#thành-tựu-tuần-8">Thành tựu Tuần 8:</a></li>
+    <li><a href="#thành-tựu-tuần-8">Thành tựu Tuần 8:</a>
+      <ul>
+        <li><a href="#hình-ảnh-minh-chứng">Hình ảnh minh chứng:</a></li>
+      </ul>
+    </li>
   </ul>
 </nav>
     </div>
@@ -1472,9 +1476,10 @@
 
 	<h2 id="mục-tiêu-tuần-8">Mục tiêu Tuần 8:</h2>
 <ul>
-<li>Học và thực hành di chuyển máy chủ từ On-premise lên AWS bằng VM Import/Export.</li>
-<li>Tạo container cho ứng dụng bằng Docker và quản lý container với Docker Compose trên Amazon EC2.</li>
-<li>Cấu hình các container ứng dụng kết nối với Amazon RDS và lưu trữ ảnh container trong Amazon ECR và Docker Hub.</li>
+<li>Tìm hiểu cách quản lý danh tính và phân quyền truy cập nâng cao sử dụng IAM Groups, Users, Policies và Roles.</li>
+<li>Học và cấu hình mã hóa dữ liệu trên Amazon S3 sử dụng AWS Key Management Service (KMS), cấu hình chia sẻ dữ liệu được mã hóa an toàn giữa các tài khoản AWS.</li>
+<li>Cấu hình theo dõi và ghi nhật ký hoạt động hệ thống bằng AWS CloudTrail để phục vụ giám sát và kiểm toán bảo mật.</li>
+<li>Sử dụng Amazon Athena để thực hiện truy vấn phân tích log CloudTrail được lưu trữ trên S3 bucket bằng ngôn ngữ SQL.</li>
 </ul>
 <h2 id="công-việc-thực-hiện-trong-tuần-này">Công việc thực hiện trong tuần này:</h2>
 <table>
@@ -1490,49 +1495,109 @@
   <tbody>
       <tr>
           <td style="text-align: left">2</td>
-          <td style="text-align: left">- Học các khái niệm VM Import/Export<br> - Lab 14: Chuẩn bị VM và xuất từ môi trường On-premise</td>
+          <td style="text-align: left">- Học lý thuyết về IAM Groups, Users, Policies, Roles nâng cao và nguyên tắc đặc quyền tối thiểu<br>- <strong>Thực hành (Phần 1)</strong>: Khởi tạo IAM Groups và Users phục vụ việc kiểm soát truy cập phân quyền</td>
           <td style="text-align: left">08/06/2026</td>
           <td style="text-align: left">08/06/2026</td>
-          <td style="text-align: left"><a href="https://docs.aws.amazon.com/vm-import/latest/userguide/vmie_prereqs.html">VM Import/Export Requirements</a></td>
+          <td style="text-align: left"><a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies.html">IAM Policies Reference</a></td>
       </tr>
       <tr>
           <td style="text-align: left">3</td>
-          <td style="text-align: left">- Lab 14: Tải tệp VM lên Amazon S3<br> - Chạy lệnh CLI để nhập VM làm AWS AMI và khởi chạy EC2 instance</td>
+          <td style="text-align: left">- Học lý thuyết về mã hóa dữ liệu AWS KMS (KMS Keys, Key Policies)<br>- <strong>Thực hành (Phần 2)</strong>: Khởi tạo AWS Key Management Service (KMS) và cấu hình Key Policy</td>
           <td style="text-align: left">09/06/2026</td>
           <td style="text-align: left">09/06/2026</td>
-          <td style="text-align: left"><a href="https://docs.aws.amazon.com/vm-import/latest/userguide/what-is-vmimport.html">Importing a VM as an Image</a></td>
+          <td style="text-align: left"><a href="https://docs.aws.amazon.com/kms/latest/developerguide/overview.html">AWS KMS Developer Guide</a></td>
       </tr>
       <tr>
           <td style="text-align: left">4</td>
-          <td style="text-align: left">- Lab 14: Cấu hình S3 Bucket ACL<br> - Xuất EC2 instance trở lại S3 dưới dạng tệp VM và dọn dẹp tài nguyên</td>
+          <td style="text-align: left">- <strong>Thực hành (Phần 3)</strong>: Tạo IAM Policy và IAM Role cho phép sử dụng khóa KMS<br>- Khởi tạo S3 bucket và tải tệp tin dữ liệu thử nghiệm lên, cấu hình mã hóa SSE-KMS</td>
           <td style="text-align: left">10/06/2026</td>
           <td style="text-align: left">10/06/2026</td>
-          <td style="text-align: left"><a href="https://docs.aws.amazon.com/vm-import/latest/userguide/vmexport.html">Exporting an Instance/Image</a></td>
+          <td style="text-align: left"><a href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/UsingKMSEncryption.html">Amazon S3 KMS Encryption</a></td>
       </tr>
       <tr>
           <td style="text-align: left">5</td>
-          <td style="text-align: left">- Lab 15: Triển khai và kiểm tra ứng dụng trên môi trường Local<br> - Chuẩn bị AWS: Cấu hình VPC, Security Group, IAM Roles cho ECR và đăng nhập vào Docker Hub</td>
+          <td style="text-align: left">- <strong>Thực hành (Phần 4)</strong>: Kiểm tra cấu hình và thực hiện chia sẻ dữ liệu đã mã hóa trên S3 bucket với tài khoản AWS khác thông qua khóa KMS</td>
           <td style="text-align: left">11/06/2026</td>
           <td style="text-align: left">11/06/2026</td>
-          <td style="text-align: left"><a href="https://docs.docker.com/">Docker Documentation</a><br> <a href="https://docs.aws.amazon.com/AmazonECR/latest/userguide/security_iam_id-based-policy-examples.html">Amazon ECR IAM Policies</a></td>
+          <td style="text-align: left"><a href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/example-bucket-policies.html">S3 Cross-Account Access</a></td>
       </tr>
       <tr>
           <td style="text-align: left">6</td>
-          <td style="text-align: left">- Lab 15: Tạo DB Subnet Group và khởi chạy RDS Instance<br> - Khởi chạy và cấu hình EC2 Instance làm máy chủ Docker và cài đặt các phụ thuộc</td>
+          <td style="text-align: left">- Học lý thuyết về theo dõi hệ thống với AWS CloudTrail<br>- <strong>Thực hành (Phần 5)</strong>: Khởi tạo CloudTrail trail, cấu hình lưu trữ log hoạt động hệ thống vào S3 bucket</td>
           <td style="text-align: left">12/06/2026</td>
           <td style="text-align: left">12/06/2026</td>
-          <td style="text-align: left"><a href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_CreateDBInstance.html">Amazon RDS DB Instance Creation</a><br> <a href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/Welcome.html">Docker on AWS EC2</a></td>
+          <td style="text-align: left"><a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-user-guide.html">AWS CloudTrail User Guide</a></td>
       </tr>
       <tr>
           <td style="text-align: left">7 - Chủ nhật</td>
-          <td style="text-align: left">- Lab 15: Tạo ảnh Docker, chạy container và cấu hình Docker Compose trên EC2 để kết nối với RDS<br> - Đẩy ảnh Docker lên Amazon ECR và Docker Hub<br> - Dọn dẹp tài nguyên để tránh chi phí</td>
+          <td style="text-align: left">- <strong>Thực hành (Phần 6)</strong>: Cấu hình Amazon Athena, kết nối nguồn dữ liệu log CloudTrail trên S3 và thực hiện các câu lệnh SQL để truy vấn log<br>- Tiến hành dọn dẹp sạch sẽ tài nguyên để tránh phát sinh chi phí</td>
           <td style="text-align: left">13/06/2026</td>
           <td style="text-align: left">14/06/2026</td>
-          <td style="text-align: left"><a href="https://docs.docker.com/compose/">Docker Compose Reference</a><br> <a href="https://docs.aws.amazon.com/AmazonECR/latest/userguide/docker-push-ecr-image.html">ECR Push Image Commands</a></td>
+          <td style="text-align: left"><a href="https://docs.aws.amazon.com/athena/latest/ug/querying-cloudtrail-logs.html">Querying CloudTrail Logs with Athena</a></td>
       </tr>
   </tbody>
 </table>
 <h2 id="thành-tựu-tuần-8">Thành tựu Tuần 8:</h2>
+<ul>
+<li><strong>Quản trị truy cập (IAM)</strong>: Thiết lập thành công phân quyền an toàn qua IAM Groups, Users, Policies và Roles đảm bảo tuân thủ nguyên tắc đặc quyền tối thiểu.</li>
+<li><strong>Mã hóa &amp; Chia sẻ dữ liệu</strong>: Cấu hình thành công AWS KMS để mã hóa S3 bucket, thiết lập Key Policy cho phép chia sẻ dữ liệu mã hóa an toàn với tài khoản AWS bên ngoài.</li>
+<li><strong>Giám sát &amp; Kiểm toán (CloudTrail)</strong>: Triển khai thành công AWS CloudTrail ghi nhận toàn bộ hoạt động API của tài khoản vào lưu trữ S3.</li>
+<li><strong>Phân tích log (Amazon Athena)</strong>: Thành thạo việc sử dụng Amazon Athena viết truy vấn SQL trực tiếp trên S3 để phân tích log hoạt động CloudTrail phục vụ điều tra sự cố bảo mật.</li>
+<li><strong>Tối ưu chi phí</strong>: Thực hiện dọn dẹp sạch sẽ tài nguyên thực hành để tránh phát sinh chi phí ngoài ý muốn.</li>
+</ul>
+<h3 id="hình-ảnh-minh-chứng">Hình ảnh minh chứng:</h3>
+<ol>
+<li>
+<p><strong>Tạo IAM Group và User (Create Group and User)</strong>
+<img src="../../../images/1-Worklog/Worklog_week1.8/Create%20Group%20and%20User.png" alt="Tạo IAM Group và User">
+<em>Mô tả chi tiết: Ảnh ghi lại giao diện quản trị IAM sau khi tạo thành công IAM Group và IAM User. Việc phân chia người dùng vào các nhóm giúp quản trị viên dễ dàng quản lý quyền truy cập tập trung theo vai trò công việc.</em></p>
+</li>
+<li>
+<p><strong>Khởi tạo AWS Key Management Service (Create Key Management Service)</strong>
+<img src="../../../images/1-Worklog/Worklog_week1.8/Create%20Key%20Management%20Service.png" alt="Tạo khóa KMS">
+<em>Mô tả chi tiết: Giao diện tạo khóa mã hóa tùy chỉnh (Customer Managed Key) trong dịch vụ AWS KMS. Khóa này được sử dụng để mã hóa dữ liệu trên S3 và kiểm soát quyền giải mã thông qua Key Policy.</em></p>
+</li>
+<li>
+<p><strong>Cấu hình Policy và Role trong IAM (Create policy and role)</strong>
+<img src="../../../images/1-Worklog/Worklog_week1.8/Create%20policy%20and%20role.png" alt="Cấu hình Policy và Role">
+<em>Mô tả chi tiết: Thiết lập các IAM Policy chi tiết định nghĩa quyền sử dụng khóa KMS và IAM Role được gán các quyền này để cho phép các thực thể hoặc tài khoản khác thực hiện thao tác mã hóa/giải mã.</em></p>
+</li>
+<li>
+<p><strong>Tạo S3 Bucket và tải dữ liệu lên (Create and upload data bucket)</strong>
+<img src="../../../images/1-Worklog/Worklog_week1.8/Create%20and%20upload%20data%20bucket.png" alt="Tạo S3 Bucket và Upload">
+<em>Mô tả chi tiết: Tạo S3 bucket mới dùng để lưu trữ dữ liệu cần bảo vệ và thực hiện tải lên các tệp tin dữ liệu mẫu, chuẩn bị cho việc thử nghiệm cấu hình mã hóa.</em></p>
+</li>
+<li>
+<p><strong>Kiểm tra và chia sẻ dữ liệu mã hóa trên S3 (Test and share encrypted data on S3)</strong>
+<img src="../../../images/1-Worklog/Worklog_week1.8/Test%20and%20share%20encrypted%20data%20on%20S3.png" alt="Chia sẻ dữ liệu mã hóa">
+<em>Mô tả chi tiết: Xác minh việc mã hóa dữ liệu phía máy chủ (SSE-KMS) hoạt động chính xác trên S3 bucket và cấu hình chính sách chia sẻ chéo tài khoản, cho phép tài khoản AWS bên ngoài có thể đọc được dữ liệu này thông qua quyền hạn khóa KMS.</em></p>
+</li>
+<li>
+<p><strong>Khởi tạo AWS CloudTrail (Create CloudTrail)</strong>
+<img src="../../../images/1-Worklog/Worklog_week1.8/Create%20CloudTrail.png" alt="Tạo CloudTrail">
+<em>Mô tả chi tiết: Khởi tạo dịch vụ AWS CloudTrail để ghi lại nhật ký (logs) các cuộc gọi API và hoạt động diễn ra trong tài khoản AWS, hướng luồng log này lưu trữ vào một S3 bucket chuyên dụng.</em></p>
+</li>
+<li>
+<p><strong>Ghi log hoạt động vào CloudTrail (Logging to CloudTrail)</strong>
+<img src="../../../images/1-Worklog/Worklog_week1.8/Logging%20to%20CloudTrail.png" alt="Ghi log CloudTrail">
+<em>Mô tả chi tiết: Minh chứng các sự kiện hoạt động (events) đang được ghi nhận liên tục và xuất bản đầy đủ vào S3 bucket dưới dạng các tệp nén log CloudTrail.</em></p>
+</li>
+<li>
+<p><strong>Cấu hình Amazon Athena (Create Amazon Athena)</strong>
+<img src="../../../images/1-Worklog/Worklog_week1.8/Create%20Amazon%20Athena.png" alt="Cấu hình Amazon Athena">
+<em>Mô tả chi tiết: Thiết lập Amazon Athena bao gồm cấu hình thư mục lưu kết quả truy vấn (Query result location) trên S3 và khởi tạo cơ sở dữ liệu/bảng ánh xạ tới tệp tin log CloudTrail.</em></p>
+</li>
+<li>
+<p><strong>Truy vấn log bằng Athena SQL (Retrieve data with athena)</strong>
+<img src="../../../images/1-Worklog/Worklog_week1.8/Retrieve%20data%20with%20athena.png" alt="Truy vấn dữ liệu bằng Athena">
+<em>Mô tả chi tiết: Thực thi câu lệnh SQL SELECT trên giao diện Amazon Athena để truy vấn và trích xuất thông tin chi tiết từ log CloudTrail, ví dụ như tìm kiếm ai đã thực hiện thao tác gì trên tài nguyên tại thời điểm nào.</em></p>
+</li>
+<li>
+<p><strong>Dọn dẹp sạch tài nguyên thực hành (Clean)</strong>
+<img src="../../../images/1-Worklog/Worklog_week1.8/Clean.png" alt="Dọn dẹp tài nguyên">
+<em>Mô tả chi tiết: Tiến hành xóa bỏ tất cả tài nguyên đã tạo trong bài thực hành (KMS Keys, CloudTrail Trails, Athena tables, S3 Buckets, IAM Roles/Policies/Users/Groups) để đảm bảo không phát sinh chi phí duy trì dịch vụ sau khi kết thúc lab.</em></p>
+</li>
+</ol>
 
 
 
@@ -2273,19 +2338,19 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="../../../js/clipboard.min.js?1784131936"></script>
-    <script src="../../../js/perfect-scrollbar.min.js?1784131936"></script>
-    <script src="../../../js/perfect-scrollbar.jquery.min.js?1784131936"></script>
-    <script src="../../../js/jquery.sticky.js?1784131936"></script>
-    <script src="../../../js/featherlight.min.js?1784131936"></script>
-    <script src="../../../js/highlight.pack.js?1784131936"></script>
+    <script src="../../../js/clipboard.min.js?1784348118"></script>
+    <script src="../../../js/perfect-scrollbar.min.js?1784348118"></script>
+    <script src="../../../js/perfect-scrollbar.jquery.min.js?1784348118"></script>
+    <script src="../../../js/jquery.sticky.js?1784348118"></script>
+    <script src="../../../js/featherlight.min.js?1784348118"></script>
+    <script src="../../../js/highlight.pack.js?1784348118"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="../../../js/modernizr.custom-3.6.0.js?1784131936"></script>
-    <script src="../../../js/learn.js?1784131936"></script>
-    <script src="../../../js/hugo-learn.js?1784131936"></script>
+    <script src="../../../js/modernizr.custom-3.6.0.js?1784348118"></script>
+    <script src="../../../js/learn.js?1784348118"></script>
+    <script src="../../../js/hugo-learn.js?1784348118"></script>
 
-    <link href="../../../mermaid/mermaid.css?1784131936" rel="stylesheet" />
-    <script src="../../../mermaid/mermaid.js?1784131936"></script>
+    <link href="../../../mermaid/mermaid.css?1784348118" rel="stylesheet" />
+    <script src="../../../mermaid/mermaid.js?1784348118"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

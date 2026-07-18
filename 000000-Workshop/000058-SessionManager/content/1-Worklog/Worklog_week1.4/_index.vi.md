@@ -7,20 +7,21 @@ pre: " <b> 1.4 </b> "
 ---
 
 ## Mục tiêu Tuần 4:
-- Khởi tạo và cấu hình một Amazon RDS database instance.
-- Kết nối ứng dụng chạy trên EC2 đến RDS database.
-- Hiểu các cơ chế Backup, Restore và các tính năng nâng cao (Multi-AZ, Read Replicas).
+- Khởi tạo và cấu hình môi trường mạng (VPC, Subnet Groups, Security Groups) cho các EC2 Instance và RDS DB Instance.
+- Triển khai EC2 Instance chạy Linux, cấu hình quyền hạn file khóa SSH và thực hiện kết nối SSH an toàn qua MobaXterm.
+- Cài đặt Git, Node.js và MySQL client trên máy chủ EC2 để chuẩn bị và chạy ứng dụng Web Node.js kết nối tới RDS database.
+- Hiểu rõ các thao tác quản trị cơ sở dữ liệu trên RDS bao gồm xem Logs & Events, thiết lập Maintenance & Backup, thực hiện Snapshots và tìm hiểu kiến trúc sẵn sàng cao (Multi-AZ, Read Replicas).
 
 ## Công việc thực hiện trong tuần này:
 
 | Thứ | Công việc | Ngày bắt đầu | Ngày kết thúc | Nguồn tham khảo |
 | :--- | :--- | :--- | :--- | :--- |
-| 2 | - Tổng quan về Amazon RDS<br>- So sánh RDS với các dịch vụ lưu trữ khác (EC2 DB, DynamoDB, Redshift) | 11/05/2026 | 11/05/2026 | [Amazon RDS Documentation](https://docs.aws.amazon.com/rds/) |
-| 3 | - Cấu hình mạng cho RDS:<br>  + Tạo VPC<br>  + Tạo Security Groups cho EC2 và RDS<br>  + Tạo DB Subnet Group | 12/05/2026 | 12/05/2026 | [VPC for RDS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_VPC.WorkingWithRDSInstanceinaVPC.html) |
-| 4 | - Thực hành khởi tạo một Amazon RDS instance<br>- Cấu hình các tham số và các tùy chọn bảo mật cho Database | 13/05/2026 | 13/05/2026 | [Creating an RDS DB Instance](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_CreateDBInstance.html) |
-| 5 | - Triển khai ứng dụng trên EC2 và kết nối đến RDS<br>- Xác minh truy cập và quản lý dữ liệu qua Endpoint | 14/05/2026 | 14/05/2026 | [Connecting to RDS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_GettingStarted.CreatingConnecting.MySQL.html) |
-| 6 | - Học và thực hành Backup & Restore<br>- Thực hành Snapshot thủ công và tự động | 15/05/2026 | 15/05/2026 | [RDS Backup and Restore](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_CommonTasks.BackupRestore.html) |
-| 7 - Chủ nhật | - Học về Multi-AZ và Read Replicas<br>- Dọn dẹp tài nguyên để tối ưu chi phí | 16/05/2026 | 17/05/2026 | [High Availability (Multi-AZ)](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.MultiAZ.html) |
+| 2 | - Tổng quan về Amazon RDS<br>- So sánh RDS với các dịch vụ lưu trữ khác (EC2 DB, DynamoDB, Redshift, S3) | 11/05/2026 | 11/05/2026 | [Amazon RDS Documentation](https://docs.aws.amazon.com/rds/) |
+| 3 | - Cấu hình mạng cho RDS:<br>  + Tạo VPC và các subnet liên quan<br>  + Tạo Security Groups cho EC2 và RDS<br>  + Tạo DB Subnet Group | 12/05/2026 | 12/05/2026 | [VPC for RDS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_VPC.WorkingWithRDSInstanceinaVPC.html) |
+| 4 | - Thực hành khởi tạo một Amazon RDS instance<br>- Cấu hình các tham số, thông tin tài khoản và cấu hình bảo mật cho Database | 13/05/2026 | 13/05/2026 | [Creating an RDS DB Instance](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_CreateDBInstance.html) |
+| 5 | - Khởi tạo EC2 Instance và chuẩn bị môi trường kết nối:<br>  + Tạo Linux EC2 Instance<br>  + Cấu hình quyền truy cập SSH Key Pair (`chmod 400`) và kết nối bằng MobaXterm<br>  + Cài đặt môi trường runtime Git và Node.js trên EC2 | 14/05/2026 | 14/05/2026 | [EC2 Linux Guide](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/concepts.html)<br>FCJ Lab |
+| 6 | - Triển khai ứng dụng Web trên EC2 và kết nối đến RDS:<br>  + Clone repository dự án từ Github và cài đặt các package phụ thuộc<br>  + Cài đặt MySQL client, chạy các script SQL khởi tạo cơ sở dữ liệu và các bảng<br>  + Thêm dữ liệu mẫu (mock user data) và kiểm tra kết nối ứng dụng qua RDS Endpoint | 15/05/2026 | 15/05/2026 | [Connecting to RDS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_GettingStarted.CreatingConnecting.MySQL.html)<br>FCJ Lab |
+| 7 - Chủ nhật | - Quản trị và bảo trì cơ sở dữ liệu:<br>  + Xem và theo dõi Logs & Events của RDS<br>  + Cấu hình các tùy chọn bảo trì, thực hành tạo Snapshot thủ công và tự động<br>  + Tìm hiểu kiến trúc Multi-AZ, Read Replicas và dọn dẹp tài nguyên tối ưu chi phí | 16/05/2026 | 17/05/2026 | [RDS Backup and Restore](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_CommonTasks.BackupRestore.html)<br>FCJ Lab |
 
 ### Kết quả Tuần 4:
 #### Lý thuyết:

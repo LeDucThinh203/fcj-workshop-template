@@ -12,21 +12,21 @@
     <title>Week 8 Worklog :: AWS System Manager</title>
 
     
-    <link href='../../css/nucleus.css?1784131935' rel="stylesheet">
-    <link href='../../css/fontawesome-all.min.css?1784131935' rel="stylesheet">
-    <link href='../../css/hybrid.css?1784131935' rel="stylesheet">
-    <link href='../../css/featherlight.min.css?1784131935' rel="stylesheet">
-    <link href='../../css/perfect-scrollbar.min.css?1784131935' rel="stylesheet">
-    <link href='../../css/auto-complete.css?1784131935' rel="stylesheet">
-    <link href='../../css/atom-one-dark-reasonable.css?1784131935' rel="stylesheet">
-    <link href='../../css/theme.css?1784131935' rel="stylesheet">
-    <link href='../../css/hugo-theme.css?1784131935' rel="stylesheet">
+    <link href='../../css/nucleus.css?1784348256' rel="stylesheet">
+    <link href='../../css/fontawesome-all.min.css?1784348256' rel="stylesheet">
+    <link href='../../css/hybrid.css?1784348256' rel="stylesheet">
+    <link href='../../css/featherlight.min.css?1784348256' rel="stylesheet">
+    <link href='../../css/perfect-scrollbar.min.css?1784348256' rel="stylesheet">
+    <link href='../../css/auto-complete.css?1784348256' rel="stylesheet">
+    <link href='../../css/atom-one-dark-reasonable.css?1784348256' rel="stylesheet">
+    <link href='../../css/theme.css?1784348256' rel="stylesheet">
+    <link href='../../css/hugo-theme.css?1784348256' rel="stylesheet">
     
-    <link href='../../css/theme-workshop.css?1784131935' rel="stylesheet">
+    <link href='../../css/theme-workshop.css?1784348256' rel="stylesheet">
     
     
 
-    <script src='../../js/jquery-3.3.1.min.js?1784131935'></script>
+    <script src='../../js/jquery-3.3.1.min.js?1784348256'></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -57,14 +57,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="../../js/lunr.min.js?1784131935"></script>
-<script type="text/javascript" src="../../js/auto-complete.js?1784131935"></script>
+<script type="text/javascript" src="../../js/lunr.min.js?1784348256"></script>
+<script type="text/javascript" src="../../js/auto-complete.js?1784348256"></script>
 <script type="text/javascript">
     
         var baseurl = "http:\/\/localhost:1313\/fcj-workshop-template\/";
     
 </script>
-<script type="text/javascript" src="../../js/search.js?1784131935"></script>
+<script type="text/javascript" src="../../js/search.js?1784348256"></script>
 
     
   </div>
@@ -1444,7 +1444,11 @@
   <ul>
     <li><a href="#week-8-objectives">Week 8 Objectives:</a></li>
     <li><a href="#tasks-to-be-carried-out-this-week">Tasks to be carried out this week:</a></li>
-    <li><a href="#week-8-achievements">Week 8 Achievements:</a></li>
+    <li><a href="#week-8-achievements">Week 8 Achievements:</a>
+      <ul>
+        <li><a href="#evidences">Evidences:</a></li>
+      </ul>
+    </li>
   </ul>
 </nav>
     </div>
@@ -1472,9 +1476,10 @@
 
 	<h2 id="week-8-objectives">Week 8 Objectives:</h2>
 <ul>
-<li>Learn and practice migrating servers from On-premise to AWS using VM Import/Export.</li>
-<li>Containerize applications using Docker and manage containers with Docker Compose on Amazon EC2.</li>
-<li>Configure application containers to connect with Amazon RDS and store container images in Amazon ECR and Docker Hub.</li>
+<li>Learn advanced identity and access management using IAM Groups, Users, Policies, and Roles.</li>
+<li>Understand data encryption on Amazon S3 using AWS Key Management Service (KMS), and configure secure cross-account encrypted data sharing.</li>
+<li>Configure system activity tracking and auditing using AWS CloudTrail.</li>
+<li>Use Amazon Athena to query and analyze CloudTrail logs stored in Amazon S3 using standard SQL.</li>
 </ul>
 <h2 id="tasks-to-be-carried-out-this-week">Tasks to be carried out this week:</h2>
 <table>
@@ -1490,49 +1495,109 @@
   <tbody>
       <tr>
           <td style="text-align: left">2</td>
-          <td style="text-align: left">- Learn VM Import/Export concepts<br> - Lab 14: Prepare VM and export from On-premise environment</td>
+          <td style="text-align: left">- Learn advanced concepts of IAM Groups, Users, Policies, and Roles under the principle of least privilege<br>- <strong>Practice (Part 1)</strong>: Create IAM Groups and Users to control access boundaries</td>
           <td style="text-align: left">08/06/2026</td>
           <td style="text-align: left">08/06/2026</td>
-          <td style="text-align: left"><a href="https://docs.aws.amazon.com/vm-import/latest/userguide/vmie_prereqs.html">VM Import/Export Requirements</a></td>
+          <td style="text-align: left"><a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies.html">IAM Policies Reference</a></td>
       </tr>
       <tr>
           <td style="text-align: left">3</td>
-          <td style="text-align: left">- Lab 14: Upload VM file to Amazon S3<br> - Run CLI commands to import VM as AWS AMI and launch EC2 instance</td>
+          <td style="text-align: left">- Study AWS KMS encryption principles (SSE-KMS, Customer Managed Keys, Key Policies)<br>- <strong>Practice (Part 2)</strong>: Create a Customer Managed Key in AWS Key Management Service (KMS) and set up its Key Policy</td>
           <td style="text-align: left">09/06/2026</td>
           <td style="text-align: left">09/06/2026</td>
-          <td style="text-align: left"><a href="https://docs.aws.amazon.com/vm-import/latest/userguide/what-is-vmimport.html">Importing a VM as an Image</a></td>
+          <td style="text-align: left"><a href="https://docs.aws.amazon.com/kms/latest/developerguide/overview.html">AWS KMS Developer Guide</a></td>
       </tr>
       <tr>
           <td style="text-align: left">4</td>
-          <td style="text-align: left">- Lab 14: Configure S3 Bucket ACL<br> - Export EC2 instance back to S3 as VM file and clean up resources</td>
+          <td style="text-align: left">- <strong>Practice (Part 3)</strong>: Author IAM Policies and Roles to delegate usage permissions for the KMS Key<br>- Create a new S3 bucket and upload test files, setting up server-side encryption via KMS (SSE-KMS)</td>
           <td style="text-align: left">10/06/2026</td>
           <td style="text-align: left">10/06/2026</td>
-          <td style="text-align: left"><a href="https://docs.aws.amazon.com/vm-import/latest/userguide/vmexport.html">Exporting an Instance/Image</a></td>
+          <td style="text-align: left"><a href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/UsingKMSEncryption.html">Amazon S3 KMS Encryption</a></td>
       </tr>
       <tr>
           <td style="text-align: left">5</td>
-          <td style="text-align: left">- Lab 15: Deploy and test the application on Local environment<br> - AWS Preparation: Configure VPC, Security Group, IAM Roles for ECR, and log in to Docker Hub</td>
+          <td style="text-align: left">- <strong>Practice (Part 4)</strong>: Verify encryption and share the encrypted S3 objects with an external AWS account</td>
           <td style="text-align: left">11/06/2026</td>
           <td style="text-align: left">11/06/2026</td>
-          <td style="text-align: left"><a href="https://docs.docker.com/">Docker Documentation</a><br> <a href="https://docs.aws.amazon.com/AmazonECR/latest/userguide/security_iam_id-based-policy-examples.html">Amazon ECR IAM Policies</a></td>
+          <td style="text-align: left"><a href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/example-bucket-policies.html">S3 Cross-Account Access</a></td>
       </tr>
       <tr>
           <td style="text-align: left">6</td>
-          <td style="text-align: left">- Lab 15: Create DB Subnet Group and launch RDS Instance<br> - Launch and configure EC2 Instance as Docker host and install dependencies</td>
+          <td style="text-align: left">- Study system auditing with AWS CloudTrail<br>- <strong>Practice (Part 5)</strong>: Deploy an AWS CloudTrail trail to deliver API activity logs to a secure S3 bucket</td>
           <td style="text-align: left">12/06/2026</td>
           <td style="text-align: left">12/06/2026</td>
-          <td style="text-align: left"><a href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_CreateDBInstance.html">Amazon RDS DB Instance Creation</a><br> <a href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/Welcome.html">Docker on AWS EC2</a></td>
+          <td style="text-align: left"><a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-user-guide.html">AWS CloudTrail User Guide</a></td>
       </tr>
       <tr>
           <td style="text-align: left">7 - Sun</td>
-          <td style="text-align: left">- Lab 15: Build Docker image, run container and configure Docker Compose on EC2 to connect to RDS<br> - Push Docker Image to Amazon ECR and Docker Hub<br> - Clean up resources to prevent charges</td>
+          <td style="text-align: left">- <strong>Practice (Part 6)</strong>: Configure Amazon Athena, define query result locations on S3, and run SQL queries against CloudTrail log tables<br>- Clean up all provisioned resources for Cost Optimization</td>
           <td style="text-align: left">13/06/2026</td>
           <td style="text-align: left">14/06/2026</td>
-          <td style="text-align: left"><a href="https://docs.docker.com/compose/">Docker Compose Reference</a><br> <a href="https://docs.aws.amazon.com/AmazonECR/latest/userguide/docker-push-ecr-image.html">ECR Push Image Commands</a></td>
+          <td style="text-align: left"><a href="https://docs.aws.amazon.com/athena/latest/ug/querying-cloudtrail-logs.html">Querying CloudTrail Logs with Athena</a></td>
       </tr>
   </tbody>
 </table>
 <h2 id="week-8-achievements">Week 8 Achievements:</h2>
+<ul>
+<li><strong>Access Management (IAM)</strong>: Successfully configured granular access controls using IAM Groups, Users, Policies, and Roles to enforce least privilege.</li>
+<li><strong>Data Encryption &amp; Sharing</strong>: Implemented AWS KMS server-side encryption on Amazon S3 and securely shared encrypted datasets across separate AWS accounts.</li>
+<li><strong>Monitoring &amp; Auditing</strong>: Deployed AWS CloudTrail to log and deliver API activity histories to durable S3 storage.</li>
+<li><strong>Log Analytics (Athena)</strong>: Mastered Amazon Athena to run SQL queries directly on S3 to inspect CloudTrail operational logs for security audits.</li>
+<li><strong>Cost Optimization</strong>: Cleaned up all temporary lab resources to prevent ongoing charges.</li>
+</ul>
+<h3 id="evidences">Evidences:</h3>
+<ol>
+<li>
+<p><strong>Create IAM Group and User (Create Group and User)</strong>
+<img src="../../images/1-Worklog/Worklog_week1.8/Create%20Group%20and%20User.png" alt="Create IAM Group and User">
+<em>Description: Shows the IAM console after successfully creating a new group and user. Placing users into groups simplifies permission management and adheres to best practices.</em></p>
+</li>
+<li>
+<p><strong>Initialize AWS Key Management Service (Create Key Management Service)</strong>
+<img src="../../images/1-Worklog/Worklog_week1.8/Create%20Key%20Management%20Service.png" alt="Create KMS Key">
+<em>Description: Displays the creation of a Customer Managed Key in AWS KMS, which will be utilized to encrypt data on S3 and regulate access via Key Policies.</em></p>
+</li>
+<li>
+<p><strong>Configure Policy and Role in IAM (Create policy and role)</strong>
+<img src="../../images/1-Worklog/Worklog_week1.8/Create%20policy%20and%20role.png" alt="Create IAM Policy and Role">
+<em>Description: Shows custom IAM Policies and Roles designed to delegate KMS encryption/decryption rights to specific services or external users.</em></p>
+</li>
+<li>
+<p><strong>Create S3 Bucket and Upload Data (Create and upload data bucket)</strong>
+<img src="../../images/1-Worklog/Worklog_week1.8/Create%20and%20upload%20data%20bucket.png" alt="Create S3 Bucket and Upload">
+<em>Description: Demonstrates creating a new Amazon S3 bucket and uploading sample datasets to prepare for server-side encryption testing.</em></p>
+</li>
+<li>
+<p><strong>Test and Share Encrypted S3 Data (Test and share encrypted data on S3)</strong>
+<img src="../../images/1-Worklog/Worklog_week1.8/Test%20and%20share%20encrypted%20data%20on%20S3.png" alt="Share Encrypted Data">
+<em>Description: Confirms SSE-KMS encryption is active on the S3 bucket and verifies cross-account sharing permissions, allowing authorized external accounts to read the encrypted files.</em></p>
+</li>
+<li>
+<p><strong>Initialize AWS CloudTrail (Create CloudTrail)</strong>
+<img src="../../images/1-Worklog/Worklog_week1.8/Create%20CloudTrail.png" alt="Create CloudTrail">
+<em>Description: Shows the configuration of a new AWS CloudTrail trail logging all API calls and delivery of those logs to a centralized S3 bucket.</em></p>
+</li>
+<li>
+<p><strong>Log System Activity to CloudTrail (Logging to CloudTrail)</strong>
+<img src="../../images/1-Worklog/Worklog_week1.8/Logging%20to%20CloudTrail.png" alt="CloudTrail Logging">
+<em>Description: Verifies that account events are actively captured and written as compressed log files in the specified S3 storage path.</em></p>
+</li>
+<li>
+<p><strong>Configure Amazon Athena (Create Amazon Athena)</strong>
+<img src="../../images/1-Worklog/Worklog_week1.8/Create%20Amazon%20Athena.png" alt="Configure Amazon Athena">
+<em>Description: Illustrates configuring Amazon Athena&rsquo;s query output folder on S3 and setting up database tables linked to the CloudTrail log datasets.</em></p>
+</li>
+<li>
+<p><strong>Query Logs with Athena SQL (Retrieve data with athena)</strong>
+<img src="../../images/1-Worklog/Worklog_week1.8/Retrieve%20data%20with%20athena.png" alt="Query Logs with Athena">
+<em>Description: Demonstrates running SQL SELECT queries in Athena to parse, filter, and audit specific API operations recorded by CloudTrail.</em></p>
+</li>
+<li>
+<p><strong>Clean Up Lab Resources (Clean)</strong>
+<img src="../../images/1-Worklog/Worklog_week1.8/Clean.png" alt="Clean Up Resources">
+<em>Description: Shows the systematic deletion of all trial resources (KMS keys, S3 buckets, CloudTrail trails, Athena tables, IAM roles/policies/users/groups) to maintain a clean environment and avoid unwanted costs.</em></p>
+</li>
+</ol>
 
 
 
@@ -2273,19 +2338,19 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="../../js/clipboard.min.js?1784131935"></script>
-    <script src="../../js/perfect-scrollbar.min.js?1784131935"></script>
-    <script src="../../js/perfect-scrollbar.jquery.min.js?1784131935"></script>
-    <script src="../../js/jquery.sticky.js?1784131935"></script>
-    <script src="../../js/featherlight.min.js?1784131935"></script>
-    <script src="../../js/highlight.pack.js?1784131935"></script>
+    <script src="../../js/clipboard.min.js?1784348256"></script>
+    <script src="../../js/perfect-scrollbar.min.js?1784348256"></script>
+    <script src="../../js/perfect-scrollbar.jquery.min.js?1784348256"></script>
+    <script src="../../js/jquery.sticky.js?1784348256"></script>
+    <script src="../../js/featherlight.min.js?1784348256"></script>
+    <script src="../../js/highlight.pack.js?1784348256"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="../../js/modernizr.custom-3.6.0.js?1784131935"></script>
-    <script src="../../js/learn.js?1784131935"></script>
-    <script src="../../js/hugo-learn.js?1784131935"></script>
+    <script src="../../js/modernizr.custom-3.6.0.js?1784348256"></script>
+    <script src="../../js/learn.js?1784348256"></script>
+    <script src="../../js/hugo-learn.js?1784348256"></script>
 
-    <link href="../../mermaid/mermaid.css?1784131935" rel="stylesheet" />
-    <script src="../../mermaid/mermaid.js?1784131935"></script>
+    <link href="../../mermaid/mermaid.css?1784348256" rel="stylesheet" />
+    <script src="../../mermaid/mermaid.js?1784348256"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

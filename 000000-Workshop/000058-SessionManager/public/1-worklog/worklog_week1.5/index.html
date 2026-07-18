@@ -12,21 +12,21 @@
     <title>Week 5 Worklog :: AWS System Manager</title>
 
     
-    <link href='../../css/nucleus.css?1784131935' rel="stylesheet">
-    <link href='../../css/fontawesome-all.min.css?1784131935' rel="stylesheet">
-    <link href='../../css/hybrid.css?1784131935' rel="stylesheet">
-    <link href='../../css/featherlight.min.css?1784131935' rel="stylesheet">
-    <link href='../../css/perfect-scrollbar.min.css?1784131935' rel="stylesheet">
-    <link href='../../css/auto-complete.css?1784131935' rel="stylesheet">
-    <link href='../../css/atom-one-dark-reasonable.css?1784131935' rel="stylesheet">
-    <link href='../../css/theme.css?1784131935' rel="stylesheet">
-    <link href='../../css/hugo-theme.css?1784131935' rel="stylesheet">
+    <link href='../../css/nucleus.css?1784346994' rel="stylesheet">
+    <link href='../../css/fontawesome-all.min.css?1784346994' rel="stylesheet">
+    <link href='../../css/hybrid.css?1784346994' rel="stylesheet">
+    <link href='../../css/featherlight.min.css?1784346994' rel="stylesheet">
+    <link href='../../css/perfect-scrollbar.min.css?1784346994' rel="stylesheet">
+    <link href='../../css/auto-complete.css?1784346994' rel="stylesheet">
+    <link href='../../css/atom-one-dark-reasonable.css?1784346994' rel="stylesheet">
+    <link href='../../css/theme.css?1784346994' rel="stylesheet">
+    <link href='../../css/hugo-theme.css?1784346994' rel="stylesheet">
     
-    <link href='../../css/theme-workshop.css?1784131935' rel="stylesheet">
+    <link href='../../css/theme-workshop.css?1784346994' rel="stylesheet">
     
     
 
-    <script src='../../js/jquery-3.3.1.min.js?1784131935'></script>
+    <script src='../../js/jquery-3.3.1.min.js?1784346994'></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -57,14 +57,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="../../js/lunr.min.js?1784131935"></script>
-<script type="text/javascript" src="../../js/auto-complete.js?1784131935"></script>
+<script type="text/javascript" src="../../js/lunr.min.js?1784346994"></script>
+<script type="text/javascript" src="../../js/auto-complete.js?1784346994"></script>
 <script type="text/javascript">
     
         var baseurl = "http:\/\/localhost:1313\/fcj-workshop-template\/";
     
 </script>
-<script type="text/javascript" src="../../js/search.js?1784131935"></script>
+<script type="text/javascript" src="../../js/search.js?1784346994"></script>
 
     
   </div>
@@ -1476,10 +1476,9 @@
 
 	<h2 id="week-5-objectives">Week 5 Objectives:</h2>
 <ul>
-<li>Mastered life cycle of AWS S3: Lazy Loading, Transient Storage, Set Policies, Crossfeed Period.</li>
-<li>Understood Role of Application Load Balancer (ELB) in traffic and high availability.</li>
-<li>Distinguished Auto Scaling Group of EC2 instances.</li>
-<li>Understand the importance of cost management techniques and monitor resources spending.</li>
+<li>Understood the concept and architecture of AWS Systems Manager (SSM) Session Manager for secure instance administration.</li>
+<li>Understood the role of VPC Endpoints (Interface endpoints) for private connection to AWS services without internet routing.</li>
+<li>Understood how NAT Gateway translates private IP addresses for outbound-only internet traffic.</li>
 </ul>
 <h2 id="tasks-to-be-carried-out-this-week">Tasks to be carried out this week:</h2>
 <table>
@@ -1495,28 +1494,28 @@
   <tbody>
       <tr>
           <td style="text-align: left">2</td>
-          <td style="text-align: left">- Study EC2 Auto Scaling (Lazy Storage, Set Policies, Crossfeed Period)<br>- Understand Static Website Hosting on S3 and Route S3 as a backup for CloudFront<br>- Research on S3 Subject of cost management</td>
+          <td style="text-align: left">- Study the theory of AWS Systems Manager (SSM) Session Manager<br>- Learn about VPC Endpoints (Interface Endpoints and Gateway Endpoints)<br>- Learn about NAT Gateway and how it operates in a Public Subnet to provide internet access to Private Subnets</td>
           <td style="text-align: left">18/05/2026</td>
           <td style="text-align: left">18/05/2026</td>
           <td style="text-align: left"><a href="https://cloudjourney.awsstudygroup.com/">https://cloudjourney.awsstudygroup.com/</a></td>
       </tr>
       <tr>
           <td style="text-align: left">3</td>
-          <td style="text-align: left">- <strong>Practice:</strong><br>  + Create an S3 bucket, configure static website hosting<br>  + Configure Static Website Hosting for EC2 Management UI (S3 UI)<br>  + Create an Auto Scaling Group</td>
+          <td style="text-align: left">- <strong>Practice (Part 1):</strong><br>  + Create a custom VPC with Public Subnet and Private Subnets<br>  + Initialize and configure a NAT Gateway in the Public Subnet and associate it with an Elastic IP<br>  + Configure routing rules in the Private Route Table to allow outbound internet access via the NAT Gateway</td>
           <td style="text-align: left">19/05/2026</td>
           <td style="text-align: left">19/05/2026</td>
           <td style="text-align: left"><a href="https://cloudjourney.awsstudygroup.com/">https://cloudjourney.awsstudygroup.com/</a></td>
       </tr>
       <tr>
           <td style="text-align: left">4</td>
-          <td style="text-align: left">- <strong>Practice:</strong><br>  + Configure the Application Load Balancer<br>  + Configure the Auto Scaling Group<br>  + Configure the CloudFront with S3</td>
+          <td style="text-align: left">- <strong>Practice (Part 2):</strong><br>  + Launch a Linux EC2 Instance in the Private Subnet (without a Public IP)<br>  + Create and associate an IAM Role with the EC2 Instance containing the necessary permissions to communicate with AWS Systems Manager (<code>AmazonSSMManagedInstanceCore</code>)<br>  + Configure the Security Group for the EC2 Instance (no port 22 SSH open)</td>
           <td style="text-align: left">20/05/2026</td>
           <td style="text-align: left">20/05/2026</td>
           <td style="text-align: left"><a href="https://cloudjourney.awsstudygroup.com/">https://cloudjourney.awsstudygroup.com/</a></td>
       </tr>
       <tr>
           <td style="text-align: left">5</td>
-          <td style="text-align: left">- <strong>Practice:</strong><br>  + Test the Auto Scaling Group<br>  + Test the Application Load Balancer<br>  + Test the CloudFront and S3 integration<br>  + Test the EC2 Management application</td>
+          <td style="text-align: left">- <strong>Practice (Part 3):</strong><br>  + Establish VPC Endpoints (<code>ssm</code>, <code>ssmmessages</code>, <code>ec2messages</code>) in the Private Subnet<br>  + Configure the Security Group for the VPC Endpoints to allow inbound traffic from the EC2 instance<br>  + Verify secure connection to the private EC2 instance via Systems Manager Session Manager<br>  + Clean up resources to prevent charges</td>
           <td style="text-align: left">21/05/2026</td>
           <td style="text-align: left">21/05/2026</td>
           <td style="text-align: left"><a href="https://cloudjourney.awsstudygroup.com/">https://cloudjourney.awsstudygroup.com/</a></td>
@@ -1526,47 +1525,15 @@
 <h3 id="week-5-achievements">Week 5 Achievements:</h3>
 <h4 id="theory">Theory:</h4>
 <ul>
-<li>Mastered life cycle of AWS S3: Lazy Loading, Transient Storage, Set Policies, Crossfeed Period.</li>
-<li>Understood Role of Application Load Balancer (ELB) in traffic and high availability.</li>
-<li>Distinguished Auto Scaling Group of EC2 instances.</li>
-<li>Understand the importance of cost management techniques and monitor resources spending.</li>
+<li>Understood the concept and architecture of AWS Systems Manager (SSM) Session Manager for secure instance administration.</li>
+<li>Understood the role of VPC Endpoints (Interface endpoints) for private connection to AWS services without internet routing.</li>
+<li>Understood how NAT Gateway translates private IP addresses for outbound-only internet traffic.</li>
 </ul>
 <h4 id="practice">Practice:</h4>
-<p>I can use AWS services effectively:</p>
 <ul>
-<li>Successfully built the EC2 Management application using Amazon EC2 Auto-Scaling with Elastic Load Balancing to ensure high availability and flexibility.</li>
-<li>All Services used:
-<ul>
-<li>Amazon VPC: Created an isolated virtual environment for deploying AWS resources.</li>
-<li>Application Load Balancer: Distributes traffic between EC2 instances, improves application fault tolerance.</li>
-<li>Auto Scaling Group: Automatically scales EC2 instances according to actual demand, cost optimization.</li>
-<li>Amazon S3: Stores static website files, supports static website hosting.</li>
-<li>Amazon CloudFront: Delivers static website content quickly through AWS&rsquo;s global network of edge locations.</li>
-<li>IAM: Manages access permissions securely for AWS services.</li>
-</ul>
-</li>
-</ul>
-<p>Create VPC (CloudStack lab):</p>
-<ul>
-<li>In this CloudFormation lab, configure the following:
-<ul>
-<li>1 VPC with CIDR: 10.10.0.0/16</li>
-<li>2 Public Subnets with CIDR: 10.10.1.0/24, 10.10.2.0/24</li>
-<li>2 Private Subnets with CIDR: 10.10.3.0/24, 10.10.4.0/24</li>
-<li>1 Internet Gateway</li>
-<li>2 NAT Gateway</li>
-<li>2 Public Route Table</li>
-<li>2 Private Route Table</li>
-<li>Security Groups for Application Load Balancer, Public EC2, Private EC2</li>
-<li>IAM Role for EC2</li>
-<li>Launch Template</li>
-<li>Auto Scaling Group</li>
-<li>Application Load Balancer</li>
-<li>Target Group</li>
-<li>S3 Bucket</li>
-<li>CloudFront Distribution</li>
-</ul>
-</li>
+<li>Launched a custom VPC with isolated private subnets and a NAT Gateway in the public subnet.</li>
+<li>Configured routing rules in the Private Route Table to allow outbound internet access via the NAT Gateway.</li>
+<li>Established secure connections to the private EC2 instance via Systems Manager Session Manager by setting up VPC Endpoints (<code>ssm</code>, <code>ssmmessages</code>, <code>ec2messages</code>) and IAM roles.</li>
 </ul>
 <h3 id="evidences">Evidences:</h3>
 <ol>
@@ -2326,19 +2293,19 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="../../js/clipboard.min.js?1784131935"></script>
-    <script src="../../js/perfect-scrollbar.min.js?1784131935"></script>
-    <script src="../../js/perfect-scrollbar.jquery.min.js?1784131935"></script>
-    <script src="../../js/jquery.sticky.js?1784131935"></script>
-    <script src="../../js/featherlight.min.js?1784131935"></script>
-    <script src="../../js/highlight.pack.js?1784131935"></script>
+    <script src="../../js/clipboard.min.js?1784346994"></script>
+    <script src="../../js/perfect-scrollbar.min.js?1784346994"></script>
+    <script src="../../js/perfect-scrollbar.jquery.min.js?1784346994"></script>
+    <script src="../../js/jquery.sticky.js?1784346994"></script>
+    <script src="../../js/featherlight.min.js?1784346994"></script>
+    <script src="../../js/highlight.pack.js?1784346994"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="../../js/modernizr.custom-3.6.0.js?1784131935"></script>
-    <script src="../../js/learn.js?1784131935"></script>
-    <script src="../../js/hugo-learn.js?1784131935"></script>
+    <script src="../../js/modernizr.custom-3.6.0.js?1784346994"></script>
+    <script src="../../js/learn.js?1784346994"></script>
+    <script src="../../js/hugo-learn.js?1784346994"></script>
 
-    <link href="../../mermaid/mermaid.css?1784131935" rel="stylesheet" />
-    <script src="../../mermaid/mermaid.js?1784131935"></script>
+    <link href="../../mermaid/mermaid.css?1784346994" rel="stylesheet" />
+    <script src="../../mermaid/mermaid.js?1784346994"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

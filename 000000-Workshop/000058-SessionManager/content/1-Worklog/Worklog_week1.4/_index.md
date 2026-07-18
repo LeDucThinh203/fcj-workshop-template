@@ -1,4 +1,4 @@
-﻿---
+---
 title: "Week 4 Worklog"
 date: 2026-05-13
 weight: 4
@@ -7,20 +7,21 @@ pre: " <b> 1.4 </b> "
 ---
 
 ## Week 4 Objectives:
-- Initialize and configure an Amazon RDS database instance.
-- Connect an application running on EC2 to the RDS database.
-- Understand Backup, Restore mechanisms, and advanced features (Multi-AZ, Read Replicas).
+- Initialize and configure network environments (VPC, Subnet Groups, Security Groups) for EC2 and RDS instances.
+- Launch a Linux EC2 Instance, configure SSH Key Pair permissions, and establish secure SSH connections.
+- Install Git, Node.js, and MySQL client on EC2 to deploy and connect a Node.js web application to an Amazon RDS database.
+- Understand database management operations, including maintenance, monitoring logs, manual/automatic snapshots, and high-availability architecture.
 
 ## Tasks to be implemented this week:
 
 | Day | Task | Start Date | End Date | Resource |
 | :--- | :--- | :--- | :--- | :--- |
-| 2 | - Overview of Amazon RDS<br>- Compare RDS with other storage services (EC2 DB, DynamoDB, Redshift) | 11/05/2026 | 11/05/2026 | [Amazon RDS Documentation](https://docs.aws.amazon.com/rds/) |
-| 3 | - Network setup for RDS:<br>  + Create VPC<br>  + Create Security Groups for EC2 and RDS<br>  + Create DB Subnet Group | 12/05/2026 | 12/05/2026 | [VPC for RDS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_VPC.WorkingWithRDSInstanceinaVPC.html) |
-| 4 | - Practice initializing an Amazon RDS instance<br>- Configure parameters and security options for the Database | 13/05/2026 | 13/05/2026 | [Creating an RDS DB Instance](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_CreateDBInstance.html) |
-| 5 | - Deploy application on EC2 and connect to RDS<br>- Verify access and data management via Endpoint | 14/05/2026 | 14/05/2026 | [Connecting to RDS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_GettingStarted.CreatingConnecting.MySQL.html) |
-| 6 | - Learn and practice Backup & Restore<br>- Practice manual and automatic Snapshots | 15/05/2026 | 15/05/2026 | [RDS Backup and Restore](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_CommonTasks.BackupRestore.html) |
-| 7 - Sun | - Learn about Multi-AZ and Read Replicas<br>- Resource cleanup to optimize costs | 16/05/2026 | 17/05/2026 | [High Availability (Multi-AZ)](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.MultiAZ.html) |
+| 2 | - Overview of Amazon RDS<br>- Compare RDS with other storage services (EC2 DB, DynamoDB, Redshift, S3) | 11/05/2026 | 11/05/2026 | [Amazon RDS Documentation](https://docs.aws.amazon.com/rds/) |
+| 3 | - Network setup for RDS:<br>  + Create VPC and subnets<br>  + Create Security Groups for EC2 and RDS<br>  + Create DB Subnet Group | 12/05/2026 | 12/05/2026 | [VPC for RDS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_VPC.WorkingWithRDSInstanceinaVPC.html) |
+| 4 | - Practice initializing an Amazon RDS instance<br>- Configure DB engine, credentials, and database security options | 13/05/2026 | 13/05/2026 | [Creating an RDS DB Instance](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_CreateDBInstance.html) |
+| 5 | - Initialize EC2 Instance and prepare client environment:<br>  + Create Linux EC2 Instance<br>  + Configure SSH Key Pair permissions (`chmod 400`) and connect via SSH (MobaXterm)<br>  + Install Git and Node.js runtime environments on EC2 | 14/05/2026 | 14/05/2026 | [EC2 Linux Guide](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/concepts.html)<br>FCJ Lab |
+| 6 | - Deploy web application on EC2 and connect to RDS:<br>  + Clone repository and install dependencies<br>  + Install MySQL server client, execute SQL scripts to create databases and tables<br>  + Seed mock user data and verify connection via RDS Endpoint | 15/05/2026 | 15/05/2026 | [Connecting to RDS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_GettingStarted.CreatingConnecting.MySQL.html)<br>FCJ Lab |
+| 7 - Sun | - Database administration and maintenance:<br>  + View RDS Logs & Events<br>  + Configure Maintenance & Backup options, perform manual/automatic Snapshots<br>  + Learn about Multi-AZ, Read Replicas, and clean up resources | 16/05/2026 | 17/05/2026 | [RDS Backup and Restore](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_CommonTasks.BackupRestore.html)<br>FCJ Lab |
 
 ### Week 4 Results:
 #### Theoretical:

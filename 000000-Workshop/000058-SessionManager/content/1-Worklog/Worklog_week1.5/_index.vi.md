@@ -7,55 +7,29 @@ pre: " <b> 1.5 </b> "
 ---
 
 ## Mục tiêu Tuần 5:
-- Nắm vững vòng đời của AWS S3: Lazy Loading, Transient Storage, Set Policies, Crossfeed Period.
-- Hiểu vai trò của Application Load Balancer (ELB) trong việc phân phối lưu lượng truy cập và tính sẵn sàng cao.
-- Phân biệt Auto Scaling Group của các EC2 instances.
-- Hiểu tầm quan trọng của các kỹ thuật quản lý chi phí và giám sát chi tiêu tài nguyên.
+- Hiểu rõ khái niệm và kiến trúc hoạt động của AWS Systems Manager (SSM) Session Manager để quản trị máy chủ từ xa an toàn.
+- Nắm vững vai trò của VPC Endpoints (Interface Endpoints) trong việc kết nối riêng tư từ mạng nội bộ tới các dịch vụ AWS mà không qua định tuyến Internet.
+- Hiểu cách NAT Gateway dịch chuyển địa chỉ IP và định tuyến lưu lượng đi ra ngoài (outbound-only) cho phân khu mạng Private Subnet.
 
 ## Công việc thực hiện trong tuần này:
 
 | Thứ | Công việc | Ngày bắt đầu | Ngày hoàn thành | Tài liệu tham khảo |
 | :--- | :--- | :--- | :--- | :--- |
-| 2 | - Học EC2 Auto Scaling (Lazy Storage, Set Policies, Crossfeed Period)<br>- Hiểu Static Website Hosting trên S3 và Route S3 làm bản sao lưu cho CloudFront<br>- Nghiên cứu về chủ đề quản lý chi phí của S3 | 18/05/2026 | 18/05/2026 | https://cloudjourney.awsstudygroup.com/ |
-| 3 | - **Thực hành:**<br>  + Tạo một S3 bucket, cấu hình static website hosting<br>  + Cấu hình Static Website Hosting cho EC2 Management UI (S3 UI)<br>  + Tạo một Auto Scaling Group | 19/05/2026 | 19/05/2026 | https://cloudjourney.awsstudygroup.com/ |
-| 4 | - **Thực hành:**<br>  + Cấu hình Application Load Balancer<br>  + Cấu hình Auto Scaling Group<br>  + Cấu hình CloudFront với S3 | 20/05/2026 | 20/05/2026 | https://cloudjourney.awsstudygroup.com/ |
-| 5 | - **Thực hành:**<br>  + Kiểm tra Auto Scaling Group<br>  + Kiểm tra Application Load Balancer<br>  + Kiểm tra tích hợp CloudFront và S3<br>  + Kiểm tra ứng dụng quản lý EC2 | 21/05/2026 | 21/05/2026 | https://cloudjourney.awsstudygroup.com/ |
+| 2 | - Học lý thuyết về AWS Systems Manager (SSM) Session Manager<br>- Tìm hiểu về VPC Endpoints (Interface Endpoints và Gateway Endpoints)<br>- Tìm hiểu về NAT Gateway và cách hoạt động của nó trong Public Subnet để cung cấp Internet cho Private Subnet | 18/05/2026 | 18/05/2026 | https://cloudjourney.awsstudygroup.com/ |
+| 3 | - **Thực hành (Phần 1):**<br>  + Tạo VPC với các phân khu mạng Public Subnet và Private Subnet<br>  + Khởi tạo NAT Gateway trong Public Subnet và cấu hình Elastic IP<br>  + Cấu hình bảng định tuyến Route Table cho Private Subnets đi qua NAT Gateway để kết nối ra ngoài Internet một cách an toàn | 19/05/2026 | 19/05/2026 | https://cloudjourney.awsstudygroup.com/ |
+| 4 | - **Thực hành (Phần 2):**<br>  + Khởi tạo EC2 Instance chạy Linux trong Private Subnet (không gán Public IP)<br>  + Tạo và gán IAM Role cho EC2 Instance với các quyền cần thiết để giao tiếp với AWS Systems Manager (`AmazonSSMManagedInstanceCore`)<br>  + Cấu hình Security Group cho EC2 Instance (không mở cổng 22 SSH) | 20/05/2026 | 20/05/2026 | https://cloudjourney.awsstudygroup.com/ |
+| 5 | - **Thực hành (Phần 3):**<br>  + Tạo các VPC Endpoints (`ssm`, `ssmmessages`, `ec2messages`) trong Private Subnet<br>  + Cấu hình Security Group cho các VPC Endpoints để cho phép kết nối từ EC2 Instance<br>  + Kiểm tra kết nối từ xa vào EC2 Instance trong Private Subnet qua SSM Session Manager mà không cần cổng SSH<br>  + Dọn dẹp tài nguyên để tránh phát sinh chi phí | 21/05/2026 | 21/05/2026 | https://cloudjourney.awsstudygroup.com/ |
 
 ### Thành tựu Tuần 5:
 #### Lý thuyết:
-- Nắm vững vòng đời của AWS S3: Lazy Loading, Transient Storage, Set Policies, Crossfeed Period.
-- Hiểu vai trò của Application Load Balancer (ELB) trong việc phân phối lưu lượng truy cập và tính sẵn sàng cao.
-- Phân biệt Auto Scaling Group của các EC2 instances.
-- Hiểu tầm quan trọng của các kỹ thuật quản lý chi phí và giám sát chi tiêu tài nguyên.
+- Hiểu rõ khái niệm và kiến trúc hoạt động của AWS Systems Manager (SSM) Session Manager để quản trị máy chủ từ xa an toàn.
+- Nắm vững vai trò của VPC Endpoints (Interface Endpoints) trong việc kết nối riêng tư từ mạng nội bộ tới các dịch vụ AWS mà không qua định tuyến Internet.
+- Hiểu cách NAT Gateway dịch chuyển địa chỉ IP và định tuyến lưu lượng đi ra ngoài (outbound-only) cho phân khu mạng Private Subnet.
 
 #### Thực hành:
-Tôi có thể sử dụng các dịch vụ AWS hiệu quả:
-- Thành công xây dựng ứng dụng quản lý EC2 bằng Amazon EC2 Auto-Scaling với Elastic Load Balancing để đảm bảo tính sẵn sàng cao và tính linh hoạt.
-- Tất cả các dịch vụ đã sử dụng:
-  - Amazon VPC: Tạo một môi trường ảo biệt lập để triển khai các tài nguyên AWS.
-  - Application Load Balancer: Phân phối lưu lượng truy cập giữa các EC2 instances, cải thiện khả năng chịu lỗi của ứng dụng.
-  - Auto Scaling Group: Tự động co giãn các EC2 instances theo nhu cầu thực tế, tối ưu hóa chi phí.
-  - Amazon S3: Lưu trữ các tệp website tĩnh, hỗ trợ static website hosting.
-  - Amazon CloudFront: Cung cấp nội dung website tĩnh một cách nhanh chóng qua mạng lưới các điểm hiện diện toàn cầu của AWS.
-  - IAM: Quản lý quyền truy cập một cách an toàn cho các dịch vụ AWS.
-
-Tạo VPC (CloudStack lab):
-- Trong phòng thí nghiệm CloudFormation này, cấu hình các thông tin sau:
-  - 1 VPC với CIDR: 10.10.0.0/16
-  - 2 Public Subnets với CIDR: 10.10.1.0/24, 10.10.2.0/24
-  - 2 Private Subnets với CIDR: 10.10.3.0/24, 10.10.4.0/24
-  - 1 Internet Gateway
-  - 2 NAT Gateway
-  - 2 Public Route Table
-  - 2 Private Route Table
-  - Security Groups cho Application Load Balancer, Public EC2, Private EC2
-  - IAM Role cho EC2
-  - Launch Template
-  - Auto Scaling Group
-  - Application Load Balancer
-  - Target Group
-  - S3 Bucket
-  - CloudFront Distribution
+- Xây dựng thành công VPC mạng ảo với các phân khu mạng cô lập (Private Subnets) và NAT Gateway tại Public Subnet.
+- Cấu hình bảng định tuyến Route Table cho Private Subnets đi qua NAT Gateway để kết nối ra ngoài Internet một cách an toàn.
+- Thiết lập hoàn chỉnh các VPC Endpoints (`ssm`, `ssmmessages`, `ec2messages`) và kết nối thành công vào EC2 Instance trong Private Subnet qua SSM Session Manager mà không cần mở cổng SSH.
 
 ### Hình ảnh minh chứng:
 

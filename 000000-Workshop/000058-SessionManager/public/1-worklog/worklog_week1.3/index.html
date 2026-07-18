@@ -12,21 +12,21 @@
     <title>Week 3 Worklog :: AWS System Manager</title>
 
     
-    <link href='../../css/nucleus.css?1784131935' rel="stylesheet">
-    <link href='../../css/fontawesome-all.min.css?1784131935' rel="stylesheet">
-    <link href='../../css/hybrid.css?1784131935' rel="stylesheet">
-    <link href='../../css/featherlight.min.css?1784131935' rel="stylesheet">
-    <link href='../../css/perfect-scrollbar.min.css?1784131935' rel="stylesheet">
-    <link href='../../css/auto-complete.css?1784131935' rel="stylesheet">
-    <link href='../../css/atom-one-dark-reasonable.css?1784131935' rel="stylesheet">
-    <link href='../../css/theme.css?1784131935' rel="stylesheet">
-    <link href='../../css/hugo-theme.css?1784131935' rel="stylesheet">
+    <link href='../../css/nucleus.css?1784346675' rel="stylesheet">
+    <link href='../../css/fontawesome-all.min.css?1784346675' rel="stylesheet">
+    <link href='../../css/hybrid.css?1784346675' rel="stylesheet">
+    <link href='../../css/featherlight.min.css?1784346675' rel="stylesheet">
+    <link href='../../css/perfect-scrollbar.min.css?1784346675' rel="stylesheet">
+    <link href='../../css/auto-complete.css?1784346675' rel="stylesheet">
+    <link href='../../css/atom-one-dark-reasonable.css?1784346675' rel="stylesheet">
+    <link href='../../css/theme.css?1784346675' rel="stylesheet">
+    <link href='../../css/hugo-theme.css?1784346675' rel="stylesheet">
     
-    <link href='../../css/theme-workshop.css?1784131935' rel="stylesheet">
+    <link href='../../css/theme-workshop.css?1784346675' rel="stylesheet">
     
     
 
-    <script src='../../js/jquery-3.3.1.min.js?1784131935'></script>
+    <script src='../../js/jquery-3.3.1.min.js?1784346675'></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -57,14 +57,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="../../js/lunr.min.js?1784131935"></script>
-<script type="text/javascript" src="../../js/auto-complete.js?1784131935"></script>
+<script type="text/javascript" src="../../js/lunr.min.js?1784346675"></script>
+<script type="text/javascript" src="../../js/auto-complete.js?1784346675"></script>
 <script type="text/javascript">
     
         var baseurl = "http:\/\/localhost:1313\/fcj-workshop-template\/";
     
 </script>
-<script type="text/javascript" src="../../js/search.js?1784131935"></script>
+<script type="text/javascript" src="../../js/search.js?1784346675"></script>
 
     
   </div>
@@ -1479,8 +1479,8 @@
 	<h2 id="week-3-objectives">Week 3 Objectives:</h2>
 <ul>
 <li>Learn about Amazon EC2 services on AWS.</li>
-<li>Practice initializing, configuring, and managing EC2 Instances.</li>
-<li>Deploy Node.js applications on Linux and Windows environments.</li>
+<li>Practice initializing, configuring, and managing EC2 Instances in Public and Private Subnets.</li>
+<li>Understand AWS IAM service and implement security permissions, including advanced restrictions on switching roles by IP and time.</li>
 </ul>
 <h2 id="tasks-to-implement-this-week">Tasks to implement this week:</h2>
 <table>
@@ -1503,38 +1503,38 @@
       </tr>
       <tr>
           <td style="text-align: left">3</td>
-          <td style="text-align: left">- Prepare EC2 environment<br>+ Create VPC for Linux<br>+ Create VPC for Windows<br>+ Create Security Group for Linux and Windows Instances</td>
+          <td style="text-align: left">- Prepare EC2 environment<br>+ Create a VPC with Public and Private Subnets<br>+ Create Security Groups with appropriate ports (22 for SSH, 80/443 for HTTP/HTTPS)</td>
           <td style="text-align: left">05/05/2026</td>
           <td style="text-align: left">05/05/2026</td>
           <td style="text-align: left"><a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-security-groups.html">EC2 Security Groups</a><br>FCJ Lab</td>
       </tr>
       <tr>
           <td style="text-align: left">4</td>
-          <td style="text-align: left">- Initialize Windows EC2 Instance<br>+ Create Windows Instance<br>+ Connect via Remote Desktop to Windows Instance</td>
+          <td style="text-align: left">- Initialize Public Subnet EC2 Instance (EC2_Public)<br>+ Launch a Linux EC2 Instance in the Public Subnet<br>+ Test connection and accessibility to the Public EC2 Instance</td>
           <td style="text-align: left">05/06/2026</td>
           <td style="text-align: left">05/06/2026</td>
-          <td style="text-align: left"><a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/concepts.html">EC2 Windows Guide</a><br>FCJ Lab</td>
+          <td style="text-align: left"><a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/concepts.html">EC2 Public Instance Guide</a><br>FCJ Lab</td>
       </tr>
       <tr>
           <td style="text-align: left">5</td>
-          <td style="text-align: left">- Initialize Linux EC2 Instance<br>+ Create Linux Instance<br>+ Connect via SSH to Linux Instance<br>- Learn about changing EC2 configuration and managing EBS Snapshot</td>
+          <td style="text-align: left">- Initialize Private Subnet EC2 Instance (EC2_Private)<br>+ Launch a Linux EC2 Instance in the Private Subnet<br>+ Test remote connectivity and configurations for the Private EC2 Instance</td>
           <td style="text-align: left">05/07/2026</td>
           <td style="text-align: left">05/07/2026</td>
-          <td style="text-align: left"><a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/concepts.html">EC2 Linux Guide</a><br>FCJ Lab</td>
+          <td style="text-align: left"><a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/concepts.html">EC2 Private Instance Guide</a><br>FCJ Lab</td>
       </tr>
       <tr>
           <td style="text-align: left">6</td>
-          <td style="text-align: left">- Advanced EC2 Practice<br>+ Create Custom AMI<br>+ Create Instance from Custom AMI<br>+ Practice EC2 access when losing Key Pair</td>
+          <td style="text-align: left">- Learn about AWS IAM security management<br>+ Create IAM Users and User Groups<br>+ Assign IAM policies and check permissions</td>
           <td style="text-align: left">05/08/2026</td>
           <td style="text-align: left">05/08/2026</td>
-          <td style="text-align: left"><a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AMIs.html">Amazon Machine Images (AMI)</a><br>FCJ Lab</td>
+          <td style="text-align: left"><a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/introduction.html">AWS IAM Basics</a><br>FCJ Lab</td>
       </tr>
       <tr>
           <td style="text-align: left">7 - Sun</td>
-          <td style="text-align: left">- Deploy Node.js application on EC2<br>+ Install LAMP/XAMPP Server<br>+ Install Node.js on Linux and Windows<br>+ Deploy Node.js application<br>- Learn about resource limits using IAM</td>
+          <td style="text-align: left">- Learn about advanced security policies for IAM roles<br>+ Restrict Switch Role action by specific IP addresses (SourceIp)<br>+ Restrict Switch Role action by specific working hours (CurrentTime)</td>
           <td style="text-align: left">05/09/2026</td>
           <td style="text-align: left">05/10/2026</td>
-          <td style="text-align: left"><a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/iam-policies-for-amazon-ec2.html">IAM for Amazon EC2</a><br>FCJ Lab</td>
+          <td style="text-align: left"><a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use_switch-role-console.html">IAM Policies &amp; Switch Role</a><br>FCJ Lab</td>
       </tr>
   </tbody>
 </table>
@@ -2334,19 +2334,19 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="../../js/clipboard.min.js?1784131935"></script>
-    <script src="../../js/perfect-scrollbar.min.js?1784131935"></script>
-    <script src="../../js/perfect-scrollbar.jquery.min.js?1784131935"></script>
-    <script src="../../js/jquery.sticky.js?1784131935"></script>
-    <script src="../../js/featherlight.min.js?1784131935"></script>
-    <script src="../../js/highlight.pack.js?1784131935"></script>
+    <script src="../../js/clipboard.min.js?1784346675"></script>
+    <script src="../../js/perfect-scrollbar.min.js?1784346675"></script>
+    <script src="../../js/perfect-scrollbar.jquery.min.js?1784346675"></script>
+    <script src="../../js/jquery.sticky.js?1784346675"></script>
+    <script src="../../js/featherlight.min.js?1784346675"></script>
+    <script src="../../js/highlight.pack.js?1784346675"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="../../js/modernizr.custom-3.6.0.js?1784131935"></script>
-    <script src="../../js/learn.js?1784131935"></script>
-    <script src="../../js/hugo-learn.js?1784131935"></script>
+    <script src="../../js/modernizr.custom-3.6.0.js?1784346675"></script>
+    <script src="../../js/learn.js?1784346675"></script>
+    <script src="../../js/hugo-learn.js?1784346675"></script>
 
-    <link href="../../mermaid/mermaid.css?1784131935" rel="stylesheet" />
-    <script src="../../mermaid/mermaid.js?1784131935"></script>
+    <link href="../../mermaid/mermaid.css?1784346675" rel="stylesheet" />
+    <script src="../../mermaid/mermaid.js?1784346675"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

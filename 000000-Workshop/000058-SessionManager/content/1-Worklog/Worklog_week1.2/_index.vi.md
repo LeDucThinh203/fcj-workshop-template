@@ -7,45 +7,40 @@ pre: " <b> 1.2 </b> "
 ---
 
 ## Mục tiêu Tuần 2:
-- Hiểu mạng cơ bản trong AWS (VPC)
-- Thành thạo cách cấu hình các thành phần mạng và bảo mật trong VPC
-- Thực hành xây dựng một VPC hoàn chỉnh
+- Tìm hiểu về các công cụ quản lý chi phí và lập hóa đơn trên AWS (AWS Billing & Cost Management).
+- Nắm vững vai trò và cách cấu hình AWS Budgets để kiểm soát chi tiêu đám mây.
+- Thực hành thiết lập hạn mức ngân sách và cấu hình cảnh báo ngưỡng chi phí tự động.
 
 ## Công việc cần thực hiện trong tuần này:
 
 | Thứ | Công việc | Ngày bắt đầu | Ngày hoàn thành | Tài liệu tham khảo |
 | :--- | :--- | :--- | :--- | :--- |
-| 2 | - Học cơ bản VPC:<br>  + Tổng quan VPC<br>  + CIDR Block<br>  + Phân biệt Subnet Công cộng / Riêng | 27/04/2026 | 27/04/2026 | [VPC Basics](https://docs.aws.amazon.com/vpc/latest/userguide/what-is-amazon-vpc.html) |
-| 3 | - Học về Subnet & Route Tables:<br>  + Cách chia Subnet<br>  + Cấu hình Route Tables | 28/04/2026 | 28/04/2026 | [Subnets & Route Tables](https://docs.aws.amazon.com/vpc/latest/userguide/how-it-works.html) |
-| 4 | - Học về Internet Gateway & NAT Gateway:<br>  + Internet Gateway cho Subnet Công cộng<br>  + NAT Gateway cho Subnet Riêng | 29/04/2026 | 29/04/2026 | [NAT Gateways](https://docs.aws.amazon.com/vpc/latest/userguide/vpc-nat-gateway.html) |
-| 5 | - Học về bảo mật trong VPC:<br>  + Security Groups<br>  + Network ACLs<br>  + Quy tắc Inbound / Outbound | 30/04/2026 | 30/04/2026 | [VPC Security Groups](https://docs.aws.amazon.com/vpc/latest/userguide/vpc-security-groups.html) |
-| 6 | - **Thực hành:**<br>  + Tạo VPC<br>  + Tạo Subnet Công cộng & Riêng<br>  + Cấu hình Route Tables | 01/05/2026 | 01/05/2026 | [FCJ Lab - Create VPC](https://cloudjourney.awsstudygroup.com/2-prerequisites/2.1-createvpc/) |
-| 7 - Chủ nhật | - **Thực hành nâng cao:**<br>  + Gắn Internet Gateway<br>  + Tạo NAT Gateway<br>  + Triển khai EC2 trong Subnet Riêng/Công cộng<br>  + Xác minh kết nối internet | 02/05/2026 | 03/05/2026 | [FCJ Lab - Public/Private](https://cloudjourney.awsstudygroup.com/2-prerequisites/2.2-publicprivateinstance/) |
+| 2 | - Học tổng quan về quản lý chi phí trên AWS:<br>  + Các công cụ AWS Billing<br>  + Cách tính toán chi phí dịch vụ cơ bản | 27/04/2026 | 27/04/2026 | [AWS Billing Overview](https://docs.aws.amazon.com/billing/latest/userguide/billing-whatis.html) |
+| 3 | - Tìm hiểu cơ chế hoạt động của AWS Budgets:<br>  + Khái niệm Cost budget và Usage budget<br>  + Ngưỡng cảnh báo chi phí thực tế và dự báo | 28/04/2026 | 28/04/2026 | [AWS Budgets Guide](https://docs.aws.amazon.com/cost-management/latest/userguide/budgets-managing-costs.html) |
+| 4 | - Nghiên cứu thiết lập kế hoạch ngân sách cho tài khoản Free Tier để tránh phát sinh chi phí ngoài ý muốn. | 29/04/2026 | 29/04/2026 | [AWS Free Tier Budgets](https://docs.aws.amazon.com/cost-management/latest/userguide/budgets-create.html) |
+| 5 | - Học cách cấu hình nhận cảnh báo ngân sách qua email và các kênh thông báo tự động (Amazon SNS). | 30/04/2026 | 30/04/2026 | [AWS Budgets Alerts](https://docs.aws.amazon.com/cost-management/latest/userguide/budgets-alerts.html) |
+| 6 | - **Thực hành (Phần 1):** Khởi tạo ngân sách chi phí hàng tháng (My Monthly Cost Budget) với hạn mức cảnh báo $100. | 01/05/2026 | 01/05/2026 | [Creating a Cost Budget](https://docs.aws.amazon.com/cost-management/latest/userguide/budgets-create-cost.html) |
+| 7 - Chủ nhật | - **Thực hành (Phần 2):** Khởi tạo thêm ngân sách dự phòng $200 (My-200$-budget) và ngân sách mức độ sử dụng tài nguyên (Cost budget). Xác minh trạng thái và hoạt động cảnh báo. | 02/05/2026 | 03/05/2026 | [Monitoring Budgets](https://docs.aws.amazon.com/cost-management/latest/userguide/budgets-viewing.html) |
 
 ## Thành tựu Tuần 2:
 ### Lý thuyết:
-- Có thể hiểu kiến trúc của Amazon VPC và cách quản lý dải địa chỉ IP qua CIDR
-- Biết cách tạo và cấu hình route tables
+- Hiểu rõ mô hình tính phí của AWS, các yếu tố ảnh hưởng trực tiếp đến hóa đơn và cách sử dụng AWS Budgets làm chốt chặn bảo mật tài chính.
+- Nắm vững sự khác nhau giữa Cost Budgets (ngân sách chi phí) và Usage Budgets (ngân sách lượng tài nguyên tiêu thụ).
 
 ### Thực hành:
-- Đã thực hiện cấu hình VPC hoàn chỉnh bao gồm các Subnet công cộng và riêng tư.
-- Thiết lập thành công Internet Gateway và NAT Gateway để định tuyến lưu lượng mạng.
-- Triển khai EC2 Instance và cấu hình bảo mật thông qua Security Groups/Network ACLs.
+- Khởi tạo thành công 3 ngân sách khác nhau phục vụ theo dõi chi tiêu đa chiều trên AWS Console.
+- Cấu hình hoàn chỉnh ngưỡng cảnh báo tự động gửi email khi chi phí thực tế đạt 80% hoặc chi phí dự báo vượt hạn mức định trước.
 
 ### Hình ảnh minh chứng:
 
-1. **Lịch sử chuyên cần (Attendance History - Tuần 2)**
-   ![Lịch sử chuyên cần](/images/1-Worklog/Worklog_week1.2/attendance_history_2.png)
-   *Mô tả chi tiết: Hình ảnh ghi nhận lịch sử chấm công và tham gia đầy đủ các buổi học tập, thảo luận nhóm trong Tuần 2. Đây là bằng chứng xác thực cho việc tuân thủ giờ giấc làm việc, tinh thần tự giác và hoàn thành đầy đủ thời lượng đào tạo theo yêu cầu của chương trình First Cloud Journey.*
-
-2. **Cấu hình sơ đồ mạng Lab07 - Bước 1: Khởi tạo VPC & Thiết lập thông số cơ bản**
+1. **Cấu hình AWS Budgets - Khởi tạo ngân sách (Create budget)**
    ![Cấu hình Lab07 - Bước 1](/images/1-Worklog/Worklog_week1.2/Module%2001-Lab07-01.png)
-   *Mô tả chi tiết: Minh chứng cho bước đầu tiên trong chuỗi thực hành Lab07 - tạo dựng môi trường mạng ảo Amazon VPC (Virtual Private Cloud). Hình ảnh hiển thị quá trình định nghĩa dải IPv4 CIDR Block chính cho hệ thống mạng nội bộ, kích hoạt các tính năng phân giải tên miền quan trọng như DNS Resolution và DNS Hostnames, tạo nền tảng vững chắc để xây dựng các phân khu mạng con (Subnets) ở các bước tiếp theo.*
+   *Mô tả chi tiết: Màn hình quản lý Budgets Overview hiển thị hai ngân sách đầu tiên đã được tạo thành công: `My Monthly Cost Budget` (ngân sách theo dõi chi tiêu hàng tháng hạn mức $100) và `My-200$-budget` (ngân sách hạn mức $200), tất cả đều ở trạng thái hoạt động bình thường (Healthy) và chưa vượt ngưỡng cảnh báo.*
 
-3. **Cấu hình sơ đồ mạng Lab07 - Bước 2: Tạo Subnets & Thiết lập Route Tables**
+2. **Cấu hình AWS Budgets - Thêm ngân sách chi phí (Add cost budget)**
    ![Cấu hình Lab07 - Bước 2](/images/1-Worklog/Worklog_week1.2/Module%2001-Lab07-02.png)
-   *Mô tả chi tiết: Minh chứng quá trình phân chia dải mạng lớn thành các Subnets độc lập bao gồm Public Subnets (mạng công cộng) và Private Subnets (mạng riêng tư) trên các Availability Zones (Vùng khả dụng) khác nhau để đảm bảo tính sẵn sàng cao. Đồng thời, cấu hình bảng định tuyến (Route Tables), liên kết chính xác từng subnet với bảng định tuyến tương ứng nhằm kiểm soát và phân luồng dữ liệu truy cập một cách bảo mật.*
+   *Mô tả chi tiết: Minh chứng hệ thống thông báo tạo thành công ngân sách thứ ba mang tên `Cost budget` với hạn mức $200, nâng tổng số ngân sách giám sát lên 3 nhằm phân loại và kiểm soát chi tiêu chi tiết theo các mục tiêu sử dụng khác nhau.*
 
-4. **Cấu hình sơ đồ mạng Lab07 - Bước 3: Thiết lập Gateways & Kiểm tra kết nối Internet**
+3. **Cấu hình AWS Budgets - Xem chi tiết thông số ngân sách (Budget details)**
    ![Cấu hình Lab07 - Bước 3](/images/1-Worklog/Worklog_week1.2/Module%2001-Lab07-03.png)
-   *Mô tả chi tiết: Hình ảnh ghi nhận bước hoàn thiện sơ đồ mạng bằng cách cấu hình Internet Gateway (IGW) cho phép lưu lượng truy cập từ ngoài Internet vào Public Subnet, và thiết lập NAT Gateway để hỗ trợ các máy chủ EC2 ở Private Subnet tải cập nhật và kết nối Internet một chiều một cách an toàn. Đây là bước xác minh quan trọng chứng minh toàn bộ hệ thống định tuyến hoạt động ổn định và đúng thiết kế kiến trúc.*
+   *Mô tả chi tiết: Giao diện hiển thị chi tiết thông số của ngân sách `Cost budget` vừa tạo, bao gồm trạng thái sức khỏe ổn định (Healthy), lượng tài nguyên đã sử dụng (Usage amount 1.440 Hrs), chu kỳ giám sát hàng tháng (Monthly) và ngày bắt đầu áp dụng cấu hình (2026-05-01).*

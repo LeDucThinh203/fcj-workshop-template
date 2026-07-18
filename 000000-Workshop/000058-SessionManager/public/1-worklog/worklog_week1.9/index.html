@@ -12,21 +12,21 @@
     <title>Week 9 Worklog :: AWS System Manager</title>
 
     
-    <link href='../../css/nucleus.css?1784131935' rel="stylesheet">
-    <link href='../../css/fontawesome-all.min.css?1784131935' rel="stylesheet">
-    <link href='../../css/hybrid.css?1784131935' rel="stylesheet">
-    <link href='../../css/featherlight.min.css?1784131935' rel="stylesheet">
-    <link href='../../css/perfect-scrollbar.min.css?1784131935' rel="stylesheet">
-    <link href='../../css/auto-complete.css?1784131935' rel="stylesheet">
-    <link href='../../css/atom-one-dark-reasonable.css?1784131935' rel="stylesheet">
-    <link href='../../css/theme.css?1784131935' rel="stylesheet">
-    <link href='../../css/hugo-theme.css?1784131935' rel="stylesheet">
+    <link href='../../css/nucleus.css?1784346776' rel="stylesheet">
+    <link href='../../css/fontawesome-all.min.css?1784346776' rel="stylesheet">
+    <link href='../../css/hybrid.css?1784346776' rel="stylesheet">
+    <link href='../../css/featherlight.min.css?1784346776' rel="stylesheet">
+    <link href='../../css/perfect-scrollbar.min.css?1784346776' rel="stylesheet">
+    <link href='../../css/auto-complete.css?1784346776' rel="stylesheet">
+    <link href='../../css/atom-one-dark-reasonable.css?1784346776' rel="stylesheet">
+    <link href='../../css/theme.css?1784346776' rel="stylesheet">
+    <link href='../../css/hugo-theme.css?1784346776' rel="stylesheet">
     
-    <link href='../../css/theme-workshop.css?1784131935' rel="stylesheet">
+    <link href='../../css/theme-workshop.css?1784346776' rel="stylesheet">
     
     
 
-    <script src='../../js/jquery-3.3.1.min.js?1784131935'></script>
+    <script src='../../js/jquery-3.3.1.min.js?1784346776'></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -57,14 +57,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="../../js/lunr.min.js?1784131935"></script>
-<script type="text/javascript" src="../../js/auto-complete.js?1784131935"></script>
+<script type="text/javascript" src="../../js/lunr.min.js?1784346776"></script>
+<script type="text/javascript" src="../../js/auto-complete.js?1784346776"></script>
 <script type="text/javascript">
     
         var baseurl = "http:\/\/localhost:1313\/fcj-workshop-template\/";
     
 </script>
-<script type="text/javascript" src="../../js/search.js?1784131935"></script>
+<script type="text/javascript" src="../../js/search.js?1784346776"></script>
 
     
   </div>
@@ -1476,10 +1476,10 @@
 
 	<h2 id="week-9-objectives">Week 9 Objectives:</h2>
 <ul>
-<li>Understand and practice deploying applications on Amazon ECS (Elastic Container Service) using Fargate, ALB, and Cloud Map.</li>
-<li>Learn and configure automated CI/CD pipelines using GitLab CI/CD, GitHub Actions, and AWS CodeBuild.</li>
-<li>Configure container monitoring with Amazon CloudWatch Container Insights and logging using AWS FireLens.</li>
-<li>Utilize AWS Security Hub to evaluate the overall security posture (Security Score) against AWS security standards.</li>
+<li>Learn and implement serverless operations automation using AWS Lambda and Amazon EventBridge to automatically start/stop EC2 instances based on schedules.</li>
+<li>Understand resource tagging strategies, AWS Resource Groups, and resource filtering.</li>
+<li>Configure ChatOps integration to route Lambda execution logs and operational alerts to Slack using Incoming Webhooks.</li>
+<li>Activate and configure AWS Security Hub to evaluate account security posture (CSPM - Cloud Security Posture Management).</li>
 </ul>
 <h2 id="tasks-to-be-carried-out-this-week">Tasks to be carried out this week:</h2>
 <table>
@@ -1495,42 +1495,42 @@
   <tbody>
       <tr>
           <td style="text-align: left">2</td>
-          <td style="text-align: left">- Learn concepts of Amazon ECS, Fargate, Task Definitions, and ECS Cluster operations</td>
+          <td style="text-align: left">- Learn basic concepts of AWS Lambda serverless computing and EventBridge scheduling triggers (cron jobs)<br>- Understand resource tagging, bulk tag editing via Tag Editor, and creating AWS Resource Groups</td>
           <td style="text-align: left">15/06/2026</td>
           <td style="text-align: left">15/06/2026</td>
-          <td style="text-align: left"><a href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/Welcome.html">Amazon ECS Developer Guide</a></td>
+          <td style="text-align: left"><a href="https://docs.aws.amazon.com/lambda/">AWS Lambda Developer Guide</a></td>
       </tr>
       <tr>
           <td style="text-align: left">3</td>
-          <td style="text-align: left">- <strong>Lab 16 (Part 1)</strong>: Configure VPC network, Subnets, Security Groups, and push Docker images to ECR/Docker Hub</td>
+          <td style="text-align: left">- <strong>Practice (Part 1)</strong>: Create a VPC, subnets, security groups, and launch EC2 instances to prepare the environment<br>- Create an IAM Role for Lambda with permissions to invoke EC2 actions and write logs to CloudWatch</td>
           <td style="text-align: left">16/06/2026</td>
           <td style="text-align: left">16/06/2026</td>
-          <td style="text-align: left"><a href="https://docs.aws.amazon.com/AmazonECR/latest/userguide/what-is-ecr.html">AWS ECR User Guide</a></td>
+          <td style="text-align: left"><a href="https://docs.aws.amazon.com/lambda/latest/dg/lambda-intro-execution-role.html">AWS Lambda IAM Permissions</a></td>
       </tr>
       <tr>
           <td style="text-align: left">4</td>
-          <td style="text-align: left">- <strong>Lab 16 (Part 2)</strong>: Create ECS Cluster, Task Definitions for Frontend/Backend, configure Target Groups, ALB, and launch ECS Services (Blue/Green for Backend &amp; Rolling Update for Frontend)</td>
+          <td style="text-align: left">- <strong>Practice (Part 2)</strong>: Implement Python Lambda code (boto3) to stop EC2 instances containing specific resource tags (e.g. <code>Environment=Dev</code>)</td>
           <td style="text-align: left">17/06/2026</td>
           <td style="text-align: left">17/06/2026</td>
-          <td style="text-align: left"><a href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/deployment-type-blue-green.html">AWS ECS Blue/Green Deployments</a></td>
+          <td style="text-align: left"><a href="https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/ec2.html">Boto3 EC2 Client Documentation</a></td>
       </tr>
       <tr>
           <td style="text-align: left">5</td>
-          <td style="text-align: left">- <strong>Lab 17 (Part 1)</strong>: Integrate automated CI/CD using GitLab Runner (set up IAM roles, variables, run pipeline) and GitHub Actions</td>
+          <td style="text-align: left">- <strong>Practice (Part 3)</strong>: Implement Python Lambda code (boto3) to start EC2 instances<br>- Configure Incoming Webhooks on Slack to generate a webhook URL endpoint</td>
           <td style="text-align: left">18/06/2026</td>
           <td style="text-align: left">18/06/2026</td>
-          <td style="text-align: left"><a href="https://docs.gitlab.com/ci/">GitLab CI/CD Docs</a><br> <a href="https://docs.github.com/en/actions">GitHub Actions Docs</a><br> <a href="https://docs.aws.amazon.com/codebuild/latest/userguide/welcome.html">AWS CodeBuild User Guide</a></td>
+          <td style="text-align: left"><a href="https://api.slack.com/messaging/webhooks">Slack Incoming Webhooks Guide</a></td>
       </tr>
       <tr>
           <td style="text-align: left">6</td>
-          <td style="text-align: left">- <strong>Lab 17 (Part 2)</strong>: Set up AWS CodeBuild for Frontend/Backend, configure Container Insights (CloudWatch) and logging via AWS FireLens to S3</td>
+          <td style="text-align: left">- <strong>Practice (Part 4)</strong>: Integrate the Slack webhook payload notification within the Lambda functions and verify manually</td>
           <td style="text-align: left">19/06/2026</td>
           <td style="text-align: left">19/06/2026</td>
-          <td style="text-align: left"><a href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/using_firelens.html">AWS Firelens Guide</a></td>
+          <td style="text-align: left"><a href="https://api.slack.com/messaging/webhooks">Sending Slack Messages with Lambda</a></td>
       </tr>
       <tr>
           <td style="text-align: left">7 - Sun</td>
-          <td style="text-align: left">- <strong>Lab 18</strong>: Enable AWS Security Hub, activate security standards, analyze the Security Score, and clean up resources</td>
+          <td style="text-align: left">- <strong>Practice (Part 5)</strong>: Enable AWS Security Hub and standard security posture management (CSPM) compliance benchmarks, check score, and clean up resources</td>
           <td style="text-align: left">20/06/2026</td>
           <td style="text-align: left">21/06/2026</td>
           <td style="text-align: left"><a href="https://docs.aws.amazon.com/securityhub/latest/userguide/what-is-securityhub.html">AWS Security Hub User Guide</a></td>
@@ -1539,11 +1539,10 @@
 </table>
 <h2 id="week-9-achievements">Week 9 Achievements:</h2>
 <ul>
-<li><strong>Amazon ECS (Fargate)</strong>: Successfully deployed a containerized architecture on ECS with independent Frontend and Backend services using Serverless compute.</li>
-<li><strong>Load Balancing &amp; Routing</strong>: Configured Application Load Balancers (ALB) to handle path-based routing, Blue/Green Deployment (via AWS CodeDeploy) for Backend, and Rolling Update for Frontend.</li>
-<li><strong>Multi-Platform CI/CD</strong>: Designed automation workflows using self-hosted GitLab Runner on EC2, GitHub Actions workflow secrets, and AWS CodeBuild project configurations.</li>
-<li><strong>Monitoring &amp; Log Routing</strong>: Enabled CloudWatch Container Insights metrics and deployed AWS Firelens (Fluent Bit) logs router sidecar to store container stdout/stderr logs in Amazon S3.</li>
-<li><strong>Security Auditing</strong>: Activated AWS Security Hub and obtained the security compliance score based on AWS Foundational Security Best Practices and CIS AWS Foundations Benchmark.</li>
+<li><strong>Serverless Automation</strong>: Successfully built a serverless scheduling solution using AWS Lambda (Python boto3) combined with EventBridge Scheduler rules to stop EC2 hosts at night and start them in the morning for cost optimization.</li>
+<li><strong>ChatOps Integration</strong>: Integrated AWS Lambda alerts with Slack channel notifications using Slack Incoming Webhooks to report VM operations in real-time.</li>
+<li><strong>Resource Management</strong>: Mastered bulk resource tagging using Tag Editor and logical grouping via AWS Resource Groups.</li>
+<li><strong>Security &amp; Optimization</strong>: Activated AWS Security Hub to evaluate compliance posture (CSPM) and performed thorough cleanup of all lab resources to optimize costs.</li>
 </ul>
 <h3 id="evidences">Evidences:</h3>
 <ol>
@@ -2368,19 +2367,19 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="../../js/clipboard.min.js?1784131935"></script>
-    <script src="../../js/perfect-scrollbar.min.js?1784131935"></script>
-    <script src="../../js/perfect-scrollbar.jquery.min.js?1784131935"></script>
-    <script src="../../js/jquery.sticky.js?1784131935"></script>
-    <script src="../../js/featherlight.min.js?1784131935"></script>
-    <script src="../../js/highlight.pack.js?1784131935"></script>
+    <script src="../../js/clipboard.min.js?1784346776"></script>
+    <script src="../../js/perfect-scrollbar.min.js?1784346776"></script>
+    <script src="../../js/perfect-scrollbar.jquery.min.js?1784346776"></script>
+    <script src="../../js/jquery.sticky.js?1784346776"></script>
+    <script src="../../js/featherlight.min.js?1784346776"></script>
+    <script src="../../js/highlight.pack.js?1784346776"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="../../js/modernizr.custom-3.6.0.js?1784131935"></script>
-    <script src="../../js/learn.js?1784131935"></script>
-    <script src="../../js/hugo-learn.js?1784131935"></script>
+    <script src="../../js/modernizr.custom-3.6.0.js?1784346776"></script>
+    <script src="../../js/learn.js?1784346776"></script>
+    <script src="../../js/hugo-learn.js?1784346776"></script>
 
-    <link href="../../mermaid/mermaid.css?1784131935" rel="stylesheet" />
-    <script src="../../mermaid/mermaid.js?1784131935"></script>
+    <link href="../../mermaid/mermaid.css?1784346776" rel="stylesheet" />
+    <script src="../../mermaid/mermaid.js?1784346776"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

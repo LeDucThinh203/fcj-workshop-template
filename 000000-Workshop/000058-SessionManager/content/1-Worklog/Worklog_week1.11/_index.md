@@ -8,28 +8,25 @@ pre: " <b> 1.11 </b> "
 ---
 
 ## Week 11 Objectives:
-- Practice deploying a CI/CD pipeline using AWS CodePipeline, CodeCommit, CodeBuild, and CodeDeploy.
-- Understand and configure AWS Storage Gateway to connect with on-premises environments.
-- Secure applications efficiently using AWS Web Application Firewall (WAF).
-- Manage AWS resources using Tags and Resource Groups.
+- Understand the core concepts of AWS Storage Gateway and hybrid cloud storage models.
+- Practice deploying and configuring AWS File Storage Gateway to connect on-premises storage infrastructure with Amazon S3 cloud storage.
+- Mount NFS/SMB File Shares from the Storage Gateway onto a Linux client (simulating an on-premises host).
 
 ## Tasks to be carried out this week:
 
 | Day | Task | Start Date | Completion Date | Reference Material |
 | :--- | :--- | :--- | :--- | :--- |
-| 2 | - **Practice**: Deploy applications to EC2 with AWS CodePipeline (Part 1)<br>+ Preparation (S3, Git, IAM roles)<br>+ Launch EC2 and install CodeDeploy Agent | 29/06/2026 | 29/06/2026 | <a href="https://docs.aws.amazon.com/codedeploy/latest/userguide/welcome.html" target="_blank">AWS CodeDeploy Guide</a> |
-| 3 | - **Practice**: Deploy applications to EC2 with AWS CodePipeline (Part 2)<br>+ Setup AWS CodeCommit, CodeBuild, CodeDeploy<br>+ Configure CodePipeline for CI/CD automation | 30/06/2026 | 30/06/2026 | <a href="https://docs.aws.amazon.com/codepipeline/latest/userguide/welcome.html" target="_blank">AWS CodePipeline Guide</a> |
-| 4 | - **Practice**: AWS Storage Gateway<br>+ Create S3 Bucket for Storage Gateway<br>+ Initialize Storage Gateway and File Shares<br>+ Mount File Shares on On-premises machine | 01/07/2026 | 01/07/2026 | <a href="https://docs.aws.amazon.com/storagegateway/" target="_blank">AWS Storage Gateway</a> |
-| 5 | - **Practice**: AWS Web Application Firewall (Part 1)<br>+ Deploy the sample Web App<br>+ Use AWS WAF, configure ACLs and Managed rules | 02/07/2026 | 02/07/2026 | <a href="https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html" target="_blank">AWS WAF Developer Guide</a> |
-| 6 | - **Practice**: AWS Web Application Firewall (Part 2)<br>+ Create Custom rules to block IP/Countries<br>+ Enable Logging and Testing | 03/07/2026 | 03/07/2026 | <a href="https://docs.aws.amazon.com/waf/latest/developerguide/aws-managed-rule-groups.html" target="_blank">AWS WAF Managed Rules</a> |
-| 7 - Sun | - **Practice**: Managing Resources Using Tags and Resource Groups<br>+ Use Tags on Console and CLI<br>+ Create and manage Resource Groups | 04/07/2026 | 05/07/2026 | <a href="https://docs.aws.amazon.com/tag-editor/latest/userguide/tagging.html" target="_blank">Tagging AWS resources</a><br><a href="https://docs.aws.amazon.com/ARG/latest/userguide/resource-groups.html" target="_blank">AWS Resource Groups</a> |
+| 2 | - Study the theoretical concepts of AWS Storage Gateway, its types, and hybrid cloud storage architectures | 29/06/2026 | 29/06/2026 | <a href="https://docs.aws.amazon.com/storagegateway/latest/userguide/WhatIsStorageGateway.html" target="_blank">AWS Storage Gateway Guide</a> |
+| 3 | - **Practice (Part 1)**: Create an Amazon S3 Bucket to act as the backend storage for the Storage Gateway | 30/06/2026 | 30/06/2026 | <a href="https://docs.aws.amazon.com/s3/" target="_blank">Amazon S3 Documentation</a> |
+| 4 | - **Practice (Part 2)**: Launch a Linux EC2 instance to simulate an on-premises client host | 01/07/2026 | 01/07/2026 | <a href="https://docs.aws.amazon.com/ec2/" target="_blank">Amazon EC2 User Guide</a> |
+| 5 | - **Practice (Part 3)**: Deploy and configure the AWS File Storage Gateway via the AWS Console | 02/07/2026 | 02/07/2026 | <a href="https://docs.aws.amazon.com/storagegateway/latest/userguide/CreatingAnAppliance.html" target="_blank">Creating a File Gateway</a> |
+| 6 | - **Practice (Part 4)**: Create a File Share on the Storage Gateway and associate it directly with the S3 bucket | 03/07/2026 | 03/07/2026 | <a href="https://docs.aws.amazon.com/storagegateway/latest/userguide/CreatingAFileShare.html" target="_blank">Creating a File Share</a> |
+| 7 - Sun | - **Practice (Part 5)**: Mount the NFS File Share onto the simulated Linux host (EC2 instance), verify data synchronization from the host to the S3 bucket<br>- Perform resource cleanup to prevent ongoing AWS charges | 04/07/2026 | 05/07/2026 | <a href="https://docs.aws.amazon.com/storagegateway/latest/userguide/mounting-file-share.html" target="_blank">Mounting a File Share</a> |
 
 ## Week 11 Achievements:
-- **Mastered CI/CD Pipeline on AWS**: Integrated services like CodeCommit, CodeBuild, CodeDeploy, and CodePipeline to fully automate application deployments.
-- **AWS Storage Gateway Configuration**: Successfully understood and configured AWS File Storage Gateway to connect on-premises storage to AWS S3.
-- **Web Application Security with WAF**: Deployed AWS WAF to secure web applications against attacks using Web ACLs and custom rules.
-- **Resource Management with Tags & Groups**: Learned how to effectively organize and manage AWS resources using Tags and Resource Groups.
-- **All Labs Completed**: Successfully completed all 4 practical labs as guided.
+- **AWS Storage Gateway Configuration**: Mastered hybrid cloud storage mechanisms and successfully configured AWS File Storage Gateway to link simulated on-premises file storage with AWS S3 using standard file sharing protocols.
+- **Hybrid Infrastructure Integration**: Successfully mounted NFS File Shares and verified seamless automated file synchronization between local and cloud environments.
+- **Cost Optimization**: Cleaned up all provisioned Storage Gateway resources, virtual hosts, and storage buckets to prevent ongoing monthly charges.
 
 ### Evidences:
 

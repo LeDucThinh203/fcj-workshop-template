@@ -12,21 +12,21 @@
     <title>Worklog Tuần 5 :: AWS System Manager</title>
 
     
-    <link href='../../../css/nucleus.css?1784131936' rel="stylesheet">
-    <link href='../../../css/fontawesome-all.min.css?1784131936' rel="stylesheet">
-    <link href='../../../css/hybrid.css?1784131936' rel="stylesheet">
-    <link href='../../../css/featherlight.min.css?1784131936' rel="stylesheet">
-    <link href='../../../css/perfect-scrollbar.min.css?1784131936' rel="stylesheet">
-    <link href='../../../css/auto-complete.css?1784131936' rel="stylesheet">
-    <link href='../../../css/atom-one-dark-reasonable.css?1784131936' rel="stylesheet">
-    <link href='../../../css/theme.css?1784131936' rel="stylesheet">
-    <link href='../../../css/hugo-theme.css?1784131936' rel="stylesheet">
+    <link href='../../../css/nucleus.css?1784347002' rel="stylesheet">
+    <link href='../../../css/fontawesome-all.min.css?1784347002' rel="stylesheet">
+    <link href='../../../css/hybrid.css?1784347002' rel="stylesheet">
+    <link href='../../../css/featherlight.min.css?1784347002' rel="stylesheet">
+    <link href='../../../css/perfect-scrollbar.min.css?1784347002' rel="stylesheet">
+    <link href='../../../css/auto-complete.css?1784347002' rel="stylesheet">
+    <link href='../../../css/atom-one-dark-reasonable.css?1784347002' rel="stylesheet">
+    <link href='../../../css/theme.css?1784347002' rel="stylesheet">
+    <link href='../../../css/hugo-theme.css?1784347002' rel="stylesheet">
     
-    <link href='../../../css/theme-workshop.css?1784131936' rel="stylesheet">
+    <link href='../../../css/theme-workshop.css?1784347002' rel="stylesheet">
     
     
 
-    <script src='../../../js/jquery-3.3.1.min.js?1784131936'></script>
+    <script src='../../../js/jquery-3.3.1.min.js?1784347002'></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -57,14 +57,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="../../../js/lunr.min.js?1784131936"></script>
-<script type="text/javascript" src="../../../js/auto-complete.js?1784131936"></script>
+<script type="text/javascript" src="../../../js/lunr.min.js?1784347002"></script>
+<script type="text/javascript" src="../../../js/auto-complete.js?1784347002"></script>
 <script type="text/javascript">
     
         var baseurl = "http:\/\/localhost:1313\/fcj-workshop-template\/\/vi";
     
 </script>
-<script type="text/javascript" src="../../../js/search.js?1784131936"></script>
+<script type="text/javascript" src="../../../js/search.js?1784347002"></script>
 
     
   </div>
@@ -197,13 +197,13 @@
  
   
     
-    <li data-nav-id="/vi/1-worklog/worklog_week1.4/" title="Worklog Tuáº§n 4" class="dd-item 
+    <li data-nav-id="/vi/1-worklog/worklog_week1.4/" title="Worklog Tuần 4" class="dd-item 
         
         
         
         ">
       <a href="../../../vi/1-worklog/worklog_week1.4/">
-           <b> 1.4 </b> Worklog Tuáº§n 4
+           <b> 1.4 </b> Worklog Tuần 4
           
             <i class="fas fa-check read-icon"></i>
           
@@ -1476,10 +1476,9 @@
 
 	<h2 id="mục-tiêu-tuần-5">Mục tiêu Tuần 5:</h2>
 <ul>
-<li>Nắm vững vòng đời của AWS S3: Lazy Loading, Transient Storage, Set Policies, Crossfeed Period.</li>
-<li>Hiểu vai trò của Application Load Balancer (ELB) trong việc phân phối lưu lượng truy cập và tính sẵn sàng cao.</li>
-<li>Phân biệt Auto Scaling Group của các EC2 instances.</li>
-<li>Hiểu tầm quan trọng của các kỹ thuật quản lý chi phí và giám sát chi tiêu tài nguyên.</li>
+<li>Hiểu rõ khái niệm và kiến trúc hoạt động của AWS Systems Manager (SSM) Session Manager để quản trị máy chủ từ xa an toàn.</li>
+<li>Nắm vững vai trò của VPC Endpoints (Interface Endpoints) trong việc kết nối riêng tư từ mạng nội bộ tới các dịch vụ AWS mà không qua định tuyến Internet.</li>
+<li>Hiểu cách NAT Gateway dịch chuyển địa chỉ IP và định tuyến lưu lượng đi ra ngoài (outbound-only) cho phân khu mạng Private Subnet.</li>
 </ul>
 <h2 id="công-việc-thực-hiện-trong-tuần-này">Công việc thực hiện trong tuần này:</h2>
 <table>
@@ -1495,28 +1494,28 @@
   <tbody>
       <tr>
           <td style="text-align: left">2</td>
-          <td style="text-align: left">- Học EC2 Auto Scaling (Lazy Storage, Set Policies, Crossfeed Period)<br>- Hiểu Static Website Hosting trên S3 và Route S3 làm bản sao lưu cho CloudFront<br>- Nghiên cứu về chủ đề quản lý chi phí của S3</td>
+          <td style="text-align: left">- Học lý thuyết về AWS Systems Manager (SSM) Session Manager<br>- Tìm hiểu về VPC Endpoints (Interface Endpoints và Gateway Endpoints)<br>- Tìm hiểu về NAT Gateway và cách hoạt động của nó trong Public Subnet để cung cấp Internet cho Private Subnet</td>
           <td style="text-align: left">18/05/2026</td>
           <td style="text-align: left">18/05/2026</td>
           <td style="text-align: left"><a href="https://cloudjourney.awsstudygroup.com/">https://cloudjourney.awsstudygroup.com/</a></td>
       </tr>
       <tr>
           <td style="text-align: left">3</td>
-          <td style="text-align: left">- <strong>Thực hành:</strong><br>  + Tạo một S3 bucket, cấu hình static website hosting<br>  + Cấu hình Static Website Hosting cho EC2 Management UI (S3 UI)<br>  + Tạo một Auto Scaling Group</td>
+          <td style="text-align: left">- <strong>Thực hành (Phần 1):</strong><br>  + Tạo VPC với các phân khu mạng Public Subnet và Private Subnet<br>  + Khởi tạo NAT Gateway trong Public Subnet và cấu hình Elastic IP<br>  + Cấu hình bảng định tuyến Route Table cho Private Subnets đi qua NAT Gateway để kết nối ra ngoài Internet một cách an toàn</td>
           <td style="text-align: left">19/05/2026</td>
           <td style="text-align: left">19/05/2026</td>
           <td style="text-align: left"><a href="https://cloudjourney.awsstudygroup.com/">https://cloudjourney.awsstudygroup.com/</a></td>
       </tr>
       <tr>
           <td style="text-align: left">4</td>
-          <td style="text-align: left">- <strong>Thực hành:</strong><br>  + Cấu hình Application Load Balancer<br>  + Cấu hình Auto Scaling Group<br>  + Cấu hình CloudFront với S3</td>
+          <td style="text-align: left">- <strong>Thực hành (Phần 2):</strong><br>  + Khởi tạo EC2 Instance chạy Linux trong Private Subnet (không gán Public IP)<br>  + Tạo và gán IAM Role cho EC2 Instance với các quyền cần thiết để giao tiếp với AWS Systems Manager (<code>AmazonSSMManagedInstanceCore</code>)<br>  + Cấu hình Security Group cho EC2 Instance (không mở cổng 22 SSH)</td>
           <td style="text-align: left">20/05/2026</td>
           <td style="text-align: left">20/05/2026</td>
           <td style="text-align: left"><a href="https://cloudjourney.awsstudygroup.com/">https://cloudjourney.awsstudygroup.com/</a></td>
       </tr>
       <tr>
           <td style="text-align: left">5</td>
-          <td style="text-align: left">- <strong>Thực hành:</strong><br>  + Kiểm tra Auto Scaling Group<br>  + Kiểm tra Application Load Balancer<br>  + Kiểm tra tích hợp CloudFront và S3<br>  + Kiểm tra ứng dụng quản lý EC2</td>
+          <td style="text-align: left">- <strong>Thực hành (Phần 3):</strong><br>  + Tạo các VPC Endpoints (<code>ssm</code>, <code>ssmmessages</code>, <code>ec2messages</code>) trong Private Subnet<br>  + Cấu hình Security Group cho các VPC Endpoints để cho phép kết nối từ EC2 Instance<br>  + Kiểm tra kết nối từ xa vào EC2 Instance trong Private Subnet qua SSM Session Manager mà không cần cổng SSH<br>  + Dọn dẹp tài nguyên để tránh phát sinh chi phí</td>
           <td style="text-align: left">21/05/2026</td>
           <td style="text-align: left">21/05/2026</td>
           <td style="text-align: left"><a href="https://cloudjourney.awsstudygroup.com/">https://cloudjourney.awsstudygroup.com/</a></td>
@@ -1526,47 +1525,15 @@
 <h3 id="thành-tựu-tuần-5">Thành tựu Tuần 5:</h3>
 <h4 id="lý-thuyết">Lý thuyết:</h4>
 <ul>
-<li>Nắm vững vòng đời của AWS S3: Lazy Loading, Transient Storage, Set Policies, Crossfeed Period.</li>
-<li>Hiểu vai trò của Application Load Balancer (ELB) trong việc phân phối lưu lượng truy cập và tính sẵn sàng cao.</li>
-<li>Phân biệt Auto Scaling Group của các EC2 instances.</li>
-<li>Hiểu tầm quan trọng của các kỹ thuật quản lý chi phí và giám sát chi tiêu tài nguyên.</li>
+<li>Hiểu rõ khái niệm và kiến trúc hoạt động của AWS Systems Manager (SSM) Session Manager để quản trị máy chủ từ xa an toàn.</li>
+<li>Nắm vững vai trò của VPC Endpoints (Interface Endpoints) trong việc kết nối riêng tư từ mạng nội bộ tới các dịch vụ AWS mà không qua định tuyến Internet.</li>
+<li>Hiểu cách NAT Gateway dịch chuyển địa chỉ IP và định tuyến lưu lượng đi ra ngoài (outbound-only) cho phân khu mạng Private Subnet.</li>
 </ul>
 <h4 id="thực-hành">Thực hành:</h4>
-<p>Tôi có thể sử dụng các dịch vụ AWS hiệu quả:</p>
 <ul>
-<li>Thành công xây dựng ứng dụng quản lý EC2 bằng Amazon EC2 Auto-Scaling với Elastic Load Balancing để đảm bảo tính sẵn sàng cao và tính linh hoạt.</li>
-<li>Tất cả các dịch vụ đã sử dụng:
-<ul>
-<li>Amazon VPC: Tạo một môi trường ảo biệt lập để triển khai các tài nguyên AWS.</li>
-<li>Application Load Balancer: Phân phối lưu lượng truy cập giữa các EC2 instances, cải thiện khả năng chịu lỗi của ứng dụng.</li>
-<li>Auto Scaling Group: Tự động co giãn các EC2 instances theo nhu cầu thực tế, tối ưu hóa chi phí.</li>
-<li>Amazon S3: Lưu trữ các tệp website tĩnh, hỗ trợ static website hosting.</li>
-<li>Amazon CloudFront: Cung cấp nội dung website tĩnh một cách nhanh chóng qua mạng lưới các điểm hiện diện toàn cầu của AWS.</li>
-<li>IAM: Quản lý quyền truy cập một cách an toàn cho các dịch vụ AWS.</li>
-</ul>
-</li>
-</ul>
-<p>Tạo VPC (CloudStack lab):</p>
-<ul>
-<li>Trong phòng thí nghiệm CloudFormation này, cấu hình các thông tin sau:
-<ul>
-<li>1 VPC với CIDR: 10.10.0.0/16</li>
-<li>2 Public Subnets với CIDR: 10.10.1.0/24, 10.10.2.0/24</li>
-<li>2 Private Subnets với CIDR: 10.10.3.0/24, 10.10.4.0/24</li>
-<li>1 Internet Gateway</li>
-<li>2 NAT Gateway</li>
-<li>2 Public Route Table</li>
-<li>2 Private Route Table</li>
-<li>Security Groups cho Application Load Balancer, Public EC2, Private EC2</li>
-<li>IAM Role cho EC2</li>
-<li>Launch Template</li>
-<li>Auto Scaling Group</li>
-<li>Application Load Balancer</li>
-<li>Target Group</li>
-<li>S3 Bucket</li>
-<li>CloudFront Distribution</li>
-</ul>
-</li>
+<li>Xây dựng thành công VPC mạng ảo với các phân khu mạng cô lập (Private Subnets) và NAT Gateway tại Public Subnet.</li>
+<li>Cấu hình bảng định tuyến Route Table cho Private Subnets đi qua NAT Gateway để kết nối ra ngoài Internet một cách an toàn.</li>
+<li>Thiết lập hoàn chỉnh các VPC Endpoints (<code>ssm</code>, <code>ssmmessages</code>, <code>ec2messages</code>) và kết nối thành công vào EC2 Instance trong Private Subnet qua SSM Session Manager mà không cần mở cổng SSH.</li>
 </ul>
 <h3 id="hình-ảnh-minh-chứng">Hình ảnh minh chứng:</h3>
 <ol>
@@ -2313,7 +2280,7 @@
 	 
 	 
 		
-			<a class="nav nav-prev" href="../../../vi/1-worklog/worklog_week1.4/" title="Worklog Tuáº§n 4"> <i class="fa fa-chevron-left"></i></a>
+			<a class="nav nav-prev" href="../../../vi/1-worklog/worklog_week1.4/" title="Worklog Tuần 4"> <i class="fa fa-chevron-left"></i></a>
 		
 		
 			<a class="nav nav-next" href="../../../vi/1-worklog/worklog_week1.6/" title="Worklog Tuần 6" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
@@ -2326,19 +2293,19 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="../../../js/clipboard.min.js?1784131936"></script>
-    <script src="../../../js/perfect-scrollbar.min.js?1784131936"></script>
-    <script src="../../../js/perfect-scrollbar.jquery.min.js?1784131936"></script>
-    <script src="../../../js/jquery.sticky.js?1784131936"></script>
-    <script src="../../../js/featherlight.min.js?1784131936"></script>
-    <script src="../../../js/highlight.pack.js?1784131936"></script>
+    <script src="../../../js/clipboard.min.js?1784347002"></script>
+    <script src="../../../js/perfect-scrollbar.min.js?1784347002"></script>
+    <script src="../../../js/perfect-scrollbar.jquery.min.js?1784347002"></script>
+    <script src="../../../js/jquery.sticky.js?1784347002"></script>
+    <script src="../../../js/featherlight.min.js?1784347002"></script>
+    <script src="../../../js/highlight.pack.js?1784347002"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="../../../js/modernizr.custom-3.6.0.js?1784131936"></script>
-    <script src="../../../js/learn.js?1784131936"></script>
-    <script src="../../../js/hugo-learn.js?1784131936"></script>
+    <script src="../../../js/modernizr.custom-3.6.0.js?1784347002"></script>
+    <script src="../../../js/learn.js?1784347002"></script>
+    <script src="../../../js/hugo-learn.js?1784347002"></script>
 
-    <link href="../../../mermaid/mermaid.css?1784131936" rel="stylesheet" />
-    <script src="../../../mermaid/mermaid.js?1784131936"></script>
+    <link href="../../../mermaid/mermaid.css?1784347002" rel="stylesheet" />
+    <script src="../../../mermaid/mermaid.js?1784347002"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

@@ -12,21 +12,21 @@
     <title>Week 10 Worklog :: AWS System Manager</title>
 
     
-    <link href='../../css/nucleus.css?1784131935' rel="stylesheet">
-    <link href='../../css/fontawesome-all.min.css?1784131935' rel="stylesheet">
-    <link href='../../css/hybrid.css?1784131935' rel="stylesheet">
-    <link href='../../css/featherlight.min.css?1784131935' rel="stylesheet">
-    <link href='../../css/perfect-scrollbar.min.css?1784131935' rel="stylesheet">
-    <link href='../../css/auto-complete.css?1784131935' rel="stylesheet">
-    <link href='../../css/atom-one-dark-reasonable.css?1784131935' rel="stylesheet">
-    <link href='../../css/theme.css?1784131935' rel="stylesheet">
-    <link href='../../css/hugo-theme.css?1784131935' rel="stylesheet">
+    <link href='../../css/nucleus.css?1784347607' rel="stylesheet">
+    <link href='../../css/fontawesome-all.min.css?1784347607' rel="stylesheet">
+    <link href='../../css/hybrid.css?1784347607' rel="stylesheet">
+    <link href='../../css/featherlight.min.css?1784347607' rel="stylesheet">
+    <link href='../../css/perfect-scrollbar.min.css?1784347607' rel="stylesheet">
+    <link href='../../css/auto-complete.css?1784347607' rel="stylesheet">
+    <link href='../../css/atom-one-dark-reasonable.css?1784347607' rel="stylesheet">
+    <link href='../../css/theme.css?1784347607' rel="stylesheet">
+    <link href='../../css/hugo-theme.css?1784347607' rel="stylesheet">
     
-    <link href='../../css/theme-workshop.css?1784131935' rel="stylesheet">
+    <link href='../../css/theme-workshop.css?1784347607' rel="stylesheet">
     
     
 
-    <script src='../../js/jquery-3.3.1.min.js?1784131935'></script>
+    <script src='../../js/jquery-3.3.1.min.js?1784347607'></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -57,14 +57,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="../../js/lunr.min.js?1784131935"></script>
-<script type="text/javascript" src="../../js/auto-complete.js?1784131935"></script>
+<script type="text/javascript" src="../../js/lunr.min.js?1784347607"></script>
+<script type="text/javascript" src="../../js/auto-complete.js?1784347607"></script>
 <script type="text/javascript">
     
         var baseurl = "http:\/\/localhost:1313\/fcj-workshop-template\/";
     
 </script>
-<script type="text/javascript" src="../../js/search.js?1784131935"></script>
+<script type="text/javascript" src="../../js/search.js?1784347607"></script>
 
     
   </div>
@@ -1476,9 +1476,9 @@
 
 	<h2 id="week-10-objectives">Week 10 Objectives:</h2>
 <ul>
-<li>Understand and configure VPC Peering to connect two separate VPC networks, configure routing, and set up Network ACLs (NACLs) for subnet-level stateless security control.</li>
-<li>Learn and deploy AWS Transit Gateway (TGW) to connect multiple VPCs in a Hub-and-Spoke model, simplifying large-scale network architecture.</li>
-<li>Implement serverless operations automation using AWS Lambda and Amazon EventBridge to automatically start/stop EC2 instances based on schedules and route execution logs/alerts to Slack.</li>
+<li>Understand and configure VPC Peering to connect two separate VPC networks, configure routing rules, and verify Cross-Peer DNS resolution.</li>
+<li>Set up and verify Network Access Control Lists (NACLs) for subnet-level stateless security filtering within VPCs.</li>
+<li>Learn and deploy AWS Transit Gateway (TGW) as a central cloud router to connect multiple VPCs in a Hub-and-Spoke model, simplifying large-scale network architecture.</li>
 </ul>
 <h2 id="tasks-to-be-carried-out-this-week">Tasks to be carried out this week:</h2>
 <table>
@@ -1494,7 +1494,7 @@
   <tbody>
       <tr>
           <td style="text-align: left">2</td>
-          <td style="text-align: left">- Learn concepts of VPC Peering and Network Access Control Lists (NACLs)<br>- <strong>Lab 19 (Part 1)</strong>: Set up baseline network environment using Cloudformation, create Security Groups and EC2s</td>
+          <td style="text-align: left">- Learn concepts of VPC Peering and Network Access Control Lists (NACLs)<br>- <strong>Lab 19 (Part 1)</strong>: Set up baseline network environment using CloudFormation, create Security Groups and EC2s</td>
           <td style="text-align: left">22/06/2026</td>
           <td style="text-align: left">22/06/2026</td>
           <td style="text-align: left"><a href="https://docs.aws.amazon.com/vpc/latest/peering/what-is-vpc-peering.html" target="_blank">VPC Peering Guide</a><br><a href="https://docs.aws.amazon.com/vpc/latest/userguide/vpc-network-acls.html" target="_blank">Network ACLs</a></td>
@@ -1508,41 +1508,39 @@
       </tr>
       <tr>
           <td style="text-align: left">4</td>
-          <td style="text-align: left">- Learn concepts of AWS Transit Gateway (TGW)<br>- <strong>Lab 20 (Part 1)</strong>: Set up 3 VPCs for demonstration, create Transit Gateway and configure VPC attachments</td>
+          <td style="text-align: left">- <strong>Lab 19 (Part 3)</strong>: Configure Network ACLs (NACLs) at the subnet level to filter ICMP and SSH traffic, verify stateless filtering behavior, and compare it with stateful Security Groups</td>
           <td style="text-align: left">24/06/2026</td>
           <td style="text-align: left">24/06/2026</td>
-          <td style="text-align: left"><a href="https://docs.aws.amazon.com/vpc/latest/tgw/what-is-transit-gateway.html" target="_blank">AWS Transit Gateway Guide</a></td>
+          <td style="text-align: left"><a href="https://docs.aws.amazon.com/vpc/latest/userguide/vpc-network-acls.html" target="_blank">Network ACLs</a></td>
       </tr>
       <tr>
           <td style="text-align: left">5</td>
-          <td style="text-align: left">- <strong>Lab 20 (Part 2)</strong>: Setup Transit Gateway Route Tables, add Routes to TGW Route Tables, and verify cross-VPC network connectivity</td>
+          <td style="text-align: left">- Learn AWS Transit Gateway (TGW) concepts and the advantages of a Hub-and-Spoke model<br>- <strong>Lab 20 (Part 1)</strong>: Set up 3 VPCs for demonstration using CloudFormation</td>
           <td style="text-align: left">25/06/2026</td>
           <td style="text-align: left">25/06/2026</td>
-          <td style="text-align: left"><a href="https://docs.aws.amazon.com/vpc/latest/tgw/tgw-route-tables.html" target="_blank">TGW Route Tables</a></td>
+          <td style="text-align: left"><a href="https://docs.aws.amazon.com/vpc/latest/tgw/what-is-transit-gateway.html" target="_blank">AWS Transit Gateway Guide</a></td>
       </tr>
       <tr>
           <td style="text-align: left">6</td>
-          <td style="text-align: left">- Learn AWS Lambda Serverless compute and EventBridge scheduling services<br>- <strong>Lab 22 (Part 1)</strong>: Set up IAM workshop, tag EC2 instances, and configure IAM Role for Lambda</td>
+          <td style="text-align: left">- <strong>Lab 20 (Part 2)</strong>: Create Transit Gateway and configure VPC attachments</td>
           <td style="text-align: left">26/06/2026</td>
           <td style="text-align: left">26/06/2026</td>
-          <td style="text-align: left"><a href="https://docs.aws.amazon.com/lambda/latest/dg/welcome.html" target="_blank">AWS Lambda Developer Guide</a><br><a href="https://docs.slack.dev/messaging/sending-messages-using-incoming-webhooks/" target="_blank">Slack Webhooks</a></td>
+          <td style="text-align: left"><a href="https://docs.aws.amazon.com/vpc/latest/tgw/tgw-vpc-attachments.html" target="_blank">Transit Gateway Attachments</a></td>
       </tr>
       <tr>
           <td style="text-align: left">7 - Sun</td>
-          <td style="text-align: left">- <strong>Lab 22 (Part 2)</strong>: Implement Lambda Python code (boto3) to start/stop EC2s and send alerts to Slack, schedule via EventBridge, and clean up resources</td>
+          <td style="text-align: left">- <strong>Lab 20 (Part 3)</strong>: Setup Transit Gateway Route Tables, add Routes to TGW Route Tables, and verify cross-VPC network connectivity<br>- Perform resource cleanup to prevent ongoing AWS charges</td>
           <td style="text-align: left">27/06/2026</td>
           <td style="text-align: left">28/06/2026</td>
-          <td style="text-align: left"><a href="https://docs.aws.amazon.com/boto3/latest/reference/services/ec2.html" target="_blank">Boto3 EC2 Client</a><br><a href="https://docs.aws.amazon.com/scheduler/latest/UserGuide/what-is-scheduler.html" target="_blank">EventBridge Scheduler</a></td>
+          <td style="text-align: left"><a href="https://docs.aws.amazon.com/vpc/latest/tgw/tgw-route-tables.html" target="_blank">TGW Route Tables</a></td>
       </tr>
   </tbody>
 </table>
 <h2 id="week-10-achievements">Week 10 Achievements:</h2>
 <ul>
 <li><strong>VPC Peering &amp; Security</strong>: Successfully established a private network link between two isolated VPCs; applied Network ACLs to control inbound/outbound packets and gained deep knowledge of stateless NACL behavior versus stateful Security Groups.</li>
-<li><strong>Transit Gateway Deployment</strong>: Implemented a centralized Hub-and-Spoke network interconnecting 3 VPCs using AWS Transit Gateway, eliminating the need for a complex full-mesh peering topology.</li>
-<li><strong>Serverless Automation</strong>: Built a serverless management solution using AWS Lambda (Python boto3) that reads instance resource tags, stopping development hosts at night and starting them before business hours.</li>
-<li><strong>ChatOps Integration</strong>: Integrated AWS Lambda alerts with Slack channel notifications using Incoming Webhooks for real-time operation status reporting.</li>
-<li><strong>Scheduled Operations</strong>: Configured Amazon EventBridge Scheduler (cron triggers) to automatically invoke Lambda functions at specific times.</li>
+<li><strong>Transit Gateway Deployment</strong>: Implemented a centralized Hub-and-Spoke network interconnecting 3 VPCs using AWS Transit Gateway, eliminating the need for a complex full-mesh peering topology and allowing scalable network expansion.</li>
+<li><strong>Cost Optimization</strong>: Performed a thorough cleanup of all networking and compute resources to prevent unexpected charges.</li>
 </ul>
 <h3 id="evidences">Evidences:</h3>
 <ol>
@@ -2365,19 +2363,19 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="../../js/clipboard.min.js?1784131935"></script>
-    <script src="../../js/perfect-scrollbar.min.js?1784131935"></script>
-    <script src="../../js/perfect-scrollbar.jquery.min.js?1784131935"></script>
-    <script src="../../js/jquery.sticky.js?1784131935"></script>
-    <script src="../../js/featherlight.min.js?1784131935"></script>
-    <script src="../../js/highlight.pack.js?1784131935"></script>
+    <script src="../../js/clipboard.min.js?1784347607"></script>
+    <script src="../../js/perfect-scrollbar.min.js?1784347607"></script>
+    <script src="../../js/perfect-scrollbar.jquery.min.js?1784347607"></script>
+    <script src="../../js/jquery.sticky.js?1784347607"></script>
+    <script src="../../js/featherlight.min.js?1784347607"></script>
+    <script src="../../js/highlight.pack.js?1784347607"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="../../js/modernizr.custom-3.6.0.js?1784131935"></script>
-    <script src="../../js/learn.js?1784131935"></script>
-    <script src="../../js/hugo-learn.js?1784131935"></script>
+    <script src="../../js/modernizr.custom-3.6.0.js?1784347607"></script>
+    <script src="../../js/learn.js?1784347607"></script>
+    <script src="../../js/hugo-learn.js?1784347607"></script>
 
-    <link href="../../mermaid/mermaid.css?1784131935" rel="stylesheet" />
-    <script src="../../mermaid/mermaid.js?1784131935"></script>
+    <link href="../../mermaid/mermaid.css?1784347607" rel="stylesheet" />
+    <script src="../../mermaid/mermaid.js?1784347607"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

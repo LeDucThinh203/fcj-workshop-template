@@ -12,21 +12,21 @@
     <title>Worklog Tuần 3 :: AWS System Manager</title>
 
     
-    <link href='../../../css/nucleus.css?1784131936' rel="stylesheet">
-    <link href='../../../css/fontawesome-all.min.css?1784131936' rel="stylesheet">
-    <link href='../../../css/hybrid.css?1784131936' rel="stylesheet">
-    <link href='../../../css/featherlight.min.css?1784131936' rel="stylesheet">
-    <link href='../../../css/perfect-scrollbar.min.css?1784131936' rel="stylesheet">
-    <link href='../../../css/auto-complete.css?1784131936' rel="stylesheet">
-    <link href='../../../css/atom-one-dark-reasonable.css?1784131936' rel="stylesheet">
-    <link href='../../../css/theme.css?1784131936' rel="stylesheet">
-    <link href='../../../css/hugo-theme.css?1784131936' rel="stylesheet">
+    <link href='../../../css/nucleus.css?1784346659' rel="stylesheet">
+    <link href='../../../css/fontawesome-all.min.css?1784346659' rel="stylesheet">
+    <link href='../../../css/hybrid.css?1784346659' rel="stylesheet">
+    <link href='../../../css/featherlight.min.css?1784346659' rel="stylesheet">
+    <link href='../../../css/perfect-scrollbar.min.css?1784346659' rel="stylesheet">
+    <link href='../../../css/auto-complete.css?1784346659' rel="stylesheet">
+    <link href='../../../css/atom-one-dark-reasonable.css?1784346659' rel="stylesheet">
+    <link href='../../../css/theme.css?1784346659' rel="stylesheet">
+    <link href='../../../css/hugo-theme.css?1784346659' rel="stylesheet">
     
-    <link href='../../../css/theme-workshop.css?1784131936' rel="stylesheet">
+    <link href='../../../css/theme-workshop.css?1784346659' rel="stylesheet">
     
     
 
-    <script src='../../../js/jquery-3.3.1.min.js?1784131936'></script>
+    <script src='../../../js/jquery-3.3.1.min.js?1784346659'></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -57,14 +57,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="../../../js/lunr.min.js?1784131936"></script>
-<script type="text/javascript" src="../../../js/auto-complete.js?1784131936"></script>
+<script type="text/javascript" src="../../../js/lunr.min.js?1784346659"></script>
+<script type="text/javascript" src="../../../js/auto-complete.js?1784346659"></script>
 <script type="text/javascript">
     
         var baseurl = "http:\/\/localhost:1313\/fcj-workshop-template\/\/vi";
     
 </script>
-<script type="text/javascript" src="../../../js/search.js?1784131936"></script>
+<script type="text/javascript" src="../../../js/search.js?1784346659"></script>
 
     
   </div>
@@ -197,13 +197,13 @@
  
   
     
-    <li data-nav-id="/vi/1-worklog/worklog_week1.4/" title="Worklog Tuáº§n 4" class="dd-item 
+    <li data-nav-id="/vi/1-worklog/worklog_week1.4/" title="Worklog Tuần 4" class="dd-item 
         
         
         
         ">
       <a href="../../../vi/1-worklog/worklog_week1.4/">
-           <b> 1.4 </b> Worklog Tuáº§n 4
+           <b> 1.4 </b> Worklog Tuần 4
           
             <i class="fas fa-check read-icon"></i>
           
@@ -1479,8 +1479,8 @@
 	<h2 id="mục-tiêu-tuần-3">Mục tiêu Tuần 3:</h2>
 <ul>
 <li>Tìm hiểu về dịch vụ Amazon EC2 trên AWS.</li>
-<li>Thực hành khởi tạo, cấu hình và quản lý EC2 Instances.</li>
-<li>Triển khai ứng dụng Node.js trên môi trường Linux và Windows.</li>
+<li>Thực hành khởi tạo, cấu hình và quản lý EC2 Instances trong Public Subnet và Private Subnet.</li>
+<li>Hiểu dịch vụ AWS IAM và thiết lập phân quyền bảo mật, bao gồm các cấu hình giới hạn chuyển đổi Role theo IP và thời gian.</li>
 </ul>
 <h2 id="công-việc-thực-hiện-trong-tuần-này">Công việc thực hiện trong tuần này:</h2>
 <table>
@@ -1503,38 +1503,38 @@
       </tr>
       <tr>
           <td style="text-align: left">3</td>
-          <td style="text-align: left">- Chuẩn bị môi trường EC2<br>+ Tạo VPC cho Linux<br>+ Tạo VPC cho Windows<br>+ Tạo Security Group cho các Instance Linux và Windows</td>
+          <td style="text-align: left">- Chuẩn bị môi trường EC2<br>+ Tạo VPC với Public Subnet và Private Subnet<br>+ Tạo Security Group mở các cổng thích hợp (cổng 22 cho SSH, cổng 80/443 cho Web Server)</td>
           <td style="text-align: left">05/05/2026</td>
           <td style="text-align: left">05/05/2026</td>
           <td style="text-align: left"><a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-security-groups.html">EC2 Security Groups</a><br>FCJ Lab</td>
       </tr>
       <tr>
           <td style="text-align: left">4</td>
-          <td style="text-align: left">- Khởi tạo EC2 Instance Windows<br>+ Tạo Windows Instance<br>+ Kết nối Remote Desktop vào Windows Instance</td>
+          <td style="text-align: left">- Khởi tạo EC2 Instance trong Public Subnet (EC2_Public)<br>+ Tạo Public EC2 Instance chạy Linux<br>+ Kiểm tra và kết nối SSH tới máy chủ Public</td>
           <td style="text-align: left">05/06/2026</td>
           <td style="text-align: left">05/06/2026</td>
-          <td style="text-align: left"><a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/concepts.html">EC2 Windows Guide</a><br>FCJ Lab</td>
+          <td style="text-align: left"><a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/concepts.html">EC2 Public Instance Guide</a><br>FCJ Lab</td>
       </tr>
       <tr>
           <td style="text-align: left">5</td>
-          <td style="text-align: left">- Khởi tạo EC2 Instance Linux<br>+ Tạo Linux Instance<br>+ Kết nối SSH vào Linux Instance<br>- Tìm hiểu thay đổi cấu hình EC2 và quản lý EBS Snapshot</td>
+          <td style="text-align: left">- Khởi tạo EC2 Instance trong Private Subnet (EC2_Private)<br>+ Tạo Private EC2 Instance chạy Linux<br>+ Cấu hình kết nối và bảo mật cho máy chủ Private</td>
           <td style="text-align: left">05/07/2026</td>
           <td style="text-align: left">05/07/2026</td>
-          <td style="text-align: left"><a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/concepts.html">EC2 Linux Guide</a><br>FCJ Lab</td>
+          <td style="text-align: left"><a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/concepts.html">EC2 Private Instance Guide</a><br>FCJ Lab</td>
       </tr>
       <tr>
           <td style="text-align: left">6</td>
-          <td style="text-align: left">- Thực hành nâng cao EC2<br>+ Tạo Custom AMI<br>+ Tạo Instance từ Custom AMI<br>+ Thực hành truy cập EC2 khi mất Key Pair</td>
+          <td style="text-align: left">- Tìm hiểu và cấu hình bảo mật IAM<br>+ Tạo IAM User và User Groups<br>+ Gán chính sách phân quyền và kiểm tra quyền hạn</td>
           <td style="text-align: left">05/08/2026</td>
           <td style="text-align: left">05/08/2026</td>
-          <td style="text-align: left"><a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AMIs.html">Amazon Machine Images (AMI)</a><br>FCJ Lab</td>
+          <td style="text-align: left"><a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/introduction.html">AWS IAM Basics</a><br>FCJ Lab</td>
       </tr>
       <tr>
           <td style="text-align: left">7 - Chủ nhật</td>
-          <td style="text-align: left">- Triển khai ứng dụng Node.js lên EC2<br>+ Cài đặt Server LAMP/XAMPP<br>+ Cài đặt Node.js trên Linux và Windows<br>+ Triển khai ứng dụng Node.js<br>- Tìm hiểu giới hạn tài nguyên sử dụng IAM</td>
+          <td style="text-align: left">- Triển khai các chính sách bảo mật nâng cao cho IAM Roles<br>+ Giới hạn chuyển đổi Role theo địa chỉ IP nguồn (SourceIp)<br>+ Giới hạn chuyển đổi Role theo khung giờ làm việc cố định (CurrentTime)</td>
           <td style="text-align: left">05/09/2026</td>
           <td style="text-align: left">05/10/2026</td>
-          <td style="text-align: left"><a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/iam-policies-for-amazon-ec2.html">IAM for Amazon EC2</a><br>FCJ Lab</td>
+          <td style="text-align: left"><a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use_switch-role-console.html">IAM Policies &amp; Switch Role</a><br>FCJ Lab</td>
       </tr>
   </tbody>
 </table>
@@ -2324,7 +2324,7 @@
 			<a class="nav nav-prev" href="../../../vi/1-worklog/worklog_week1.2/" title="Nhật ký Tuần 2"> <i class="fa fa-chevron-left"></i></a>
 		
 		
-			<a class="nav nav-next" href="../../../vi/1-worklog/worklog_week1.4/" title="Worklog Tuáº§n 4" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+			<a class="nav nav-next" href="../../../vi/1-worklog/worklog_week1.4/" title="Worklog Tuần 4" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
 		
 	
     </div>
@@ -2334,19 +2334,19 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="../../../js/clipboard.min.js?1784131936"></script>
-    <script src="../../../js/perfect-scrollbar.min.js?1784131936"></script>
-    <script src="../../../js/perfect-scrollbar.jquery.min.js?1784131936"></script>
-    <script src="../../../js/jquery.sticky.js?1784131936"></script>
-    <script src="../../../js/featherlight.min.js?1784131936"></script>
-    <script src="../../../js/highlight.pack.js?1784131936"></script>
+    <script src="../../../js/clipboard.min.js?1784346659"></script>
+    <script src="../../../js/perfect-scrollbar.min.js?1784346659"></script>
+    <script src="../../../js/perfect-scrollbar.jquery.min.js?1784346659"></script>
+    <script src="../../../js/jquery.sticky.js?1784346659"></script>
+    <script src="../../../js/featherlight.min.js?1784346659"></script>
+    <script src="../../../js/highlight.pack.js?1784346659"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="../../../js/modernizr.custom-3.6.0.js?1784131936"></script>
-    <script src="../../../js/learn.js?1784131936"></script>
-    <script src="../../../js/hugo-learn.js?1784131936"></script>
+    <script src="../../../js/modernizr.custom-3.6.0.js?1784346659"></script>
+    <script src="../../../js/learn.js?1784346659"></script>
+    <script src="../../../js/hugo-learn.js?1784346659"></script>
 
-    <link href="../../../mermaid/mermaid.css?1784131936" rel="stylesheet" />
-    <script src="../../../mermaid/mermaid.js?1784131936"></script>
+    <link href="../../../mermaid/mermaid.css?1784346659" rel="stylesheet" />
+    <script src="../../../mermaid/mermaid.js?1784346659"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

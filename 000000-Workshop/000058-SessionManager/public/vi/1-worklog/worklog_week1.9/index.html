@@ -12,21 +12,21 @@
     <title>Worklog Tuần 9 :: AWS System Manager</title>
 
     
-    <link href='../../../css/nucleus.css?1784131936' rel="stylesheet">
-    <link href='../../../css/fontawesome-all.min.css?1784131936' rel="stylesheet">
-    <link href='../../../css/hybrid.css?1784131936' rel="stylesheet">
-    <link href='../../../css/featherlight.min.css?1784131936' rel="stylesheet">
-    <link href='../../../css/perfect-scrollbar.min.css?1784131936' rel="stylesheet">
-    <link href='../../../css/auto-complete.css?1784131936' rel="stylesheet">
-    <link href='../../../css/atom-one-dark-reasonable.css?1784131936' rel="stylesheet">
-    <link href='../../../css/theme.css?1784131936' rel="stylesheet">
-    <link href='../../../css/hugo-theme.css?1784131936' rel="stylesheet">
+    <link href='../../../css/nucleus.css?1784347598' rel="stylesheet">
+    <link href='../../../css/fontawesome-all.min.css?1784347598' rel="stylesheet">
+    <link href='../../../css/hybrid.css?1784347598' rel="stylesheet">
+    <link href='../../../css/featherlight.min.css?1784347598' rel="stylesheet">
+    <link href='../../../css/perfect-scrollbar.min.css?1784347598' rel="stylesheet">
+    <link href='../../../css/auto-complete.css?1784347598' rel="stylesheet">
+    <link href='../../../css/atom-one-dark-reasonable.css?1784347598' rel="stylesheet">
+    <link href='../../../css/theme.css?1784347598' rel="stylesheet">
+    <link href='../../../css/hugo-theme.css?1784347598' rel="stylesheet">
     
-    <link href='../../../css/theme-workshop.css?1784131936' rel="stylesheet">
+    <link href='../../../css/theme-workshop.css?1784347598' rel="stylesheet">
     
     
 
-    <script src='../../../js/jquery-3.3.1.min.js?1784131936'></script>
+    <script src='../../../js/jquery-3.3.1.min.js?1784347598'></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -57,14 +57,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="../../../js/lunr.min.js?1784131936"></script>
-<script type="text/javascript" src="../../../js/auto-complete.js?1784131936"></script>
+<script type="text/javascript" src="../../../js/lunr.min.js?1784347598"></script>
+<script type="text/javascript" src="../../../js/auto-complete.js?1784347598"></script>
 <script type="text/javascript">
     
         var baseurl = "http:\/\/localhost:1313\/fcj-workshop-template\/\/vi";
     
 </script>
-<script type="text/javascript" src="../../../js/search.js?1784131936"></script>
+<script type="text/javascript" src="../../../js/search.js?1784347598"></script>
 
     
   </div>
@@ -197,13 +197,13 @@
  
   
     
-    <li data-nav-id="/vi/1-worklog/worklog_week1.4/" title="Worklog Tuáº§n 4" class="dd-item 
+    <li data-nav-id="/vi/1-worklog/worklog_week1.4/" title="Worklog Tuần 4" class="dd-item 
         
         
         
         ">
       <a href="../../../vi/1-worklog/worklog_week1.4/">
-           <b> 1.4 </b> Worklog Tuáº§n 4
+           <b> 1.4 </b> Worklog Tuần 4
           
             <i class="fas fa-check read-icon"></i>
           
@@ -1476,10 +1476,10 @@
 
 	<h2 id="mục-tiêu-tuần-9">Mục tiêu Tuần 9:</h2>
 <ul>
-<li>Hiểu và thực hành triển khai ứng dụng trên Amazon ECS (Elastic Container Service) sử dụng Fargate, ALB và Cloud Map.</li>
-<li>Học và cấu hình CI/CD pipeline tự động sử dụng GitLab CI/CD, GitHub Actions và AWS CodeBuild.</li>
-<li>Cấu hình giám sát container bằng Amazon CloudWatch Container Insights và ghi log sử dụng AWS FireLens.</li>
-<li>Sử dụng AWS Security Hub để đánh giá posture bảo mật tổng thể (Security Score) theo các tiêu chuẩn bảo mật AWS.</li>
+<li>Tìm hiểu cách tự động hóa vận hành serverless sử dụng AWS Lambda và Amazon EventBridge để khởi động và dừng EC2 instance tự động dựa trên lịch trình.</li>
+<li>Tìm hiểu cách gắn thẻ quản lý tài nguyên (Resource Tags), quản lý nhóm tài nguyên (Resource Groups) và lọc tài nguyên trên AWS.</li>
+<li>Cấu hình tích hợp thông báo vận hành (ChatOps) gửi trạng thái hoạt động của Lambda tới kênh Slack thông qua Incoming Webhooks.</li>
+<li>Kích hoạt và cấu hình AWS Security Hub để đánh giá posture bảo mật tài khoản (CSPM - Cloud Security Posture Management).</li>
 </ul>
 <h2 id="công-việc-thực-hiện-trong-tuần-này">Công việc thực hiện trong tuần này:</h2>
 <table>
@@ -1495,42 +1495,42 @@
   <tbody>
       <tr>
           <td style="text-align: left">2</td>
-          <td style="text-align: left">- Học các khái niệm Amazon ECS, Fargate, Task Definitions và các hoạt động ECS Cluster</td>
+          <td style="text-align: left">- Học lý thuyết về AWS Lambda và EventBridge scheduler<br>- Tìm hiểu về thiết lập Tags, Tag Editor và Resource Groups trên AWS</td>
           <td style="text-align: left">15/06/2026</td>
           <td style="text-align: left">15/06/2026</td>
-          <td style="text-align: left"><a href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/Welcome.html">Amazon ECS Developer Guide</a></td>
+          <td style="text-align: left"><a href="https://docs.aws.amazon.com/lambda/">AWS Lambda Developer Guide</a></td>
       </tr>
       <tr>
           <td style="text-align: left">3</td>
-          <td style="text-align: left">- <strong>Lab 16 (Phần 1)</strong>: Cấu hình mạng VPC, Subnets, Security Groups và đẩy Docker images lên ECR/Docker Hub</td>
+          <td style="text-align: left">- <strong>Thực hành (Phần 1)</strong>: Cấu hình mạng VPC, Subnets, Security Groups và khởi chạy các EC2 Instances để thử nghiệm<br>- Tạo IAM Role cho Lambda với các quyền truy cập EC2 và CloudWatch Logs</td>
           <td style="text-align: left">16/06/2026</td>
           <td style="text-align: left">16/06/2026</td>
-          <td style="text-align: left"><a href="https://docs.aws.amazon.com/AmazonECR/latest/userguide/what-is-ecr.html">AWS ECR User Guide</a></td>
+          <td style="text-align: left"><a href="https://docs.aws.amazon.com/lambda/latest/dg/lambda-intro-execution-role.html">AWS Lambda IAM Permissions</a></td>
       </tr>
       <tr>
           <td style="text-align: left">4</td>
-          <td style="text-align: left">- <strong>Lab 16 (Phần 2)</strong>: Tạo ECS Cluster, Task Definitions cho Frontend/Backend, cấu hình Target Groups, ALB và khởi chạy ECS Services (Blue/Green cho Backend &amp; Rolling Update cho Frontend)</td>
+          <td style="text-align: left">- <strong>Thực hành (Phần 2)</strong>: Viết code Python (boto3) trong AWS Lambda để tự động hóa dừng (Stop) các máy ảo EC2 có gắn thẻ tag chỉ định</td>
           <td style="text-align: left">17/06/2026</td>
           <td style="text-align: left">17/06/2026</td>
-          <td style="text-align: left"><a href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/deployment-type-blue-green.html">AWS ECS Blue/Green Deployments</a></td>
+          <td style="text-align: left"><a href="https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/ec2.html">Boto3 EC2 Client Documentation</a></td>
       </tr>
       <tr>
           <td style="text-align: left">5</td>
-          <td style="text-align: left">- <strong>Lab 17 (Phần 1)</strong>: Tích hợp CI/CD tự động sử dụng GitLab Runner (cấu hình IAM roles, variables, chạy pipeline) và GitHub Actions</td>
+          <td style="text-align: left">- <strong>Thực hành (Phần 3)</strong>: Viết code Python (boto3) trong AWS Lambda để tự động hóa khởi động (Start) các máy ảo EC2<br>- Cấu hình Incoming Webhooks trên Slack để làm endpoint nhận tin nhắn</td>
           <td style="text-align: left">18/06/2026</td>
           <td style="text-align: left">18/06/2026</td>
-          <td style="text-align: left"><a href="https://docs.gitlab.com/ci/">GitLab CI/CD Docs</a><br> <a href="https://docs.github.com/en/actions">GitHub Actions Docs</a><br> <a href="https://docs.aws.amazon.com/codebuild/latest/userguide/welcome.html">AWS CodeBuild User Guide</a></td>
+          <td style="text-align: left"><a href="https://api.slack.com/messaging/webhooks">Slack Incoming Webhooks Guide</a></td>
       </tr>
       <tr>
           <td style="text-align: left">6</td>
-          <td style="text-align: left">- <strong>Lab 17 (Phần 2)</strong>: Thiết lập AWS CodeBuild cho Frontend/Backend, cấu hình Container Insights (CloudWatch) và ghi log qua AWS FireLens lên S3</td>
+          <td style="text-align: left">- <strong>Thực hành (Phần 4)</strong>: Tích hợp mã nguồn gửi tin nhắn thông báo tự động từ Lambda tới Slack và kiểm tra kết quả</td>
           <td style="text-align: left">19/06/2026</td>
           <td style="text-align: left">19/06/2026</td>
-          <td style="text-align: left"><a href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/using_firelens.html">AWS Firelens Guide</a></td>
+          <td style="text-align: left"><a href="https://api.slack.com/messaging/webhooks">Sending Slack Messages with Lambda</a></td>
       </tr>
       <tr>
           <td style="text-align: left">7 - Chủ nhật</td>
-          <td style="text-align: left">- <strong>Lab 18</strong>: Kích hoạt AWS Security Hub, bật các tiêu chuẩn bảo mật, phân tích Security Score và dọn dẹp tài nguyên</td>
+          <td style="text-align: left">- <strong>Thực hành (Phần 5)</strong>: Kích hoạt AWS Security Hub CSPM, phân tích điểm số bảo mật của tài khoản và tiến hành dọn dẹp sạch sẽ tài nguyên sau thực hành</td>
           <td style="text-align: left">20/06/2026</td>
           <td style="text-align: left">21/06/2026</td>
           <td style="text-align: left"><a href="https://docs.aws.amazon.com/securityhub/latest/userguide/what-is-securityhub.html">AWS Security Hub User Guide</a></td>
@@ -1539,11 +1539,10 @@
 </table>
 <h2 id="thành-tựu-tuần-9">Thành tựu Tuần 9:</h2>
 <ul>
-<li><strong>Amazon ECS (Fargate)</strong>: Triển khai thành công kiến trúc container hóa trên ECS với các dịch vụ Frontend và Backend độc lập sử dụng tính năng Serverless compute.</li>
-<li><strong>Load Balancing &amp; Routing</strong>: Cấu hình Application Load Balancers (ALB) để xử lý routing dựa trên path, Blue/Green Deployment (thông qua AWS CodeDeploy) cho Backend và Rolling Update cho Frontend.</li>
-<li><strong>Multi-Platform CI/CD</strong>: Thiết kế các luồng tự động hóa sử dụng GitLab Runner tự quản trên EC2, GitHub Actions workflow secrets và các cấu hình dự án AWS CodeBuild.</li>
-<li><strong>Monitoring &amp; Log Routing</strong>: Kích hoạt các metrics CloudWatch Container Insights và triển khai AWS Firelens (Fluent Bit) logs router sidecar để lưu log stdout/stderr của container trên Amazon S3.</li>
-<li><strong>Security Auditing</strong>: Kích hoạt AWS Security Hub và đạt điểm tuân thủ bảo mật dựa trên AWS Foundational Security Best Practices và CIS AWS Foundations Benchmark.</li>
+<li><strong>Tự động hóa Serverless</strong>: Xây dựng thành công giải pháp tự động hóa bằng AWS Lambda (Python boto3) kết hợp EventBridge Scheduler để dừng các EC2 instances thử nghiệm vào buổi tối và bật lại vào ban ngày nhằm tối ưu chi phí.</li>
+<li><strong>Tích hợp ChatOps</strong>: Cấu hình thành công Slack Incoming Webhook để Lambda gửi tin nhắn cảnh báo trạng thái chạy/dừng máy ảo theo thời gian thực trực tiếp về kênh vận hành Slack.</li>
+<li><strong>Quản trị tài nguyên</strong>: Thành thạo việc gán thẻ (Tags) cho tài nguyên, sử dụng Tag Editor để chỉnh sửa tag hàng loạt và gom nhóm quản lý qua AWS Resource Groups.</li>
+<li><strong>Bảo mật và Tối ưu</strong>: Kích hoạt thành công AWS Security Hub để đánh giá điểm số tuân thủ bảo mật CSPM, đồng thời dọn dẹp triệt để các tài nguyên (EC2, Lambda, Security Hub, Logs) để tránh phát sinh chi phí ngoài ý muốn.</li>
 </ul>
 <h3 id="hình-ảnh-minh-chứng">Hình ảnh minh chứng:</h3>
 <ol>
@@ -2368,19 +2367,19 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="../../../js/clipboard.min.js?1784131936"></script>
-    <script src="../../../js/perfect-scrollbar.min.js?1784131936"></script>
-    <script src="../../../js/perfect-scrollbar.jquery.min.js?1784131936"></script>
-    <script src="../../../js/jquery.sticky.js?1784131936"></script>
-    <script src="../../../js/featherlight.min.js?1784131936"></script>
-    <script src="../../../js/highlight.pack.js?1784131936"></script>
+    <script src="../../../js/clipboard.min.js?1784347598"></script>
+    <script src="../../../js/perfect-scrollbar.min.js?1784347598"></script>
+    <script src="../../../js/perfect-scrollbar.jquery.min.js?1784347598"></script>
+    <script src="../../../js/jquery.sticky.js?1784347598"></script>
+    <script src="../../../js/featherlight.min.js?1784347598"></script>
+    <script src="../../../js/highlight.pack.js?1784347598"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="../../../js/modernizr.custom-3.6.0.js?1784131936"></script>
-    <script src="../../../js/learn.js?1784131936"></script>
-    <script src="../../../js/hugo-learn.js?1784131936"></script>
+    <script src="../../../js/modernizr.custom-3.6.0.js?1784347598"></script>
+    <script src="../../../js/learn.js?1784347598"></script>
+    <script src="../../../js/hugo-learn.js?1784347598"></script>
 
-    <link href="../../../mermaid/mermaid.css?1784131936" rel="stylesheet" />
-    <script src="../../../mermaid/mermaid.js?1784131936"></script>
+    <link href="../../../mermaid/mermaid.css?1784347598" rel="stylesheet" />
+    <script src="../../../mermaid/mermaid.js?1784347598"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

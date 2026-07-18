@@ -12,21 +12,21 @@
     <title>Week 1 Worklog :: AWS System Manager</title>
 
     
-    <link href='../../css/nucleus.css?1784131935' rel="stylesheet">
-    <link href='../../css/fontawesome-all.min.css?1784131935' rel="stylesheet">
-    <link href='../../css/hybrid.css?1784131935' rel="stylesheet">
-    <link href='../../css/featherlight.min.css?1784131935' rel="stylesheet">
-    <link href='../../css/perfect-scrollbar.min.css?1784131935' rel="stylesheet">
-    <link href='../../css/auto-complete.css?1784131935' rel="stylesheet">
-    <link href='../../css/atom-one-dark-reasonable.css?1784131935' rel="stylesheet">
-    <link href='../../css/theme.css?1784131935' rel="stylesheet">
-    <link href='../../css/hugo-theme.css?1784131935' rel="stylesheet">
+    <link href='../../css/nucleus.css?1784348256' rel="stylesheet">
+    <link href='../../css/fontawesome-all.min.css?1784348256' rel="stylesheet">
+    <link href='../../css/hybrid.css?1784348256' rel="stylesheet">
+    <link href='../../css/featherlight.min.css?1784348256' rel="stylesheet">
+    <link href='../../css/perfect-scrollbar.min.css?1784348256' rel="stylesheet">
+    <link href='../../css/auto-complete.css?1784348256' rel="stylesheet">
+    <link href='../../css/atom-one-dark-reasonable.css?1784348256' rel="stylesheet">
+    <link href='../../css/theme.css?1784348256' rel="stylesheet">
+    <link href='../../css/hugo-theme.css?1784348256' rel="stylesheet">
     
-    <link href='../../css/theme-workshop.css?1784131935' rel="stylesheet">
+    <link href='../../css/theme-workshop.css?1784348256' rel="stylesheet">
     
     
 
-    <script src='../../js/jquery-3.3.1.min.js?1784131935'></script>
+    <script src='../../js/jquery-3.3.1.min.js?1784348256'></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -57,14 +57,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="../../js/lunr.min.js?1784131935"></script>
-<script type="text/javascript" src="../../js/auto-complete.js?1784131935"></script>
+<script type="text/javascript" src="../../js/lunr.min.js?1784348256"></script>
+<script type="text/javascript" src="../../js/auto-complete.js?1784348256"></script>
 <script type="text/javascript">
     
         var baseurl = "http:\/\/localhost:1313\/fcj-workshop-template\/";
     
 </script>
-<script type="text/javascript" src="../../js/search.js?1784131935"></script>
+<script type="text/javascript" src="../../js/search.js?1784348256"></script>
 
     
   </div>
@@ -1442,7 +1442,14 @@
     <div class="wrapper">
 <nav id="TableOfContents">
   <ul>
+    <li><a href="#week-1-objectives">Week 1 Objectives:</a></li>
     <li><a href="#tasks-to-be-carried-out-this-week">Tasks to be carried out this week:</a></li>
+    <li><a href="#week-1-achievements">Week 1 Achievements:</a>
+      <ul>
+        <li><a href="#theory">Theory:</a></li>
+        <li><a href="#practice">Practice:</a></li>
+      </ul>
+    </li>
   </ul>
 </nav>
     </div>
@@ -1468,9 +1475,10 @@
 
 
 
-	<ul>
+	<h2 id="week-1-objectives">Week 1 Objectives:</h2>
+<ul>
 <li>Connect and get acquainted with members of First Cloud Journey.</li>
-<li>Understand basic AWS services, how to use the console &amp; CLI.</li>
+<li>Study basic AWS service concepts and read documentation on the AWS Management Console &amp; AWS CLI.</li>
 </ul>
 <h2 id="tasks-to-be-carried-out-this-week">Tasks to be carried out this week:</h2>
 <table>
@@ -1493,41 +1501,52 @@
       </tr>
       <tr>
           <td style="text-align: left">3</td>
-          <td style="text-align: left">- Learn about AWS and its service categories<br>  + Compute<br>  + Storage<br>  + Networking<br>  + Database<br>  + &hellip;</td>
+          <td style="text-align: left">- Learn about cloud computing theory and AWS service categories:<br>  + Compute (EC2, Lambda)<br>  + Storage (S3, EBS)<br>  + Networking (VPC, Route 53)<br>  + Database (RDS, DynamoDB)</td>
           <td style="text-align: left">21/04/2026</td>
           <td style="text-align: left">21/04/2026</td>
-          <td style="text-align: left"><a href="https://cloudjourney.awsstudygroup.com/">https://cloudjourney.awsstudygroup.com/</a></td>
+          <td style="text-align: left"><a href="https://docs.aws.amazon.com/whitepapers/latest/aws-overview/introduction.html">AWS Cloud Concepts</a></td>
       </tr>
       <tr>
           <td style="text-align: left">4</td>
-          <td style="text-align: left">- Create an AWS Free Tier account<br>- Learn about AWS Console &amp; AWS CLI<br>- <strong>Practice:</strong><br>  + Create an AWS account<br>  + Install and configure AWS CLI<br>  + Learn how to use AWS CLI</td>
+          <td style="text-align: left">- Study AWS Free Tier account policies<br>- Research AWS Management Console and AWS CLI documentation:<br>  + Read guides on AWS account registration procedures<br>  + Study AWS CLI installation and configuration workflows for different OS</td>
           <td style="text-align: left">22/04/2026</td>
           <td style="text-align: left">22/04/2026</td>
-          <td style="text-align: left"><a href="https://cloudjourney.awsstudygroup.com/">https://cloudjourney.awsstudygroup.com/</a></td>
+          <td style="text-align: left"><a href="https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html">Installing the AWS CLI</a></td>
       </tr>
       <tr>
           <td style="text-align: left">5</td>
-          <td style="text-align: left">- Learn the basics of EC2:<br>  + Instance types<br>  + AMI<br>  + EBS<br>  + &hellip;<br>- Explore methods for remotely connecting to EC2 via SSH<br>- Learn about Elastic IP</td>
+          <td style="text-align: left">- Learn the theoretical basics of Amazon EC2:<br>  + Understand Instance types, AMI, Key Pair, and EBS Volumes/Snapshots<br>  + Study methods for remotely connecting to EC2 via SSH<br>  + Learn about Elastic IP functions</td>
           <td style="text-align: left">23/04/2026</td>
           <td style="text-align: left">23/04/2026</td>
-          <td style="text-align: left"><a href="https://cloudjourney.awsstudygroup.com/">https://cloudjourney.awsstudygroup.com/</a></td>
+          <td style="text-align: left"><a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/concepts.html">Amazon EC2 Overview</a></td>
       </tr>
       <tr>
           <td style="text-align: left">6</td>
-          <td style="text-align: left">- <strong>Practice:</strong><br>  + Create an EC2 instance<br>  + Connect via SSH<br>  + Attach an EBS volume</td>
+          <td style="text-align: left">- Read documentation on:<br>  + Launching EC2 instances via Console and CLI<br>  + Connecting to instances via SSH using private keys<br>  + Mounting and configuring EBS volumes</td>
           <td style="text-align: left">24/04/2026</td>
           <td style="text-align: left">24/04/2026</td>
-          <td style="text-align: left"><a href="https://cloudjourney.awsstudygroup.com/">https://cloudjourney.awsstudygroup.com/</a></td>
+          <td style="text-align: left"><a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-lifecycle.html">Amazon EC2 Instance Lifecycle</a></td>
       </tr>
       <tr>
           <td style="text-align: left">7 - Sun</td>
-          <td style="text-align: left">- <strong>Advanced practice:</strong><br>  + Recreate the EC2 instance and configure the Security Group<br>  + Connect via SSH and install a Web Server (Apache/Nginx)<br>  + Deploy a simple website and access it through the Public IP<br>  + Learn and experiment with AWS S3 (create a bucket, upload files)</td>
+          <td style="text-align: left">- Conduct advanced theoretical research:<br>  + Study Security Group configurations and port management best practices<br>  + Learn the setup logic for Web Servers (Apache/Nginx) on Linux<br>  + Understand Amazon S3 storage architecture (buckets, objects, and permissions)</td>
           <td style="text-align: left">25/04/2026</td>
           <td style="text-align: left">26/04/2026</td>
-          <td style="text-align: left"><a href="https://cloudjourney.awsstudygroup.com/">https://cloudjourney.awsstudygroup.com/</a></td>
+          <td style="text-align: left"><a href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/Welcome.html">Amazon S3 Basics</a></td>
       </tr>
   </tbody>
 </table>
+<h2 id="week-1-achievements">Week 1 Achievements:</h2>
+<h3 id="theory">Theory:</h3>
+<ul>
+<li>Gained a solid understanding of cloud computing fundamentals and AWS core services (Compute, Storage, Database, Networking).</li>
+<li>Acquired knowledge about security authentication and resource management via the AWS Console and CLI.</li>
+<li>Learned the operating principles of Amazon EC2 virtual servers and Amazon S3 object storage.</li>
+</ul>
+<h3 id="practice">Practice:</h3>
+<ul>
+<li>The first week was dedicated entirely to literature review, conceptual studies, and console walks. No hands-on resources were provisioned or modified on the AWS platform.</li>
+</ul>
 
 
 
@@ -2265,19 +2284,19 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="../../js/clipboard.min.js?1784131935"></script>
-    <script src="../../js/perfect-scrollbar.min.js?1784131935"></script>
-    <script src="../../js/perfect-scrollbar.jquery.min.js?1784131935"></script>
-    <script src="../../js/jquery.sticky.js?1784131935"></script>
-    <script src="../../js/featherlight.min.js?1784131935"></script>
-    <script src="../../js/highlight.pack.js?1784131935"></script>
+    <script src="../../js/clipboard.min.js?1784348256"></script>
+    <script src="../../js/perfect-scrollbar.min.js?1784348256"></script>
+    <script src="../../js/perfect-scrollbar.jquery.min.js?1784348256"></script>
+    <script src="../../js/jquery.sticky.js?1784348256"></script>
+    <script src="../../js/featherlight.min.js?1784348256"></script>
+    <script src="../../js/highlight.pack.js?1784348256"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="../../js/modernizr.custom-3.6.0.js?1784131935"></script>
-    <script src="../../js/learn.js?1784131935"></script>
-    <script src="../../js/hugo-learn.js?1784131935"></script>
+    <script src="../../js/modernizr.custom-3.6.0.js?1784348256"></script>
+    <script src="../../js/learn.js?1784348256"></script>
+    <script src="../../js/hugo-learn.js?1784348256"></script>
 
-    <link href="../../mermaid/mermaid.css?1784131935" rel="stylesheet" />
-    <script src="../../mermaid/mermaid.js?1784131935"></script>
+    <link href="../../mermaid/mermaid.css?1784348256" rel="stylesheet" />
+    <script src="../../mermaid/mermaid.js?1784348256"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>
