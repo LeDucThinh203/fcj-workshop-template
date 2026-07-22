@@ -10,8 +10,9 @@ Demo / Link Deploy Web: https://d3imp0j8sdburp.cloudfront.net
 
 Tài khoản Admin:
 
-Account: leducthinh203 \n
+Account: leducthinh203 
 Password: Admin123@
+
 Tài khoản User: Đăng ký miễn phí tại trang web
 {{% notice info "Link Demo Frontend (FE)" %}}
 🎬 **Demo Frontend (FE):** Truy cập [Thư mục Demo FE trên Google Drive](https://drive.google.com/drive/folders/1RLwMvlmJNH05ot-FZzCE_2U7c10_8zqz?usp=sharing) để xem video và hình ảnh demo giao diện Web Dashboard.
