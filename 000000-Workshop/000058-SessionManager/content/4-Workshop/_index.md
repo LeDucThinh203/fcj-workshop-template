@@ -10,7 +10,7 @@ Demo / Link Deploy Web: https://d3imp0j8sdburp.cloudfront.net
 
 Tài khoản Admin:
 
-Email: leducthinh203
+Account: leducthinh203 \n
 Password: Admin123@
 Tài khoản User: Đăng ký miễn phí tại trang web
 {{% notice info "Link Demo Frontend (FE)" %}}
