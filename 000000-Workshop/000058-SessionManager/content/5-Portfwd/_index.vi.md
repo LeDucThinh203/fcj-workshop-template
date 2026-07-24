@@ -59,6 +59,7 @@ pre : " <b> 5. </b> "
 ### 📅 Sự kiện Offline ngày 11/07/2026
 
 ![event ngày Saturday, July 11, 2026](/images/event_july11.png)
+![selfie event ngày Saturday, July 11, 2026](/images/Event_July11_selfie.jpg)
 
 {{% notice info %}}
 **📍 Chi tiết tham dự:**

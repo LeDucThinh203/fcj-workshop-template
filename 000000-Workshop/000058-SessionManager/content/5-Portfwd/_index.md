@@ -59,6 +59,7 @@ pre : " <b> 5. </b> "
 ### 📅 Offline Event on July 11, 2026
 
 ![event ngày Saturday, July 11, 2026](/images/event_july11.png)
+![selfie event ngày Saturday, July 11, 2026](/images/Event_July11_selfie.jpg)
 
 {{% notice info %}}
 **📍 Attendance Details:**
