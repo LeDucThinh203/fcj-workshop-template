@@ -6,23 +6,24 @@ chapter : false
 pre : " <b> 3.3. </b> "
 ---
 
-Phần này mô tả chi tiết các đường ống dữ liệu (IoT Data Pipelines) thời gian thực được thiết kế và triển khai trên hạ tầng AWS Serverless, kết nối trực tiếp các thiết bị biên ESP32 với **Nền tảng Web App Smart Parking IoT** ([https://d3imp0j8sdburp.cloudfront.net](https://d3imp0j8sdburp.cloudfront.net)).
+Phần này mô tả chi tiết các đường ống dữ liệu (IoT Data Pipelines) thời gian thực và phân tích dự báo AI được thiết kế và triển khai trên hạ tầng AWS Serverless, kết nối trực tiếp các thiết bị biên ESP32 với **Nền tảng Web App Smart Parking IoT** ([https://d3imp0j8sdburp.cloudfront.net](https://d3imp0j8sdburp.cloudfront.net)).
 
-Đường ống dữ liệu đóng vai trò mạch máu thông tin của hệ thống, xử lý bất đồng bộ hai nhóm dữ liệu lớn: **Dữ liệu Hình ảnh phương tiện** (cho bài toán nhận diện biển số xe ANPR) và **Dữ liệu Cảm biến vị trí đỗ** (cho bài toán quản lý sơ đồ đỗ xe thời gian thực).
+Đường ống dữ liệu đóng vai trò mạch máu thông tin của hệ thống, xử lý bất đồng bộ các luồng dữ liệu lớn: **Dữ liệu Hình ảnh phương tiện** (ANPR), **Dữ liệu Cảm biến vị trí đỗ**, **Truyền thông Socket Chatbox qua AWS AppSync**, **Trợ lý AI Chatbot** và **Mô hình Lambda AI Dự báo Lưu lượng Xe 7 Ngày Tới**.
 
 ### 3.3.1. Tổng quan Kiến trúc Đường ống Dữ liệu
 Dữ liệu thu thập từ bãi đỗ xe trải qua chuỗi xử lý tự động hóa từ phần cứng biên đến giao diện người dùng trên Web App.
 
 **Sơ đồ tổng quát Luồng dữ liệu:**
-`ESP32 Edge Devices → AWS IoT Core / Amazon S3 → AWS Lambda Microservices → Amazon Rekognition / DynamoDB → API Gateway / CloudFront → Web App UI`.
+`ESP32 Edge Devices → AWS IoT Core / Amazon S3 → AWS Lambda Microservices (ANPR, AI Chatbot, AI Forecast) → Amazon Rekognition / DynamoDB → AWS AppSync (WebSockets) / API Gateway → Web App UI`.
 
-**Ba Luồng Dữ liệu Chính trên Hệ thống:**
+**Các Luồng Dữ liệu Chính trên Hệ thống:**
 
 | Luồng Dữ liệu | Đầu vào (Input) | Các Dịch vụ AWS Xử lý | Đầu ra trên Web App (Output) |
 |---|---|---|---|
 | **Image ANPR Pipeline** | Ảnh chụp từ ESP32-CAM | S3 Bucket, Lambda, Amazon Rekognition | Nhật ký xe ra/vào, biển số trích xuất & Ảnh hiển thị |
-| **Sensor Status Pipeline** | Payload MQTT từ ESP32 | AWS IoT Core, IoT Rule, Lambda, DynamoDB | Sơ đồ vị trí đỗ xanh/đỏ cập nhật thời gian thực |
-| **Web REST & AI Pipeline** | Yêu cầu HTTPS từ Web User | API Gateway, Cognito, Lambda, Lambda AI Service | Kết quả tra cứu lịch sử xe, câu trả lời Trợ lý AI |
+| **Sensor Status Pipeline** | Payload MQTT từ ESP32 | AWS IoT Core, IoT Rule, Lambda, DynamoDB, AppSync Subscription | Sơ đồ vị trí đỗ xanh/đỏ cập nhật thời gian thực qua WebSockets |
+| **AppSync WebSockets Chatbox** | Tin nhắn Socket từ Web Chatbox | AWS AppSync WebSockets, Lambda AI Chatbot, DynamoDB | Phản hồi trò chuyện thời gian thực cho khung Chatbox Web |
+| **AI 7-Day Traffic Forecast** | Lịch sử đỗ xe từ `VehicleLogs` | EventBridge Cron, Lambda AI Forecast, DynamoDB | Biểu đồ dự báo mật độ & lưu lượng xe 7 ngày tới trên Admin Dashboard |
 
 ### 3.3.2. Đường ống Xử lý Dữ liệu Hình ảnh (Image ANPR Pipeline)
 Luồng xử lý hình ảnh xe vào/ra bãi đỗ xe được tối ưu hóa để đạt tốc độ trích xuất biển số xe ngắn nhất:
@@ -49,17 +50,6 @@ smart-parking-vehicle-images/
     └── cam_ext_01_20260513_104520.jpg
 ```
 
-**Metadata đính kèm mỗi đối tượng hình ảnh:**
-```json
-{
-  "image_id": "cam_ent_01_20260513_091528.jpg",
-  "gate_id": "GATE_ENTRANCE_01",
-  "direction": "in",
-  "timestamp": "2026-05-13T09:15:28Z",
-  "s3_uri": "s3://smart-parking-vehicle-images/entrance/cam_ent_01_20260513_091528.jpg"
-}
-```
-
 ### 3.3.4. Xử lý Trực quan với Amazon Rekognition
 Hàm `Lambda Image Processing` gửi ảnh tới **Amazon Rekognition** để phát hiện các khối văn bản (Bounding Boxes) nằm trong vùng biển số xe:
 
@@ -73,41 +63,39 @@ def detect_license_plate(bucket, key):
         Image={'S3Object': {'Bucket': bucket, 'Name': key}}
     )
     text_detections = response['TextDetections']
-    # Thuật toán lọc định dạng biển số xe Việt Nam (VD: 51H-98765)
     for text in text_detections:
         if text['Type'] == 'LINE' and text['Confidence'] > 90.0:
             return text['DetectedText'], text['Confidence']
     return "UNKNOWN", 0.0
 ```
 
-### 3.3.5. Đường ống Xử lý Dữ liệu Cảm biến (Sensor Telemetry Pipeline)
+### 3.3.5. Đường ống Xử lý Dữ liệu Cảm biến & AWS AppSync Subscriptions
 Luồng dữ liệu trạng thái chỗ đỗ xe hoạt động liên tục theo thời gian thực:
 
 1. **Đọc Cảm biến:** ESP32 Cảm biến siêu âm đo khoảng cách tại ô đỗ `A01`.
 2. **Gửi tin nhắn MQTT:** Nếu trạng thái chuyển đổi từ `available` sang `occupied`, ESP32 publish payload JSON tới topic MQTT `parking/slots/A01/status`.
-3. **Chuyển hướng bởi AWS IoT Rule:** SQL Rule trên AWS IoT Core lọc tin nhắn:
-   ```sql
-   SELECT slot_id, status, distance_cm, timestamp 
-   FROM 'parking/slots/+/status'
-   ```
-4. **Cập nhật CSDL:** IoT Rule kích hoạt `Lambda Sensor Processing` cập nhật ngay lập tức dòng dữ liệu của slot `A01` trong bảng DynamoDB `ParkingSlots`.
-5. **Đồng bộ Web Dashboard:** Khi người dùng Web gọi API lấy sơ đồ bãi xe, dữ liệu mới nhất được phản hồi tức thì dưới 100ms.
+3. **Chuyển hướng bởi AWS IoT Rule:** SQL Rule trên AWS IoT Core lọc tin nhắn và kích hoạt `Lambda Sensor Processing`.
+4. **Cập nhật CSDL & Đẩy WebSockets:** Lambda cập nhật bảng DynamoDB `ParkingSlots` và gửi một **AWS AppSync Mutation**, tự động kích hoạt **GraphQL Subscription** (`onUpdateParkingSlot`).
+5. **Đồng bộ Web Dashboard:** Mọi trình duyệt Web đang mở sơ đồ đỗ xe sẽ tự động đổi màu ô đỗ `A01` qua kênh truyền WebSockets mà không cần F5 reload trang.
 
-### 3.3.6. Đường ống Truy vấn Web App & Trợ lý AI trên AWS Lambda
-Đối với các thao tác tương tác của người dùng trên giao diện Web App:
+### 3.3.6. Đường ống Chatbox WebSockets qua AWS AppSync & Lambda AI Chatbot
+Đối với phân hệ Chatbox tương tác thời gian thực:
 
-* **Tra cứu Lịch sử Xe:** Web App $\to$ API Gateway `GET /api/vehicle/logs?plate=51H-98765` $\to$ `Lambda API Backend` $\to$ DynamoDB Query $\to$ Phản hồi JSON danh sách lịch sử kèm link ảnh CloudFront.
-* **Tương tác Trợ lý AI:** Web Chat UI $\to$ API Gateway `POST /api/ai/chat` $\to$ `Lambda AI Service` $\to$ Xử lý thuật toán AI & tổng hợp dữ liệu từ DynamoDB $\to$ Phản hồi câu trả lời tự nhiên cho người dùng Web.
+1. **Gửi tin nhắn Socket:** Trình duyệt Web gửi GraphQL Mutation `sendMessage` qua kết nối **AWS AppSync WebSockets**.
+2. **Xử lý AI Backend:** AppSync định tuyến tin nhắn tới `Lambda AI Chatbot`, kích hoạt thuật toán phân tích intent và truy vấn dữ liệu từ DynamoDB.
+3. **Lưu nhật ký:** Tin nhắn hội thoại được ghi vào bảng DynamoDB `ChatMessages`.
+4. **Đẩy phản hồi tức thì:** AWS AppSync phát sự kiện Subscription `onNewChatMessage` truyền dữ liệu phản hồi ngược lại cho khung Chatbox trên Web App trong vài miligiây.
 
-### 3.3.7. Cơ chế Xử lý Lỗi & Dead Letter Queue (DLQ)
-Đường ống dữ liệu tích hợp sẵn các cơ chế chịu lỗi (Fault Tolerance):
-* Nếu hàm Lambda gặp sự cố khi gọi Amazon Rekognition, bản tin sự kiện sẽ được gửi vào **Amazon SQS Dead Letter Queue (DLQ)** để xử lý lại (Retry) mà không bị mất dữ liệu.
-* DynamoDB áp dụng chế độ tự động ghi bù (Exponential Backoff) khi gặp hiện tượng nghẽn mạng tạm thời.
+### 3.3.7. Đường ống Dữ liệu Mô hình AI Dự báo Lưu lượng Xe 7 Ngày Tới
+Phân hệ phân tích và dự báo xu hướng đỗ xe:
 
-### 3.3.8. Đồng bộ hóa Real-time & Cải thiện Trải nghiệm Người dùng
-Nhờ áp dụng đường ống dữ liệu bất đồng bộ AWS Serverless:
-* Toàn bộ thao tác cập nhật vị trí đỗ hay xe vào/ra bãi đỗ xe đều hiển thị trên Web App trong chưa đầy 2 giây.
-* Giao diện Web không bị khóa (non-blocking UI), mang lại trải nghiệm mượt mà như một ứng dụng Native App.
+1. **Thu thập Dữ liệu Lịch sử:** Hàm `Lambda AI 7-Day Forecast` chạy định kỳ (hoặc kích hoạt qua API) quét toàn bộ nhật ký xe ra vào trong 30 ngày từ bảng DynamoDB `VehicleLogs`.
+2. **Phân tích Chuỗi Thời gian (Time-series Forecasting):** Mô hình AI thực hiện thuật toán dự báo tính toán số lượng lượt xe dự kiến cho 7 ngày tiếp theo (Day +1 đến Day +7) theo từng khung giờ và khu vực đỗ.
+3. **Lưu trữ Kết quả Dự báo:** Kết quả được lưu vào bảng DynamoDB `TrafficForecasts`.
+4. **Trực quan hóa trên Admin Dashboard:** Giao diện Web App gọi API Gateway `GET /api/ai/forecast-7days` để lấy dữ liệu và hiển thị biểu đồ đường (Line Chart) xu hướng lưu lượng xe 7 ngày tới, giúp nhà quản lý chủ động điều phối nhân sự và vị trí đỗ.
+
+### 3.3.8. Cơ chế Xử lý Lỗi & Dead Letter Queue (DLQ)
+Đường ống dữ liệu tích hợp sẵn các cơ chế chịu lỗi (Fault Tolerance) với Amazon SQS Dead Letter Queues (DLQ) và DynamoDB exponential backoff.
 
 ### 3.3.9. Kết luận
-Đường ống dữ liệu IoT Data Pipeline đã triển khai thành công mô hình truyền tải dữ liệu đa kênh, an toàn và tốc độ cao. Sự kết hợp giữa các dịch vụ không máy chủ AWS đã biến các tín hiệu cảm biến và hình ảnh camera thô thành dữ liệu thông minh hiển thị trực quan trên **Nền tảng Web App Smart Parking IoT**.
+Đường ống dữ liệu IoT Data Pipeline kết hợp cùng **AWS AppSync WebSockets Chatbox**, **Lambda AI Chatbot** và **Mô hình Lambda AI Dự báo Lưu lượng Xe 7 Ngày Tới** đã kiến tạo nên một hệ thống truyền tải và phân tích dữ liệu đỗ xe thông minh hàng đầu.

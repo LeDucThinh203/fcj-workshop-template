@@ -8,7 +8,7 @@ pre : " <b> 3. </b> "
 
 # Nền tảng Website Smart Parking IoT trên AWS Serverless
 
-Hệ thống **Smart Parking IoT** là giải pháp toàn diện hỗ trợ giám sát bãi đỗ xe thông minh, tự động nhận diện biển số xe (ANPR) và tích hợp trợ lý ảo AI trên AWS Lambda. Hệ thống đã được nhóm nghiên cứu và triển khai thành công trên môi trường sản xuất của **AWS Serverless**.
+Hệ thống **Smart Parking IoT** là giải pháp toàn diện hỗ trợ giám sát bãi đỗ xe thông minh, tự động nhận diện biển số xe (ANPR), tích hợp **Trợ lý ảo AI Chatbot**, **Mô hình Lambda AI Dự báo Lưu lượng Xe 7 ngày tới** và **Khung Chatbox thời gian thực qua AWS AppSync WebSockets**. Hệ thống đã được nhóm nghiên cứu và triển khai thành công trên môi trường sản xuất của **AWS Serverless**.
 
 {{% notice tip "Thông Tin Truy Cập & Trải Nghiệm Trực Tuyến" %}}
 🌐 **Website CloudFront (Live Deploy):** [https://d3imp0j8sdburp.cloudfront.net](https://d3imp0j8sdburp.cloudfront.net)  
@@ -23,9 +23,9 @@ Chương này trình bày chi tiết về kiến trúc tổng thể, hạ tầng
 
 ### Các Phân Hệ Cốt Lõi:
 
-* **3.1. [AWS Core Infrastructure](3.1-aws-core-infrastructure/):** Hạ tầng Serverless cốt lõi bao gồm S3, DynamoDB, Lambda, API Gateway, AWS IoT Core, CloudFront và WAF được định nghĩa bằng AWS CDK (Infrastructure as Code).
+* **3.1. [AWS Core Infrastructure](3.1-aws-core-infrastructure/):** Hạ tầng Serverless cốt lõi bao gồm S3, DynamoDB, Lambda (Backend, ANPR, AI Chatbot, AI Dự báo 7 ngày), API Gateway, AWS AppSync (GraphQL & WebSockets Chatbox), AWS IoT Core, CloudFront và WAF được định nghĩa bằng AWS CDK.
 * **3.2. [ESP32 Edge Devices](3.2-esp32-edge-devices/):** Các thiết bị biên phần cứng (ESP32 Camera chụp ảnh xe cổng vào/ra và ESP32 cảm biến phát hiện vị trí đỗ) kết nối trực tiếp với AWS.
-* **3.3. [IoT Data Pipeline](3.3-iot-data-pipeline/):** Luồng truyền tải và xử lý dữ liệu thời gian thực giữa thiết bị biên, AWS Lambda, Amazon Rekognition (ANPR) và lưu trữ DynamoDB.
-* **3.4. [User Interface and Security](3.4-user-interface-and-security/):** Giao diện Web Dashboard hiện đại (Admin & User Portal), tích hợp trợ lý AI xây dựng trên AWS Lambda cùng kiến trúc bảo mật đa lớp với Amazon Cognito, CloudFront HTTPS và AWS WAF.
+* **3.3. [IoT Data Pipeline](3.3-iot-data-pipeline/):** Luồng truyền tải và xử lý dữ liệu thời gian thực giữa thiết bị biên, AWS Lambda, Amazon Rekognition (ANPR), AWS AppSync Subscriptions, mô hình AI Dự báo 7 ngày và lưu trữ DynamoDB.
+* **3.4. [User Interface and Security](3.4-user-interface-and-Security/):** Giao diện Web Dashboard hiện đại (Admin & User Portal), Biểu đồ AI Dự báo Lưu lượng Xe 7 ngày tới, Khung Chatbox thời gian thực qua AWS AppSync WebSockets, AI Chatbot Assistant cùng kiến trúc bảo mật đa lớp với Cognito, CloudFront HTTPS và WAF.
 * **3.5. [Monitoring and Management](3.5-monitoring-and-management/):** Hệ thống giám sát vận hành, nhật ký logs, cảnh báo sự cố với Amazon CloudWatch, theo dõi nhật ký bảo mật CloudTrail và quản lý ngân sách AWS Budgets.
-* **3.6. [System Testing and Optimization](3.6-system-testing-and-Optimization/):** Kết quả kiểm thử thực tế về độ trễ (<2s), độ chính xác nhận diện biển số (>95%), cùng các giải pháp tối ưu chi phí và hiệu năng vận hành.
+* **3.6. [System Testing and Optimization](3.6-system-testing-and-Optimization/):** Kết quả kiểm thử thực tế về độ trễ (<2s), độ chính xác nhận diện biển số (>95%), độ chính xác dự báo AI, cùng các giải pháp tối ưu chi phí và hiệu năng vận hành.
