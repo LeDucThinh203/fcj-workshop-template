@@ -366,19 +366,6 @@
                 href="http://localhost:1313/fcj-workshop-template/vi/4-workshop/"
                 />
   </url><url>
-    <loc>http://localhost:1313/fcj-workshop-template/vi/3-parkingiotsystemarchitecture/3.5-monitoring-and-management/</loc>
-    <lastmod>2026-05-13T00:00:00+00:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en-us"
-                href="http://localhost:1313/fcj-workshop-template/3-parkingiotsystemarchitecture/3.5-monitoring-and-management/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="vi"
-                href="http://localhost:1313/fcj-workshop-template/vi/3-parkingiotsystemarchitecture/3.5-monitoring-and-management/"
-                />
-  </url><url>
     <loc>http://localhost:1313/fcj-workshop-template/vi/5-portfwd/</loc>
     <lastmod>2026-05-13T00:00:00+00:00</lastmod>
     <xhtml:link
@@ -390,6 +377,19 @@
                 rel="alternate"
                 hreflang="vi"
                 href="http://localhost:1313/fcj-workshop-template/vi/5-portfwd/"
+                />
+  </url><url>
+    <loc>http://localhost:1313/fcj-workshop-template/vi/3-parkingiotsystemarchitecture/3.5-monitoring-and-management/</loc>
+    <lastmod>2026-05-13T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en-us"
+                href="http://localhost:1313/fcj-workshop-template/3-parkingiotsystemarchitecture/3.5-monitoring-and-management/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="vi"
+                href="http://localhost:1313/fcj-workshop-template/vi/3-parkingiotsystemarchitecture/3.5-monitoring-and-management/"
                 />
   </url><url>
     <loc>http://localhost:1313/fcj-workshop-template/vi/1-worklog/worklog_week1.5/</loc>

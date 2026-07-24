@@ -6,292 +6,108 @@ chapter : false
 pre : " <b> 3.3. </b> "
 ---
 
-Phần này mô tả cách thu thập, truyền tải, xử lý và lưu trữ dữ liệu trong Hệ thống IoT Bãi đỗ xe Thông minh. Luồng dữ liệu IoT kết nối các thiết bị ESP32 tại bãi đỗ xe với các dịch vụ AWS được sử dụng để xử lý, lưu trữ, nhận diện biển số, giám sát và hiển thị dữ liệu.
+Phần này mô tả chi tiết các đường ống dữ liệu (IoT Data Pipelines) thời gian thực được thiết kế và triển khai trên hạ tầng AWS Serverless, kết nối trực tiếp các thiết bị biên ESP32 với **Nền tảng Web App Smart Parking IoT** ([https://d3imp0j8sdburp.cloudfront.net](https://d3imp0j8sdburp.cloudfront.net)).
 
-Trong hệ thống Parking IoT, dữ liệu được chia thành hai nhóm chính:
-* **Dữ liệu hình ảnh:** được thu thập từ ESP32 Camera khi có xe ra hoặc vào bãi đỗ.
-* **Dữ liệu cảm biến:** được thu thập từ các thiết bị cảm biến ESP32 để phát hiện trạng thái của từng chỗ đỗ xe.
+Đường ống dữ liệu đóng vai trò mạch máu thông tin của hệ thống, xử lý bất đồng bộ hai nhóm dữ liệu lớn: **Dữ liệu Hình ảnh phương tiện** (cho bài toán nhận diện biển số xe ANPR) và **Dữ liệu Cảm biến vị trí đỗ** (cho bài toán quản lý sơ đồ đỗ xe thời gian thực).
 
-Sau khi dữ liệu được gửi đến AWS, nó sẽ được xử lý bởi AWS Lambda, lưu trữ trong Amazon S3 và Amazon DynamoDB, rồi hiển thị trên giao diện Web/App. Dữ liệu cũng có thể được sử dụng cho các tính năng dựa trên AI trong tương lai.
+### 3.3.1. Tổng quan Kiến trúc Đường ống Dữ liệu
+Dữ liệu thu thập từ bãi đỗ xe trải qua chuỗi xử lý tự động hóa từ phần cứng biên đến giao diện người dùng trên Web App.
 
-### 3.3.1. Tổng quan về Data Pipeline
-Luồng dữ liệu của hệ thống Parking IoT bao gồm nhiều bước xử lý, bắt đầu từ các thiết bị biên và kết thúc tại các dịch vụ AWS Cloud.
+**Sơ đồ tổng quát Luồng dữ liệu:**
+`ESP32 Edge Devices → AWS IoT Core / Amazon S3 → AWS Lambda Microservices → Amazon Rekognition / DynamoDB → API Gateway / CloudFront → Web App UI`.
 
-**Luồng dữ liệu tổng quát:**
-`ESP32 Camera / Cảm biến ESP32 → Dịch vụ AWS → Xử lý bằng Lambda → DynamoDB / S3 → Web/App`
+**Ba Luồng Dữ liệu Chính trên Hệ thống:**
 
-Hệ thống có ba luồng dữ liệu chính:
+| Luồng Dữ liệu | Đầu vào (Input) | Các Dịch vụ AWS Xử lý | Đầu ra trên Web App (Output) |
+|---|---|---|---|
+| **Image ANPR Pipeline** | Ảnh chụp từ ESP32-CAM | S3 Bucket, Lambda, Amazon Rekognition | Nhật ký xe ra/vào, biển số trích xuất & Ảnh hiển thị |
+| **Sensor Status Pipeline** | Payload MQTT từ ESP32 | AWS IoT Core, IoT Rule, Lambda, DynamoDB | Sơ đồ vị trí đỗ xanh/đỏ cập nhật thời gian thực |
+| **Web REST & AI Pipeline** | Yêu cầu HTTPS từ Web User | API Gateway, Cognito, Lambda, Lambda AI Service | Kết quả tra cứu lịch sử xe, câu trả lời Trợ lý AI |
 
-| Luồng dữ liệu | Mô tả |
-|-----------|-------------|
-| Luồng dữ liệu hình ảnh | ESP32 Camera chụp ảnh xe và tải lên Amazon S3 |
-| Luồng dữ liệu cảm biến | Cảm biến ESP32 gửi trạng thái chỗ đỗ xe đến AWS IoT Core |
-| Luồng truy vấn Web/App | Người dùng truy cập dữ liệu hệ thống thông qua API Gateway và Lambda |
+### 3.3.2. Đường ống Xử lý Dữ liệu Hình ảnh (Image ANPR Pipeline)
+Luồng xử lý hình ảnh xe vào/ra bãi đỗ xe được tối ưu hóa để đạt tốc độ trích xuất biển số xe ngắn nhất:
 
-Mỗi luồng dữ liệu được xử lý riêng biệt, nhưng kết quả sau cùng được lưu trữ tập trung tại DynamoDB để quản lý và hiển thị.
+1. **Khởi tạo:** Xe tiến vào vùng quét của cổng vào/ra, ESP32-CAM phát hiện và chụp ảnh.
+2. **Xin Presigned URL:** ESP32-CAM gửi request HTTP GET tới API Gateway `/api/camera/presigned-url`.
+3. **Cấp URL ngắn hạn:** Hàm `Lambda Presigned URL` khởi tạo link upload S3 có hiệu lực trong 5 phút.
+4. **Tải ảnh lên S3:** ESP32-CAM đẩy tập tin ảnh JPEG trực tiếp vào bucket `s3://smart-parking-vehicle-images/entrance/`.
+5. **Kích hoạt Sự kiện:** S3 tạo ra sự kiện `s3:ObjectCreated:Put` lập tức kích hoạt hàm `Lambda Image Processing`.
+6. **Nhận diện Biển số (ANPR):** Lambda truyền buffer ảnh sang **Amazon Rekognition** thông qua API `DetectText`.
+7. **Lưu trữ & Phản hồi:** Kết quả trích xuất chuỗi biển số (ví dụ `51H-98765`, confidence `98.2%`) được ghi vào DynamoDB table `VehicleLogs` và đồng bộ qua API đẩy tới Web Dashboard.
 
-### 3.3.2. Luồng Dữ liệu Hình ảnh từ ESP32 Camera
-Luồng dữ liệu hình ảnh được sử dụng để ghi nhận xe ra vào bãi đỗ và hỗ trợ nhận diện biển số xe.
+### 3.3.3. Cấu hình Thư mục & Metadata trong Amazon S3
+Hình ảnh được tổ chức có hệ thống trong S3 Bucket để phục vụ tra cứu hình ảnh trên Web App:
 
-Thay vì gửi hình ảnh trực tiếp qua Lambda, ESP32 Camera sẽ yêu cầu một Presigned URL từ API Gateway. Sau đó, thiết bị sẽ tải hình ảnh trực tiếp lên Amazon S3. Cách tiếp cận này giúp giảm tải cho Lambda và phù hợp hơn với các tệp hình ảnh có kích thước lớn.
-
-**Luồng tải hình ảnh:**
-`ESP32 Camera → API Gateway → Lambda tạo Presigned URL → Amazon S3`
-
-Sau khi hình ảnh được tải lên S3, hệ thống tiếp tục xử lý qua luồng sau:
-`Amazon S3 → Sự kiện S3 ObjectCreated → Lambda Image Processing → Amazon Rekognition → DynamoDB`
-
-**Các bước xử lý chi tiết:**
-1. ESP32 Camera phát hiện có xe tại cổng ra hoặc vào.
-2. Thiết bị chụp ảnh xe.
-3. ESP32 Camera gửi yêu cầu đến API Gateway để lấy Presigned URL.
-4. API Gateway gọi hàm Lambda tạo Presigned URL.
-5. Lambda tạo Presigned URL và trả về cho ESP32 Camera.
-6. ESP32 Camera tải hình ảnh JPEG trực tiếp lên Amazon S3.
-7. Amazon S3 tạo ra một sự kiện ObjectCreated sau khi hình ảnh được tải lên thành công.
-8. Sự kiện S3 này sẽ kích hoạt hàm Lambda xử lý hình ảnh (Lambda Image Processing).
-9. Lambda gọi Amazon Rekognition để phân tích hình ảnh.
-10. Kết quả nhận diện được lưu vào DynamoDB.
-
-### 3.3.3. Lưu trữ Hình ảnh trong Amazon S3
-Amazon S3 được dùng để lưu trữ hình ảnh xe. Mỗi hình ảnh có thể được đặt tên dựa trên ID thiết bị, timestamp, vị trí cổng, hoặc ID xe để dễ dàng quản lý.
-
-**Cấu trúc lưu trữ S3 mẫu:**
+**Cấu trúc thư mục Bucket S3:**
 ```text
-parking-image-bucket/
+smart-parking-vehicle-images/
 ├── entrance/
-│   ├── esp32_cam_01_20260427_103000.jpg
-│   └── esp32_cam_01_20260427_104500.jpg
-├── exit/
-│   ├── esp32_cam_02_20260427_110000.jpg
-│   └── esp32_cam_02_20260427_111500.jpg
+│   ├── cam_ent_01_20260513_091528.jpg
+│   └── cam_ent_01_20260513_093000.jpg
+└── exit/
+    ├── cam_ext_01_20260513_101500.jpg
+    └── cam_ext_01_20260513_104520.jpg
 ```
 
-Cấu trúc thư mục này giúp phân biệt rõ ràng giữa hình ảnh xe vào và xe ra.
-
-**Siêu dữ liệu (metadata) hình ảnh mẫu:**
+**Metadata đính kèm mỗi đối tượng hình ảnh:**
 ```json
 {
-  "image_id": "esp32_cam_01_20260427_103000.jpg",
-  "device_id": "esp32_cam_01",
-  "gate": "entrance",
+  "image_id": "cam_ent_01_20260513_091528.jpg",
+  "gate_id": "GATE_ENTRANCE_01",
   "direction": "in",
-  "timestamp": "2026-04-27T10:30:00",
-  "s3_url": "s3://parking-image-bucket/entrance/esp32_cam_01_20260427_103000.jpg"
+  "timestamp": "2026-05-13T09:15:28Z",
+  "s3_uri": "s3://smart-parking-vehicle-images/entrance/cam_ent_01_20260513_091528.jpg"
 }
 ```
 
-### 3.3.4. Xử lý Hình ảnh với Lambda và Rekognition
-Sau khi hình ảnh được tải lên Amazon S3, sự kiện ObjectCreated sẽ kích hoạt một hàm Lambda để xử lý hình ảnh. Lambda nhận thông tin hình ảnh từ sự kiện S3 và gọi Amazon Rekognition để phân tích.
+### 3.3.4. Xử lý Trực quan với Amazon Rekognition
+Hàm `Lambda Image Processing` gửi ảnh tới **Amazon Rekognition** để phát hiện các khối văn bản (Bounding Boxes) nằm trong vùng biển số xe:
 
-**Luồng xử lý:**
-`S3 ObjectCreated → Lambda Image Processing → Amazon Rekognition → DynamoDB`
+```python
+import boto3
 
-**Vai trò của từng thành phần:**
+rekognition = boto3.client('rekognition')
 
-| Thành phần | Vai trò |
-|-----------|------|
-| Amazon S3 | Lưu trữ hình ảnh xe |
-| S3 ObjectCreated | Kích hoạt Lambda khi có hình ảnh mới tải lên |
-| Lambda Image Processing | Xử lý hình ảnh và gọi Rekognition |
-| Amazon Rekognition | Phân tích hình ảnh và hỗ trợ nhận diện biển số |
-| DynamoDB | Lưu trữ kết quả nhận diện |
-
-Kết quả sau xử lý có thể bao gồm:
-* ID hình ảnh.
-* Biển số xe.
-* Độ tin cậy của nhận diện (confidence score).
-* Hướng di chuyển (vào/ra).
-* Thời gian ghi nhận (timestamp).
-* Đường dẫn hình ảnh trên S3.
-
-**Dữ liệu xử lý mẫu:**
-```json
-{
-  "log_id": "LOG001",
-  "plate_number": "51A-12345",
-  "confidence": 92.5,
-  "direction": "in",
-  "image_url": "s3://parking-image-bucket/entrance/esp32_cam_01_20260427_103000.jpg",
-  "timestamp": "2026-04-27T10:30:00"
-}
+def detect_license_plate(bucket, key):
+    response = rekognition.detect_text(
+        Image={'S3Object': {'Bucket': bucket, 'Name': key}}
+    )
+    text_detections = response['TextDetections']
+    # Thuật toán lọc định dạng biển số xe Việt Nam (VD: 51H-98765)
+    for text in text_detections:
+        if text['Type'] == 'LINE' and text['Confidence'] > 90.0:
+            return text['DetectedText'], text['Confidence']
+    return "UNKNOWN", 0.0
 ```
 
-### 3.3.5. Luồng Dữ liệu Cảm biến qua AWS IoT Core
-Luồng dữ liệu cảm biến được dùng để cập nhật trạng thái của từng chỗ đỗ xe theo thời gian thực. Cảm biến ESP32 gửi dữ liệu đến AWS IoT Core bằng giao thức MQTT.
+### 3.3.5. Đường ống Xử lý Dữ liệu Cảm biến (Sensor Telemetry Pipeline)
+Luồng dữ liệu trạng thái chỗ đỗ xe hoạt động liên tục theo thời gian thực:
 
-**Luồng dữ liệu cảm biến:**
-`Cảm biến ESP32 → AWS IoT Core → IoT Rule → Lambda Sensor Processing → DynamoDB`
+1. **Đọc Cảm biến:** ESP32 Cảm biến siêu âm đo khoảng cách tại ô đỗ `A01`.
+2. **Gửi tin nhắn MQTT:** Nếu trạng thái chuyển đổi từ `available` sang `occupied`, ESP32 publish payload JSON tới topic MQTT `parking/slots/A01/status`.
+3. **Chuyển hướng bởi AWS IoT Rule:** SQL Rule trên AWS IoT Core lọc tin nhắn:
+   ```sql
+   SELECT slot_id, status, distance_cm, timestamp 
+   FROM 'parking/slots/+/status'
+   ```
+4. **Cập nhật CSDL:** IoT Rule kích hoạt `Lambda Sensor Processing` cập nhật ngay lập tức dòng dữ liệu của slot `A01` trong bảng DynamoDB `ParkingSlots`.
+5. **Đồng bộ Web Dashboard:** Khi người dùng Web gọi API lấy sơ đồ bãi xe, dữ liệu mới nhất được phản hồi tức thì dưới 100ms.
 
-**Các bước xử lý chi tiết:**
-1. Cảm biến ESP32 đọc dữ liệu từ cảm biến tại một chỗ đỗ xe.
-2. Thiết bị xác định chỗ đỗ là trống hay đã có xe.
-3. ESP32 gửi dữ liệu đến AWS IoT Core qua MQTT.
-4. AWS IoT Core nhận dữ liệu từ thiết bị.
-5. IoT Rule kiểm tra topic MQTT và chuyển tiếp dữ liệu đến Lambda.
-6. Lambda Sensor Processing xác thực và chuẩn hóa dữ liệu.
-7. Dữ liệu đã xử lý được lưu vào DynamoDB.
-8. Web/App truy vấn DynamoDB để hiển thị trạng thái chỗ đỗ mới nhất.
+### 3.3.6. Đường ống Truy vấn Web App & Trợ lý AI trên AWS Lambda
+Đối với các thao tác tương tác của người dùng trên giao diện Web App:
 
-**Topic MQTT mẫu:**
-`parking/slot/A01/status`
+* **Tra cứu Lịch sử Xe:** Web App $\to$ API Gateway `GET /api/vehicle/logs?plate=51H-98765` $\to$ `Lambda API Backend` $\to$ DynamoDB Query $\to$ Phản hồi JSON danh sách lịch sử kèm link ảnh CloudFront.
+* **Tương tác Trợ lý AI:** Web Chat UI $\to$ API Gateway `POST /api/ai/chat` $\to$ `Lambda AI Service` $\to$ Xử lý thuật toán AI & tổng hợp dữ liệu từ DynamoDB $\to$ Phản hồi câu trả lời tự nhiên cho người dùng Web.
 
-**Payload mẫu:**
-```json
-{
-  "device_id": "esp32_sensor_01",
-  "slot_id": "A01",
-  "status": "occupied",
-  "timestamp": "2026-04-27T10:30:00"
-}
-```
+### 3.3.7. Cơ chế Xử lý Lỗi & Dead Letter Queue (DLQ)
+Đường ống dữ liệu tích hợp sẵn các cơ chế chịu lỗi (Fault Tolerance):
+* Nếu hàm Lambda gặp sự cố khi gọi Amazon Rekognition, bản tin sự kiện sẽ được gửi vào **Amazon SQS Dead Letter Queue (DLQ)** để xử lý lại (Retry) mà không bị mất dữ liệu.
+* DynamoDB áp dụng chế độ tự động ghi bù (Exponential Backoff) khi gặp hiện tượng nghẽn mạng tạm thời.
 
-### 3.3.6. Xử lý và Chuẩn hóa Dữ liệu Cảm biến
-Trước khi lưu trữ vào DynamoDB, dữ liệu cảm biến cần được xác thực để đảm bảo đúng định dạng và giảm thiểu các bản ghi không chính xác.
+### 3.3.8. Đồng bộ hóa Real-time & Cải thiện Trải nghiệm Người dùng
+Nhờ áp dụng đường ống dữ liệu bất đồng bộ AWS Serverless:
+* Toàn bộ thao tác cập nhật vị trí đỗ hay xe vào/ra bãi đỗ xe đều hiển thị trên Web App trong chưa đầy 2 giây.
+* Giao diện Web không bị khóa (non-blocking UI), mang lại trải nghiệm mượt mà như một ứng dụng Native App.
 
-Lambda Sensor Processing thực hiện các nhiệm vụ sau:
-* Kiểm tra xem `device_id` có tồn tại không.
-* Kiểm tra xem `slot_id` có đúng định dạng không.
-* Kiểm tra xem `status` có phải là `available` hoặc `occupied` không.
-* Thêm timestamp xử lý nếu thiết bị không gửi kèm.
-* Loại bỏ dữ liệu không hợp lệ hoặc thiếu thông tin.
-* Ghi trạng thái chỗ đỗ xe mới nhất vào DynamoDB.
-
-**Dữ liệu hợp lệ mẫu:**
-```json
-{
-  "slot_id": "A01",
-  "status": "available",
-  "updated_at": "2026-04-27T10:30:00"
-}
-```
-
-**Dữ liệu không hợp lệ mẫu:**
-```json
-{
-  "slot_id": "",
-  "status": "unknown"
-}
-```
-
-Dữ liệu không hợp lệ sẽ không được ghi vào DynamoDB hoặc có thể được log vào CloudWatch để kiểm tra sau.
-
-### 3.3.7. Lưu trữ Dữ liệu trong Amazon DynamoDB
-Amazon DynamoDB được dùng để lưu trữ dữ liệu sau khi xử lý. Hệ thống có thể dùng nhiều bảng để tách biệt dữ liệu xe, dữ liệu cảm biến và trạng thái chỗ đỗ.
-
-**Các bảng chính:**
-
-| Bảng | Chức năng |
-|-------|----------|
-| ParkingSlots | Lưu trạng thái mới nhất của từng chỗ đỗ xe |
-| VehicleLogs | Lưu lịch sử xe ra vào |
-| SensorData | Lưu dữ liệu cảm biến theo thời gian |
-| DeviceStatus | Lưu trạng thái hoạt động của thiết bị (nếu cần) |
-
-**Dữ liệu bảng ParkingSlots mẫu:**
-```json
-{
-  "slot_id": "A01",
-  "status": "occupied",
-  "updated_at": "2026-04-27T10:30:00",
-  "device_id": "esp32_sensor_01"
-}
-```
-
-**Dữ liệu bảng VehicleLogs mẫu:**
-```json
-{
-  "log_id": "LOG001",
-  "plate_number": "51A-12345",
-  "direction": "in",
-  "image_url": "s3://parking-image-bucket/entrance/car_001.jpg",
-  "timestamp": "2026-04-27T10:30:00",
-  "confidence": 92.5
-}
-```
-
-DynamoDB cho phép hệ thống truy vấn dữ liệu nhanh chóng phục vụ các tính năng như hiển thị trạng thái chỗ đỗ, tìm kiếm lịch sử xe và báo cáo tổng quan (dashboard).
-
-### 3.3.8. Luồng Truy vấn Dữ liệu từ Web/App
-Người dùng truy cập Web/App để xem trạng thái chỗ đỗ xe, lịch sử ra vào và thông tin biển số xe. Web/App không truy cập trực tiếp vào DynamoDB. Thay vào đó, nó sẽ gọi API Gateway, và API Gateway chuyển yêu cầu đến Lambda Backend.
-
-**Luồng truy vấn:**
-`Web/App → API Gateway → Lambda Backend → DynamoDB → Lambda Backend → Web/App`
-
-Các chức năng truy vấn chính bao gồm:
-* Lấy danh sách chỗ đỗ xe.
-* Xem trạng thái của từng chỗ đỗ xe.
-* Xem số lượng chỗ trống và chỗ đã có xe.
-* Xem lịch sử xe ra vào.
-* Tìm kiếm xe theo biển số.
-* Xem hình ảnh xe đã lưu trong S3.
-* Xem thống kê bãi đỗ xe.
-
-**API endpoint mẫu:**
-`GET /parking/slots`
-
-**Phản hồi (response) mẫu:**
-```json
-{
-  "total_slots": 50,
-  "available": 18,
-  "occupied": 32,
-  "slots": [
-    {
-      "slot_id": "A01",
-      "status": "occupied"
-    },
-    {
-      "slot_id": "A02",
-      "status": "available"
-    }
-  ]
-}
-```
-
-### 3.3.9. Luồng Dữ liệu AI Service
-Ngoài các tính năng quản lý bãi đỗ xe tiêu chuẩn, hệ thống có thể tích hợp Amazon Bedrock để hỗ trợ các truy vấn bằng ngôn ngữ tự nhiên. Người dùng có thể đặt câu hỏi qua Web/App, và hệ thống xử lý yêu cầu thông qua Lambda AI Service.
-
-**Luồng AI service:**
-`Web/App → API Gateway → Lambda AI Service → DynamoDB → Amazon Bedrock → Web/App`
-
-**Các bước xử lý:**
-1. Người dùng nhập câu hỏi vào Web/App.
-2. Web/App gửi câu hỏi đến API Gateway.
-3. API Gateway gọi hàm Lambda AI Service.
-4. Lambda AI Service truy vấn dữ liệu cần thiết từ DynamoDB.
-5. Lambda gửi ngữ cảnh dữ liệu đến Amazon Bedrock.
-6. Amazon Bedrock tạo câu trả lời bằng ngôn ngữ tự nhiên.
-7. Kết quả được trả về cho Web/App.
-
-**Câu hỏi mẫu:**
-`Hiện tại bãi đỗ xe còn bao nhiêu chỗ trống?`
-
-**Câu trả lời mẫu:**
-`Hiện tại bãi đỗ xe còn 18 chỗ trống trên tổng số 50 chỗ.`
-
-### 3.3.10. Logging và Xử lý Lỗi trong Luồng Dữ liệu
-Trong quá trình truyền tải và xử lý dữ liệu, hệ thống có thể gặp các lỗi như mất kết nối thiết bị, tải ảnh thất bại, payload cảm biến không hợp lệ hoặc lỗi xử lý Lambda. Do đó, CloudWatch được sử dụng để thu thập log và hỗ trợ kiểm tra lỗi.
-
-**Các lỗi thường gặp và cách xử lý:**
-
-| Lỗi | Cách xử lý |
-|-------|-----------------|
-| ESP32 mất kết nối WiFi | Thiết bị tự tự động kết nối lại và gửi lại dữ liệu |
-| Tải ảnh thất bại | ESP32 yêu cầu Presigned URL mới và tải lại |
-| Payload MQTT sai định dạng | Lambda log lỗi vào CloudWatch |
-| Rekognition không nhận ra biển số | Lưu kết quả dưới dạng cần xem xét thủ công |
-| Lỗi ghi DynamoDB | Lambda thử ghi lại (retry) hoặc log lỗi |
-| API Gateway trả về lỗi 4xx/5xx | Kiểm tra định dạng yêu cầu và log Lambda |
-
-**Luồng logging:**
-`API Gateway / Lambda / IoT Core / Rekognition / DynamoDB → CloudWatch`
-
-CloudWatch giúp đội ngũ phát hiện sớm các sự cố và đảm bảo data pipeline hoạt động ổn định.
-
-### 3.3.11. Kết luận
-Data pipeline của hệ thống IoT là một thành phần quan trọng giúp hệ thống Parking IoT hoạt động tự động và theo thời gian thực. Dữ liệu từ ESP32 Camera và các cảm biến ESP32 được gửi lên AWS thông qua hai luồng chính: hình ảnh xe được tải lên Amazon S3 bằng Presigned URLs, trong khi dữ liệu cảm biến được gửi đến AWS IoT Core bằng MQTT.
-
-Sau khi nhận dữ liệu, AWS Lambda sẽ đảm nhiệm các tác vụ xử lý, Amazon Rekognition hỗ trợ nhận diện biển số xe, DynamoDB lưu trữ kết quả và Web/App hiển thị dữ liệu đến người dùng. CloudWatch cũng được tận dụng để log và giám sát lỗi xuyên suốt quá trình này.
-
-Với thiết kế này, hệ thống có thể theo dõi bãi đỗ xe theo thời gian thực, lưu trữ dữ liệu tập trung, hỗ trợ nhận diện biển số xe và cung cấp nền tảng vững chắc cho các tính năng nâng cao như thống kê, cảnh báo và AI Service.
+### 3.3.9. Kết luận
+Đường ống dữ liệu IoT Data Pipeline đã triển khai thành công mô hình truyền tải dữ liệu đa kênh, an toàn và tốc độ cao. Sự kết hợp giữa các dịch vụ không máy chủ AWS đã biến các tín hiệu cảm biến và hình ảnh camera thô thành dữ liệu thông minh hiển thị trực quan trên **Nền tảng Web App Smart Parking IoT**.

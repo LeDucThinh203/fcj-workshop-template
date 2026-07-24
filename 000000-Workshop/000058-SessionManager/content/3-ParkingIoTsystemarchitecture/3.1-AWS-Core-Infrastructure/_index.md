@@ -6,214 +6,126 @@ chapter : false
 pre : " <b> 3.1. </b> "
 ---
 
-This section presents the process of setting up the core AWS infrastructure for the Smart Parking IoT System. The core infrastructure includes main services such as Amazon S3, Amazon DynamoDB, AWS Lambda, Amazon API Gateway, AWS IoT Core, IAM, CloudFront, WAF, and CloudWatch.
+This section presents the complete architecture and deployment of the core AWS cloud infrastructure researched, built, and operationalized to power the **Smart Parking IoT Web Platform** ([https://d3imp0j8sdburp.cloudfront.net](https://d3imp0j8sdburp.cloudfront.net)).
 
-The system is built using an AWS Serverless model, which reduces the need for server management and allows the system to scale easily when the number of ESP32 devices, cameras, sensors, or Web/App users increases.
+The cloud infrastructure is constructed entirely on the **AWS Serverless** model, leveraging the combined capabilities of **Amazon S3, Amazon DynamoDB, AWS Lambda, Amazon API Gateway, AWS IoT Core, IAM, Amazon CloudFront, AWS WAF**, and **Amazon CloudWatch**. This serverless model empowers the Web App to maintain high availability, eliminates physical server administration overhead, and scales automatically under sudden spikes in Web traffic or vehicle volume.
 
-### 3.1.1. Objectives of the Core Infrastructure
-The AWS core infrastructure is designed to achieve the following objectives:
+### 3.1.1. Strategic Objectives of Deployed Core Infrastructure
+The AWS core cloud infrastructure fulfills the operational and functional requirements of the system:
 
-* Provide a centralized data storage environment for the Parking IoT system.
-* Allow ESP32 Camera to upload vehicle images to Amazon S3.
-* Allow ESP32 sensors to send parking slot status data to AWS IoT Core.
-* Process data using AWS Lambda without managing servers.
-* Store vehicle information, license plate data, and parking slot status in DynamoDB.
-* Provide APIs for the Web/App through Amazon API Gateway.
-* Ensure security using IAM, Cognito, and WAF.
-* Monitor logs, errors, and system performance using Amazon CloudWatch.
+* **Web App Delivery:** Serve static SPA assets via Amazon S3 Static Website Hosting backed directly by Amazon CloudFront CDN and AWS WAF security.
+* **Edge IoT Integration:** Receive gate vehicle captures from ESP32-CAM via S3 Presigned URLs and parking slot occupancy telemetry via AWS IoT Core (MQTT over TLS).
+* **Asynchronous Serverless Processing:** Trigger event-driven AWS Lambda functions for Automatic Number Plate Recognition (ANPR using Amazon Rekognition), parking slot state synchronization, and custom Lambda-based AI prompt handling.
+* **High-Speed Data Persistence:** Store vehicle audit logs, real-time slot states, and user account metadata in Amazon DynamoDB with sub-millisecond query performance.
+* **RESTful API Exposure:** Expose secured API endpoints via Amazon API Gateway protected with Amazon Cognito Authorizer for the Web App Frontend.
+* **Security & Operations Governance:** Enforce strict IAM Least Privilege access permissions and monitor system logs/metrics in real-time with Amazon CloudWatch.
 
-### 3.1.2. Initializing the AWS CDK Project
-AWS CDK is used to manage infrastructure as code, also known as Infrastructure as Code - IaC. Instead of manually creating each service in the AWS Console, the team can define AWS resources using code and deploy them automatically.
+### 3.1.2. Infrastructure as Code (IaC) with AWS CDK
+All AWS cloud resources are defined and provisioned automatically using **AWS CDK (TypeScript)**. This guarantees deployment reproducibility, maintainability, and infrastructure version control.
 
-The main tasks include:
-
-* Install Node.js and AWS CDK CLI.
-* Configure AWS CLI with the AWS account.
-* Initialize a CDK project using TypeScript or Python.
-* Create stacks for different groups of resources.
-* Deploy the infrastructure to AWS using CDK commands.
-
-**Example project structure:**
+**Deployed CDK Project Structure:**
 ```text
 parking-iot-cdk/
 ├── bin/
-│   └── parking-iot.ts
+│   └── parking-iot.ts            # Main app entry initializing stacks
 ├── lib/
-│   ├── storage-stack.ts
-│   ├── api-stack.ts
-│   ├── iot-stack.ts
-│   ├── auth-stack.ts
-│   └── monitoring-stack.ts
+│   ├── storage-stack.ts          # Defines S3 Buckets & DynamoDB Tables
+│   ├── api-stack.ts              # Defines API Gateway & Lambda Microservices
+│   ├── iot-stack.ts              # Defines AWS IoT Core Rules & Topics
+│   ├── auth-stack.ts             # Defines Cognito User Pools & Authorizers
+│   ├── ai-stack.ts               # Defines AWS Lambda AI Service
+│   └── monitoring-stack.ts       # Defines CloudWatch Dashboards & Alarms
 ├── package.json
 └── cdk.json
 ```
 
-**The main stacks can be organized as follows:**
+**Core CDK Resource Stacks Overview:**
 
-| Stack | Function |
-|-------|----------|
-| Storage Stack | Creates S3 Bucket and DynamoDB tables |
-| API Stack | Creates API Gateway and Lambda Backend |
-| IoT Stack | Creates IoT Core Rule and sensor processing Lambda |
-| Auth Stack | Creates Cognito User Pool |
-| Monitoring Stack | Creates CloudWatch Logs and alerts |
+| CDK Stack | Provisioned AWS Services | Web Platform Role |
+|---|---|---|
+| **Storage Stack** | Amazon S3, DynamoDB | Stores web build assets, vehicle photos, and DynamoDB data tables |
+| **API Stack** | API Gateway, AWS Lambda | Exposes backend REST APIs and business logic for the Web App |
+| **IoT Stack** | AWS IoT Core, IoT Rules | Ingests MQTT telemetry from ESP32 parking slot sensors |
+| **Auth Stack** | Amazon Cognito, IAM Roles | Manages Web User registration, login, and JWT API authentication |
+| **AI Stack** | AWS Lambda | Powers the interactive AI Virtual Assistant service on the Web UI |
+| **Monitoring Stack** | CloudWatch, AWS Budgets | Tracks application health metrics, audit logs, and cost budgets |
 
-Using AWS CDK makes the deployment process repeatable, easier to modify, and easier to manage through version control.
+### 3.1.3. Amazon S3 Storage & CloudFront CDN Infrastructure
+Amazon S3 is deployed in two dedicated roles:
 
-### 3.1.3. Setting Up Amazon S3
-Amazon S3 is used for two main purposes in the Parking IoT system:
-* Hosting the static Web/App interface.
-* Storing vehicle images sent from ESP32 Camera.
+1. **S3 Static Website Hosting (Web App Hosting):**
+   - Stores production frontend compiled assets (HTML, CSS, JS, Images).
+   - Distributed directly via Amazon CloudFront CDN (URL `https://d3imp0j8sdburp.cloudfront.net`) with SSL/TLS HTTPS encryption.
+   - **Web Access Flow:** `User → CloudFront CDN (AWS WAF) → Amazon S3 Bucket`.
 
-**S3 Static Website**
-The Web/App interface can be built into HTML, CSS, and JavaScript files and uploaded to an S3 Bucket. After that, CloudFront distributes the website content to users.
+2. **S3 Vehicle Image Storage (Vehicle Photo Vault):**
+   - Stores vehicle photos captured by entry/exit gate ESP32-CAM devices.
+   - Utilizes S3 Presigned URLs so edge cameras upload images directly to S3 without intermediate server bottlenecks.
+   - **Upload Pipeline:** `ESP32-CAM → API Gateway → Lambda Presigned URL → S3 Bucket → Triggers S3 ObjectCreated Event`.
 
-Website access flow:
-`User → Route 53 → CloudFront → S3 Static Website`
+### 3.1.4. Amazon DynamoDB Database Architecture
+Amazon DynamoDB serves as the core NoSQL database, configured with On-Demand Capacity to handle real-time read/write traffic from the Web App and edge sensors.
 
-**S3 for Vehicle Image Storage**
-When the ESP32 Camera captures an image of a vehicle entering or exiting the parking area, the device requests a Presigned URL from API Gateway. Then, the ESP32 Camera uploads the image directly to Amazon S3.
+**Primary Data Tables:**
 
-Image upload flow:
-`ESP32 Camera → API Gateway → Lambda creates Presigned URL → Amazon S3`
+| Table Name | Partition Key | Sort Key | Web App Functionality |
+|---|---|---|---|
+| `ParkingSlots` | `slot_id` (String) | - | Tracks real-time status (`available`/`occupied`) of every slot |
+| `VehicleLogs` | `log_id` (String) | `timestamp` (String) | Stores entry/exit timestamps, ANPR plate text, and S3 image URLs |
+| `SensorData` | `device_id` (String) | `timestamp` (String) | Stores raw sensor readings (distance cm, battery) for hardware analytics |
+| `Users` | `user_id` (String) | - | Stores registered user profile information and settings |
 
-After the image is successfully uploaded, S3 generates an ObjectCreated event to trigger the image processing Lambda function.
-`Amazon S3 → S3 Event ObjectCreated → Image Processing Lambda`
+### 3.1.5. Serverless AWS Lambda Microservices Layer
+The backend logic is decoupled into event-driven AWS Lambda microservices:
 
-### 3.1.4. Setting Up Amazon DynamoDB
-Amazon DynamoDB is used as the main database of the system. Data is stored in NoSQL format, which is suitable for IoT systems that require fast writing and real-time querying.
+| Lambda Function | Trigger Event | Business Responsibility |
+|---|---|---|
+| **Lambda API Backend** | Amazon API Gateway | Handles REST API requests from the Web App Frontend |
+| **Lambda Presigned URL** | API Gateway (`GET /upload-url`) | Generates time-limited S3 upload presigned URLs for ESP32-CAM |
+| **Lambda Image Processing** | S3 `ObjectCreated` Event | Fetches image, calls Amazon Rekognition ANPR, logs plate to DynamoDB |
+| **Lambda Sensor Processing** | AWS IoT Core Rule (MQTT) | Consumes slot sensor MQTT payload and updates `ParkingSlots` table |
+| **Lambda AI Service** | API Gateway (`POST /ai/chat`) | Executes custom Lambda AI logic for intelligent parking queries |
 
-The main data tables include:
+### 3.1.6. Amazon API Gateway Integration
+Amazon API Gateway manages HTTPS REST requests from the Web App and ESP32-CAM edge devices, secured by an Amazon Cognito User Pool Authorizer.
 
-| Table Name | Function |
-|------------|----------|
-| ParkingSlots | Stores the status of each parking slot |
-| VehicleLogs | Stores vehicle entry and exit history |
-| SensorData | Stores sensor data |
-| Users | Stores user information if needed |
+**Key Deployed API Endpoints:**
 
-**Example data for the ParkingSlots table:**
+| Method | Endpoint Path | Authorization | Functionality |
+|---|---|---|---|
+| `GET` | `/api/parking/slots` | Public / Authorized | Fetches real-time slot layout map status |
+| `GET` | `/api/vehicle/logs` | Cognito Authorized | Retrieves vehicle entry/exit history logs |
+| `GET` | `/api/vehicle/search` | Cognito Authorized | Searches vehicle records by license plate number |
+| `POST` | `/api/camera/presigned-url` | Device Authenticated | Generates S3 Presigned URL for ESP32-CAM |
+| `POST` | `/api/ai/chat` | Cognito Authorized | Routes prompt to AWS Lambda AI Service |
+
+### 3.1.7. AWS IoT Core Device Management
+AWS IoT Core maintains secure mTLS MQTT connections with ESP32 slot sensors.
+
+* **MQTT Slot Topic:** `parking/slots/{slot_id}/status`
+* **Sample Telemetry Payload:**
 ```json
 {
+  "device_id": "esp32_sensor_a01",
   "slot_id": "A01",
+  "distance_cm": 25.4,
   "status": "occupied",
-  "updated_at": "2026-04-27T10:30:00"
+  "timestamp": "2026-05-13T09:15:30Z"
 }
 ```
+* **AWS IoT Rule:** Listens on topic `parking/slots/+/status` and invokes **Lambda Sensor Processing** to reflect slot occupancy updates on the Web Dashboard in real time.
 
-**Example data for the VehicleLogs table:**
-```json
-{
-  "log_id": "LOG001",
-  "plate_number": "51A-12345",
-  "direction": "in",
-  "image_url": "s3://parking-image-bucket/car_001.jpg",
-  "timestamp": "2026-04-27T10:30:00"
-}
-```
+### 3.1.8. Network & Security Architecture
+* Managed services (S3, DynamoDB, IoT Core, Rekognition, Lambda AI, CloudWatch) operate as Regional AWS Services.
+* **VPC Endpoints & Private Subnets** are configured for Lambda microservices requiring internal VPC routing.
+* **AWS WAF (Web Application Firewall):** Attached directly to the CloudFront distribution to inspect incoming web traffic, block SQLi/XSS exploits, and enforce rate-limiting rules.
 
-DynamoDB helps the system quickly retrieve parking slot status, vehicle entry and exit history, and license plate recognition results.
+### 3.1.9. IAM Roles & Least Privilege Enforcement
+All AWS services enforce strict IAM policies:
+* **Lambda Image Processing Role:** Granted `s3:GetObject` on the photo bucket, `rekognition:DetectText`, and `dynamodb:PutItem` on `VehicleLogs`.
+* **Lambda Sensor Processing Role:** Granted `dynamodb:UpdateItem` on the `ParkingSlots` table.
+* **Lambda AI Service Role:** Granted DynamoDB read permissions to aggregate occupancy statistics.
+* **API Gateway Role:** Granted `lambda:InvokeFunction` for designated backend Lambdas only.
 
-### 3.1.5. Setting Up AWS Lambda
-AWS Lambda is the main processing component of the system. Lambda allows code to run when an event occurs without deploying or managing a separate server.
-
-The main Lambda functions include:
-
-| Lambda Function | Function |
-|-----------------|----------|
-| Lambda API Backend | Handles requests from the Web/App |
-| Lambda Presigned URL | Creates Presigned URLs for ESP32 Camera to upload images |
-| Lambda Image Processing | Processes images when new images are uploaded to S3 |
-| Lambda Sensor Processing | Processes sensor data from AWS IoT Core |
-| Lambda AI Service | Connects with Amazon Bedrock for AI features |
-
-**Image processing Lambda flow:**
-`S3 ObjectCreated → Lambda Image Processing → Amazon Rekognition → DynamoDB`
-
-**Sensor processing Lambda flow:**
-`AWS IoT Core → IoT Rule → Lambda Sensor Processing → DynamoDB`
-
-Lambda allows the system to operate flexibly, run only when events occur, and automatically scale based on the number of requests.
-
-### 3.1.6. Setting Up Amazon API Gateway
-Amazon API Gateway is used as the communication gateway between the Web/App, ESP32 Camera, and Lambda Functions.
-
-The main APIs may include:
-
-| API Endpoint | Function |
-|--------------|----------|
-| `/parking/slots` | Gets parking slot status |
-| `/vehicle/logs` | Gets vehicle entry and exit history |
-| `/upload-url` | Creates a Presigned URL for ESP32 Camera |
-| `/ai/query` | Sends questions to the AI Service |
-
-**Web/App API request flow:**
-`Web/App → API Gateway → Lambda Backend → DynamoDB`
-
-**ESP32 Camera Presigned URL request flow:**
-`ESP32 Camera → API Gateway → Lambda Presigned URL → Amazon S3`
-
-API Gateway helps the system manage requests in a centralized way, control access more easily, and integrate with Cognito Authorizer.
-
-### 3.1.7. Setting Up AWS IoT Core
-AWS IoT Core is used to receive data from ESP32 sensors through the MQTT protocol.
-
-ESP32 sensors send parking slot status data to an MQTT topic, for example:
-`parking/slot/A01/status`
-
-**Example payload:**
-```json
-{
-  "slot_id": "A01",
-  "status": "available",
-  "timestamp": "2026-04-27T10:30:00"
-}
-```
-
-**Sensor data flow:**
-`ESP32 Sensor → AWS IoT Core → IoT Rule → Lambda Sensor Processing → DynamoDB`
-
-AWS IoT Core helps manage device connections, security certificates, and MQTT data from IoT devices.
-
-### 3.1.8. Setting Up VPC and Networking
-In the Parking IoT system using serverless architecture, most services such as S3, DynamoDB, IoT Core, Rekognition, Bedrock, and CloudWatch are AWS managed services and are not placed directly inside a VPC.
-
-However, a VPC can be configured if the system needs to:
-* Run Lambda functions inside a private network.
-* Connect to an internal database.
-* Isolate backend components.
-* Improve network traffic control.
-
-A basic VPC may include:
-
-| Component | Function |
-|-----------|----------|
-| Public Subnet | Used for resources that need Internet access |
-| Private Subnet | Used for Lambda or internal resources |
-| Internet Gateway | Allows Internet access from the Public Subnet |
-| NAT Gateway | Allows resources in the Private Subnet to access the Internet |
-| Security Group | Controls inbound and outbound traffic |
-
-> **Note:** In the architecture diagram, services such as S3, DynamoDB, CloudWatch, Rekognition, and Bedrock should not be placed inside the VPC because they are regional AWS managed services.
-
-### 3.1.9. Configuring IAM Roles and Policies
-IAM is used to manage permissions for AWS services. The system applies the Least Privilege principle, meaning each service is granted only the minimum permissions required to perform its task.
-
-Some required permissions include:
-
-| Component | Required Permission |
-|-----------|---------------------|
-| Lambda API Backend | Read and write data in DynamoDB |
-| Lambda Presigned URL | Create Presigned URLs for image upload to S3 |
-| Lambda Image Processing | Read images from S3, call Rekognition, and write data to DynamoDB |
-| Lambda Sensor Processing | Write sensor data to DynamoDB |
-| Lambda AI Service | Call Bedrock and read data from DynamoDB |
-| API Gateway | Invoke Lambda functions |
-| IoT Rule | Trigger the sensor processing Lambda function |
-
-Clear permission management improves system security, avoids overly broad permissions, and reduces security risks.
-
-### 3.1.10. Conclusion
-The AWS core infrastructure is an important foundation for the stable operation of the Parking IoT system. Services such as S3, DynamoDB, Lambda, API Gateway, and IoT Core handle data storage, processing, and communication between ESP32 devices and the Web/App.
-
-In addition, IAM controls access permissions, CloudWatch supports system monitoring, and CDK helps deploy infrastructure automatically and manage it more easily. With the serverless architecture, the system can scale flexibly, optimize costs, and meet the requirements of a Smart Parking IoT model.
+### 3.1.10. Summary
+The AWS Serverless core infrastructure provides a robust, scalable, and cost-efficient foundation powering the **Smart Parking IoT Web Platform**. The synthesis of CDK IaC automation, S3/DynamoDB storage, Lambda compute microservices, Rekognition ANPR, Lambda AI Service, and CloudFront CDN delivers an end-to-end smart parking web platform ready for production deployment.

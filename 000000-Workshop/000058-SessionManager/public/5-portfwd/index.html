@@ -9,24 +9,24 @@
 
     <link rel="icon" href="../images/favicon.png" type="image/png">
 
-    <title>Port Forwarding :: AWS System Manager</title>
+    <title>Event :: AWS System Manager</title>
 
     
-    <link href='../css/nucleus.css?1784363890' rel="stylesheet">
-    <link href='../css/fontawesome-all.min.css?1784363890' rel="stylesheet">
-    <link href='../css/hybrid.css?1784363890' rel="stylesheet">
-    <link href='../css/featherlight.min.css?1784363890' rel="stylesheet">
-    <link href='../css/perfect-scrollbar.min.css?1784363890' rel="stylesheet">
-    <link href='../css/auto-complete.css?1784363890' rel="stylesheet">
-    <link href='../css/atom-one-dark-reasonable.css?1784363890' rel="stylesheet">
-    <link href='../css/theme.css?1784363890' rel="stylesheet">
-    <link href='../css/hugo-theme.css?1784363890' rel="stylesheet">
+    <link href='../css/nucleus.css?1784874687' rel="stylesheet">
+    <link href='../css/fontawesome-all.min.css?1784874687' rel="stylesheet">
+    <link href='../css/hybrid.css?1784874687' rel="stylesheet">
+    <link href='../css/featherlight.min.css?1784874687' rel="stylesheet">
+    <link href='../css/perfect-scrollbar.min.css?1784874687' rel="stylesheet">
+    <link href='../css/auto-complete.css?1784874687' rel="stylesheet">
+    <link href='../css/atom-one-dark-reasonable.css?1784874687' rel="stylesheet">
+    <link href='../css/theme.css?1784874687' rel="stylesheet">
+    <link href='../css/hugo-theme.css?1784874687' rel="stylesheet">
     
-    <link href='../css/theme-workshop.css?1784363890' rel="stylesheet">
+    <link href='../css/theme-workshop.css?1784874687' rel="stylesheet">
     
     
 
-    <script src='../js/jquery-3.3.1.min.js?1784363890'></script>
+    <script src='../js/jquery-3.3.1.min.js?1784874687'></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -57,14 +57,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="../js/lunr.min.js?1784363890"></script>
-<script type="text/javascript" src="../js/auto-complete.js?1784363890"></script>
+<script type="text/javascript" src="../js/lunr.min.js?1784874687"></script>
+<script type="text/javascript" src="../js/auto-complete.js?1784874687"></script>
 <script type="text/javascript">
     
         var baseurl = "http:\/\/localhost:1313\/fcj-workshop-template\/";
     
 </script>
-<script type="text/javascript" src="../js/search.js?1784363890"></script>
+<script type="text/javascript" src="../js/search.js?1784874687"></script>
 
     
   </div>
@@ -1182,13 +1182,13 @@
  
   
     
-    <li data-nav-id="/5-portfwd/" title="Port Forwarding" class="dd-item 
+    <li data-nav-id="/5-portfwd/" title="Event" class="dd-item 
         
         active
         
         ">
       <a href="../5-portfwd/">
-           <b> 5. </b> Port Forwarding
+           <b> 5. </b> Event
           
             <i class="fas fa-check read-icon"></i>
           
@@ -1343,7 +1343,7 @@
             
           
           
-            <a href='../'>Student Information</a> > Port Forwarding
+            <a href='../'>Student Information</a> > Event
           
               
           
@@ -1358,7 +1358,10 @@
   <ul>
     <li>
       <ul>
-        <li></li>
+        <li><a href="#-offline-event-on-june-06-2026">📅 Offline Event on June 06, 2026</a></li>
+        <li><a href="#-online-event-on-june-27-2026">🌐 Online Event on June 27, 2026</a></li>
+        <li><a href="#-online-event-on-july-04-2026">🌐 Online Event on July 04, 2026</a></li>
+        <li><a href="#-offline-event-on-july-11-2026">📅 Offline Event on July 11, 2026</a></li>
       </ul>
     </li>
   </ul>
@@ -1378,7 +1381,7 @@
           
             <h1>
               
-              Port Forwarding
+              Event
             </h1>
           
 
@@ -1386,89 +1389,69 @@
 
 
 
-	
-<div class="notices info" ><p><strong>Port Forwarding</strong> is a useful way to redirect network traffic from one IP address - Port to another IP address - Port. With <strong>Port Forwarding</strong> we can access an EC2 instance located in the private subnet from our workstation.</p>
+	<h3 id="-offline-event-on-june-06-2026">📅 Offline Event on June 06, 2026</h3>
+<p><img src="../images/event_june6.png" alt="event ngày Saturday, June 6, 2026"></p>
+
+<div class="notices info" ><p><strong>📍 Attendance Details:</strong></p>
+<ul>
+<li><strong>Date:</strong> Saturday, June 6, 2026</li>
+<li><strong>Location:</strong> 26th Floor</li>
+<li><strong>Shift:</strong> 09:00 (Shift)</li>
+<li><strong>Check-in:</strong> ✅ On time</li>
+</ul>
 </div>
 
-<p>We will configure <strong>Port Forwarding</strong> for the RDP connection between our machine and <strong>Private Windows Instance</strong> located in the private subnet we created for this exercise.</p>
-<p><img src="../images/arc-04.png" alt="port-fwd"></p>
-<h4 id="create-iam-user-with-permission-to-connect-ssm">Create IAM user with permission to connect SSM</h4>
-<ol>
-<li>Go to <a href="https://console.aws.amazon.com/iamv2/home">IAM service management console</a>
-<ul>
-<li>Click <strong>Users</strong> , then click <strong>Add users</strong>.</li>
-</ul>
-</li>
-</ol>
-<p><img src="../images/5.fwd/001-fwd.png" alt="FWD"></p>
-<ol start="2">
-<li>At the <strong>Add user</strong> page.
-<ul>
-<li>In the <strong>User name</strong> field, enter <strong>Portfwd</strong>.</li>
-<li>Click on <strong>Access key - Programmatic access</strong>.</li>
-<li>Click <strong>Next: Permissions</strong>.</li>
-</ul>
-</li>
-</ol>
-<p><img src="../images/5.fwd/002-fwd.png" alt="FWD"></p>
-<ol start="3">
-<li>
-<p>Click <strong>Attach existing policies directly</strong>.</p>
-<ul>
-<li>In the search box, enter <strong>ssm</strong>.</li>
-<li>Click on <strong>AmazonSSMFullAccess</strong>.</li>
-<li>Click <strong>Next: Tags</strong>, click <strong>Next: Reviews</strong>.</li>
-<li>Click <strong>Create user</strong>.</li>
-</ul>
-</li>
-<li>
-<p>Save <strong>Access key ID</strong> and <strong>Secret access key</strong> information to perform AWS CLI configuration.</p>
-</li>
-</ol>
-<h4 id="install-and-configure-aws-cli-and-session-manager-plugin">Install and Configure AWS CLI and Session Manager Plugin</h4>
-<p>To perform this hands-on, make sure your workstation has <a href="">AWS CLI</a> and <a href="https://docs.aws.amazon.com/systems-manager/latest/userguide/session">Session Manager Plugin</a> installed -manager-working-with-install-plugin.html)</p>
-<p>More hands-on tutorials on installing and configuring the AWS CLI can be found <a href="https://000011.awsstudygroup.com/">here</a>.</p>
+<hr>
+<h3 id="-online-event-on-june-27-2026">🌐 Online Event on June 27, 2026</h3>
 
-<div class="notices tip" ><p>With Windows, when extracting the <strong>Session Manager Plugin</strong> installation folder, run the <strong>install.bat</strong> file with Administrator permission to perform the installation.</p>
-</div>
-
-<h4 id="implement-portforwarding">Implement Portforwarding</h4>
-<ol>
-<li>Run the command below in <strong>Command Prompt</strong> on your machine to configure <strong>Port Forwarding</strong>.</li>
-</ol>
-<pre tabindex="0"><code>   aws ssm start-session --target (your ID windows instance) --document-name AWS-StartPortForwardingSession --parameters portNumber=&#34;3389&#34;,localPortNumber=&#34;9999&#34; --region (your region)
-</code></pre>
-<div class="notices tip" ><p><strong>Windows Private Instance</strong> <strong>Instance ID</strong> information can be found when you view the EC2 Windows Private Instance server details.</p>
+<div class="notices tip" ><p><strong>Objective:</strong> Connecting students with businesses and sharing career orientation.</p>
 </div>
 
 <ul>
-<li>Example command:</li>
+<li>🚀 <strong>Speaker Steve Tran (Cloud Thinker):</strong> Shared his journey from a student to working at Amazon and founding the startup <strong>Clouder</strong>, emphasizing the role of cloud technology in career development.</li>
+<li>💡 <strong>Cloud Migration Challenges:</strong> Analyzed system complexity, the need for skilled personnel, and how AI supports infrastructure operations.</li>
+<li>⚙️ <strong>Clouder&rsquo;s Solution:</strong> Introduced an <em>AI-centric</em> platform that helps troubleshoot faster, optimize costs, ensure security, and support engineering teams.</li>
+<li>💬 <strong>In-depth Discussion:</strong> Expanded on <em>multi-agent</em> vs <em>single-agent</em> architecture, cost optimization, and role control in the system.</li>
+<li>🎙️ <strong>Voice AI Topic:</strong> Other speakers (Hieu Nghi, Kiet, Trung) presented on building voice agents, practical demos, and challenges when deploying Vietnamese in a banking environment.</li>
+<li>🌟 <strong>Core Takeaways:</strong> Emphasized the importance of <strong>early internships</strong>, experiencing corporate environments, and the need for startups to solve real customer problems.</li>
 </ul>
-<pre tabindex="0"><code>C:\Windows\system32&gt;aws ssm start-session --target i-06343d7377486760c --document-name AWS-StartPortForwardingSession --parameters portNumber=&#34;3389&#34;,localPortNumber=&#34;9999&#34; --region ap-southeast-1
-</code></pre>
-<div class="notices warning" ><p>If your command gives an error like below: <br>
-SessionManagerPlugin is not found. Please refer to SessionManager Documentation here: <a href="http://docs.aws.amazon.com/console/systems-manager/session-manager-plugin-not-found">http://docs.aws.amazon.com/console/systems-manager/session-manager-plugin-not-found</a><br>
-Prove that you have not successfully installed the Session Manager Plugin. You may need to relaunch <strong>Command Prompt</strong> after installing <strong>Session Manager Plugin</strong>.</p>
+<hr>
+<h3 id="-online-event-on-july-04-2026">🌐 Online Event on July 04, 2026</h3>
+<p><strong>Event Opening</strong></p>
+<ul>
+<li>Overview of the digital transformation journey and the role of AWS in building enterprise cloud architecture.</li>
+<li><strong>Cloud Kinetics</strong> and <strong>Renova Cloud</strong> were introduced as strategic partners, bringing practical experience.</li>
+</ul>
+<p><strong>🏗 Main Presentation</strong></p>
+<ul>
+<li><strong>Enterprise Cloud Architectures:</strong> Explained deployment models, and how to optimize costs, performance, and security.</li>
+<li><strong>Industry Applications:</strong> Presented practical examples from various fields – finance, manufacturing, retail – illustrating how businesses leverage AWS to accelerate innovation.</li>
+<li><strong>Challenges &amp; Solutions:</strong> Highlighted common difficulties when starting the “First Cloud Journey” and how to overcome them using AWS tools and services.</li>
+</ul>
+<p><strong>📊 Results &amp; Benefits</strong></p>
+<ul>
+<li>Businesses achieve flexible scalability, enhanced security, and reduced operating costs.</li>
+<li>Proven by successful case studies deployed by Cloud Kinetics and Renova Cloud.</li>
+</ul>
+<p><strong>🤝 Event Closing</strong></p>
+<ul>
+<li>Affirmed the role of AWS and partners in accompanying businesses.</li>
+<li>Invited the community to deeply engage in learning programs, workshops, and the digital transformation journey.</li>
+</ul>
+<hr>
+<h3 id="-offline-event-on-july-11-2026">📅 Offline Event on July 11, 2026</h3>
+<p><img src="../images/event_july11.png" alt="event ngày Saturday, July 11, 2026"></p>
+
+<div class="notices info" ><p><strong>📍 Attendance Details:</strong></p>
+<ul>
+<li><strong>Date:</strong> Saturday, July 11, 2026</li>
+<li><strong>Location:</strong> 26th Floor</li>
+<li><strong>Shift:</strong> 09:00 (Shift)</li>
+<li><strong>Check-in:</strong> ✅ On time</li>
+<li><strong>Check-out:</strong> ✅ On time</li>
+</ul>
 </div>
 
-<ol start="2">
-<li>Connect to the <strong>Private Windows Instance</strong> you created using the <strong>Remote Desktop</strong> tool on your workstation.
-<ul>
-<li>In the Computer section: enter <strong>localhost:9999</strong>.</li>
-</ul>
-</li>
-</ol>
-<p><img src="../images/5.fwd/003-fwd.png" alt="FWD"></p>
-<ol start="3">
-<li>Return to the administration interface of the System Manager - Session Manager service.
-<ul>
-<li>Click tab <strong>Session history</strong>.</li>
-<li>We will see session logs with Document name <strong>AWS-StartPortForwardingSession</strong>.</li>
-</ul>
-</li>
-</ol>
-<p><img src="../images/5.fwd/004-fwd.png" alt="FWD"></p>
-<p>Congratulations on completing the lab on how to use Session Manager to connect and store session logs in S3 bucket. Remember to perform resource cleanup to avoid unintended costs.</p>
 
 
 
@@ -2172,19 +2155,19 @@ Prove that you have not successfully installed the Session Manager Plugin. You m
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="../js/clipboard.min.js?1784363890"></script>
-    <script src="../js/perfect-scrollbar.min.js?1784363890"></script>
-    <script src="../js/perfect-scrollbar.jquery.min.js?1784363890"></script>
-    <script src="../js/jquery.sticky.js?1784363890"></script>
-    <script src="../js/featherlight.min.js?1784363890"></script>
-    <script src="../js/highlight.pack.js?1784363890"></script>
+    <script src="../js/clipboard.min.js?1784874687"></script>
+    <script src="../js/perfect-scrollbar.min.js?1784874687"></script>
+    <script src="../js/perfect-scrollbar.jquery.min.js?1784874687"></script>
+    <script src="../js/jquery.sticky.js?1784874687"></script>
+    <script src="../js/featherlight.min.js?1784874687"></script>
+    <script src="../js/highlight.pack.js?1784874687"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="../js/modernizr.custom-3.6.0.js?1784363890"></script>
-    <script src="../js/learn.js?1784363890"></script>
-    <script src="../js/hugo-learn.js?1784363890"></script>
+    <script src="../js/modernizr.custom-3.6.0.js?1784874687"></script>
+    <script src="../js/learn.js?1784874687"></script>
+    <script src="../js/hugo-learn.js?1784874687"></script>
 
-    <link href="../mermaid/mermaid.css?1784363890" rel="stylesheet" />
-    <script src="../mermaid/mermaid.js?1784363890"></script>
+    <link href="../mermaid/mermaid.css?1784874687" rel="stylesheet" />
+    <script src="../mermaid/mermaid.js?1784874687"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

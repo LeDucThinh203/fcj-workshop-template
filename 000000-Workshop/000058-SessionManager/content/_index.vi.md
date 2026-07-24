@@ -26,5 +26,5 @@ chapter: false
 2. [Đề xuất dự án](2-Proposal/)
 3. [Project: Smart Parking IoT](3-Project-Smart-Parking-IoT/)
 4. [Workshop](4-Workshop/)
-5. [Chuyển tiếp cổng (Port Forwarding)](5-Portfwd/)
+5. [Event](5-Portfwd/)
 6. [Dọn dẹp tài nguyên](6-cleanup/)

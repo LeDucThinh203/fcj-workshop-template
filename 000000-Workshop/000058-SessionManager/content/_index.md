@@ -25,5 +25,5 @@ chapter: false
  2. [Project Proposal](2-Proposal/)
  3. [Project: Smart Parking IoT](3-Project-Smart-Parking-IoT/)
  4. [Workshop](4-Workshop/)
- 5. [Port Forwarding](5-Portfwd/)
+ 5. [Event](5-Portfwd/)
  6. [Clean up resources](6-cleanup/)

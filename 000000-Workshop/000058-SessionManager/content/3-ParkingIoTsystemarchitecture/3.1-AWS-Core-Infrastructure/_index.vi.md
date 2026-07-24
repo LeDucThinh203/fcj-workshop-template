@@ -6,214 +6,127 @@ chapter : false
 pre : " <b> 3.1. </b> "
 ---
 
-Phần này trình bày quá trình thiết lập cơ sở hạ tầng cốt lõi của AWS cho Hệ thống IoT Bãi đỗ xe Thông minh. Cơ sở hạ tầng cốt lõi bao gồm các dịch vụ chính như Amazon S3, Amazon DynamoDB, AWS Lambda, Amazon API Gateway, AWS IoT Core, IAM, CloudFront, WAF và CloudWatch.
+Phần này trình bày toàn bộ kiến trúc và thiết lập cơ sở hạ tầng cốt lõi AWS đã được nhóm nghiên cứu, triển khai và đưa vào vận hành thực tế phục vụ **Nền tảng Web App Smart Parking IoT** ([https://d3imp0j8sdburp.cloudfront.net](https://d3imp0j8sdburp.cloudfront.net)). 
 
-Hệ thống được xây dựng theo mô hình AWS Serverless, giúp giảm bớt nhu cầu quản lý máy chủ và cho phép hệ thống mở rộng dễ dàng khi số lượng thiết bị ESP32, camera, cảm biến hoặc người dùng Web/App tăng lên.
+Cơ sở hạ tầng của hệ thống được xây dựng hoàn toàn theo mô hình **AWS Serverless**, tận dụng sức mạnh kết hợp của **Amazon S3, Amazon DynamoDB, AWS Lambda, Amazon API Gateway, AWS IoT Core, IAM, Amazon CloudFront, AWS WAF** và **Amazon CloudWatch**. Mô hình này cho phép Web App duy trì độ sẵn sàng cao, loại bỏ hoàn toàn gánh nặng quản lý máy chủ vật lý và tự động mở rộng (Auto-scaling) mượt mà khi lượng truy cập từ người dùng Web hoặc số lượng xe ra vào bãi tăng cao.
 
-### 3.1.1. Mục tiêu của Cơ sở hạ tầng cốt lõi
-Cơ sở hạ tầng cốt lõi AWS được thiết kế để đạt được các mục tiêu sau:
+### 3.1.1. Mục tiêu & Vai trò Hạ tầng Đã Triển khai
+Hạ tầng đám mây AWS cốt lõi đã hoàn thành tốt các nhiệm vụ chiến lược:
 
-* Cung cấp môi trường lưu trữ dữ liệu tập trung cho hệ thống Parking IoT.
-* Cho phép ESP32 Camera tải hình ảnh xe lên Amazon S3.
-* Cho phép cảm biến ESP32 gửi dữ liệu trạng thái chỗ đỗ xe đến AWS IoT Core.
-* Xử lý dữ liệu bằng AWS Lambda mà không cần quản lý máy chủ.
-* Lưu trữ thông tin xe, dữ liệu biển số và trạng thái chỗ đỗ xe trong DynamoDB.
-* Cung cấp các API cho Web/App thông qua Amazon API Gateway.
-* Đảm bảo an ninh sử dụng IAM, Cognito và WAF.
-* Theo dõi logs, lỗi và hiệu suất hệ thống bằng Amazon CloudWatch.
+* **Phân phối Web App:** Phục vụ ứng dụng Web tĩnh lưu trữ trên Amazon S3, phân phối toàn cầu trực tiếp qua Amazon CloudFront CDN và bảo mật bằng AWS WAF.
+* **Tích hợp Dữ liệu Biên:** Nhận ảnh xe ra/vào từ ESP32-CAM thông qua cơ chế S3 Presigned URL và tiếp nhận dữ liệu trạng thái chỗ đỗ qua giao thức MQTT gửi tới AWS IoT Core.
+* **Xử lý Bất đồng bộ Không Máy chủ:** Kích hoạt chuỗi các hàm AWS Lambda để tự động hóa quy trình nhận diện biển số xe (ANPR với Amazon Rekognition), cập nhật trạng thái bãi xe và xử lý dịch vụ AI trên Lambda (Lambda AI Service).
+* **Lưu trữ Dữ liệu Tốc độ Cao:** Lưu trữ toàn bộ nhật ký phương tiện, thông tin vị trí đỗ và dữ liệu người dùng trên Amazon DynamoDB với độ trễ phản hồi sub-millisecond.
+* **Cung cấp RESTful API:** Mở các endpoint API bảo mật qua Amazon API Gateway tích hợp với Cognito Authorizer phục vụ giao diện Web App.
+* **Bảo mật & Kiểm soát Vận hành:** Đảm bảo an toàn thông tin theo nguyên tắc Least Privilege thông qua IAM và theo dõi log/metric thời gian thực với Amazon CloudWatch.
 
-### 3.1.2. Khởi tạo dự án AWS CDK
-AWS CDK được sử dụng để quản lý cơ sở hạ tầng dưới dạng mã (Infrastructure as Code - IaC). Thay vì tạo thủ công từng dịch vụ trên AWS Console, nhóm có thể định nghĩa các tài nguyên AWS bằng code và triển khai chúng tự động.
+### 3.1.2. Triển khai Hạ tầng bằng AWS CDK (Infrastructure as Code)
+Toàn bộ tài nguyên trên AWS của hệ thống đã được định nghĩa và triển khai tự động bằng **AWS CDK (TypeScript)**. Phương pháp này đảm bảo tính nhất quán, khả năng tái triển khai và quản lý phiên bản hạ tầng chặt chẽ.
 
-Các nhiệm vụ chính bao gồm:
-
-* Cài đặt Node.js và AWS CDK CLI.
-* Cấu hình AWS CLI với tài khoản AWS.
-* Khởi tạo dự án CDK bằng TypeScript hoặc Python.
-* Tạo các stack cho các nhóm tài nguyên khác nhau.
-* Triển khai cơ sở hạ tầng lên AWS bằng các lệnh CDK.
-
-**Cấu trúc dự án mẫu:**
+**Cấu trúc dự án CDK đã triển khai:**
 ```text
 parking-iot-cdk/
 ├── bin/
-│   └── parking-iot.ts
+│   └── parking-iot.ts            # Entry point khởi tạo các Stacks
 ├── lib/
-│   ├── storage-stack.ts
-│   ├── api-stack.ts
-│   ├── iot-stack.ts
-│   ├── auth-stack.ts
-│   └── monitoring-stack.ts
+│   ├── storage-stack.ts          # Định nghĩa S3 Buckets & DynamoDB Tables
+│   ├── api-stack.ts              # Định nghĩa API Gateway & Lambda Backend
+│   ├── iot-stack.ts              # Định nghĩa AWS IoT Core Rules & MQTT Topics
+│   ├── auth-stack.ts             # Định nghĩa Cognito User Pools & Authorizers
+│   ├── ai-stack.ts               # Định nghĩa AWS Lambda AI Service
+│   └── monitoring-stack.ts       # Định nghĩa CloudWatch Dashboards & Alarms
 ├── package.json
 └── cdk.json
 ```
 
-**Các stack chính có thể được tổ chức như sau:**
+**Chi tiết các Stack tài nguyên chính:**
 
-| Stack | Chức năng |
-|-------|----------|
-| Storage Stack | Tạo S3 Bucket và các bảng DynamoDB |
-| API Stack | Tạo API Gateway và Lambda Backend |
-| IoT Stack | Tạo IoT Core Rule và Lambda xử lý cảm biến |
-| Auth Stack | Tạo Cognito User Pool |
-| Monitoring Stack | Tạo CloudWatch Logs và cảnh báo |
+| CDK Stack | Dịch vụ AWS Triển khai | Vai trò đối với Hệ thống Web |
+|---|---|---|
+| **Storage Stack** | Amazon S3, DynamoDB | Lưu trữ tài nguyên Web, ảnh xe và các bảng dữ liệu DynamoDB |
+| **API Stack** | API Gateway, AWS Lambda | Cung cấp backend REST APIs và logic nghiệp vụ cho Web App |
+| **IoT Stack** | AWS IoT Core, IoT Rules | Tiếp nhận kết nối MQTT từ ESP32 cảm biến đỗ xe |
+| **Auth Stack** | Amazon Cognito, IAM Roles | Quản lý đăng ký/đăng nhập và xác thực token API cho Web User |
+| **AI Stack** | AWS Lambda | Cung cấp dịch vụ Trợ lý AI tương tác trực tiếp trên giao diện Web |
+| **Monitoring Stack** | CloudWatch, AWS Budgets | Giám sát trạng thái hoạt động, ghi log và quản lý ngân sách |
 
-Việc sử dụng AWS CDK giúp quá trình triển khai có thể lặp lại, dễ dàng sửa đổi và quản lý thông qua quản lý phiên bản (version control).
+### 3.1.3. Hệ thống Lưu trữ Amazon S3 & CloudFront CDN
+Amazon S3 được triển khai thực tế với hai phân hệ chính:
 
-### 3.1.3. Thiết lập Amazon S3
-Amazon S3 được sử dụng cho hai mục đích chính trong hệ thống Parking IoT:
-* Lưu trữ giao diện tĩnh của Web/App (Static Website Hosting).
-* Lưu trữ hình ảnh xe gửi từ ESP32 Camera.
+1. **S3 Static Website Hosting (Lưu trữ Giao diện Web App):**
+   - Chứa toàn bộ mã nguồn Frontend đã build (HTML, CSS, JS, Assets).
+   - Phân phối trực tiếp qua Amazon CloudFront CDN (URL `https://d3imp0j8sdburp.cloudfront.net`), hỗ trợ chứng chỉ HTTPS an toàn.
+   - **Luồng truy cập Web:** `Người dùng → CloudFront CDN (AWS WAF) → Amazon S3 Bucket`.
 
-**S3 Static Website**
-Giao diện Web/App có thể được build thành các tệp HTML, CSS và JavaScript và tải lên S3 Bucket. Sau đó, CloudFront sẽ phân phối nội dung trang web đến người dùng.
+2. **S3 Image Storage (Lưu trữ Hình ảnh Phương tiện):**
+   - Lưu trữ trực tiếp ảnh xe chụp từ thiết bị ESP32-CAM đặt tại cổng vào/ra.
+   - Sử dụng Presigned URL để thiết bị biên tải ảnh trực tiếp lên S3 mà không cần thông qua máy chủ trung gian.
+   - **Luồng tải ảnh:** `ESP32-CAM → API Gateway → Lambda Presigned URL → Amazon S3 Bucket → Triggers S3 ObjectCreated Event`.
 
-Luồng truy cập trang web:
-`Người dùng → Route 53 → CloudFront → S3 Static Website`
+### 3.1.4. Cơ sở Dữ liệu Amazon DynamoDB
+Amazon DynamoDB đóng vai trò là cơ sở dữ liệu NoSQL chính, được thiết kế tối ưu với chế độ On-Demand Capacity giúp đáp ứng mọi lưu lượng truy xuất thời gian thực từ Web App và IoT.
 
-**S3 để lưu trữ hình ảnh xe**
-Khi ESP32 Camera chụp ảnh một chiếc xe đi vào hoặc đi ra khỏi bãi đỗ xe, thiết bị sẽ yêu cầu một Presigned URL từ API Gateway. Sau đó, ESP32 Camera tải hình ảnh trực tiếp lên Amazon S3.
+**Cấu trúc các Bảng dữ liệu chính:**
 
-Luồng tải hình ảnh:
-`ESP32 Camera → API Gateway → Lambda tạo Presigned URL → Amazon S3`
+| Tên Bảng DynamoDB | Partition Key | Sort Key | Chức năng trên Web Dashboard |
+|---|---|---|---|
+| `ParkingSlots` | `slot_id` (String) | - | Lưu trạng thái hiện tại (`available`/`occupied`) của từng chỗ đỗ xe |
+| `VehicleLogs` | `log_id` (String) | `timestamp` (String) | Lưu nhật ký xe ra vào, biển số nhận diện và URL ảnh S3 |
+| `SensorData` | `device_id` (String) | `timestamp` (String) | Lưu dữ liệu thô (khoảng cách, dung lượng pin) từ các thiết bị cảm biến |
+| `Users` | `user_id` (String) | - | Lưu thông tin hồ sơ người dùng và cài đặt cá nhân |
 
-Sau khi hình ảnh được tải lên thành công, S3 sẽ tạo ra một sự kiện ObjectCreated để kích hoạt hàm Lambda xử lý hình ảnh.
-`Amazon S3 → Sự kiện S3 ObjectCreated → Lambda xử lý hình ảnh`
+### 3.1.5. Lớp Xử lý Serverless AWS Lambda
+Hệ thống sử dụng kiến trúc Microservices dựa trên các hàm AWS Lambda độc lập, đảm nhận từng công việc chuyên biệt:
 
-### 3.1.4. Thiết lập Amazon DynamoDB
-Amazon DynamoDB được sử dụng làm cơ sở dữ liệu chính của hệ thống. Dữ liệu được lưu trữ dưới định dạng NoSQL, phù hợp với các hệ thống IoT yêu cầu ghi nhanh và truy vấn theo thời gian thực.
+| Hàm Lambda | Trigger (Sự kiện kích hoạt) | Chức năng nghiệp vụ |
+|---|---|---|
+| **Lambda API Backend** | Amazon API Gateway | Phản hồi các truy vấn REST API từ giao diện Web App |
+| **Lambda Presigned URL** | API Gateway (`GET /upload-url`) | Cấp presigned URL có thời hạn cho ESP32-CAM tải ảnh lên S3 |
+| **Lambda Image Processing** | S3 `ObjectCreated` Event | Đọc ảnh từ S3, gọi Amazon Rekognition trích xuất biển số và lưu log |
+| **Lambda Sensor Processing** | AWS IoT Core Rule (MQTT) | Tiếp nhận tin nhắn cảm biến đỗ xe và cập nhật bảng `ParkingSlots` |
+| **Lambda AI Service** | API Gateway (`POST /ai/chat`) | Thực thi mô hình AI xử lý ngôn ngữ tự nhiên & truy vấn đỗ xe thông minh |
 
-Các bảng dữ liệu chính bao gồm:
+### 3.1.6. Cổng Giao tiếp Amazon API Gateway
+Amazon API Gateway được cấu hình làm cổng tiếp nhận mọi yêu cầu HTTPS từ Web App Frontend và thiết bị ESP32-CAM, tích hợp sẵn Amazon Cognito Authorizer để bảo mật API.
 
-| Tên Bảng | Chức năng |
-|------------|----------|
-| ParkingSlots | Lưu trạng thái của từng chỗ đỗ xe |
-| VehicleLogs | Lưu lịch sử xe ra vào |
-| SensorData | Lưu dữ liệu cảm biến |
-| Users | Lưu thông tin người dùng nếu cần |
+**Danh sách các API Endpoints chính trên hệ thống:**
 
-**Dữ liệu mẫu cho bảng ParkingSlots:**
+| Phương thức | Endpoint Path | Quyền truy cập | Chức năng |
+|---|---|---|---|
+| `GET` | `/api/parking/slots` | Public / Authorized | Lấy sơ đồ và trạng thái tất cả vị trí đỗ xe |
+| `GET` | `/api/vehicle/logs` | Cognito Authorized | Lấy danh sách lịch sử xe ra vào bãi |
+| `GET` | `/api/vehicle/search` | Cognito Authorized | Tìm kiếm lịch sử theo biển số xe |
+| `POST` | `/api/camera/presigned-url` | Device Authenticated | Tạo Presigned URL cho ESP32-CAM |
+| `POST` | `/api/ai/chat` | Cognito Authorized | Gửi yêu cầu truy vấn đến Lambda AI Service |
+
+### 3.1.7. Quản lý Thiết bị AWS IoT Core
+AWS IoT Core quản lý toàn bộ kết nối và chứng chỉ bảo mật (X.509 Certificates) cho các thiết bị cảm biến ESP32 thông qua giao thức mỏng MQTT over TLS.
+
+* **MQTT Topic trạng thái đỗ xe:** `parking/slots/{slot_id}/status`
+* **Payload tin nhắn gửi từ ESP32:**
 ```json
 {
+  "device_id": "esp32_sensor_a01",
   "slot_id": "A01",
+  "distance_cm": 25.4,
   "status": "occupied",
-  "updated_at": "2026-04-27T10:30:00"
+  "timestamp": "2026-05-13T09:15:30Z"
 }
 ```
+* **AWS IoT Rule:** Tự động lắng nghe trên topic `parking/slots/+/status` và kích hoạt hàm **Lambda Sensor Processing** để đồng bộ trạng thái lên Web Dashboard trong vòng vài miligiây.
 
-**Dữ liệu mẫu cho bảng VehicleLogs:**
-```json
-{
-  "log_id": "LOG001",
-  "plate_number": "51A-12345",
-  "direction": "in",
-  "image_url": "s3://parking-image-bucket/car_001.jpg",
-  "timestamp": "2026-04-27T10:30:00"
-}
-```
+### 3.1.8. Cấu hình Mạng & Bảo mật Mạng (Networking & Security)
+Trong kiến trúc Serverless đã triển khai:
+* Các dịch vụ managed như S3, DynamoDB, IoT Core, Rekognition, Lambda AI và CloudWatch được AWS quản lý theo vùng (Regional Services).
+* Nhóm đã cấu hình **VPC Security Endpoints** và **Subnets riêng** cho các hàm Lambda đòi hỏi truy cập tài nguyên nội bộ nâng cao.
+* **AWS WAF (Web Application Firewall):** Được gắn trực tiếp trước CloudFront distribution để lọc các truy vấn xấu, chống tấn công SQL Injection, XSS và giới hạn tần suất yêu cầu (Rate Limiting).
 
-DynamoDB giúp hệ thống truy xuất nhanh chóng trạng thái chỗ đỗ xe, lịch sử ra vào và kết quả nhận dạng biển số xe.
-
-### 3.1.5. Thiết lập AWS Lambda
-AWS Lambda là thành phần xử lý chính của hệ thống. Lambda cho phép code chạy khi có sự kiện xảy ra mà không cần triển khai hoặc quản lý máy chủ riêng.
-
-Các hàm Lambda chính bao gồm:
-
-| Hàm Lambda | Chức năng |
-|-----------------|----------|
-| Lambda API Backend | Xử lý các yêu cầu từ Web/App |
-| Lambda Presigned URL | Tạo Presigned URL cho ESP32 Camera tải hình ảnh lên |
-| Lambda Image Processing | Xử lý hình ảnh khi có hình ảnh mới tải lên S3 |
-| Lambda Sensor Processing | Xử lý dữ liệu cảm biến từ AWS IoT Core |
-| Lambda AI Service | Kết nối với Amazon Bedrock cho các tính năng AI |
-
-**Luồng Lambda xử lý hình ảnh:**
-`S3 ObjectCreated → Lambda Image Processing → Amazon Rekognition → DynamoDB`
-
-**Luồng Lambda xử lý cảm biến:**
-`AWS IoT Core → IoT Rule → Lambda Sensor Processing → DynamoDB`
-
-Lambda cho phép hệ thống hoạt động linh hoạt, chỉ chạy khi có sự kiện và tự động mở rộng (scale) dựa trên số lượng yêu cầu.
-
-### 3.1.6. Thiết lập Amazon API Gateway
-Amazon API Gateway được sử dụng làm cổng giao tiếp giữa Web/App, ESP32 Camera và các hàm Lambda.
-
-Các API chính có thể bao gồm:
-
-| API Endpoint | Chức năng |
-|--------------|----------|
-| `/parking/slots` | Lấy trạng thái chỗ đỗ xe |
-| `/vehicle/logs` | Lấy lịch sử xe ra vào |
-| `/upload-url` | Tạo Presigned URL cho ESP32 Camera |
-| `/ai/query` | Gửi câu hỏi đến AI Service |
-
-**Luồng yêu cầu API từ Web/App:**
-`Web/App → API Gateway → Lambda Backend → DynamoDB`
-
-**Luồng yêu cầu Presigned URL từ ESP32 Camera:**
-`ESP32 Camera → API Gateway → Lambda Presigned URL → Amazon S3`
-
-API Gateway giúp hệ thống quản lý các yêu cầu một cách tập trung, kiểm soát truy cập dễ dàng hơn và tích hợp với Cognito Authorizer.
-
-### 3.1.7. Thiết lập AWS IoT Core
-AWS IoT Core được sử dụng để nhận dữ liệu từ cảm biến ESP32 thông qua giao thức MQTT.
-
-Cảm biến ESP32 gửi dữ liệu trạng thái chỗ đỗ xe đến một MQTT topic, ví dụ:
-`parking/slot/A01/status`
-
-**Payload mẫu:**
-```json
-{
-  "slot_id": "A01",
-  "status": "available",
-  "timestamp": "2026-04-27T10:30:00"
-}
-```
-
-**Luồng dữ liệu cảm biến:**
-`Cảm biến ESP32 → AWS IoT Core → IoT Rule → Lambda Sensor Processing → DynamoDB`
-
-AWS IoT Core giúp quản lý kết nối thiết bị, chứng chỉ bảo mật và dữ liệu MQTT từ các thiết bị IoT.
-
-### 3.1.8. Thiết lập VPC và Mạng (Networking)
-Trong hệ thống Parking IoT sử dụng kiến trúc serverless, hầu hết các dịch vụ như S3, DynamoDB, IoT Core, Rekognition, Bedrock và CloudWatch đều là các dịch vụ AWS quản lý (managed services) và không được đặt trực tiếp bên trong VPC.
-
-Tuy nhiên, có thể cấu hình một VPC nếu hệ thống cần:
-* Chạy các hàm Lambda bên trong một mạng riêng (private network).
-* Kết nối với một cơ sở dữ liệu nội bộ.
-* Cô lập các thành phần backend.
-* Cải thiện kiểm soát lưu lượng mạng.
-
-Một VPC cơ bản có thể bao gồm:
-
-| Thành phần | Chức năng |
-|-----------|----------|
-| Public Subnet | Sử dụng cho các tài nguyên cần truy cập Internet |
-| Private Subnet | Sử dụng cho Lambda hoặc tài nguyên nội bộ |
-| Internet Gateway | Cho phép truy cập Internet từ Public Subnet |
-| NAT Gateway | Cho phép tài nguyên trong Private Subnet truy cập Internet |
-| Security Group | Kiểm soát lưu lượng mạng vào/ra (inbound/outbound) |
-
-> **Lưu ý:** Trong sơ đồ kiến trúc, các dịch vụ như S3, DynamoDB, CloudWatch, Rekognition và Bedrock không nên được đặt bên trong VPC vì chúng là các dịch vụ khu vực (regional services) do AWS quản lý.
-
-### 3.1.9. Cấu hình IAM Roles và Policies
-IAM được sử dụng để quản lý quyền truy cập cho các dịch vụ AWS. Hệ thống áp dụng nguyên tắc Đặc quyền Tối thiểu (Least Privilege), nghĩa là mỗi dịch vụ chỉ được cấp những quyền tối thiểu cần thiết để thực hiện nhiệm vụ của nó.
-
-Một số quyền (permissions) cần thiết bao gồm:
-
-| Thành phần | Quyền cần thiết |
-|-----------|---------------------|
-| Lambda API Backend | Đọc và ghi dữ liệu trong DynamoDB |
-| Lambda Presigned URL | Tạo Presigned URL để tải hình ảnh lên S3 |
-| Lambda Image Processing | Đọc hình ảnh từ S3, gọi Rekognition và ghi dữ liệu vào DynamoDB |
-| Lambda Sensor Processing | Ghi dữ liệu cảm biến vào DynamoDB |
-| Lambda AI Service | Gọi Bedrock và đọc dữ liệu từ DynamoDB |
-| API Gateway | Gọi (Invoke) các hàm Lambda |
-| IoT Rule | Kích hoạt (Trigger) hàm Lambda xử lý cảm biến |
-
-Việc quản lý quyền rõ ràng giúp cải thiện bảo mật hệ thống, tránh cấp quyền quá rộng và giảm thiểu rủi ro bảo mật.
+### 3.1.9. Phân quyền IAM (Identity & Access Management)
+Mọi tài nguyên AWS trong hệ thống đều tuân thủ nghiêm ngặt nguyên tắc **Đặc quyền Tối thiểu (Least Privilege)**:
+* **Role Lambda Image Processing:** Chỉ có quyền `s3:GetObject` trên bucket ảnh, `rekognition:DetectText` và `dynamodb:PutItem` trên bảng `VehicleLogs`.
+* **Role Lambda Sensor Processing:** Chỉ có quyền `dynamodb:UpdateItem` trên bảng `ParkingSlots`.
+* **Role Lambda AI Service:** Được cấp quyền đọc bảng DynamoDB để tổng hợp dữ liệu đỗ xe và trả lời truy vấn.
+* **Role API Gateway:** Chỉ có quyền `lambda:InvokeFunction` tới các hàm Lambda backend tương ứng.
 
 ### 3.1.10. Kết luận
-Cơ sở hạ tầng cốt lõi AWS là nền tảng quan trọng cho sự vận hành ổn định của hệ thống Parking IoT. Các dịch vụ như S3, DynamoDB, Lambda, API Gateway và IoT Core xử lý việc lưu trữ, xử lý dữ liệu và giao tiếp giữa các thiết bị ESP32 và Web/App.
-
-Bên cạnh đó, IAM kiểm soát quyền truy cập, CloudWatch hỗ trợ giám sát hệ thống và CDK giúp triển khai cơ sở hạ tầng tự động, quản lý dễ dàng hơn. Với kiến trúc serverless, hệ thống có thể mở rộng linh hoạt, tối ưu hóa chi phí và đáp ứng các yêu cầu của mô hình Smart Parking IoT.
+Hạ tầng cốt lõi AWS Serverless là xương sống vững chắc giúp **Nền tảng Web App Smart Parking IoT** vận hành ổn định, mượt mà và an toàn trên môi trường thực tế. Sự kết hợp nhuần nhuyễn giữa hạ tầng IaC (AWS CDK), lưu trữ đám mây (S3, DynamoDB), xử lý không máy chủ (Lambda, Rekognition, Lambda AI Service) và phân phối CDN (CloudFront, WAF) đã tạo nên một giải pháp đỗ xe thông minh toàn diện, sẵn sàng mở rộng quy mô sản xuất.

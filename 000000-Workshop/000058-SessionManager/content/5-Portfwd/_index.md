@@ -1,91 +1,70 @@
 ---
-title : "Port Forwarding"
+title : "Event"
 date: 2026-05-13
 weight : 5 
 chapter : false
 pre : " <b> 5. </b> "
 ---
 
+### 📅 Offline Event on June 06, 2026
+
+![event ngày Saturday, June 6, 2026](/images/event_june6.png)
+
 {{% notice info %}}
-**Port Forwarding** is a useful way to redirect network traffic from one IP address - Port to another IP address - Port. With **Port Forwarding** we can access an EC2 instance located in the private subnet from our workstation.
+**📍 Attendance Details:**
+- **Date:** Saturday, June 6, 2026
+- **Location:** 26th Floor
+- **Shift:** 09:00 (Shift)
+- **Check-in:** ✅ On time
 {{% /notice %}}
 
-We will configure **Port Forwarding** for the RDP connection between our machine and **Private Windows Instance** located in the private subnet we created for this exercise.
+---
 
-![port-fwd](/images/arc-04.png) 
+### 🌐 Online Event on June 27, 2026
 
-#### Create IAM user with permission to connect SSM
+{{% notice tip %}}
+**Objective:** Connecting students with businesses and sharing career orientation.
+{{% /notice %}}
 
-1. Go to [IAM service management console](https://console.aws.amazon.com/iamv2/home)
-   + Click **Users** , then click **Add users**.
+- 🚀 **Speaker Steve Tran (Cloud Thinker):** Shared his journey from a student to working at Amazon and founding the startup **Clouder**, emphasizing the role of cloud technology in career development.
+- 💡 **Cloud Migration Challenges:** Analyzed system complexity, the need for skilled personnel, and how AI supports infrastructure operations.
+- ⚙️ **Clouder's Solution:** Introduced an *AI-centric* platform that helps troubleshoot faster, optimize costs, ensure security, and support engineering teams.
+- 💬 **In-depth Discussion:** Expanded on *multi-agent* vs *single-agent* architecture, cost optimization, and role control in the system.
+- 🎙️ **Voice AI Topic:** Other speakers (Hieu Nghi, Kiet, Trung) presented on building voice agents, practical demos, and challenges when deploying Vietnamese in a banking environment.
+- 🌟 **Core Takeaways:** Emphasized the importance of **early internships**, experiencing corporate environments, and the need for startups to solve real customer problems.
 
-![FWD](/images/5.fwd/001-fwd.png)
+---
 
-2. At the **Add user** page.
-   + In the **User name** field, enter **Portfwd**.
-   + Click on **Access key - Programmatic access**.
-   + Click **Next: Permissions**.
-  
-![FWD](/images/5.fwd/002-fwd.png)
+### 🌐 Online Event on July 04, 2026
 
-3. Click **Attach existing policies directly**.
-   + In the search box, enter **ssm**.
-   + Click on **AmazonSSMFullAccess**.
-   + Click **Next: Tags**, click **Next: Reviews**.
-   + Click **Create user**.
+**Event Opening**
+- Overview of the digital transformation journey and the role of AWS in building enterprise cloud architecture.
+- **Cloud Kinetics** and **Renova Cloud** were introduced as strategic partners, bringing practical experience.
 
-4. Save **Access key ID** and **Secret access key** information to perform AWS CLI configuration.
+**🏗 Main Presentation**
+- **Enterprise Cloud Architectures:** Explained deployment models, and how to optimize costs, performance, and security.
+- **Industry Applications:** Presented practical examples from various fields – finance, manufacturing, retail – illustrating how businesses leverage AWS to accelerate innovation.
+- **Challenges & Solutions:** Highlighted common difficulties when starting the “First Cloud Journey” and how to overcome them using AWS tools and services.
 
-#### Install and Configure AWS CLI and Session Manager Plugin
-  
-To perform this hands-on, make sure your workstation has [AWS CLI]() and [Session Manager Plugin](https://docs.aws.amazon.com/systems-manager/latest/userguide/session) installed -manager-working-with-install-plugin.html)
+**📊 Results & Benefits**
+- Businesses achieve flexible scalability, enhanced security, and reduced operating costs.
+- Proven by successful case studies deployed by Cloud Kinetics and Renova Cloud.
 
-More hands-on tutorials on installing and configuring the AWS CLI can be found [here](https://000011.awsstudygroup.com/).
+**🤝 Event Closing**
+- Affirmed the role of AWS and partners in accompanying businesses.
+- Invited the community to deeply engage in learning programs, workshops, and the digital transformation journey.
 
-{{%notice tip%}}
-With Windows, when extracting the **Session Manager Plugin** installation folder, run the **install.bat** file with Administrator permission to perform the installation.
-{{%/notice%}}
+---
 
-#### Implement Portforwarding
+### 📅 Offline Event on July 11, 2026
 
-1. Run the command below in **Command Prompt** on your machine to configure **Port Forwarding**.
+![event ngày Saturday, July 11, 2026](/images/event_july11.png)
 
-```
-   aws ssm start-session --target (your ID windows instance) --document-name AWS-StartPortForwardingSession --parameters portNumber="3389",localPortNumber="9999" --region (your region)
-```
-{{%notice tip%}}
-
-**Windows Private Instance** **Instance ID** information can be found when you view the EC2 Windows Private Instance server details.
-
-{{%/notice%}}
-
-   + Example command:
-
-```
-C:\Windows\system32>aws ssm start-session --target i-06343d7377486760c --document-name AWS-StartPortForwardingSession --parameters portNumber="3389",localPortNumber="9999" --region ap-southeast-1
-```
-
-{{%notice warning%}}
-
-If your command gives an error like below: \
-SessionManagerPlugin is not found. Please refer to SessionManager Documentation here: http://docs.aws.amazon.com/console/systems-manager/session-manager-plugin-not-found\
-Prove that you have not successfully installed the Session Manager Plugin. You may need to relaunch **Command Prompt** after installing **Session Manager Plugin**.
-
-{{%/notice%}}
-
-2. Connect to the **Private Windows Instance** you created using the **Remote Desktop** tool on your workstation.
-   + In the Computer section: enter **localhost:9999**.
-
-
-![FWD](/images/5.fwd/003-fwd.png)
-
-
-3. Return to the administration interface of the System Manager - Session Manager service.
-   + Click tab **Session history**.
-   + We will see session logs with Document name **AWS-StartPortForwardingSession**.
-
-
-![FWD](/images/5.fwd/004-fwd.png)
-
-
-Congratulations on completing the lab on how to use Session Manager to connect and store session logs in S3 bucket. Remember to perform resource cleanup to avoid unintended costs.
+{{% notice info %}}
+**📍 Attendance Details:**
+- **Date:** Saturday, July 11, 2026
+- **Location:** 26th Floor
+- **Shift:** 09:00 (Shift)
+- **Check-in:** ✅ On time
+- **Check-out:** ✅ On time
+{{% /notice %}}

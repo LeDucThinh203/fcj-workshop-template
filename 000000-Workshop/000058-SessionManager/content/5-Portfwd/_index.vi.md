@@ -1,93 +1,70 @@
 ---
-title : "Port Forwarding"
+title : "Event"
 date: 2026-05-13
 weight : 5 
 chapter : false
 pre : " <b> 5. </b> "
 ---
 
+### 📅 Sự kiện Offline ngày 06/06/2026
+
+![event ngày Saturday, June 6, 2026](/images/event_june6.png)
+
 {{% notice info %}}
-**Port Forwarding** là mốt cách thức hữu ích để chuyển hướng lưu lượng mạng từ 1 địa chỉ IP - Port này sang 1 địa chỉ IP - Port khác. Với **Port Forwarding** chúng ta có thể truy cập một EC2 instance nằm trong private subnet từ máy trạm của chúng ta.
+**📍 Chi tiết tham dự:**
+- **Ngày:** Thứ Bảy, 06 tháng 06, 2026
+- **Địa điểm:** Tầng 26
+- **Ca làm việc:** 09:00 (Shift)
+- **Check-in:** ✅ Đúng giờ
 {{% /notice %}}
 
-Chúng ta sẽ cấu hình **Port Forwarding** cho kết nối RDP giữa máy của mình với **Private Windows Instance** nằm trong private subnet mà chúng ta đã tạo cho bài thực hành này.
+---
 
-![port-fwd](/images/arc-04.png) 
+### 🌐 Sự kiện Online ngày 27/06/2026
 
+{{% notice tip %}}
+**Mục tiêu:** Kết nối sinh viên với doanh nghiệp và định hướng nghề nghiệp.
+{{% /notice %}}
 
+- 🚀 **Diễn giả Steve Trần (Cloud Thinker):** Chia sẻ hành trình từ sinh viên đến làm việc tại Amazon và sáng lập startup **Clouder**, nhấn mạnh vai trò của công nghệ cloud trong sự nghiệp.
+- 💡 **Thách thức chuyển đổi Cloud:** Phân tích độ phức tạp hệ thống, nhu cầu nhân lực giỏi, và cách AI hỗ trợ vận hành hạ tầng.
+- ⚙️ **Giải pháp từ Clouder:** Giới thiệu nền tảng *AI-centric* giúp xử lý sự cố nhanh hơn, tối ưu chi phí, đảm bảo bảo mật và hỗ trợ đội ngũ kỹ sư.
+- 💬 **Thảo luận chuyên sâu:** Mở rộng về kiến trúc *multi-agent* vs *single-agent*, tối ưu chi phí và kiểm soát vai trò trong hệ thống.
+- 🎙️ **Voice AI:** Các diễn giả (Hiếu Nghị, Kiệt, Trung) trình bày cách xây dựng agent giọng nói, demo thực tế, và thách thức khi triển khai tiếng Việt trong môi trường ngân hàng.
+- 🌟 **Bài học cốt lõi:** Nhấn mạnh tầm quan trọng của việc **thực tập sớm**, trải nghiệm môi trường doanh nghiệp, và startup phải giải quyết bài toán thực tế của khách hàng.
 
-#### Tạo IAM User có quyền kết nối SSM
+---
 
-1. Truy cập vào [giao diện quản trị dịch vụ IAM](https://console.aws.amazon.com/iamv2/home)
-  + Click **Users** , sau đó click **Add users**.
+### 🌐 Sự kiện Online ngày 04/07/2026
 
-![FWD](/images/5.fwd/001-fwd.png)
+**Mở đầu sự kiện**
+- Giới thiệu tổng quan về hành trình chuyển đổi số và vai trò của AWS trong việc xây dựng kiến trúc đám mây doanh nghiệp.
+- **Cloud Kinetics** và **Renova Cloud** được giới thiệu như những đối tác chiến lược, mang đến kinh nghiệm thực tiễn.
 
-2. Tại trang **Add user**.
-  + Tại mục **User name**, điền **Portfwd**.
-  + Click chọn **Access key - Programmatic access**.
-  + Click **Next: Permissions**.
-  
-![FWD](/images/5.fwd/002-fwd.png)
+**🏗 Phần trình bày chính**
+- **Kiến trúc đám mây doanh nghiệp (Enterprise Cloud Architectures):** Giải thích các mô hình triển khai, cách tối ưu chi phí, hiệu suất và bảo mật.
+- **Ứng dụng trong ngành (Industry Applications):** Trình bày các ví dụ thực tế từ nhiều lĩnh vực – tài chính, sản xuất, bán lẻ – minh họa cách doanh nghiệp tận dụng AWS để tăng tốc đổi mới.
+- **Thách thức & giải pháp:** Nêu rõ những khó khăn thường gặp khi bắt đầu hành trình “First Cloud Journey” và cách vượt qua bằng công cụ, dịch vụ AWS.
 
-3. Click **Attach existing policies directly**.
-  + Tại ô tìm kiếm , điền **ssm**.
-  + Click chọn **AmazonSSMFullAccess**.
-  + Click **Next: Tags**, click **Next: Reviews**.
-  + Click **Create user**.
+**📊 Kết quả & lợi ích**
+- Doanh nghiệp đạt được khả năng mở rộng linh hoạt, tăng cường bảo mật, giảm chi phí vận hành.
+- Minh chứng bằng các case study thành công mà Cloud Kinetics và Renova Cloud đã triển khai.
 
-4. Lưu lại thông tin **Access key ID** và **Secret access key** để thực hiện cấu hình AWS CLI.
+**🤝 Kết thúc sự kiện**
+- Khẳng định vai trò của AWS và đối tác trong việc đồng hành cùng doanh nghiệp.
+- Mời gọi cộng đồng tham gia sâu hơn vào các chương trình học tập, workshop và hành trình chuyển đổi số.
 
-#### Cài đặt và cấu hình AWS CLI và Session Manager Plugin 
-  
-Để thực hiện phần thực hành này, đảm bảo máy trạm của bạn đã cài [AWS CLI]() và [Session Manager Plugin](https://docs.aws.amazon.com/systems-manager/latest/userguide/session-manager-working-with-install-plugin.html)
+---
 
-Bạn có thể tham khảo thêm bài thực hành về cài đặt và cấu hình AWS CLI [tại đây](https://000011.awsstudygroup.com/).
+### 📅 Sự kiện Offline ngày 11/07/2026
 
-{{%notice tip%}}
-Với Windows thì khi giải nén thư mục cài đặt **Session Manager Plugin** bạn hãy chạy file **install.bat** với quyền Administrator để thực hiện cài đặt.
-{{%/notice%}}
+![event ngày Saturday, July 11, 2026](/images/event_july11.png)
 
-#### Thực hiện Portforwarding 
-
-1. Chạy command dưới đây trong **Command Prompt** trên máy của bạn để cấu hình **Port Forwarding**.
-
-```
-  aws ssm start-session --target (your ID windows instance) --document-name AWS-StartPortForwardingSession --parameters portNumber="3389",localPortNumber="9999" --region (your region) 
-```
-{{%notice tip%}}
-
-Thông tin **Instance ID** của **Windows Private Instance** có thể tìm được khi bạn xem chi tiết máy chủ EC2 Windows Private Instance.
-
-{{%/notice%}}
-
-  + Câu lệnh ví dụ
-
-```
-C:\Windows\system32>aws ssm start-session --target i-06343d7377486760c --document-name AWS-StartPortForwardingSession --parameters portNumber="3389",localPortNumber="9999" --region ap-southeast-1
-```
-
-{{%notice warning%}}
-
-Nếu câu lệnh của bạn báo lỗi như dưới đây : \
-SessionManagerPlugin is not found. Please refer to SessionManager Documentation here: http://docs.aws.amazon.com/console/systems-manager/session-manager-plugin-not-found\
-Chứng tỏ bạn chưa cài Session Manager Plugin thành công. Bạn có thể cần khởi chạy lại **Command Prompt** sau khi cài **Session Manager Plugin**.
-
-{{%/notice%}}
-
-2. Kết nối tới **Private Windows Instance** bạn đã tạo bằng công cụ **Remote Desktop** trên máy trạm của bạn.
-  + Tại mục Computer: điền **localhost:9999**.
-
-
-![FWD](/images/5.fwd/003-fwd.png)
-
-
-3. Quay trở lại giao diện quản trị của dịch vụ System Manager - Session Manager.
-  + Click tab **Session history**.
-  + Chúng ta sẽ thấy các session logs với tên Document là **AWS-StartPortForwardingSession**.
-
-
-![FWD](/images/5.fwd/004-fwd.png)
-
-
-Chúc mừng bạn đã hoàn tất bài thực hành hướng dẫn cách sử dụng Session Manager để kết nối cũng như lưu trữ các session logs trong S3 bucket. Hãy nhớ thực hiện bước dọn dẹp tài nguyên để tránh sinh chi phí ngoài ý muốn nhé.
+{{% notice info %}}
+**📍 Chi tiết tham dự:**
+- **Ngày:** Thứ Bảy, 11 tháng 07, 2026
+- **Địa điểm:** Tầng 26
+- **Ca làm việc:** 09:00 (Shift)
+- **Check-in:** ✅ Đúng giờ
+- **Check-out:** ✅ Đúng giờ
+{{% /notice %}}
